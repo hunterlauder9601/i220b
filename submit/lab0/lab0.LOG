@@ -1,0 +1,208 @@
+Script started on 2021-08-26 16:51:36-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+hlauder1@g7-32:~/tmp/lab0$ ls ~/.ssh
+ls: cannot access '/home/hlauder1/.ssh': No such file or directory
+hlauder1@g7-32:~/tmp/lab0$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/hlauder1/.ssh/id_rsa): .ssh    
+Created directory '/home/hlauder1/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/hlauder1/.ssh/id_rsa
+Your public key has been saved in /home/hlauder1/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:myEtMEhBM/l5k2IfdffasQ1HemEve5UHSeIuXqwTEIc hlauder1@g7-32
+The key's randomart image is:
++---[RSA 3072]----+
+| .*o    ... .... |
+| ..+    Eo....oo.|
+|  ..o. o.. ....++|
+|    =o=. . o  *.*|
+|   . +ooS o +o Xo|
+|      .o = =. + o|
+|        o +    . |
+|           .     |
+|                 |
++----[SHA256]-----+
+hlauder1@g7-32:~/tmp/lab0$ [Khlauder1@g7-32:~/tmp/lab0$ [Khlauder1@g7-32:~/tmp/lab0$ ssh-copy-id hlauder1@remote
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/hlauder1/.ssh/id_rsa.pub"
+
+
+
+^C
+hlauder1@g7-32:~/tmp/lab0$ ssh-copy-id hlauder1@remote.cs.binghamton.edu
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/hlauder1/.ssh/id_rsa.pub"
+^C
+hlauder1@g7-32:~/tmp/lab0$ ls ~/.ssh
+id_rsa	id_rsa.pub
+hlauder1@g7-32:~/tmp/lab0$ cat ~/.ssh/id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+hlauder1@g7-32:~/tmp/lab0$ ssh://user@remote.cs.binghamton.edu/~umrigar/git-repos/cs220.git
+bash: ssh://user@remote.cs.binghamton.edu/~umrigar/git-repos/cs220.git: No such file or directory
+hlauder1@g7-32:~/tmp/lab0$ mkdir -p ~/projects
+hlauder1@g7-32:~/tmp/lab0$ cd ~/projects
+hlauder1@g7-32:~/projects$ git clone ssh://user@remote.cs.binghamton.edu/~umrigar/git-repos/cs220.git
+Cloning into 'cs220'...
+^^?  ^C
+hlauder1@g7-32:~/projects$ git clo[K[K[K[K[K[K[Kssh://user@remote.cs.binghamton.edu/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P~umrigar/git-repos/cs220.git[1P~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C`/~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C~/~umrigar/git-repos/cs220.git[C/~umrigar/git-repos/cs220.gitp/~umrigar/git-repos/cs220.gitr/~umrigar/git-repos/cs220.gito/~umrigar/git-repos/cs220.gitj/~umrigar/git-repos/cs220.gite/~umrigar/git-repos/cs220.gitc/~umrigar/git-repos/cs220.gitt/~umrigar/git-repos/cs220.gits/~umrigar/git-repos/cs220.git$/~umrigar/git-repos/cs220.git /~umrigar/git-repos/cs220.gitg/~umrigar/git-repos/cs220.giti/~umrigar/git-repos/cs220.gitt/~umrigar/git-repos/cs220.git /~umrigar/git-repos/cs220.gitc/~umrigar/git-repos/cs220.gitl/~umrigar/git-repos/cs220.gito/~umrigar/git-repos/cs220.gitn/~umrigar/git-repos/cs220.gite/~umrigar/git-repos/cs220.git /~umrigar/git-repos/cs220.git[1P/~umrigar/git-repos/cs220.git /~umrigar/git-repos/cs220.git[C[1P~umrigar/git-repos/cs220.git
+bash: /home/hlauder1/projects$: No such file or directory
+hlauder1@g7-32:~/projects$ ^C
+hlauder1@g7-32:~/projects$ ^C
+hlauder1@g7-32:~/projects$ ^C
+hlauder1@g7-32:~/projects$ git clone ~umrigar/git-repos/cs220.git
+Cloning into 'cs220'...
+done.
+hlauder1@g7-32:~/projects$ cd ~
+hlauder1@g7-32:~$ ln -s projects/cs220
+ln: failed to create symbolic link './cs220': File exists
+hlauder1@g7-32:~$ ln -s projects/cs220[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kln -s projects/cs220 .
+ln: failed to create symbolic link './cs220': File exists
+hlauder1@g7-32:~$ cd ~/projects/cs220
+hlauder1@g7-32:~/projects/cs220$ git pull
+[33mhint: Pulling without specifying how to reconcile divergent branches is[m
+[33mhint: discouraged. You can squelch this message by running one of the following[m
+[33mhint: commands sometime before your next pull:[m
+[33mhint: [m
+[33mhint:   git config pull.rebase false  # merge (the default strategy)[m
+[33mhint:   git config pull.rebase true   # rebase[m
+[33mhint:   git config pull.ff only       # fast-forward only[m
+[33mhint: [m
+[33mhint: You can replace "git config" with "git config --global" to set a default[m
+[33mhint: preference for all repositories. You can also pass --rebase, --no-rebase,[m
+[33mhint: or --ff-only on the command line to override the configured default per[m
+[33mhint: invocation.[m
+Already up to date.
+hlauder1@g7-32:~/projects/cs220$ it log -5[K[K[K[K[K[K[K[K[Kgit log -5
+[?1h=[33mcommit 0305b86713046c529f54718435c6af9c8c6cd675[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m[m
+Author: zerksis umrigar <umrigar@binghamton.edu>[m
+Date:   Wed Aug 25 22:07:50 2021 -0400[m
+[m
+    lab0 tweaks[m
+[m
+[33mcommit 9a6567527398cc3238ab38629a58873a55e7f3e7[m[m
+Author: zerksis umrigar <umrigar@binghamton.edu>[m
+Date:   Wed Aug 25 16:19:48 2021 -0400[m
+[m
+    fix problems seen in class[m
+[m
+[33mcommit 34009f8097c9b3d4a61ec3376464a298c8db62a6[m[m
+Author: zerksis umrigar <umrigar@binghamton.edu>[m
+Date:   Wed Aug 25 12:56:10 2021 -0400[m
+[m
+    grade assignment[m
+[m
+[33mcommit f471d336c1f9a89740b916f65e950fb51e8ce34e[m[m
+Author: zerksis umrigar <umrigar@binghamton.edu>[m
+Date:   Wed Aug 25 02:44:39 2021 -0400[m
+[m
+    added more stuff[m
+[m
+[33mcommit 09716377740775b1c716fdd58955c1c86675fbbf[m[m
+Author: zerksis umrigar <umrigar@binghamton.edu>[m
+Date:   Wed Aug 25 01:23:36 2021 -0400[m
+[m
+    tweaks[m
+[K[?1l>hlauder1@g7-32:~/projects/cs220$ git log -3 labs/lab0.umt
+fatal: ambiguous argument 'labs/lab0.umt': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+hlauder1@g7-32:~/projects/cs220$ git diff -r XXXXX labs/lab0.umt
+fatal: ambiguous argument 'XXXXX': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+hlauder1@g7-32:~/projects/cs220$ emacs .[K~/.profile
+hlauder1@g7-32:~/projects/cs220$ emacs ~/.bashrc
+hlauder1@g7-32:~/projects/cs220$ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC+gWjFz7AWMofkxvwEGHEg1r/vQgI7luDFFpS4C9bLfUohxpx3xrMeeoVAvuIehNGAI8ZsYfLT+WV1FICTfVFemCBMeNm3HD7oR1FiQYHL87OsiGzGH00Q9eNcS9NfBjc31zZ4JJHd1DHvQqEWLtc/iJLjYljuXBuOjDcFrCA1dMNsSnm4JjONf755enPN/sTLDHRlq3SZOhavdhh0b0+R84AaBPt+bS7Nzb5BZ3icsJYujqlH7SVv+KtgztMbZL9xjMQb/3D4PVg2jRRGpkyKd1vmDz/yGTQfw93cUbrHOwOzbNG56gqiIyit0120oppuF6qmyl6vH3XcYD2toS5teObPHTXCd90ntblpncUvTMOIM5Iete9exHTR3OJnmV9pzeJyZeztBcwlzaH54JQfKx/es2OMyoMbVGXmDu6QJzOiNTxUuel19rs3HWAzGcz6Bh5CSAdjyGBPpQgKVaeYiXnIJL9as789XI6RcyODFpxIL+2pMM9xKPb4Co9NaxE= hlauder1@g7-32
+hlauder1@g7-32:~/projects/cs220$ touch .gitignore
+hlauder1@g7-32:~/projects/cs220$ git push
+Everything up-to-date
+hlauder1@g7-32:~/projects/cs220$ mkdir -p ~/projects
+hlauder1@g7-32:~/projects/cs220$ g[Kcd ~/projects
+hlauder1@g7-32:~/projects$ git clone https://github.com/hunterlauder9601/i220b.git
+Cloning into 'i220b'...
+fatal: unable to access 'https://github.com/hunterlauder9601/i220b.git/': Failed sending HTTP2 data
+hlauder1@g7-32:~/projects$ git clone git@github.com:hunterlauder9601/i220b.git
+Cloning into 'i220b'...
+The authenticity of host 'github.com (140.82.112.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,140.82.112.4' (RSA) to the list of known hosts.
+remote: Enumerating objects: 6, done.[K
+remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K
+remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4/4)[Kremote: Compressing objects: 100% (4/4), done.[K
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Receiving objects:  16% (1/6)Receiving objects:  33% (2/6)Receiving objects:  50% (3/6)Receiving objects:  66% (4/6)Receiving objects:  83% (5/6)Receiving objects: 100% (6/6)Receiving objects: 100% (6/6), done.
+hlauder1@g7-32:~/projects$ cd ~
+hlauder1@g7-32:~$ ln -s ~/projects/i220? .
+hlauder1@g7-32:~$ pwd
+/home/hlauder1
+hlauder1@g7-32:~$ cd projects
+hlauder1@g7-32:~/projects$ cd i220b
+hlauder1@g7-32:~/projects/i220b$ ls -a
+.  ..  .git  .gitignore  README.md
+hlauder1@g7-32:~/projects/i220b$ cd ~/i220X
+bash: cd: /home/hlauder1/i220X: No such file or directory
+hlauder1@g7-32:~/projects/i220b$ cd ~/i220X[Kb
+hlauder1@g7-32:~/i220b$ pwd
+/home/hlauder1/i220b
+hlauder1@g7-32:~/i220b$ git status -s
+hlauder1@g7-32:~/i220b$ git commit -a -m 'SOME COMMIT MSG'[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Klab0 commit 1"
+> v[Kgit psuh[K[K[Kush
+> ds[K[K[K> ls -dl ~/cs220 ~/i220X[Kb[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K^C
+hlauder1@g7-32:~/i220b$ ls -dl ~/cs220 ~/i220X[Kb
+ls: cannot access '/home/hlauder1/cs220': No such file or directory
+lrwxrwxrwx 1 hlauder1 hlauder1 29 Aug 26 18:06 /home/hlauder1/i220b -> /home/hlauder1/projects/i220b
+hlauder1@g7-32:~/i220b$ ls -dl ~/cs220 ~/i220b
+drwxr-x--- 2 hlauder1 hlauder1 10 Aug 26 16:49 /home/hlauder1/cs220
+lrwxrwxrwx 1 hlauder1 hlauder1 29 Aug 26 18:06 /home/hlauder1/i220b -> /home/hlauder1/projects/i220b
+hlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ ls -dl ~/cs220 ~/i220b[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kls -l ~/.ssh ~/cs220 ~/i220X 
+ls: cannot access '/home/hlauder1/i220X': No such file or directory
+/home/hlauder1/cs220:
+total 0
+
+/home/hlauder1/.ssh:
+total 12
+-rw------- 1 hlauder1 hlauder1 2602 Aug 26 16:59 id_rsa
+-rw-r----- 1 hlauder1 hlauder1  568 Aug 26 16:59 id_rsa.pub
+-rw-r--r-- 1 hlauder1 hlauder1  884 Aug 26 18:05 known_hosts
+hlauder1@g7-32:~/i220b$ cd ~/i220X
+bash: cd: /home/hlauder1/i220X: No such file or directory
+hlauder1@g7-32:~/i220b$ cd ~/i220X[Kb
+hlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7-32:~/i220b$ [Khlauder1@g7
