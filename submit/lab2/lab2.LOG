@@ -1,0 +1,167 @@
+Script started on 2021-09-09 16:42:06-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+bash: /home/umrigar/cs220/bin/student.rc: No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2$ CD E[K[K[K[Kcd exercises
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises$ cd 2-hello-upcase-args/
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ cd ..
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises$ cd 1-hello-args/
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ pwd
+/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ls -l
+total 12
+-rw-r----- 1 hlauder1 hlauder1 343 Sep  9 16:33 hello.c
+-rw-r----- 1 hlauder1 hlauder1  35 Sep  9 16:33 Makefile
+-rw-r----- 1 hlauder1 hlauder1  61 Sep  9 16:33 README
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ emacs README
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ MAK[K[K[Kmake
+cc -g -Wall -std=c18    hello.c   -o hello
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ./ hello
+bash: ./: Is a directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ./hello bart lisa
+hello bart
+hello lisa
+hello (null)
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ./hello
+usage: ./hello NAME...
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ gdb he;;[K[Kllo
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) [K(gdb) [K(gdb) l[Khello bart lisa
+Undefined command: "hello".  Try "help".
+(gdb) l
+1	#include <stdio.h>
+2	#include <stdlib.h>
+3	
+4	static void
+5	say_hello(const char *name)
+6	{
+7	  printf("hello %s\n", name);
+8	}
+9	
+10	int 
+(gdb) d[Kstart bart lisa
+Temporary breakpoint 1 at 0x118b: file hello.c, line 13.
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab2/exercises/1-hello-args/hello bart lisa
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe718) at hello.c:13
+13	  if (argc == 1) {
+(gdb) n [K[Kb say_hello\[K
+Breakpoint 2 at 0x555555555161: file hello.c, line 7.
+(gdb) a[Kp argc
+$1 = 3
+(gdb) p argv
+$2 = (const char **) 0x7fffffffe718
+(gdb) p argv[0]
+$3 = 0x7fffffffea09 "/import/linux/home1/hlauder1/projects/i220b/submit/lab2/exercises/1-hello-args/hello"
+(gdb) p argv[]1][C
+$4 = 0x7fffffffea5e "bart"
+(gdb) n
+18	    for (int i = 1; i <= argc; i++) {
+(gdb) n
+19	      say_hello(argv[i]);
+(gdb) c
+Continuing.
+
+Breakpoint 2, say_hello (name=0x7fffffffea5e "bart") at hello.c:7
+7	  printf("hello %s\n", name);
+(gdb) l
+2	#include <stdlib.h>
+3	
+4	static void
+5	say_hello(const char *name)
+6	{
+7	  printf("hello %s\n", name);
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+(gdb) p name
+$5 = 0x7fffffffea5e "bart"
+(gdb) backtrace
+#0  say_hello (name=0x7fffffffea5e "bart") at hello.c:7
+#1  0x00005555555551e5 in main (argc=3, argv=0x7fffffffe718) at hello.c:19
+(gdb) arhg^?[K[K[K[K[Kp argc
+No symbol "argc" in current context.
+(gdb) up
+#1  0x00005555555551e5 in main (argc=3, argv=0x7fffffffe718) at hello.c:19
+19	      say_hello(argv[i]);
+(gdb) p argc
+$6 = 3
+(gdb) a[Kp argv
+$7 = (const char **) 0x7fffffffe718
+(gdb) a[Kp i
+$8 = 1
+(gdb) down
+#0  say_hello (name=0x7fffffffea5e "bart") at hello.c:7
+7	  printf("hello %s\n", name);
+(gdb) p name
+$9 = 0x7fffffffea5e "bart"
+(gdb) c
+Continuing.
+hello bart
+
+Breakpoint 2, say_hello (name=0x7fffffffea63 "lisa") at hello.c:7
+7	  printf("hello %s\n", name);
+(gdb) k[Kc
+Continuing.
+hello lisa
+
+Breakpoint 2, say_hello (name=0x0) at hello.c:7
+7	  printf("hello %s\n", name);
+(gdb) up
+#1  0x00005555555551e5 in main (argc=3, argv=0x7fffffffe718) at hello.c:19
+19	      say_hello(argv[i]);
+(gdb) p i
+$10 = 3
+(gdb) p argc
+$11 = 3
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 1499052] will be killed.
+
+Quit anyway? (y or n) y
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ emc[Kacs
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ emac [Ks hello.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ./[K[Kmake
+cc -g -Wall -std=c18    hello.c   -o hello
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ./hello
+usage: ./hello NAME...
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ ./hello bart lisa
+hello bart
+hello lisa
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/1-hello-args$ cd ..
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises$ cd 2-hello-upcase-args/
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ make
+cc -g -Wall -std=c18    hello.c   -o hello
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ ./hello lu[Kis [Ka bart
+Hello Lisa
+Hello Bart
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ ./hello ''l'i's'a' 's'i'm'p's'o'n'[C 'bart simpson'
+Hello Lisa SimpsonV
+Hello Bart SimpsonV
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ .h[K[K./hello e[K[K[K[K[K[K[K[K[Kemacs hello.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ ./ [Khe[K[K[K[Kmake
+cc -g -Wall -std=c18    hello.c   -o hello
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ ./hello "A"[7Pmake[K[Kemacs hello.c./hello 'lisa simpson' 'bart simpson'
+Hello Lisa Simpson
+Hello Bart Simpson
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ ./hello lis[K[K[Kbart lisa
+Hello Bart
+Hello Lisa
+hlauder1@g7-34:/import/linux/home1/hlauder1/i220b/submit/lab2/exercises/2-hello-upcase-args$ exit
+
+Script done on 2021-09-09 17:17:34-04:00 [COMMAND_EXIT_CODE="0"]
