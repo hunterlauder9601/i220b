@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: Lab 2</title>
+    <link href="lab2/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="lab2.umt:1:0"><h1 data-coord="lab2.umt:1:0">Lab 2</h1><p data-coord="lab2.umt:3:0"><strong data-coord="lab2.umt:3:0">Date</strong>: Sep 9, 2021
+</p><p data-coord="lab2.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><p data-coord="lab2.umt:9:0">In the listings which follow, comments are any text extending from 
+a <samp data-coord="lab2.umt:9:70">#</samp> character to end-of-line.
+</p><section data-coord="lab2.umt:12:0"><h2 data-coord="lab2.umt:12:0">Aims</h2><p data-coord="lab2.umt:15:0">The aim of this lab is to introduce you to the use of the <samp data-coord="lab2.umt:15:58">gdb</samp> debugger
+under Unix.  After completing this lab, you should be familiar with the
+following topics:
+</p><ul data-coord="lab2.umt:19:0"><li data-coord="lab2.umt:19:0"><p data-coord="lab2.umt:19:4">The general capabilities of debuggers.
+</p></li><li data-coord="lab2.umt:21:0"><p data-coord="lab2.umt:21:4">The basic usage of <samp data-coord="lab2.umt:21:23">gdb</samp>.
+</p></li><li data-coord="lab2.umt:23:0"><p data-coord="lab2.umt:23:4">Some ideas about typical errors in C programming.
+</p></li></ul></section><section data-coord="lab2.umt:25:0"><h2 data-coord="lab2.umt:25:0">Background</h2><p data-coord="lab2.umt:28:0">Programs break.  When that happens, based on the symptoms of the problem and
+your understanding of the program you may proceed as follows:
+</p><ol data-coord="lab2.umt:31:0"><li data-coord="lab2.umt:31:0"><p data-coord="lab2.umt:31:4">Inspect the code with the symptoms in mind.  You may see the problem
+right away.
+</p></li><li data-coord="lab2.umt:34:0"><p data-coord="lab2.umt:34:4">Test the program with related inputs trying to detect a pattern in
+the inputs which result in a problem.  If you can find such a
+pattern, that may often point you to the problem.
+</p></li><li data-coord="lab2.umt:38:0"><p data-coord="lab2.umt:38:4">Fire up a debugger and examine the state of your program with the
+inputs which cause the problem.  This may allow you to track down
+the bug.
+</p></li></ol><p data-coord="lab2.umt:42:0">The above assumes that the problem is reproducible.  It also assumes that
+the bug is not a <a href="http://en.wikipedia.org/wiki/Heisenbug" data-coord="lab2.umt:42:133">heisenbug</a> 
+which disappears when you attempt to track it down.
+</p><p data-coord="lab2.umt:46:0">Besides tracking down bugs, debuggers also have other uses:
+</p><ul data-coord="lab2.umt:48:0"><li data-coord="lab2.umt:48:0"><p data-coord="lab2.umt:48:4">Validate new code by looking at it in operation using a debugger.
+</p></li><li data-coord="lab2.umt:50:0"><p data-coord="lab2.umt:50:4">Attempt to understand a large code-base by tracing its operation
+using a debugger.
+</p></li><li data-coord="lab2.umt:53:0"><p data-coord="lab2.umt:53:4">Help reverse-engineer a program for which you may not have the source
+code.  
+</p></li></ul><p data-coord="lab2.umt:56:0">Finally, keep in mind this statement by Kernighan and Pike on pg. 119
+of their classic book
+<em data-coord="lab2.umt:56:153"><a href="https://en.wikipedia.org/wiki/The_Practice_of_Programming" data-coord="lab2.umt:56:153">The
+Practice of Programming</a></em>:
+</p><p data-coord="lab2.umt:61:2"><em data-coord="lab2.umt:61:2">As personal choice, we tend not to use debuggers beyond getting a stack
+  trace or the value of a variable or two. One reason is that it is easy to
+  get lost in details of complicated data structures and control flow; we
+  find stepping through a program less productive than thinking harder and
+  adding output statements and self-checking code at critical
+  places. Clicking over statements takes longer than scanning the output of
+  judiciously-placed displays. It takes less time to decide where to put
+  print statements than to single-step to the critical section of code, even
+  assuming we know where that is. More important, debugging statements stay
+  with the program; debugging sessions are transient.</em>
+</p><section data-coord="lab2.umt:73:0"><h3 data-coord="lab2.umt:73:0">Debugger Capabilities</h3><p data-coord="lab2.umt:76:0">Most debuggers provide the following capabilities:
+</p><ul data-coord="lab2.umt:78:0"><li data-coord="lab2.umt:78:0"><p data-coord="lab2.umt:78:4">The ability to set <em data-coord="lab2.umt:78:23">breakpoints</em> in the program, in a particular
+function or on a particular line.  The program will stop when execution
+reaches that breakpoint.  The breakpoint may be <em data-coord="lab2.umt:78:197">unconditional</em> with the
+program always stopping when the breakpoint is hit, or it may be
+<em data-coord="lab2.umt:78:295">conditional</em> with the program only stopping if some dynamic condition
+is met.
+</p></li><li data-coord="lab2.umt:85:0"><p data-coord="lab2.umt:85:4">The ability to <em data-coord="lab2.umt:85:19">singlestep</em> the program, line by line or even by
+individual machine instructions.
+</p></li><li data-coord="lab2.umt:88:0"><p data-coord="lab2.umt:88:4">The ability to examine data when the program is stopped.  The facilities
+would allow the programmer to navigate complex data-structures.
+</p></li><li data-coord="lab2.umt:91:0"><p data-coord="lab2.umt:91:4">The ability to set <em data-coord="lab2.umt:91:23">watchpoints</em> on the state of the program.  A
+<em data-coord="lab2.umt:91:73">watchpoint</em> is a condition on the state of the program and the program
+will stop when the condition becomes true.  Watchpoints can be a 
+performance killer since the condition must typically be re-evaluated
+whenever any state change could change the condition.
+</p></li></ul><p data-coord="lab2.umt:97:0">All debuggers will provide at least basic breakpoints, single-stepping and
+ability to examine data.  Using the debugger may require use of the
+command-line like the <samp data-coord="lab2.umt:97:165">gdb</samp> debugger, or it may involve the use of a GUI
+like <samp data-coord="lab2.umt:97:221">ddd</samp> or <samp data-coord="lab2.umt:97:230">eclipse</samp>.  Or it may be a hybrid between the command-line and
+full GUI like <samp data-coord="lab2.umt:97:307">gdb</samp> running under <samp data-coord="lab2.umt:97:327">emacs</samp>.
+</p></section></section><section data-coord="lab2.umt:104:0"><h2 data-coord="lab2.umt:104:0">Exercises</h2><p data-coord="lab2.umt:107:0">When the exercises mention a new Unix command you are unfamiliar with, it is
+a good idea to do a <samp data-coord="lab2.umt:107:97">man</samp> or google lookup on that command to get an idea of
+its capabilities.
+</p><p data-coord="lab2.umt:111:0">This lab has two exercises.  The first one guides you though a <samp data-coord="lab2.umt:111:63">gdb</samp> session
+using extremely basic commands to debug a program.  The second exercise
+gives you a slightly modified version of the program from the first exercise
+and requires you to debug it without any guidance beyond some hints.
+</p><p data-coord="lab2.umt:116:0">Since the programs given are quite simple, you may easily see the bugs by
+inspection of the code.  However, it is still a good idea to play with the
+debugger to confirm your diagnosis so that you achieve the aims of this lab.
+</p><p data-coord="lab2.umt:120:0">Note that this lab provides you an <strong data-coord="lab2.umt:120:35">extremely limited</strong> glimpse into <samp data-coord="lab2.umt:120:68">gdb</samp>'s
+capabilities.  Please make sure to check-out the references or other sources
+on the web to get a better idea of what it can do for you.
+</p><section data-coord="lab2.umt:124:0"><h3 data-coord="lab2.umt:124:0">Starting up</h3><p data-coord="lab2.umt:127:0">Follow the <em data-coord="lab2.umt:127:38"><a href="../working/working.html" data-coord="lab2.umt:127:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="lab2.umt:127:98">lab2</samp> branch and a new
+<samp data-coord="lab2.umt:127:122">submit/lab2</samp> directory.  You should have copied over
+the contents of <samp data-coord="lab2.umt:127:192">~/cs220/labs/lab2/exercises</samp> over to your
+directory.
+</p></section><section data-coord="lab2.umt:133:0"><h3 data-coord="lab2.umt:133:0">Exercise 1: Debugging a Simple Program</h3><p data-coord="lab2.umt:136:0">Change over to the <a href="./exercises/1-hello-args" data-coord="lab2.umt:136:47">1-hello-args</a> directory.
+</p><pre data-coord="lab2.umt:139:0">$ cd exercises/1-hello-args
+$ ls -l
+</pre><p data-coord="lab2.umt:143:0">You should see that the directory contains a C program containing several
+files.  Read the README to see what the program is supposed to do.
+</p><p data-coord="lab2.umt:146:0">Simply type <samp data-coord="lab2.umt:146:12">make</samp> in that directory to build the program.  It should
+compile a <samp data-coord="lab2.umt:146:80">hello</samp> executable without any errors or warnings.
+</p><p data-coord="lab2.umt:149:0">Now try to run it.  
+</p><pre data-coord="lab2.umt:152:0">$ ./hello
+usage: ./hello NAME...
+$ ./hello bart lisa
+hello bart
+hello lisa
+hello (null)
+$
+</pre><p data-coord="lab2.umt:162:0">It looks like the program is almost working, but wants to greet someone
+called <samp data-coord="lab2.umt:162:79">(null)</samp>!  Though the problem may appear obvious, let's fire up gdb
+to check it out.
+</p><p data-coord="lab2.umt:166:6">At the shell prompt, start <samp data-coord="lab2.umt:166:33">gdb</samp> by typing <samp data-coord="lab2.umt:166:49">gdb hello</samp>.  It should
+print a greeting message followed by the prompt <samp data-coord="lab2.umt:166:127">(gdb)</samp>.
+</p><p data-coord="lab2.umt:169:6">Start the program with a temporary breakpoint at the start of main by
+typing <samp data-coord="lab2.umt:169:89">start bart lisa</samp>.  Note that you provide your command-line
+arguments to the <samp data-coord="lab2.umt:169:172">start</samp> command.  (Instead of using the <samp data-coord="lab2.umt:169:212">start</samp>
+command, you could similarly <samp data-coord="lab2.umt:169:255">run</samp> the program, but that would not
+have a temporary breakpoint).
+</p><p data-coord="lab2.umt:175:6">It should break at the start of <samp data-coord="lab2.umt:175:38">main()</samp> printing out the
+current line.  Type <samp data-coord="lab2.umt:175:90">l</samp> to list the lines following the current
+line.  Typing an empty line will simply repeat the previous
+command and list more lines.  Type <samp data-coord="lab2.umt:175:241">l</samp> followed by a line number
+to print out a listing centered (usually) at the specified line.
+</p><p data-coord="lab2.umt:181:6">Let's put a breakpoint on <samp data-coord="lab2.umt:181:32">say_hello()</samp>.  Simply type <samp data-coord="lab2.umt:181:60">b say_hello</samp>.
+In fact, if you press the <samp data-coord="lab2.umt:181:107">&lt;TAB&gt;</samp> key after typing the prefix <samp data-coord="lab2.umt:181:143">say</samp> of
+the function name, <samp data-coord="lab2.umt:181:177">gdb</samp> should provide automatic completion.
+</p><p data-coord="lab2.umt:185:6">You are still at the start of <samp data-coord="lab2.umt:185:36">main()</samp>.  You can print out the
+value of the arguments to <samp data-coord="lab2.umt:185:101">main()</samp>, which are:
+</p><dl data-coord="lab2.umt:188:0"><dt data-coord="lab2.umt:188:8"> <samp data-coord="lab2.umt:188:1">argc</samp> </dt><dd data-coord="lab2.umt:189:0"><p data-coord="lab2.umt:189:3">The number of arguments to the program, <strong data-coord="lab2.umt:189:43">including</strong> the
+name of the program.  So if you invoke the program as
+<samp data-coord="lab2.umt:189:119">./hello lisa bart</samp>, <samp data-coord="lab2.umt:189:140">argc == 3</samp>.
+</p></dd><dt data-coord="lab2.umt:193:8"> <samp data-coord="lab2.umt:193:1">argv</samp> </dt><dd data-coord="lab2.umt:195:0"><p data-coord="lab2.umt:195:3">An array with argc elements give the actual command-line
+arguments as C strings (declared as <samp data-coord="lab2.umt:195:99">char *</samp>, i.e. pointer
+to <samp data-coord="lab2.umt:195:128">char</samp>). So if you invoke the program as
+<samp data-coord="lab2.umt:195:172">./hello lisa bart</samp>, <samp data-coord="lab2.umt:195:193">argv[0]</samp> will be <samp data-coord="lab2.umt:195:211">"./hello"</samp>,
+<samp data-coord="lab2.umt:195:227">argv[1]</samp> will be <em data-coord="lab2.umt:195:245">lisa</em> and <samp data-coord="lab2.umt:195:256">argv[2]</samp> will be <samp data-coord="lab2.umt:195:274">bart</samp>.
+</p></dd></dl><p data-coord="lab2.umt:201:6">Simply type <samp data-coord="lab2.umt:201:18">p argc</samp> to print out the value of <samp data-coord="lab2.umt:201:53">argc</samp>.  It
+should print as a 3; the reason it does so is that in addition
+to the actual arguments <samp data-coord="lab2.umt:201:164">bart</samp> and <samp data-coord="lab2.umt:201:175">lisa</samp>, <samp data-coord="lab2.umt:201:183">argc</samp> also counts
+the name of the program.  To verify this, type <samp data-coord="lab2.umt:201:255">p argv</samp> to print
+out <samp data-coord="lab2.umt:201:283">argv</samp>, but you will simply get the base address of the
+array.  To print out the individual elements, type <samp data-coord="lab2.umt:201:396">p argv[0]</samp>,
+<samp data-coord="lab2.umt:201:415">p argv[1]</samp>, etc.  Note that each string is printed out preceeded
+by a hexadecimal address giving the address of the first byte
+of the string.
+</p><p data-coord="lab2.umt:211:6">Now let execution continue to the next line of the program by
+typing <samp data-coord="lab2.umt:211:81">n</samp> (for <samp data-coord="lab2.umt:211:90">next</samp>).  Type another <samp data-coord="lab2.umt:211:113">n</samp>, to enter the loop.
+Print out the value of <samp data-coord="lab2.umt:211:166">i</samp>.
+</p><p data-coord="lab2.umt:215:6">Now let execution continue to the next breakpoint by simply
+typing a <samp data-coord="lab2.umt:215:81">c</samp> (for <samp data-coord="lab2.umt:215:90">continue</samp>).  The function <samp data-coord="lab2.umt:215:117">say_hello()</samp>
+should be invoked and gdb will give you back control at the
+start of its code.  Type <samp data-coord="lab2.umt:215:228">l</samp> to print out the code.
+</p><p data-coord="lab2.umt:220:6">Type <samp data-coord="lab2.umt:220:11">p name</samp> to print out the value of the <samp data-coord="lab2.umt:220:50">name</samp> parameter.
+</p><p data-coord="lab2.umt:222:6">Type <samp data-coord="lab2.umt:222:11">backtrace</samp> to see which calls you made to get to <samp data-coord="lab2.umt:222:61">say_hello()</samp>;
+note that the backtrace contains the function names as well as their
+arguments.  
+</p><p data-coord="lab2.umt:226:6">If you try to print out the value of <samp data-coord="lab2.umt:226:43">argc</samp> while within <samp data-coord="lab2.umt:226:63">say_hello()</samp>
+you will get an error message since <samp data-coord="lab2.umt:226:119">argc</samp> is not defined within the
+context of the current <samp data-coord="lab2.umt:226:181">say_hello()</samp> function.
+</p><p data-coord="lab2.umt:230:6">Type <samp data-coord="lab2.umt:230:11">up</samp> to return one level up the call-chain back to <samp data-coord="lab2.umt:230:62">main()</samp>.
+This does not run the program at all but merely changes the context of
+the debugger.  You should once again be able to print out the value of
+<samp data-coord="lab2.umt:230:232">argc</samp>, <samp data-coord="lab2.umt:230:240">argv</samp> and <samp data-coord="lab2.umt:230:251">i</samp>, but will no longer be able to print out
+the value of <samp data-coord="lab2.umt:230:315">name</samp> which is only defined within the <samp data-coord="lab2.umt:230:355">say_hello()</samp>
+context.
+</p><p data-coord="lab2.umt:237:6">Print <samp data-coord="lab2.umt:237:12">down</samp> to return back to the <samp data-coord="lab2.umt:237:41">say_hello()</samp> context.  You should
+be able to print out the value of <samp data-coord="lab2.umt:237:116">name</samp>.
+</p><p data-coord="lab2.umt:240:6">Let execution continue to the next breakpoint by typing the <samp data-coord="lab2.umt:240:66">c</samp>
+command.  The function <samp data-coord="lab2.umt:240:99">say_hello()</samp> should be entered again
+with <samp data-coord="lab2.umt:240:148">name</samp> set to <samp data-coord="lab2.umt:240:162">lisa</samp>.
+</p><p data-coord="lab2.umt:244:6">Continue again till the next breakpoint.  <samp data-coord="lab2.umt:244:48">say_hello()</samp> is now being
+called with a <samp data-coord="lab2.umt:244:95">NULL</samp> pointer.  That looks problematic, so do a <samp data-coord="lab2.umt:244:144">up</samp> to
+look at the <samp data-coord="lab2.umt:244:170">main()</samp> context.  Print out <samp data-coord="lab2.umt:244:199">i</samp> and <samp data-coord="lab2.umt:244:207">argc</samp>; they are
+equal!!  But <samp data-coord="lab2.umt:244:243">i</samp> should always be less than <samp data-coord="lab2.umt:244:274">argc</samp>.  That should lead
+you to spot the obvious problem.
+</p><p data-coord="lab2.umt:250:6">Quit <samp data-coord="lab2.umt:250:11">gdb</samp> by typing <samp data-coord="lab2.umt:250:27">q</samp>.  Fix the problem, recompile and test.  The
+script you are recording should show that you fixed the problem.
+</p></section><section data-coord="lab2.umt:254:0"><h3 data-coord="lab2.umt:254:0">Exercise 2: Debugging a Program from Scratch</h3><p data-coord="lab2.umt:257:0">Change over to the <a href="./exercises/2-hello-upcase-args" data-coord="lab2.umt:257:54">2-hello-upcase-args</a> directory and type <samp data-coord="lab2.umt:257:93">make</samp>.  Another <samp data-coord="lab2.umt:257:110">hello</samp>
+program should be built without any problems.
+</p><p data-coord="lab2.umt:261:0">This <samp data-coord="lab2.umt:261:5">hello</samp> program is very similar to the previous <samp data-coord="lab2.umt:261:53">hello</samp> program except
+that it is slightly more complex.  Before printing out each name, the
+program tries to make each name more human-friendly by ensuring that the first
+character of each alphabetical word in the name is printed in upper-case.
+</p><p data-coord="lab2.umt:266:0">If the program is working properly, its output should look as follows:
+</p><pre data-coord="lab2.umt:269:0">$ ./hello lisa bart
+Hello Lisa
+Hello Bart
+$ ./hello 'lisa  simpson' 'bart simpson'
+Hello Lisa  Simpson
+Hello Bart Simpson
+$
+</pre><p data-coord="lab2.umt:278:0">Unfortunately, when you run the given program, it seems to work, but
+<strong data-coord="lab2.umt:278:69">may</strong> print out garbage characters after each name and/or crash.  YMMV
+depending on how your particular environment is setup; in fact, even
+though the program contains a bug, it may even work perfectly (which
+in a way is the worst possible behavior!).  If you do not see
+incorrect behavior, try increasing the size of the names to say 16
+characters or more.  If you still can't see the buggy behaviour, here
+is a screenshot showing one buggy behavior:
+</p><img src="figs/term.png" width="433"/><p data-coord="lab2.umt:290:0">Use the debugger to understand the problem and fix it.
+</p><p data-coord="lab2.umt:292:0">Hints: 
+</p><ul data-coord="lab2.umt:294:0"><li data-coord="lab2.umt:294:0"><p data-coord="lab2.umt:294:4">A C "string" is represented as an array of <code><span class="hl kwb">char</span></code> terminated by
+a <samp data-coord="lab2.umt:294:76">'\0'</samp> <samp data-coord="lab2.umt:294:83">NUL</samp> character.
+</p></li><li data-coord="lab2.umt:297:0"><p data-coord="lab2.umt:297:4"><samp data-coord="lab2.umt:297:4">strlen(s)</samp> returns the number of characters in string <samp data-coord="lab2.umt:297:59">s</samp> without
+accounting for the terminating <samp data-coord="lab2.umt:297:106">'\0'</samp> character.
+</p></li><li data-coord="lab2.umt:300:0"><p data-coord="lab2.umt:300:4">The fix for the problem will require making changes in two different
+places in the code.
+</p></li></ul><p data-coord="lab2.umt:303:0">The symptoms you see and the above hints should help you get to the
+problem quite easily.
+</p></section></section><section data-coord="lab2.umt:306:0"><h2 data-coord="lab2.umt:306:0">Winding Up</h2><p data-coord="lab2.umt:309:0">Wind up your lab by using the <em data-coord="lab2.umt:309:57"><a href="../working/working.html" data-coord="lab2.umt:309:57">provided directions</a></em> to terminate your log in a <samp data-coord="lab2.umt:309:106">lab2.LOG</samp> file
+and merging your <samp data-coord="lab2.umt:309:139">lab2</samp> branch into the <samp data-coord="lab2.umt:309:162">master</samp> branch.  Once you
+have the lab on your <samp data-coord="lab2.umt:309:210">master</samp> branch, commit and push your changes to
+github.  Be sure to include your <samp data-coord="lab2.umt:309:292">lab2.LOG</samp> file as well as all the
+exercise directories.
+</p></section><section data-coord="lab2.umt:316:0"><h2 data-coord="lab2.umt:316:0">References</h2><p data-coord="lab2.umt:319:0">Online <em data-coord="lab2.umt:319:57"><a href="http://www.gnu.org/software/gdb/documentation/" data-coord="lab2.umt:319:57">gdb documentation</a></em>.
+</p><p data-coord="lab2.umt:322:0">Do a web search on <em data-coord="lab2.umt:322:19">gdb tutorial</em> to find many tutorials.
+</p><p data-coord="lab2.umt:324:0">Norman Matloff and Peter Salzman, <em data-coord="lab2.umt:324:34">The Art of Debugging with GDB and DDD</em>,
+No Starch Press, 2008.
+</p></section></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
