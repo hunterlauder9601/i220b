@@ -3,8 +3,17 @@
 
 #include <limits.h>  //for CHAR_BIT
 
+#ifndef BYTE_SIZE
+
 typedef unsigned char Byte;
-enum { BITS_PER_BYTE = CHAR_BIT }; //assume a power-of-2
+#define BYTE_SIZE 1
+
+#endif
+
+#include "tests.h"
+
+//assume a power-of-2
+enum { BITS_PER_BYTE = CHAR_BIT*sizeof(Byte) };
 
 /**
 Morse code binary encoding
@@ -65,6 +74,7 @@ boundary.
 int textToMorse(const Byte text[], unsigned nText, Byte morse[]);
 
 
+
 /** Convert AR-prosign terminated binary Morse encoding in
  *  morse[nMorse] into text in text[].  It is assumed that array
  *  text[] is large enough to represent the decoding of the code in
@@ -74,6 +84,7 @@ int textToMorse(const Byte text[], unsigned nText, Byte morse[]);
  *  Returns count of number of bytes used within text[], < 0 on error.
  */
 int morseToText(const Byte morse[], unsigned nMorse, Byte text[]);
+
 
 
 #endif //ifndef morse_h_

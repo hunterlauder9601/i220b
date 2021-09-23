@@ -19,7 +19,6 @@ sumInts(FILE *in, FILE *out)
   } while (1);
 }
 
-
 int
 main(int argc, const char *argv[])
 {
@@ -33,13 +32,23 @@ main(int argc, const char *argv[])
     fprintf(stderr, "cannot read %s: %s\n", inName, strerror(errno));
     exit(1);
   }
+  FILE *out = stdout;
+  if (argc < 3) {
+	  out = stdout;
+  } else {
+  	if(strcmp(argv[2], "-") == 0) {
+	    out = stdout;
+  	} else {
+		out = fopen(argv[2], "w");
+  	}
+  }
 
-  FILE *out = argc < 3 ? stdout : fopen(argv[2], "w");
+  //FILE *out = argc < 3 ? stdout : fopen(argv[2], "w");
   if (!out) {
     fprintf(stderr, "cannot write %s: %s\n", argv[2], strerror(errno));
     exit(1);
   }
-
+ 
   sumInts(in, out);
 
   if (fclose(in) != 0 || fclose(out) != 0) {

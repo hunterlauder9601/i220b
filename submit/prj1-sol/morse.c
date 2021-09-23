@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <stddef.h>
 #include <string.h>
+#include <math.h>
 
 typedef struct {
   char c;
@@ -118,15 +119,41 @@ static inline unsigned
 byteBitMask(unsigned bitIndex)
 {
   //TODO
-  return 0;
+  unsigned ret = 0;
+//    unsigned constMSB = 0b10000000;
+//    unsigned constONE = 0b00000001;
+    unsigned constONE = 1;
+
+//    0b00000001
+//    0b00000010
+//    0b00000100
+//    0b00001000
+//    0b00010000
+//    0b00100000
+//    0b01000000
+//    0b10000000
+
+//    BITS_PER_BYTE
+//  ret = ret | constMSB;
+//  ret = ret >> bitIndex;
+
+  ret = constONE << (BITS_PER_BYTE -1 - bitIndex);
+  return ret;
 }
 
 /** Given a power-of-2 powerOf2, return log2(powerOf2) */
 static inline unsigned
 getLog2PowerOf2(unsigned powerOf2)
 {
+    unsigned test = 1;
   //TODO
-  return 0;
+  for(int i = 0; i < BITS_PER_BYTE+2; i++) {
+      if(test == powerOf2) {
+          return i;
+      }
+      test = test << 1;
+  }
+  return 0; // should be found, if not then return 0
 }
 
 /** Given a bitOffset return the bitIndex part of the bitOffset. */
@@ -134,15 +161,34 @@ static inline unsigned
 getBitIndex(unsigned bitOffset)
 {
   //TODO
-  return 0;
+  if(BITS_PER_BYTE == 8) {
+      unsigned bits = 0b00000111; // 0x7
+      unsigned ret = bitOffset & bits;
+      return ret;
+  } else if (BITS_PER_BYTE == 16) {
+      unsigned bits = 0b00010101; // 0x15
+      unsigned ret = bitOffset & bits;
+      return ret;
+  }
+
 }
 
-/** Given a bitOffset return the byte offset part of the bitOffset */
+
+/*
+ *  Given a bytes[] array and some bitOffset, and assuming that
+ *  BITS_PER_BYTE is 8, then (bitOffset >> 3) represents the index of
+ *  the byte within bytes[]
+ */
+/** Given a bitOffset return the byte offset part of the bitOffset ???????  */
 static inline unsigned
 getOffset(unsigned bitOffset)
 {
-  //TODO
-  return 0;
+  if(BITS_PER_BYTE == 8) {
+      return bitOffset >> 3;
+  } else if (BITS_PER_BYTE == 16) {
+      return bitOffset >> 3;       // fix for 16 
+  }
+
 }
 
 /** Return bit at offset bitOffset in array[]; i.e., return
@@ -151,16 +197,32 @@ getOffset(unsigned bitOffset)
 static inline int
 getBitAtOffset(const Byte array[], unsigned bitOffset)
 {
-  //TODO
-  return 0;
+    unsigned ret = 0;
+    unsigned byteIndex = getOffset(bitOffset);
+    Byte byte = array[byteIndex];
+    unsigned bitIndex = getBitIndex(bitOffset);
+    unsigned mask = byteBitMask(bitIndex);
+    ret = byte & mask;
+    return ret>0;
 }
 
-/** Set bit selected by bitOffset in array to bit. */
+/** Set bit selected by bitOffset in array to the parameter bit. */
 static inline void
 setBitAtOffset(Byte array[], unsigned bitOffset, unsigned bit)
 {
-  //TODO
-  return;
+    unsigned byteIndex = getOffset(bitOffset);
+    Byte byte = array[byteIndex];
+    unsigned bitIndex = getBitIndex(bitOffset);
+    unsigned mask = byteBitMask(bitIndex);
+    if (bit==1) {
+        array[byteIndex] = (byte | mask);
+    } else {
+        //       mask = (~mask);
+        unsigned inverted_mask = UINT_MAX ^ mask;
+        array[byteIndex] = byte & inverted_mask;
+        //       fprintf(stderr, "byte: %s \n", array[byteIndex]);
+    }
+    return;
 }
 
 /** Set count bits in array[] starting at bitOffset to bit.  Return
@@ -169,10 +231,33 @@ setBitAtOffset(Byte array[], unsigned bitOffset, unsigned bit)
 static inline unsigned
 setBitsAtOffset(Byte array[], unsigned bitOffset, unsigned bit, unsigned count)
 {
-  //TODO
-  return 0;
+    for(int i = 0; i < count; i++) {
+        setBitAtOffset(array,bitOffset + i, bit);
+    }
+    return bitOffset + count + 1;
 }
+static inline TextMorse getMorse(Byte byte) {
+    int i = 0;
+    if (byte=='0') {
+        i = 35;
+    } else if (isdigit(byte)) {
+        i = 26 + (byte - '1');
+    } else {
+        i = byte - 'A';
+    }
+    TextMorse tm = charCodes[i];
+    return tm;
+}
+static inline int getSize (char * s) {
+    char * t; // first copy the pointer to not change the original
+    int size = 0;
 
+    for (t = s; *t != '\0'; t++) {
+        size++;
+    }
+
+    return size;
+}
 
 /** Convert text[nText] into a binary encoding of morse code in
  *  morse[].  It is assumed that array morse[] is initially all zero
@@ -187,18 +272,87 @@ setBitsAtOffset(Byte array[], unsigned bitOffset, unsigned bit, unsigned count)
 int
 textToMorse(const Byte text[], unsigned nText, Byte morse[])
 {
-  //TODO
-  return 0;
+    unsigned textIndex = 0;
+    unsigned morseBitOffset = 0;
+    // read past non alpha data to start
+    while (! isalnum(text[textIndex])) {
+        textIndex++;
+    }
+    /// loop all text data
+    while ( textIndex<nText ) {
+        // get byte to work with and set index for next loop
+        Byte byte = text[textIndex++];
+        // get the char* we need to write    is
+        TextMorse tm = getMorse(byte);
+        char* cp = tm.code;
+        // get the size of the char*
+        int sz = getSize(cp);
+        // looop for each byte in char*
+        for (int i = 0 ; i< sz; i++) {
+            // set the bits in the byte array (writing the morse codes to the arry)
+            if (cp[i] == '-') {
+                setBitsAtOffset(morse, morseBitOffset, 1, 3);
+                morseBitOffset+=3;
+            } else {
+                setBitAtOffset(morse, morseBitOffset , 1);
+                morseBitOffset+=1;
+            }
+            // this adds one 0 bit for between dots or dashs
+            setBitAtOffset(morse, morseBitOffset++, 0);
+
+        }
+        // between characters we need 3 000's but have added one already so we add two more 0's
+        setBitsAtOffset(morse, morseBitOffset, 0, 2);
+        morseBitOffset+=2;
+        // we have added three 0's because we are betrween charasters but maybe we have a word boundery
+        // then need to skip whitespaces and add four more 0's
+        if (text[textIndex]=='\0') {
+            break;
+        }
+        int j = 0;
+        while (! isalnum(text[textIndex])) {
+            j++;
+        }
+        if (j) {
+            textIndex+=j;
+            setBitsAtOffset(morse, morseBitOffset, 0, 4);
+            morseBitOffset+=4;
+        }
+
+    }
+    for (int i = 0; i < 2; i++) {
+        setBitAtOffset(morse, morseBitOffset++, 1); // .
+        setBitAtOffset(morse, morseBitOffset++, 0);
+        setBitsAtOffset(morse, morseBitOffset, 1, 3); // -
+        morseBitOffset += 3;
+        setBitAtOffset(morse, morseBitOffset++, 0);
+    }
+    setBitAtOffset(morse, morseBitOffset, 1); // .
+    float  ret = ceil((float)morseBitOffset/(float)BITS_PER_BYTE);
+    return ret; //RETURNS # of bytes
 }
 
 /** Return count of run of identical bits starting at bitOffset
  *  in bytes[nBytes].
+ *
+ *  question:
+ *  does bitoffset refer to the offset in just the byte?
+ *  where Byte byte = bytes[nBytes]
+ *  and bits would be a number from 0 to 7 if byte is 8 bits
+ *
  */
 static inline unsigned
 runLength(const Byte bytes[], unsigned nBytes, unsigned bitOffset)
 {
   //TODO
-  return 0;
+    unsigned first = getBitAtOffset(bytes, bitOffset);
+    for(unsigned i = 1; i < BITS_PER_BYTE*nBytes; i++) {
+        unsigned next = getBitAtOffset(bytes, bitOffset + i);
+        if(first != next) {
+            return i;
+        }
+    }
+  return BITS_PER_BYTE*nBytes;
 }
 
 
@@ -213,6 +367,41 @@ runLength(const Byte bytes[], unsigned nBytes, unsigned bitOffset)
 int
 morseToText(const Byte morse[], unsigned nMorse, Byte text[])
 {
-  //TODO
-  return 0;
+    int bitOffset = 0;
+    int textIndex = 0;
+    int morseOffset = 0; // byte offset
+    while(morseOffset<nMorse) {
+        for(int i = 0; i < BITS_PER_BYTE; i++) {
+            char morseChars[5];
+            if(runLength(morse, 1, bitOffset) == 3 && getBitAtOffset(morse, bitOffset) == 1) {
+                morseChars[i] = '-';
+                bitOffset+=3;
+            } if (runLength(morse, 1, bitOffset) == 1 && getBitAtOffset(morse, bitOffset) == 1){
+                morseChars[i] = '.';
+                bitOffset++;
+            } if (runLength(morse, 1, bitOffset) == 1 && getBitAtOffset(morse, bitOffset) == 0) {
+                bitOffset++;
+            } if (runLength(morse, 1, bitOffset) == 3 && getBitAtOffset(morse, bitOffset) == 0) {
+                bitOffset+=3;
+                int Char = codeToChar(morseChars);
+                text[textIndex] = Char;
+                textIndex++;
+                for(int n = 0; n < 5; n++) {
+                    morseChars[n] = 0;
+                }
+                i = -1;
+            } if (runLength(morse, 1, bitOffset) == 7 && getBitAtOffset(morse, bitOffset) == 0) {
+                bitOffset += 7;
+                text[textIndex] = ' ';
+                textIndex++;
+                for(int n = 0; n < 5; n++) {
+                    morseChars[n] = 0;
+                }
+                i = -1;
+            }
+        }
+
+        morseOffset++;
+    }
+    return textIndex;
 }
