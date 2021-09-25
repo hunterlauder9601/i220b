@@ -10,7 +10,7 @@ typedef unsigned char Byte;
 
 #endif
 
-#include "tests.h"
+//#include "tests.h"
 
 //assume a power-of-2
 enum { BITS_PER_BYTE = CHAR_BIT*sizeof(Byte) };

@@ -160,17 +160,10 @@ getLog2PowerOf2(unsigned powerOf2)
 static inline unsigned
 getBitIndex(unsigned bitOffset)
 {
-  //TODO
-  if(BITS_PER_BYTE == 8) {
-      unsigned bits = 0b00000111; // 0x7
-      unsigned ret = bitOffset & bits;
-      return ret;
-  } else if (BITS_PER_BYTE == 16) {
-      unsigned bits = 0b00010101; // 0x15
-      unsigned ret = bitOffset & bits;
-      return ret;
-  }
-
+  float div = (float)bitOffset / (float)BITS_PER_BYTE;
+  int floor = floorf(div);
+  int ret = bitOffset - floor*BITS_PER_BYTE;
+  return ret;
 }
 
 
@@ -183,12 +176,9 @@ getBitIndex(unsigned bitOffset)
 static inline unsigned
 getOffset(unsigned bitOffset)
 {
-  if(BITS_PER_BYTE == 8) {
-      return bitOffset >> 3;
-  } else if (BITS_PER_BYTE == 16) {
-      return bitOffset >> 3;       // fix for 16 
-  }
-
+    float div = (float)bitOffset / (float)BITS_PER_BYTE;
+    int floor = floorf(div);
+    return floor;
 }
 
 /** Return bit at offset bitOffset in array[]; i.e., return
@@ -281,7 +271,7 @@ textToMorse(const Byte text[], unsigned nText, Byte morse[])
     /// loop all text data
     while ( textIndex<nText ) {
         // get byte to work with and set index for next loop
-        Byte byte = text[textIndex++];
+        Byte byte = text[textIndex];
         // get the char* we need to write    is
         TextMorse tm = getMorse(byte);
         char* cp = tm.code;
@@ -299,26 +289,29 @@ textToMorse(const Byte text[], unsigned nText, Byte morse[])
             }
             // this adds one 0 bit for between dots or dashs
             setBitAtOffset(morse, morseBitOffset++, 0);
-
         }
         // between characters we need 3 000's but have added one already so we add two more 0's
         setBitsAtOffset(morse, morseBitOffset, 0, 2);
         morseBitOffset+=2;
         // we have added three 0's because we are betrween charasters but maybe we have a word boundery
         // then need to skip whitespaces and add four more 0's
-        if (text[textIndex]=='\0') {
+
+        // PEEK AHEAD, if term then break...
+        if (text[textIndex+1]=='\0' || text[textIndex+1]=='\n') {
             break;
         }
+        // PEEK AHEAD, and if space char add extra 4 ...
         int j = 0;
-        while (! isalnum(text[textIndex])) {
+        while (textIndex<nText && (! isalnum(text[textIndex+1]))) {
             j++;
+            textIndex++;
         }
         if (j) {
-            textIndex+=j;
+//            textIndex+=j;
             setBitsAtOffset(morse, morseBitOffset, 0, 4);
             morseBitOffset+=4;
         }
-
+        textIndex++;    // ready for next char
     }
     for (int i = 0; i < 2; i++) {
         setBitAtOffset(morse, morseBitOffset++, 1); // .
@@ -369,39 +362,48 @@ morseToText(const Byte morse[], unsigned nMorse, Byte text[])
 {
     int bitOffset = 0;
     int textIndex = 0;
-    int morseOffset = 0; // byte offset
-    while(morseOffset<nMorse) {
-        for(int i = 0; i < BITS_PER_BYTE; i++) {
-            char morseChars[5];
-            if(runLength(morse, 1, bitOffset) == 3 && getBitAtOffset(morse, bitOffset) == 1) {
-                morseChars[i] = '-';
-                bitOffset+=3;
-            } if (runLength(morse, 1, bitOffset) == 1 && getBitAtOffset(morse, bitOffset) == 1){
-                morseChars[i] = '.';
-                bitOffset++;
-            } if (runLength(morse, 1, bitOffset) == 1 && getBitAtOffset(morse, bitOffset) == 0) {
-                bitOffset++;
-            } if (runLength(morse, 1, bitOffset) == 3 && getBitAtOffset(morse, bitOffset) == 0) {
-                bitOffset+=3;
-                int Char = codeToChar(morseChars);
-                text[textIndex] = Char;
-                textIndex++;
-                for(int n = 0; n < 5; n++) {
-                    morseChars[n] = 0;
-                }
-                i = -1;
-            } if (runLength(morse, 1, bitOffset) == 7 && getBitAtOffset(morse, bitOffset) == 0) {
-                bitOffset += 7;
-                text[textIndex] = ' ';
-                textIndex++;
-                for(int n = 0; n < 5; n++) {
-                    morseChars[n] = 0;
-                }
-                i = -1;
+    int clean = 0;
+    for(int i = 0; i < BITS_PER_BYTE; i++) {
+        char morseChars[5];
+	if(!clean) {
+	    for(int n = 0; n < 5; n++) {
+                morseChars[n] = 0;
             }
+	    clean = 1;
+	}
+        if(runLength(morse, 1, bitOffset) == 3 && getBitAtOffset(morse, bitOffset) == 1) {
+            morseChars[i] = '-';
+            bitOffset+=3;
+        } if (runLength(morse, 1, bitOffset) == 1 && getBitAtOffset(morse, bitOffset) == 1){
+            morseChars[i] = '.';
+            bitOffset++;
+        } if (runLength(morse, 1, bitOffset) == 1 && getBitAtOffset(morse, bitOffset) == 0) {
+            bitOffset++;
+        } if (runLength(morse, 1, bitOffset) == 3 && getBitAtOffset(morse, bitOffset) == 0) {
+            bitOffset+=3;
+            int Char = codeToChar(morseChars);
+            text[textIndex] = Char;
+            textIndex++;
+            for(int n = 0; n < 5; n++) {
+                morseChars[n] = 0;
+            }
+            i = -1;
+        } if (runLength(morse, 1, bitOffset) == 7 && getBitAtOffset(morse, bitOffset) == 0) {
+            bitOffset += 7;
+            int Char = codeToChar(morseChars);
+            text[textIndex] = Char;
+            textIndex++;
+            text[textIndex] = ' ';
+            textIndex++;
+            for(int n = 0; n < 5; n++) {
+                morseChars[n] = 0;
+            }
+            i = -1;
+        } if (strcmp(morseChars, ".-.-.") == 0) {
+            text[textIndex] = '\0';
+            textIndex++;
+            return textIndex; // fix
         }
-
-        morseOffset++;
     }
     return textIndex;
 }
