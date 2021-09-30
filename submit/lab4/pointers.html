@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: pointers.umt</title>
+    <link href="pointers/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="pointers.umt:1:5">L a b   4 :  P o i n t e r s
+</p><p data-coord="pointers.umt:3:0"><strong data-coord="pointers.umt:3:0">Date</strong>: Sep 30, 2020
+</p><p data-coord="pointers.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="pointers.umt:10:0"><h2 data-coord="pointers.umt:10:0">Aims</h2><p data-coord="pointers.umt:13:0">The aim of this lab is to familiarize you with the use of pointers in C.
+After completing this lab, you should be familiar with the following topics:
+</p><ul data-coord="pointers.umt:16:0"><li data-coord="pointers.umt:16:0"><p data-coord="pointers.umt:16:4">Using pointers to traverse arrays.
+</p></li><li data-coord="pointers.umt:18:0"><p data-coord="pointers.umt:18:4">Pointer arithmetic.
+</p></li><li data-coord="pointers.umt:20:0"><p data-coord="pointers.umt:20:4">Casting between different pointer types.
+</p></li></ul></section><section data-coord="pointers.umt:22:0"><h2 data-coord="pointers.umt:22:0">Background</h2><p data-coord="pointers.umt:25:0">C allows the programmer to manipulate memory addresses.  Given any C
+expression <em data-coord="pointers.umt:25:80">E</em> which is stored in memory, then the address where <em data-coord="pointers.umt:25:134">E</em>
+is stored can be extracted simply as <samp data-coord="pointers.umt:25:175">&amp;</samp><em data-coord="pointers.umt:25:178">E</em>.  Note that the <samp data-coord="pointers.umt:25:198">&amp;</samp> unary
+operator must have an operand which has a memory address; it is an
+error if it is an expression like <samp data-coord="pointers.umt:25:309">(x + 2)</samp> which does not have a
+memory address.
+</p><p data-coord="pointers.umt:32:0">A <em data-coord="pointers.umt:32:2">pointer</em> in C is nothing but a variable which holds a memory
+address.  Hence the result of the <samp data-coord="pointers.umt:32:98">&amp;</samp> operator is often assigned to a
+pointer.  A pointer <samp data-coord="pointers.umt:32:154">p</samp> pointing to a value of type <samp data-coord="pointers.umt:32:186">T</samp> is declared as
+<samp data-coord="pointers.umt:32:205">T *p;</samp>.
+</p><p data-coord="pointers.umt:37:0">For example:
+</p><pre>  <span class="hl kwb">int</span> i<span class="hl opt">;</span>
+  <span class="hl kwb">int</span> <span class="hl opt">*</span>ip <span class="hl opt">= &amp;</span>i<span class="hl opt">;</span>         <span class="hl slc">//ok</span>
+  <span class="hl kwb">int</span> <span class="hl opt">*</span>ip1 <span class="hl opt">= &amp;(</span>i <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">);</span>  <span class="hl slc">//not ok: (i + 1) is a temporary and</span>
+                        <span class="hl slc">//does not have a memory address.</span></pre><p data-coord="pointers.umt:46:0">C pointers are typed: i.e. each pointer points to a specific type.  Hence
+dereferencing a pointer using the <samp data-coord="pointers.umt:46:108">*</samp> prefix operator will result in an
+expression of that specific type.
+</p><pre>  <span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">5</span><span class="hl opt">;</span>
+  <span class="hl kwb">int</span> <span class="hl opt">*</span>ip <span class="hl opt">= &amp;</span>i<span class="hl opt">;</span>         <span class="hl slc">//ok</span>
+  <span class="hl kwb">int</span> j <span class="hl opt">=</span> <span class="hl num">3</span> <span class="hl opt">* (*</span>ip<span class="hl opt">);</span>    <span class="hl slc">//ok: *ip is 5 and j will be set to 15.</span>
+  <span class="hl kwb">char</span> <span class="hl opt">*</span>p <span class="hl opt">= *</span>ip<span class="hl opt">;</span>        <span class="hl slc">//not ok: attempt to assign an int</span>
+                        <span class="hl slc">//to a char * pointer</span></pre><p data-coord="pointers.umt:58:0">C allows pointer arithmetic.  It is possible to add/subtract a constant
+integer to a pointer, or subtract one pointer from another provided both
+pointers point to the same type.  This arithmetic is scaled: i.e., the
+constant integer is scaled by the size of the underlying type.
+</p><pre>  <span class="hl kwb">int</span> ints<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">] = {</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">};</span>
+  <span class="hl kwb">char</span> chars<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">] = {</span> <span class="hl str">&apos;a&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;b&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;c&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;d&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;e&apos;</span> <span class="hl opt">};</span>
+  
+  <span class="hl kwb">int</span> <span class="hl opt">*</span>ip <span class="hl opt">= &amp;</span>ints<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>   <span class="hl slc">//equivalently, simply use ints;</span>
+                        <span class="hl slc">//pointing ip to base of ints[].</span>
+  <span class="hl opt">*(</span>ip <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">) =</span> <span class="hl num">30</span><span class="hl opt">;</span>       <span class="hl slc">//change ints[2]; note that if an int </span>
+                        <span class="hl slc">//is 4 bytes, then ip + 2 will add 8 to ip.</span>
+  <span class="hl kwb">int</span> <span class="hl opt">*</span>ip1 <span class="hl opt">= &amp;</span>ints<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">];</span>
+  <span class="hl kwb">int</span> k <span class="hl opt">=</span> ip1 <span class="hl opt">-</span> ip<span class="hl opt">;</span>     <span class="hl slc">//set k to 3</span>                      </pre><p data-coord="pointers.umt:75:0">Though this lab hints at some of the possibilities of pointer manipulation
+in C which can result in buggy code, it is worth emphasizing that tricky
+pointer manipulation code is not usually necessary.  If pointers are used
+in a stylized limited way, then it is easy to avoid pointer bugs.
+</p></section><section data-coord="pointers.umt:80:0"><h2 data-coord="pointers.umt:80:0">Exercises</h2><section data-coord="pointers.umt:83:0"><h3 data-coord="pointers.umt:83:0">Starting up</h3><p data-coord="pointers.umt:86:0">Follow the <em data-coord="pointers.umt:86:38"><a href="../working/working.html" data-coord="pointers.umt:86:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="pointers.umt:86:98">lab4</samp> branch and a new
+<samp data-coord="pointers.umt:86:122">submit/lab4</samp> directory.  You should have copied over
+the contents of <samp data-coord="pointers.umt:86:192">~/cs220/labs/lab4/exercises</samp> over to your
+directory.
+</p><p data-coord="pointers.umt:92:0">All of the following exercises have pointers traverse 2 arrays in different
+ways.  The declarations for the arrays are as follows:
+</p><pre>  <span class="hl kwb">char</span> chars<span class="hl opt">[] = {</span> <span class="hl str">&apos;a&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;b&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;c&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;d&apos;</span><span class="hl opt">,</span> <span class="hl str">&apos;e&apos;</span> <span class="hl opt">};</span>
+  <span class="hl kwb">int</span> ints<span class="hl opt">[] = {</span> <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">5</span> <span class="hl opt">};</span></pre><p data-coord="pointers.umt:100:0">A <samp data-coord="pointers.umt:100:2">Makefile</samp> is provided within the root of the <a href="exercises" data-coord="pointers.umt:100:61">exercises</a>
+directory.  When you are within an exercise directory, you can build
+the current exercise using:
+</p><pre>$ <span class="hl kwc">make</span> <span class="hl kwb">-f</span> ..<span class="hl opt">/</span>Makefile</pre><p data-coord="pointers.umt:109:0">Run through the following exercises in the <samp data-coord="pointers.umt:109:43">exercises</samp> directory.
+</p></section><section data-coord="pointers.umt:112:0"><h3 data-coord="pointers.umt:112:0">Exercise 1: Illustrating Pointer Increments</h3><p data-coord="pointers.umt:115:0">Change over to the <a href="./exercises/pointers" data-coord="pointers.umt:115:43">pointers</a> directory and
+look at the <a href="./exercises/pointers/pointers.c" data-coord="pointers.umt:115:113">pointers.c</a> program.
+Once you have looked at the source code, build the <samp data-coord="pointers.umt:115:184">pointers</samp>
+executable by typing <samp data-coord="pointers.umt:115:216">make -f ../Makefile</samp>.  Run the program by typing
+<samp data-coord="pointers.umt:115:266">./pointers</samp>.
+</p><p data-coord="pointers.umt:121:0">The program uses the <samp data-coord="pointers.umt:121:21">cp</samp> pointer to traverse the <samp data-coord="pointers.umt:121:50">chars[]</samp> array and the
+<samp data-coord="pointers.umt:121:74">ip</samp> pointer to traverse the <samp data-coord="pointers.umt:121:103">ints[]</samp> array and prints out the pointer
+value and what it points to after each step.  Note that even though
+the code increments each pointer only by 1, the <samp data-coord="pointers.umt:121:261">cp</samp> pointer increments by
+1, but the <samp data-coord="pointers.umt:121:299">ip</samp> pointer increments by 4 (the size of the pointed to <samp data-coord="pointers.umt:121:356">int</samp>
+type).
+</p><p data-coord="pointers.umt:128:0">Run the program a second time and you may notice that the pointer values
+are different.  This is due to added security in Linux: by randomly changing
+memory addresses slightly at each run, it is harder for crackers to exploit
+program vulnerabilites.
+</p></section><section data-coord="pointers.umt:133:0"><h3 data-coord="pointers.umt:133:0">Exercise 2: Deriving Pointer Values</h3><p data-coord="pointers.umt:136:0">Change over to the <a href="./exercises/in-pointers" data-coord="pointers.umt:136:46">in-pointers</a>
+directory and look at the <a href="./exercises/in-pointers/in-pointers.c" data-coord="pointers.umt:136:125">in-pointers.c</a> program.  Once you have looked at the source code, build
+the executable by typing <samp data-coord="pointers.umt:136:221">make -f ../Makefile</samp>.  Run the program by
+typing <samp data-coord="pointers.umt:136:271">./in-pointers</samp>.
+</p><p data-coord="pointers.umt:142:0">The program requires you to type in pointers which point to specific
+elements in the <samp data-coord="pointers.umt:142:85">ints[]</samp> array.  Provide the value in hex without any
+leading <samp data-coord="pointers.umt:142:147">0x</samp> or <samp data-coord="pointers.umt:142:155">0X</samp>.  If correct, you will get an <samp data-coord="pointers.umt:142:190">ok</samp> message, if
+not correct, you will be asked to retry.  If you enter a value which
+points to an invalid address, you can crash the program.  The program
+will terminate after you answer 3 successive attempts correctly.  (If
+you want to terminate the program early, use <samp data-coord="pointers.umt:142:461">^C</samp>).
+</p></section><section data-coord="pointers.umt:150:0"><h3 data-coord="pointers.umt:150:0">Exercise 3: Using Pointers with Incorrect Types</h3><p data-coord="pointers.umt:153:0">Change over to the <a href="./exercises/bad-types" data-coord="pointers.umt:153:44">bad-types</a> directory
+and look at the <a href="./exercises/bad-types/bad-types.c" data-coord="pointers.umt:153:117">bad-types.c</a>
+file contained there. The code uses a <samp data-coord="pointers.umt:153:167">char *</samp> pointer to traverse the
+<samp data-coord="pointers.umt:153:200">int[]</samp> array and a <samp data-coord="pointers.umt:153:220">int *</samp> pointer to traverse the <samp data-coord="pointers.umt:153:252">char[]</samp> array.
+</p><p data-coord="pointers.umt:158:0">Build the program by typing <samp data-coord="pointers.umt:158:28">make -f ../Makefile</samp>, ignoring the
+warning message you get during the compilation.  Run it by using
+<samp data-coord="pointers.umt:158:129">./bad-types</samp>.  You will notice that the program does print out
+memory, but since the pointers are pointing to the wrong object, the
+printed contents seem like garbage.  However, if you look at the
+output more carefully, you will see that the <samp data-coord="pointers.umt:158:372">char *</samp> pointer is
+printing out the bytes of the integers stored in <samp data-coord="pointers.umt:158:441">ints[]</samp> (in
+little-endian order) and the <samp data-coord="pointers.umt:158:483">int *</samp> pointer is printing out the
+<samp data-coord="pointers.umt:158:519">char</samp>'s in the <samp data-coord="pointers.umt:158:535">chars[]</samp> array (note that the ASCII code for <samp data-coord="pointers.umt:158:581">a</samp> is
+<samp data-coord="pointers.umt:158:588">0x61</samp>), before taking off beyond it.  Note that even though the
+program is accessing invalid memory using the <samp data-coord="pointers.umt:158:699">int *</samp> pointer, the
+program continues, printing out the garbage contents of the memory.
+</p><p data-coord="pointers.umt:171:0">This exercise illustrates why it is usually a <strong data-coord="pointers.umt:171:46">bad idea to ignore
+compiler warnings.</strong>  
+</p></section><section data-coord="pointers.umt:175:0"><h3 data-coord="pointers.umt:175:0">Exercise 4: Casting Pointers</h3><p data-coord="pointers.umt:178:0">Change into the <a href="./exercises/cast-types" data-coord="pointers.umt:178:42">cast-types</a> directory and
+examine the <a href="./exercises/cast-types/cast-types.c" data-coord="pointers.umt:178:118">cast-types.c</a> file
+contained there.  It shows that even though we are using a <samp data-coord="pointers.umt:178:195">char *</samp>
+pointer to traverse <samp data-coord="pointers.umt:178:224">is[]</samp> and a <samp data-coord="pointers.umt:178:237">int *</samp> pointer to traverse <samp data-coord="pointers.umt:178:265">cs[]</samp> we
+can do so correctly if we treat them as the right type of pointer
+before we do pointer arithmetic on them.  This is done using casts.
+</p><p data-coord="pointers.umt:185:0">Specifically, <code>cp <span class="hl opt">= (</span><span class="hl kwb">char</span> <span class="hl opt">*)(((</span><span class="hl kwb">int</span> <span class="hl opt">*)</span>cp<span class="hl opt">) +</span> <span class="hl num">1</span><span class="hl opt">)</span></code>, casts <samp data-coord="pointers.umt:185:55">cp</samp> to a an
+<code><span class="hl kwb">int</span> <span class="hl opt">*</span></code> pointer, adds 1 to it (thus incrementing it by
+<code><span class="hl kwa">sizeof</span><span class="hl opt">(</span><span class="hl kwb">int</span><span class="hl opt">)</span></code>) and then casts it back to a <code><span class="hl kwb">char</span> <span class="hl opt">*</span></code> pointer so that
+it can be assigned back to <samp data-coord="pointers.umt:185:221">cp</samp>.  OTOH, <code>ip <span class="hl opt">= (</span><span class="hl kwb">int</span> <span class="hl opt">*)(((</span><span class="hl kwb">char</span> <span class="hl opt">*)</span>ip<span class="hl opt">) +</span>
+<span class="hl num">1</span><span class="hl opt">)</span></code>, casts <samp data-coord="pointers.umt:185:275">ip</samp> to a a <code><span class="hl kwb">char</span> <span class="hl opt">*</span></code> pointer, adds 1 to it (thus
+incrementing it by <code><span class="hl kwa">sizeof</span><span class="hl opt">(</span><span class="hl kwb">char</span><span class="hl opt">)</span></code>) and then casts it back to an <code><span class="hl kwb">int</span>
+<span class="hl opt">*</span></code> pointer so that it can be assigned back to <samp data-coord="pointers.umt:185:442">ip</samp>.
+</p><p data-coord="pointers.umt:194:0">Type <samp data-coord="pointers.umt:194:5">make -f ../Makefile</samp>.  Then run the program <samp data-coord="pointers.umt:194:50">./cast-types</samp>.
+Notice that the external behavior is quite reasonable.
+</p></section><section data-coord="pointers.umt:197:0"><h3 data-coord="pointers.umt:197:0">Exercise 5: void pointers</h3><p data-coord="pointers.umt:200:0">Generic <samp data-coord="pointers.umt:200:8">void *</samp> pointers are used only for storage and must be cast
+to a specific pointer type before being dereferenced or participitating in
+pointer arithmetic.  
+</p><p data-coord="pointers.umt:204:0">Change into the <a href="./exercises/void-pointers" data-coord="pointers.umt:204:45">void-pointers</a>
+directory and examine the
+<a href="./exercises/void-pointers/void-pointers.c" data-coord="pointers.umt:204:130">void-pointers.c</a> file
+contained there.  Type <samp data-coord="pointers.umt:204:174">make -f ../Makefile</samp>.  Then run the program
+<samp data-coord="pointers.umt:204:219">./void-pointers</samp>.  This shows that you can use a <samp data-coord="pointers.umt:204:269">void *</samp> pointer to
+access both arrays correctly.
+</p></section><section data-coord="pointers.umt:211:0"><h3 data-coord="pointers.umt:211:0">Exercise 6: Input void Pointers</h3><p data-coord="pointers.umt:214:0">Change into the <a href="./exercises/in-voids" data-coord="pointers.umt:214:40">in-voids</a> directory and examine the
+<a href="./exercises/in-voids/in-voids.c" data-coord="pointers.umt:214:110">in-voids.c</a> file contained there.  Type
+<samp data-coord="pointers.umt:214:149">make -f ../Makefile</samp>.  Then run the executable using <samp data-coord="pointers.umt:214:203">./in-voids</samp>.
+</p><p data-coord="pointers.umt:218:0">The program requires you to type in pointers which point to specific
+elements in the <samp data-coord="pointers.umt:218:85">is[]</samp> and <samp data-coord="pointers.umt:218:96">cs[]</samp> arrays.  Provide the value in hex.  If
+correct, you will get a <samp data-coord="pointers.umt:218:166">ok</samp> message, if not correct, you will be asked to
+retry.  The program will terminate when all cases have been answered
+correctly.  (If you want to terminate the program early, use <samp data-coord="pointers.umt:218:347">^C</samp>).
+</p></section><section data-coord="pointers.umt:224:0"><h3 data-coord="pointers.umt:224:0">Exercise 7: Debugging Memory Allocation Errors Using valgrind</h3><p data-coord="pointers.umt:227:0">Change over to the directory <a href="./exercises/bug-program" data-coord="pointers.umt:227:56">bug-program</a> where
+<a href="./exercises/bug-program/bug-program.c" data-coord="pointers.umt:227:115">bug-program.c</a> contains four
+memory allocation bugs.  Look at the program which should be
+reasonably understandable.
+</p><p data-coord="pointers.umt:232:0">For each word in an array of words, the program adds the word (referred
+to as <samp data-coord="pointers.umt:232:78">key</samp>) and its index (referred to as <samp data-coord="pointers.umt:232:115">value</samp>) into a linked list.
+Since the words are always added to the head of the linked list, it
+is not necessary to maintain a dummy node.
+</p><p data-coord="pointers.umt:237:0">Build the program by typing <samp data-coord="pointers.umt:237:28">make</samp>.  Even with the multiple bugs, the
+program will probably run without a problem!! The fact that it may do
+so illustrate the insiduous nature of such bugs in that such buggy
+programs seem to work most of the time.
+</p><p data-coord="pointers.umt:242:0">Can you understand why the indexes of the words are printed out in
+descending order?
+</p><p data-coord="pointers.umt:245:0">Can you spot the bugs by simply inspecting it?  Some hints:
+</p><ul data-coord="pointers.umt:247:0"><li data-coord="pointers.umt:247:0"><p data-coord="pointers.umt:247:4">All bugs are within the <samp data-coord="pointers.umt:247:28">add_key_value()</samp> and <samp data-coord="pointers.umt:247:50">free_key_values()</samp>
+functions.
+</p></li><li data-coord="pointers.umt:250:0"><p data-coord="pointers.umt:250:4">The amount of memory needed to store a string <strong data-coord="pointers.umt:250:50">must</strong> include
+space for the terminating <samp data-coord="pointers.umt:250:95">'\0' NUL</samp> character.
+</p></li><li data-coord="pointers.umt:253:0"><p data-coord="pointers.umt:253:4">The <a href="https://man7.org/linux/man-pages/man3/strlen.3.html" data-coord="pointers.umt:253:63">strlen()</a>
+function returns the number of characters in a string; it does <strong data-coord="pointers.umt:253:139">not</strong>
+count the terminating <samp data-coord="pointers.umt:253:171">'\0' NUL</samp> character.
+</p></li><li data-coord="pointers.umt:257:0"><p data-coord="pointers.umt:257:4">When <samp data-coord="pointers.umt:257:9">malloc()</samp>'ing memory for some type <samp data-coord="pointers.umt:257:45">T</samp>, the normal call
+will look like <samp data-coord="pointers.umt:257:85">T *pointerToT = malloc(sizeof(T));</samp>.
+</p></li><li data-coord="pointers.umt:260:0"><p data-coord="pointers.umt:260:4"><strong data-coord="pointers.umt:260:4">All</strong> allocated memory should be <samp data-coord="pointers.umt:260:37">free()</samp>'d.  Hence for every
+memory allocation call there should be a call to <samp data-coord="pointers.umt:260:119">free()</samp>.
+</p></li><li data-coord="pointers.umt:263:0"><p data-coord="pointers.umt:263:4">Memory should not be accessed once it has been <samp data-coord="pointers.umt:263:51">free()</samp>'d.
+</p></li></ul><p data-coord="pointers.umt:265:0">If you cannot spot the bugs, running the program under valgrind
+should help:
+</p><pre data-coord="pointers.umt:269:0">$ valgrind -v --leak-check=yes ./bug-program 2&gt;bug-program.valgrind
+</pre><p data-coord="pointers.umt:272:0">This should record the standard error diagnostics in the
+<samp data-coord="pointers.umt:272:57">bug-program.valgrind</samp> file.  Now look at that file and the
+<a href="http://valgrind.org/docs/manual/QuickStart.html" data-coord="pointers.umt:272:168">docs</a> for valgrind
+and try to figure out the bugs.  Look at the specific lines mentioned
+for <samp data-coord="pointers.umt:272:260">bug-program.c</samp> to figure out the problems.
+</p><p data-coord="pointers.umt:278:0">Since the report is quite long, search the file for errors (search for
+<samp data-coord="pointers.umt:278:71">Invalid</samp>) mentioning <samp data-coord="pointers.umt:278:93">bug-program.c</samp>.  Look at the line specified by
+the line number mentioned in valgrind report.  Consider the error
+reported by valgrind for that line and try to find the bug which may
+cause it.  Note that the same bug may result in multiple errors.
+</p><p data-coord="pointers.umt:284:0">Since it is very likely that each of the words in the Jabberwocky poem
+cause the same bugs, it may be a good idea to comment out all words
+other than the first and then run valgrind once again.  This way the
+report will be shorter and it may be easier to find the bugs.
+</p><p data-coord="pointers.umt:289:0">Once you have identified the bugs, fix them.  Run a valgrind report so
+that valgrind reports a clean output without <strong data-coord="pointers.umt:289:116">any</strong> errors.  To avoid
+the <samp data-coord="pointers.umt:289:144">REDIR</samp> messages, leave off the <samp data-coord="pointers.umt:289:176">-v</samp> option.
+</p></section></section><section data-coord="pointers.umt:293:0"><h2 data-coord="pointers.umt:293:0">References</h2><p data-coord="pointers.umt:297:0">Bryant and O'Halloran Recommended Text, section 9.9 up to and
+including 9.9.2 and section 9.11.
+</p><p data-coord="pointers.umt:300:0"><a href="http://valgrind.org" data-coord="pointers.umt:300:23">Valgrind.</a>
+</p><p data-coord="pointers.umt:302:0">Jon Erickson, <em data-coord="pointers.umt:302:14">Hacking: The Art of Exploitation</em>, 2nd Edition, No Starch
+Press, 2008.  Source of many of the exercises.
+</p></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
