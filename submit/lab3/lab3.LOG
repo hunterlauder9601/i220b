@@ -1,0 +1,241 @@
+Script started on 2021-09-23 16:41:14-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ mkdir di r
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ touch[K[K[K[K[Kcd exercises/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ mkdir dir
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ touch t1.c T1.s v.c v1.s x.c dir/t2.c dir/T2.s1 dir/t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls
+4  c-stdin-stdout  dir	t1.c  T1.s  v1.s  v.c  x.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls -l
+total 0
+lrwxrwxrwx 1 hlauder1 hlauder1  14 Sep 23 16:38 4 -> c-stdin-stdout
+drwxr-x--- 2 hlauder1 hlauder1 102 Sep 23 16:38 c-stdin-stdout
+drwxr-x--- 2 hlauder1 hlauder1  54 Sep 23 16:44 dir
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 t1.c
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 T1.s
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 v1.s
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 v.c
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 x.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls -tl
+total 0
+drwxr-x--- 2 hlauder1 hlauder1  54 Sep 23 16:44 dir
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 x.c
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 T1.s
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 v1.s
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 v.c
+-rw-r----- 1 hlauder1 hlauder1   0 Sep 23 16:44 t1.c
+drwxr-x--- 2 hlauder1 hlauder1 102 Sep 23 16:38 c-stdin-stdout
+lrwxrwxrwx 1 hlauder1 hlauder1  14 Sep 23 16:38 4 -> c-stdin-stdout
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ man touch
+[?1049h[22;0;0t[?1h=TOUCH(1)                         User Commands                        TOUCH(1)[m
+[m
+[1mNAME[0m[m
+       touch - change file timestamps[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mtouch[0m [[4mOPTION[24m]... [4mFILE[24m...[m
+[m
+[1mDESCRIPTION[0m[m
+       Update  the  access  and modification times of each FILE to the current[m
+       time.[m
+[m
+       A FILE argument that does not exist is created empty, unless [1m-c[0m  or  [1m-h[0m[m
+       is supplied.[m
+[m
+       A  FILE  argument  string of - is handled specially and causes touch to[m
+       change the times of the file associated with standard output.[m
+[m
+       Mandatory arguments to long options are  mandatory  for  short  options[m
+       too.[m
+[m
+       [1m-a[0m     change only the access time[m
+[m
+[7m Manual page touch(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0thlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ man ls
+[?1049h[22;0;0t[?1h=LS(1)                            User Commands                           LS(1)[m
+[m
+[1mNAME[0m[m
+       ls - list directory contents[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mls[0m [[4mOPTION[24m]... [[4mFILE[24m]...[m
+[m
+[1mDESCRIPTION[0m[m
+       List  information  about  the FILEs (the current directory by default).[m
+       Sort entries alphabetically if none of [1m-cftuvSUX[0m nor [1m--sort[0m  is  speci‐[m
+       fied.[m
+[m
+       Mandatory  arguments  to  long  options are mandatory for short options[m
+       too.[m
+[m
+       [1m-a[0m, [1m--all[0m[m
+              do not ignore entries starting with .[m
+[m
+       [1m-A[0m, [1m--almost-all[0m[m
+              do not list implied . and ..[m
+[m
+       [1m--author[0m[m
+[7m Manual page ls(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0thlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls T*
+T1.s
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir/*.
+ls: cannot access 'dir/*.': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ LS[K[Kls dir/*.?
+dir/t2.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls []t]-]v][C*.c
+t1.c  v.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin
+bash	       fusermount      ntfscat	      systemd
+bunzip2        getfacl	       ntfscluster    systemd-ask-password
+busybox        grep	       ntfscmp	      systemd-escape
+bzcat	       gunzip	       ntfsfallocate  systemd-hwdb
+bzcmp	       gzexe	       ntfsfix	      systemd-inhibit
+bzdiff	       gzip	       ntfsinfo       systemd-machine-id-setup
+bzegrep        hciconfig       ntfsls	      systemd-notify
+bzexe	       hostname        ntfsmove       systemd-sysusers
+bzfgrep        ip	       ntfsrecover    systemd-tmpfiles
+bzgrep	       journalctl      ntfssecaudit   systemd-tty-ask-password-agent
+bzip2	       kbd_mode        ntfstruncate   tar
+bzip2recover   keyctl	       ntfsusermap    tcsh
+bzless	       kill	       ntfswipe       tempfile
+bzmore	       kmod	       openvt	      touch
+cat	       ln	       pidof	      true
+chacl	       loadkeys        ping	      udevadm
+chgrp	       login	       ping4	      ulockmgr_server
+chmod	       loginctl        ping6	      umount
+chown	       lowntfs-3g      ps	      uname
+chvt	       ls	       pwd	      uncompress
+cp	       lsblk	       rbash	      unicode_start
+cpio	       lsmod	       readlink       vdir
+csh	       mkdir	       red	      wdctl
+dash	       mknod	       rm	      which
+date	       mktemp	       rmdir	      ypdomainname
+dd	       more	       rnano	      zcat
+df	       mount	       run-parts      zcmp
+dir	       mountpoint      rzsh	      zdiff
+dmesg	       mt	       sed	      zegrep
+dnsdomainname  mt-gnu	       setfacl	      zfgrep
+domainname     mv	       setfont	      zforce
+dumpkeys       nano	       setupcon       zgrep
+echo	       nc	       sh	      zless
+ed	       nc.traditional  sh.distrib     zmore
+egrep	       netcat	       sleep	      znew
+false	       netstat	       ss	      zsh
+fgconsole      networkctl      stty	      zsh5
+fgrep	       nisdomainname   su
+findmnt        ntfs-3g	       sync
+fuser	       ntfs-3g.probe   systemctl
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /
+backup	    import		    microchip		 sbin
+bin	    initrd.img		    mnt			 srv
+boot	    initrd.img.old	    nslcd.conf.linux	 sys
+dev	    lib			    opt			 tmp
+etc	    lib32		    opt.local		 usr
+events.bin  lib64		    opt.old		 var
+home	    libnss-ldap.conf.linux  pam_ldap.conf.linux  vmlinuz
+home1	    libx32		    proc		 vmlinuz.old
+home.local  lost+found		    root
+home.save   media		    run
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin [K?[]p]-]s][C
+ls: cannot access '/bin?[p-s]': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/?[]p]-]s][C
+/bin/cp  /bin/ip  /bin/ls  /bin/ps  /bin/ss
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/?[K*[K[K[K[K[K[K[K[K[Kls /dir
+ls: cannot access '/dir': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir
+t2.c  T2.s1  t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir -l
+total 0
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t2.c
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 T2.s1
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls -[Kdi [Kr -tl
+total 0
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 T2.s1
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t3
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t2.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bindir -tl[1Pl[K/dirbin/?[p-s][1P?[p-s]*
+ls: cannot access '/bin?[p-s]*': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/?[]p]-]s][C*
+/bin/cp    /bin/grep  /bin/lsblk   /bin/ps    /bin/ypdomainname
+/bin/cpio  /bin/ip    /bin/lsmod   /bin/ss    /bin/zsh
+/bin/csh   /bin/ls    /bin/openvt  /bin/true  /bin/zsh5
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /etc/*[]r]c][C
+/etc/bash.bashrc	   /etc/inputrc        /etc/pbuilderrc
+/etc/chktexrc		   /etc/magic	       /etc/quilt.quiltrc
+/etc/csh.cshrc		   /etc/mailcap.order  /etc/rpc
+/etc/gnashpluginrc	   /etc/mail.rc        /etc/sbclrc
+/etc/gnashrc		   /etc/matplotlibrc   /etc/screenrc
+/etc/gnashthumbnailrc	   /etc/Muttrc	       /etc/slsh.rc
+/etc/gnome-vfs-mime-magic  /etc/nanorc	       /etc/wgetrc
+
+/etc/apparmor:
+init  parser.conf
+
+/etc/calendar:
+default
+
+/etc/dirmngr:
+
+/etc/firefox-esr:
+firefox-esr.js
+
+/etc/NetworkManager:
+dispatcher.d
+
+/etc/node-exporter:
+save  secrets
+
+/etc/opensc:
+opensc.conf
+
+/etc/pbuilder:
+buildd-config.sh
+
+/etc/speech-dispatcher:
+clients  modules  speechd.conf
+
+/etc/tigervnc:
+ecparams.pem  ssleay.cnf
+
+/etc/UPower:
+UPower.conf
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /etc/*[rc][K[K[K[Krc
+/etc/bash.bashrc    /etc/gnashthumbnailrc  /etc/nanorc	       /etc/slsh.rc
+/etc/chktexrc	    /etc/inputrc	   /etc/pbuilderrc     /etc/wgetrc
+/etc/csh.cshrc	    /etc/mail.rc	   /etc/quilt.quiltrc
+/etc/gnashpluginrc  /etc/matplotlibrc	   /etc/sbclrc
+/etc/gnashrc	    /etc/Muttrc		   /etc/screenrc
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/???
+/bin/cat  /bin/csh  /bin/dir  /bin/pwd	/bin/red  /bin/sed  /bin/tar  /bin/zsh
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir[K[K[Kdir
+t2.c  T2.s1  t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir -l
+total 0
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t2.c
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 T2.s1
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir [K[K[K[K-[Kdir -[K[K[K[K[K-l -tl dir
+total 0
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 T2.s1
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t3
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t2.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls -tl dir
+total 0
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 T2.s1
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t3
+-rw-r----- 1 hlauder1 hlauder1 0 Sep 23 16:44 t2.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls > ls.log
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat ls.log
+4
+c-stdin-stdout
+dir
+ls.log
+t1.c
+T1.s
+v1.s
+v.c
+x.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat > cat.lg[Kog
+^C
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat >cat.log
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ exit
+
+Script done on 2021-09-23 17:26:32-04:00 [COMMAND_EXIT_CODE="0"]

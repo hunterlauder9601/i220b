@@ -1,0 +1,1088 @@
+Script started on 2021-09-23 17:27:51-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ cat >cat .log
+^C
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ cat >cat .log
+ufdihgufdgdgduguhlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ cat cal. log
+cat: cal.log: No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ cat cat. log
+ufdihgufdgdgduguhlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ >>[K[Kls dir >>ls.log
+ls: cannot access 'dir': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ ls dir >>ls.log
+ls: cannot access 'dir': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ ls dir >>ls.log cat ls.log
+ls: cannot access 'dir': No such file or directory
+ls: cannot access 'cat': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3$ cd exercises/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir>>ls.log
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat ls.log
+ls.log
+t2.c
+T2.s1
+t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir ??ls.[K[K[K[K[K>>ls.log
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls dir >>ls.log cat lo[Ks.log
+ls: cannot access 'cat': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat <ls.log
+ls.log
+t2.c
+T2.s1
+t3
+t2.c
+T2.s1
+t3
+ls.log
+
+dir:
+t2.c
+T2.s1
+t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat ks,[K[K[Kls.log
+ls.log
+t2.c
+T2.s1
+t3
+t2.c
+T2.s1
+t3
+ls.log
+
+dir:
+t2.c
+T2.s1
+t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cat <ls..[Klog
+ls.log
+t2.c
+T2.s1
+t3
+t2.c
+T2.s1
+t3
+ls.log
+
+dir:
+t2.c
+T2.s1
+t3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls | wc -l
+10
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/ wc -l
+ls: cannot access 'wc': No such file or directory
+/bin/:
+total 13592
+-rwxr-xr-x 1 root root 1168776 Apr 18  2019 bash
+-rwxr-xr-x 3 root root   38984 Jul 10  2019 bunzip2
+-rwxr-xr-x 1 root root  707288 Apr  1  2019 busybox
+-rwxr-xr-x 3 root root   38984 Jul 10  2019 bzcat
+lrwxrwxrwx 1 root root       6 Jul 10  2019 bzcmp -> bzdiff
+-rwxr-xr-x 1 root root    2227 Jul 10  2019 bzdiff
+lrwxrwxrwx 1 root root       6 Jul 10  2019 bzegrep -> bzgrep
+-rwxr-xr-x 1 root root    4877 Jun 24  2019 bzexe
+lrwxrwxrwx 1 root root       6 Jul 10  2019 bzfgrep -> bzgrep
+-rwxr-xr-x 1 root root    3641 Jul 10  2019 bzgrep
+-rwxr-xr-x 3 root root   38984 Jul 10  2019 bzip2
+-rwxr-xr-x 1 root root   14328 Jul 10  2019 bzip2recover
+lrwxrwxrwx 1 root root       6 Jul 10  2019 bzless -> bzmore
+-rwxr-xr-x 1 root root    1297 Jul 10  2019 bzmore
+-rwxr-xr-x 1 root root   43744 Feb 28  2019 cat
+-rwxr-xr-x 1 root root   14328 Mar  1  2019 chacl
+-rwxr-xr-x 1 root root   64320 Feb 28  2019 chgrp
+-rwxr-xr-x 1 root root   64288 Feb 28  2019 chmod
+-rwxr-xr-x 1 root root   72512 Feb 28  2019 chown
+-rwxr-xr-x 1 root root   14648 Jul 28  2018 chvt
+-rwxr-xr-x 1 root root  146880 Feb 28  2019 cp
+-rwxr-xr-x 1 root root  158320 Apr 23  2019 cpio
+lrwxrwxrwx 1 root root      21 Jun 24  2019 csh -> /etc/alternatives/csh
+-rwxr-xr-x 1 root root  121464 Jan 17  2019 dash
+-rwxr-xr-x 1 root root  109408 Feb 28  2019 date
+-rwxr-xr-x 1 root root   76712 Feb 28  2019 dd
+-rwxr-xr-x 1 root root   93744 Feb 28  2019 df
+-rwxr-xr-x 1 root root  138856 Feb 28  2019 dir
+-rwxr-xr-x 1 root root   84288 Jan 10  2019 dmesg
+lrwxrwxrwx 1 root root       8 Sep 27  2018 dnsdomainname -> hostname
+lrwxrwxrwx 1 root root       8 Sep 27  2018 domainname -> hostname
+-rwxr-xr-x 1 root root  179104 Jul 28  2018 dumpkeys
+-rwxr-xr-x 1 root root   39520 Feb 28  2019 echo
+-rwxr-xr-x 1 root root   55424 Jan  3  2019 ed
+-rwxr-xr-x 1 root root      28 Jan  7  2019 egrep
+-rwxr-xr-x 1 root root   35424 Feb 28  2019 false
+-rwxr-xr-x 1 root root   14648 Jul 28  2018 fgconsole
+-rwxr-xr-x 1 root root      28 Jan  7  2019 fgrep
+-rwxr-xr-x 1 root root   68880 Jan 10  2019 findmnt
+-rwxr-xr-x 1 root root   40576 Sep 24  2018 fuser
+-rwsr-xr-x 1 root root   34896 Apr 22  2020 fusermount
+-rwxr-xr-x 1 root root   31352 Mar  1  2019 getfacl
+-rwxr-xr-x 1 root root  198976 Jan  7  2019 grep
+-rwxr-xr-x 2 root root    2345 Jan  5  2019 gunzip
+-rwxr-xr-x 1 root root    6375 Jan  5  2019 gzexe
+-rwxr-xr-x 1 root root   98048 Jan  5  2019 gzip
+-rwxr-xr-x 1 root root  205008 Sep 16  2020 hciconfig
+-rwxr-xr-x 1 root root   26696 Sep 27  2018 hostname
+-rwxr-xr-x 1 root root  624440 Mar  2  2021 ip
+-rwxr-xr-x 1 root root   76024 Jul 21 14:54 journalctl
+-rwxr-xr-x 1 root root   14648 Jul 28  2018 kbd_mode
+-rwxr-xr-x 1 root root   43232 Mar  6  2019 keyctl
+-rwxr-xr-x 1 root root   26704 May 31  2018 kill
+-rwxr-xr-x 1 root root  166072 Feb  9  2019 kmod
+-rwxr-xr-x 1 root root   68552 Feb 28  2019 ln
+-rwxr-xr-x 1 root root  212112 Jul 28  2018 loadkeys
+-rwxr-xr-x 1 root root   56760 Jul 27  2018 login
+-rwxr-xr-x 1 root root   59728 Jul 21 14:54 loginctl
+-rwxr-xr-x 1 root root  117456 Mar 21  2019 lowntfs-3g
+-rwxr-xr-x 1 root root  138856 Feb 28  2019 ls
+-rwxr-xr-x 1 root root  108624 Jan 10  2019 lsblk
+lrwxrwxrwx 1 root root       4 Feb  9  2019 lsmod -> kmod
+-rwxr-xr-x 1 root root   89088 Feb 28  2019 mkdir
+-rwxr-xr-x 1 root root   68544 Feb 28  2019 mknod
+-rwxr-xr-x 1 root root   43808 Feb 28  2019 mktemp
+-rwxr-xr-x 1 root root   43008 Jan 10  2019 more
+-rwsr-xr-x 1 root root   51280 Jan 10  2019 mount
+-rwxr-xr-x 1 root root   14408 Jan 10  2019 mountpoint
+lrwxrwxrwx 1 root root      20 Dec  4  2016 mt -> /etc/alternatives/mt
+-rwxr-xr-x 1 root root   85320 Apr 23  2019 mt-gnu
+-rwxr-xr-x 1 root root  138728 Feb 28  2019 mv
+-rwxr-xr-x 1 root root  246160 Jun 11  2019 nano
+lrwxrwxrwx 1 root root      20 Dec  4  2016 nc -> /etc/alternatives/nc
+-rwxr-xr-x 1 root root   27400 Apr 13  2017 nc.traditional
+lrwxrwxrwx 1 root root      24 Dec  4  2016 netcat -> /etc/alternatives/netcat
+-rwxr-xr-x 1 root root  155096 Sep 24  2018 netstat
+-rwxr-xr-x 1 root root  100576 Jul 21 14:54 networkctl
+lrwxrwxrwx 1 root root       8 Sep 27  2018 nisdomainname -> hostname
+-rwsr-xr-x 1 root root  154352 Mar 21  2019 ntfs-3g
+-rwxr-xr-x 1 root root   14408 Mar 21  2019 ntfs-3g.probe
+-rwxr-xr-x 1 root root   34920 Mar 21  2019 ntfscat
+-rwxr-xr-x 1 root root   39016 Mar 21  2019 ntfscluster
+-rwxr-xr-x 1 root root   39016 Mar 21  2019 ntfscmp
+-rwxr-xr-x 1 root root   39024 Mar 21  2019 ntfsfallocate
+-rwxr-xr-x 1 root root   43120 Mar 21  2019 ntfsfix
+-rwxr-xr-x 1 root root   59512 Mar 21  2019 ntfsinfo
+-rwxr-xr-x 1 root root   36024 Mar 21  2019 ntfsls
+-rwxr-xr-x 1 root root   39016 Mar 21  2019 ntfsmove
+-rwxr-xr-x 1 root root  120936 Mar 21  2019 ntfsrecover
+-rwxr-xr-x 1 root root   96864 Mar 21  2019 ntfssecaudit
+-rwxr-xr-x 1 root root   43040 Mar 21  2019 ntfstruncate
+-rwxr-xr-x 1 root root   38936 Mar 21  2019 ntfsusermap
+-rwxr-xr-x 1 root root   47752 Mar 21  2019 ntfswipe
+-rwxr-xr-x 1 root root   23424 Jul 28  2018 openvt
+lrwxrwxrwx 1 root root      14 Feb 14  2019 pidof -> /sbin/killall5
+-rwsr-xr-x 1 root root   69368 Mar  8  2021 ping
+lrwxrwxrwx 1 root root       4 Mar  8  2021 ping4 -> ping
+lrwxrwxrwx 1 root root       4 Mar  8  2021 ping6 -> ping
+-rwxr-xr-x 1 root root  133432 May 31  2018 ps
+-rwxr-xr-x 1 root root   39616 Feb 28  2019 pwd
+lrwxrwxrwx 1 root root       4 Apr 18  2019 rbash -> bash
+-rwxr-xr-x 1 root root   47776 Feb 28  2019 readlink
+-rwxr-xr-x 1 root root      89 Jan  3  2019 red
+-rwxr-xr-x 1 root root   68416 Feb 28  2019 rm
+-rwxr-xr-x 1 root root   47776 Feb 28  2019 rmdir
+lrwxrwxrwx 1 root root       4 Jun 11  2019 rnano -> nano
+-rwxr-xr-x 1 root root   23312 Jan 21  2019 run-parts
+lrwxrwxrwx 1 root root       3 Feb  4  2019 rzsh -> zsh
+-rwxr-xr-x 1 root root  122224 Dec 22  2018 sed
+-rwxr-xr-x 1 root root   39608 Mar  1  2019 setfacl
+-rwxr-xr-x 1 root root   47792 Jul 28  2018 setfont
+-rwxr-xr-x 1 root root   38267 Aug 15  2019 setupcon
+lrwxrwxrwx 1 root root       4 Jan 17  2019 sh -> dash
+lrwxrwxrwx 1 root root       4 Dec  4  2016 sh.distrib -> dash
+-rwxr-xr-x 1 root root   39552 Feb 28  2019 sleep
+-rwxr-xr-x 1 root root  181312 Mar  2  2021 ss
+-rwxr-xr-x 1 root root   80672 Feb 28  2019 stty
+-rwsr-xr-x 1 root root   63568 Jan 10  2019 su
+-rwxr-xr-x 1 root root   35488 Feb 28  2019 sync
+-rwxr-xr-x 1 root root 1058128 Jul 21 14:54 systemctl
+lrwxrwxrwx 1 root root      20 Jul 21 14:54 systemd -> /lib/systemd/systemd
+-rwxr-xr-x 1 root root   14672 Jul 21 14:54 systemd-ask-password
+-rwxr-xr-x 1 root root   18648 Jul 21 14:54 systemd-escape
+-rwxr-xr-x 1 root root  121368 Jul 21 14:54 systemd-hwdb
+-rwxr-xr-x 1 root root   22768 Jul 21 14:54 systemd-inhibit
+-rwxr-xr-x 1 root root   22848 Jul 21 14:54 systemd-machine-id-setup
+-rwxr-xr-x 1 root root   18656 Jul 21 14:54 systemd-notify
+-rwxr-xr-x 1 root root   55832 Jul 21 14:54 systemd-sysusers
+-rwxr-xr-x 1 root root   92584 Jul 21 14:54 systemd-tmpfiles
+-rwxr-xr-x 1 root root   30944 Jul 21 14:54 systemd-tty-ask-password-agent
+-rwxr-xr-x 1 root root  445560 Apr 23  2019 tar
+-rwxr-xr-x 1 root root  424640 May  5  2018 tcsh
+-rwxr-xr-x 1 root root   14440 Jan 21  2019 tempfile
+-rwxr-xr-x 1 root root   97152 Feb 28  2019 touch
+-rwxr-xr-x 1 root root   35424 Feb 28  2019 true
+-rwxr-xr-x 1 root root 1066088 Jul 21 14:54 udevadm
+-rwxr-xr-x 1 root root   14328 Apr 22  2020 ulockmgr_server
+-rwsr-xr-x 1 root root   34888 Jan 10  2019 umount
+-rwxr-xr-x 1 root root   39584 Feb 28  2019 uname
+-rwxr-xr-x 2 root root    2345 Jan  5  2019 uncompress
+-rwxr-xr-x 1 root root    2762 Jul 28  2018 unicode_start
+-rwxr-xr-x 1 root root  138856 Feb 28  2019 vdir
+-rwxr-xr-x 1 root root   34896 Jan 10  2019 wdctl
+-rwxr-xr-x 1 root root     946 Jan 21  2019 which
+lrwxrwxrwx 1 root root       8 Sep 27  2018 ypdomainname -> hostname
+-rwxr-xr-x 1 root root    1983 Jan  5  2019 zcat
+-rwxr-xr-x 1 root root    1677 Jan  5  2019 zcmp
+-rwxr-xr-x 1 root root    5879 Jan  5  2019 zdiff
+-rwxr-xr-x 1 root root      29 Jan  5  2019 zegrep
+-rwxr-xr-x 1 root root      29 Jan  5  2019 zfgrep
+-rwxr-xr-x 1 root root    2080 Jan  5  2019 zforce
+-rwxr-xr-x 1 root root    7584 Jan  5  2019 zgrep
+-rwxr-xr-x 1 root root    2205 Jan  5  2019 zless
+-rwxr-xr-x 1 root root    1841 Jan  5  2019 zmore
+-rwxr-xr-x 1 root root    4552 Jan  5  2019 znew
+-rwxr-xr-x 1 root root  861568 Feb  4  2019 zsh
+-rwxr-xr-x 1 root root     843 Feb  4  2019 zsh5
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/???? | wc =[K-l
+23
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /bin/c* > bin-c.log
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls bin-c.log | wc -l
+1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls cat <bin-c.log | wc -l
+ls: cannot access 'cat': No such file or directory
+0
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls | cat < [Kbin-c.log | wc -l
+9
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls /etc/ [K [K | wc -l
+405
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls -R /etc | wc -l
+ls: cannot open directory '/etc/node-exporter/save': Permission denied
+ls: cannot open directory '/etc/node-exporter/secrets': Permission denied
+ls: cannot open directory '/etc/polkit-1/localauthority': Permission denied
+ls: cannot open directory '/etc/ssl/private': Permission denied
+ls: cannot open directory '/etc/systemd/system/apparmor.service.d': Permission denied
+ls: cannot open directory '/etc/systemd/system/x2goserver.service.d': Permission denied
+ls: cannot open directory '/etc/x2go/x2gosql/passwords': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/desktop': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-10': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-11': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-12': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-15': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-17': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-18': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-19': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-21': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-22': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-23': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-5': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/panel/launcher-9': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/terminal': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/xfconf/xfce-perchannel-xml': Permission denied
+ls: cannot open directory '/etc/xdg/new-xfce4/xfwm4': Permission denied
+5865
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ man tr
+[?1049h[22;0;0t[?1h=TR(1)                            User Commands                           TR(1)[m
+[m
+[1mNAME[0m[m
+       tr - translate or delete characters[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mtr[0m [[4mOPTION[24m]... [4mSET1[24m [[4mSET2[24m][m
+[m
+[1mDESCRIPTION[0m[m
+       Translate, squeeze, and/or delete characters from standard input, writ‐[m
+       ing to standard output.[m
+[m
+       [1m-c[0m, [1m-C[0m, [1m--complement[0m[m
+              use the complement of SET1[m
+[m
+       [1m-d[0m, [1m--delete[0m[m
+              delete characters in SET1, do not translate[m
+[m
+       [1m-s[0m, [1m--squeeze-repeats[0m[m
+              replace each sequence of a repeated character that is listed  in[m
+              the last specified SET, with a single occurrence of that charac‐[m
+              ter[m
+[m
+[7m Manual page tr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m, [1m--truncate-set1[0m[m
+[7m Manual page tr(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              first truncate SET1 to length of SET2[m
+[7m Manual page tr(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--help[0m display this help and exit[m
+[7m Manual page tr(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--version[0m[m
+[7m Manual page tr(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output version information and exit[m
+[7m Manual page tr(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       SETs are specified as strings  of  characters.   Most  represent  them‐[m
+[7m Manual page tr(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       selves.  Interpreted sequences are:[m
+[7m Manual page tr(1) line 11 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 12 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \NNN   character with octal value NNN (1 to 3 octal digits)[m
+[7m Manual page tr(1) line 13 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 14 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \\     backslash[m
+[7m Manual page tr(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \a     audible BEL[m
+[7m Manual page tr(1) line 17 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 18 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \b     backspace[m
+[7m Manual page tr(1) line 19 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 20 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \f     form feed[m
+[7m Manual page tr(1) line 21 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 22 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \n     new line[m
+[7m Manual page tr(1) line 23 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 24 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \r     return[m
+[7m Manual page tr(1) line 25 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 26 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \t     horizontal tab[m
+[7m Manual page tr(1) line 27 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 28 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \v     vertical tab[m
+[7m Manual page tr(1) line 29 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CHAR1-CHAR2[m
+[7m Manual page tr(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all characters from CHAR1 to CHAR2 in ascending order[m
+[7m Manual page tr(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*][m
+[7m Manual page tr(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              in SET2, copies of CHAR until length of SET1[m
+[7m Manual page tr(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*REPEAT][m
+[7m Manual page tr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              REPEAT copies of CHAR, REPEAT octal if starting with 0[m
+[7m Manual page tr(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:alnum:][m
+[7m Manual page tr(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all letters and digits[m
+[7m Manual page tr(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 42 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:alpha:][m
+[7m Manual page tr(1) line 43 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all letters[m
+[7m Manual page tr(1) line 44 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 45 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:blank:][m
+[7m Manual page tr(1) line 46 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all horizontal whitespace[m
+[7m Manual page tr(1) line 47 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 48 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:cntrl:][m
+[7m Manual page tr(1) line 49 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all control characters[m
+[7m Manual page tr(1) line 50 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 51 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:digit:][m
+[7m Manual page tr(1) line 52 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all digits[m
+[7m Manual page tr(1) line 53 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 54 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:graph:][m
+[7m Manual page tr(1) line 55 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all printable characters, not including space[m
+[7m Manual page tr(1) line 56 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 57 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:lower:][m
+[7m Manual page tr(1) line 58 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all lower case letters[m
+[7m Manual page tr(1) line 59 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 60 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:print:][m
+[7m Manual page tr(1) line 61 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all printable characters, including space[m
+[7m Manual page tr(1) line 62 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 63 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:punct:][m
+[7m Manual page tr(1) line 64 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all punctuation characters[m
+[7m Manual page tr(1) line 65 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 66 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:space:][m
+[7m Manual page tr(1) line 67 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all horizontal or vertical whitespace[m
+[7m Manual page tr(1) line 68 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 69 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:upper:][m
+[7m Manual page tr(1) line 70 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all upper case letters[m
+[7m Manual page tr(1) line 71 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 72 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:xdigit:][m
+[7m Manual page tr(1) line 73 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all hexadecimal digits[m
+[7m Manual page tr(1) line 74 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 75 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [=CHAR=][m
+[7m Manual page tr(1) line 76 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all characters which are equivalent to CHAR[m
+[7m Manual page tr(1) line 77 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 78 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Translation  occurs  if  [1m-d[0m is not given and both SET1 and SET2 appear.[m
+[7m Manual page tr(1) line 79 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m may be used only when translating.  SET2 is extended  to  length  of[m
+[7m Manual page tr(1) line 80 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       SET1  by  repeating its last character as necessary.  Excess characters[m
+[7m Manual page tr(1) line 81 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       of SET2 are ignored.  Only [:lower:] and [:upper:]  are  guaranteed  to[m
+[7m Manual page tr(1) line 82 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       expand  in  ascending  order;  used in SET2 while translating, they may[m
+[7m Manual page tr(1) line 83 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       only be used in pairs to specify case conversion.   [1m-s[0m  uses  the  last[m
+[7m Manual page tr(1) line 84 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       specified SET, and occurs after translation or deletion.[m
+[7m Manual page tr(1) line 85 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all printable characters, including space[m
+[24;1H[K[7m Manual page tr(1) line 84 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:print:][m
+[24;1H[K[7m Manual page tr(1) line 83 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 82 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all lower case letters[m
+[24;1H[K[7m Manual page tr(1) line 81 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:lower:][m
+[24;1H[K[7m Manual page tr(1) line 80 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 79 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all printable characters, not including space[m
+[24;1H[K[7m Manual page tr(1) line 78 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0thlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ tr ;[K:upper:[1@l[1@s[1@ [1@|[1@ 
+tr: missing operand after ‘:upper:’
+Two strings must be given when translating.
+Try 'tr --help' for more information.
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ tr[K[Kman tr
+[?1049h[22;0;0t[?1h=TR(1)                            User Commands                           TR(1)[m
+[m
+[1mNAME[0m[m
+       tr - translate or delete characters[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mtr[0m [[4mOPTION[24m]... [4mSET1[24m [[4mSET2[24m][m
+[m
+[1mDESCRIPTION[0m[m
+       Translate, squeeze, and/or delete characters from standard input, writ‐[m
+       ing to standard output.[m
+[m
+       [1m-c[0m, [1m-C[0m, [1m--complement[0m[m
+              use the complement of SET1[m
+[m
+       [1m-d[0m, [1m--delete[0m[m
+              delete characters in SET1, do not translate[m
+[m
+       [1m-s[0m, [1m--squeeze-repeats[0m[m
+              replace each sequence of a repeated character that is listed  in[m
+              the last specified SET, with a single occurrence of that charac‐[m
+              ter[m
+[m
+[7m Manual page tr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m, [1m--truncate-set1[0m[m
+[7m Manual page tr(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMTR(1)                            User Commands                           TR(1)[m
+[24;1H[K[7m Manual page tr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m, [1m--truncate-set1[0m[m
+[7m Manual page tr(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              first truncate SET1 to length of SET2[m
+[7m Manual page tr(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--help[0m display this help and exit[m
+[7m Manual page tr(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--version[0m[m
+[7m Manual page tr(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output version information and exit[m
+[7m Manual page tr(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       SETs are specified as strings  of  characters.   Most  represent  them‐[m
+[7m Manual page tr(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       selves.  Interpreted sequences are:[m
+[7m Manual page tr(1) line 11 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 12 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \NNN   character with octal value NNN (1 to 3 octal digits)[m
+[7m Manual page tr(1) line 13 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 14 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \\     backslash[m
+[7m Manual page tr(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \a     audible BEL[m
+[7m Manual page tr(1) line 17 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 18 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \b     backspace[m
+[7m Manual page tr(1) line 19 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 20 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \f     form feed[m
+[7m Manual page tr(1) line 21 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 22 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \n     new line[m
+[7m Manual page tr(1) line 23 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 24 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \r     return[m
+[7m Manual page tr(1) line 25 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 26 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \t     horizontal tab[m
+[7m Manual page tr(1) line 27 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 28 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       \v     vertical tab[m
+[7m Manual page tr(1) line 29 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CHAR1-CHAR2[m
+[7m Manual page tr(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all characters from CHAR1 to CHAR2 in ascending order[m
+[7m Manual page tr(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*][m
+[7m Manual page tr(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              in SET2, copies of CHAR until length of SET1[m
+[7m Manual page tr(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*REPEAT][m
+[7m Manual page tr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              REPEAT copies of CHAR, REPEAT octal if starting with 0[m
+[7m Manual page tr(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:alnum:][m
+[7m Manual page tr(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all letters and digits[m
+[7m Manual page tr(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \a     audible BEL[m
+[24;1H[K[7m Manual page tr(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \\     backslash[m
+[24;1H[K[7m Manual page tr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*REPEAT][m
+[7m Manual page tr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \NNN   character with octal value NNN (1 to 3 octal digits)[m
+[24;1H[K[7m Manual page tr(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       selves.  Interpreted sequences are:[m
+[24;1H[K[7m Manual page tr(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       SETs are specified as strings  of  characters.   Most  represent  them‐[m
+[24;1H[K[7m Manual page tr(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              output version information and exit[m
+[24;1H[K[7m Manual page tr(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CHAR1-CHAR2[m
+[7m Manual page tr(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all characters from CHAR1 to CHAR2 in ascending order[m
+[7m Manual page tr(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*][m
+[7m Manual page tr(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              in SET2, copies of CHAR until length of SET1[m
+[7m Manual page tr(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [CHAR*REPEAT][m
+[7m Manual page tr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              REPEAT copies of CHAR, REPEAT octal if starting with 0[m
+[7m Manual page tr(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:alnum:][m
+[7m Manual page tr(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all letters and digits[m
+[7m Manual page tr(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 42 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:alpha:][m
+[7m Manual page tr(1) line 43 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all letters[m
+[7m Manual page tr(1) line 44 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 45 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:blank:][m
+[7m Manual page tr(1) line 46 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all horizontal whitespace[m
+[7m Manual page tr(1) line 47 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 48 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:cntrl:][m
+[7m Manual page tr(1) line 49 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all control characters[m
+[7m Manual page tr(1) line 50 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 51 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:digit:][m
+[7m Manual page tr(1) line 52 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all digits[m
+[7m Manual page tr(1) line 53 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 54 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:graph:][m
+[7m Manual page tr(1) line 55 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all printable characters, not including space[m
+[7m Manual page tr(1) line 56 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 57 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:lower:][m
+[7m Manual page tr(1) line 58 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all lower case letters[m
+[7m Manual page tr(1) line 59 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 60 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:print:][m
+[7m Manual page tr(1) line 61 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all printable characters, including space[m
+[7m Manual page tr(1) line 62 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 63 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:punct:][m
+[7m Manual page tr(1) line 64 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all punctuation characters[m
+[7m Manual page tr(1) line 65 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 66 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:space:][m
+[7m Manual page tr(1) line 67 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all horizontal or vertical whitespace[m
+[7m Manual page tr(1) line 68 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 69 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:upper:][m
+[7m Manual page tr(1) line 70 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all upper case letters[m
+[7m Manual page tr(1) line 71 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 72 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [:xdigit:][m
+[7m Manual page tr(1) line 73 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all hexadecimal digits[m
+[7m Manual page tr(1) line 74 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 75 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [=CHAR=][m
+[7m Manual page tr(1) line 76 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              all characters which are equivalent to CHAR[m
+[7m Manual page tr(1) line 77 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 78 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Translation  occurs  if  [1m-d[0m is not given and both SET1 and SET2 appear.[m
+[7m Manual page tr(1) line 79 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m may be used only when translating.  SET2 is extended  to  length  of[m
+[7m Manual page tr(1) line 80 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       SET1  by  repeating its last character as necessary.  Excess characters[m
+[7m Manual page tr(1) line 81 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       of SET2 are ignored.  Only [:lower:] and [:upper:]  are  guaranteed  to[m
+[7m Manual page tr(1) line 82 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       expand  in  ascending  order;  used in SET2 while translating, they may[m
+[7m Manual page tr(1) line 83 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       only be used in pairs to specify case conversion.   [1m-s[0m  uses  the  last[m
+[7m Manual page tr(1) line 84 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       specified SET, and occurs after translation or deletion.[m
+[7m Manual page tr(1) line 85 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 86 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mAUTHOR[0m[m
+[7m Manual page tr(1) line 87 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Written by Jim Meyering.[m
+[7m Manual page tr(1) line 88 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 89 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mREPORTING[0m [1mBUGS[0m[m
+[7m Manual page tr(1) line 90 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>[m
+[7m Manual page tr(1) line 91 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Report tr translation bugs to <https://translationproject.org/team/>[m
+[7m Manual page tr(1) line 92 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 93 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mCOPYRIGHT[0m[m
+[7m Manual page tr(1) line 94 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Copyright  ©  2018  Free Software Foundation, Inc.  License GPLv3+: GNU[m
+[7m Manual page tr(1) line 95 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       GPL version 3 or later <https://gnu.org/licenses/gpl.html>.[m
+[7m Manual page tr(1) line 96 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       This is free software: you are free  to  change  and  redistribute  it.[m
+[7m Manual page tr(1) line 97 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       There is NO WARRANTY, to the extent permitted by law.[m
+[7m Manual page tr(1) line 98 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 99 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+[7m Manual page tr(1) line 100 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Full documentation at: <https://www.gnu.org/software/coreutils/tr>[m
+[7m Manual page tr(1) line 101 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       or available locally via: info '(coreutils) tr invocation'[m
+[7m Manual page tr(1) line 102 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 103 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[KGNU coreutils 8.30               February 2019                           TR(1)[m
+[7m Manual page tr(1) line 104 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page tr(1) line 104/126 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       SET1  by  repeating its last character as necessary.  Excess characters[m
+[24;1H[K[7m Manual page tr(1) line 103/126 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-t[0m may be used only when translating.  SET2 is extended  to  length  of[m
+[24;1H[K[7m Manual page tr(1) line 102/126 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       Translation  occurs  if  [1m-d[0m is not given and both SET1 and SET2 appear.[m
+[24;1H[K[7m Manual page tr(1) line 101/126 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 100/126 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all characters which are equivalent to CHAR[m
+[24;1H[K[7m Manual page tr(1) line 99/126 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [=CHAR=][m
+[24;1H[K[7m Manual page tr(1) line 98/126 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 97/126 92% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all hexadecimal digits[m
+[24;1H[K[7m Manual page tr(1) line 96/126 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:xdigit:][m
+[24;1H[K[7m Manual page tr(1) line 95/126 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 94/126 86% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all upper case letters[m
+[24;1H[K[7m Manual page tr(1) line 93/126 86% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:upper:][m
+[24;1H[K[7m Manual page tr(1) line 92/126 86% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 91/126 84% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all horizontal or vertical whitespace[m
+[24;1H[K[7m Manual page tr(1) line 90/126 82% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:space:][m
+[24;1H[K[7m Manual page tr(1) line 89/126 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 88/126 80% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all punctuation characters[m
+[24;1H[K[7m Manual page tr(1) line 87/126 80% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:punct:][m
+[24;1H[K[7m Manual page tr(1) line 86/126 79% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 85/126 79% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all printable characters, including space[m
+[24;1H[K[7m Manual page tr(1) line 84/126 77% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:print:][m
+[24;1H[K[7m Manual page tr(1) line 83/126 75% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 82/126 73% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all lower case letters[m
+[24;1H[K[7m Manual page tr(1) line 81/126 71% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:lower:][m
+[24;1H[K[7m Manual page tr(1) line 80/126 69% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 79/126 67% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all printable characters, not including space[m
+[24;1H[K[7m Manual page tr(1) line 78/126 65% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:graph:][m
+[24;1H[K[7m Manual page tr(1) line 77/126 65% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 76/126 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all digits[m
+[24;1H[K[7m Manual page tr(1) line 75/126 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:digit:][m
+[24;1H[K[7m Manual page tr(1) line 74/126 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 73/126 62% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all control characters[m
+[24;1H[K[7m Manual page tr(1) line 72/126 62% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:cntrl:][m
+[24;1H[K[7m Manual page tr(1) line 71/126 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 70/126 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all horizontal whitespace[m
+[24;1H[K[7m Manual page tr(1) line 69/126 60% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:blank:][m
+[24;1H[K[7m Manual page tr(1) line 68/126 60% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 67/126 59% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all letters[m
+[24;1H[K[7m Manual page tr(1) line 66/126 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:alpha:][m
+[24;1H[K[7m Manual page tr(1) line 65/126 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 64/126 57% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all letters and digits[m
+[24;1H[K[7m Manual page tr(1) line 63/126 57% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [:alnum:][m
+[24;1H[K[7m Manual page tr(1) line 62/126 57% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 61/126 55% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              REPEAT copies of CHAR, REPEAT octal if starting with 0[m
+[24;1H[K[7m Manual page tr(1) line 60/126 55% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [CHAR*REPEAT][m
+[24;1H[K[7m Manual page tr(1) line 59/126 55% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 58/126 54% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              in SET2, copies of CHAR until length of SET1[m
+[24;1H[K[7m Manual page tr(1) line 57/126 53% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [CHAR*][m
+[24;1H[K[7m Manual page tr(1) line 56/126 53% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 55/126 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              all characters from CHAR1 to CHAR2 in ascending order[m
+[24;1H[K[7m Manual page tr(1) line 54/126 51% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       CHAR1-CHAR2[m
+[24;1H[K[7m Manual page tr(1) line 53/126 51% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 52/126 51% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \v     vertical tab[m
+[24;1H[K[7m Manual page tr(1) line 51/126 50% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 50/126 50% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \t     horizontal tab[m
+[24;1H[K[7m Manual page tr(1) line 49/126 49% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 48/126 49% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \r     return[m
+[24;1H[K[7m Manual page tr(1) line 47/126 49% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 46/126 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \n     new line[m
+[24;1H[K[7m Manual page tr(1) line 45/126 47% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 44/126 47% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \f     form feed[m
+[24;1H[K[7m Manual page tr(1) line 43/126 47% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 42/126 46% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \b     backspace[m
+[24;1H[K[7m Manual page tr(1) line 41/126 46% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 40/126 45% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \a     audible BEL[m
+[24;1H[K[7m Manual page tr(1) line 39/126 45% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 38/126 45% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \\     backslash[m
+[24;1H[K[7m Manual page tr(1) line 37/126 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 36/126 42% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       \NNN   character with octal value NNN (1 to 3 octal digits)[m
+[24;1H[K[7m Manual page tr(1) line 35/126 42% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 34/126 41% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       selves.  Interpreted sequences are:[m
+[24;1H[K[7m Manual page tr(1) line 33/126 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       SETs are specified as strings  of  characters.   Most  represent  them‐[m
+[24;1H[K[7m Manual page tr(1) line 32/126 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 31/126 39% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              output version information and exit[m
+[24;1H[K[7m Manual page tr(1) line 30/126 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m--version[0m[m
+[24;1H[K[7m Manual page tr(1) line 29/126 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 30/126 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CHAR1-CHAR2[m
+[7m Manual page tr(1) line 31/126 39% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              output version information and exit[m
+[24;1H[K[7m Manual page tr(1) line 30/126 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m--version[0m[m
+[24;1H[K[7m Manual page tr(1) line 29/126 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 28/126 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m--help[0m display this help and exit[m
+[24;1H[K[7m Manual page tr(1) line 27/126 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 26/126 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              first truncate SET1 to length of SET2[m
+[24;1H[K[7m Manual page tr(1) line 25/126 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-t[0m, [1m--truncate-set1[0m[m
+[24;1H[K[7m Manual page tr(1) line 24/126 36% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 23/126 36% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              ter[m
+[24;1H[K[7m Manual page tr(1) line 22/126 36% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              the last specified SET, with a single occurrence of that charac‐[m
+[24;1H[K[7m Manual page tr(1) line 21/126 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              replace each sequence of a repeated character that is listed  in[m
+[24;1H[K[7m Manual page tr(1) line 20/126 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-s[0m, [1m--squeeze-repeats[0m[m
+[24;1H[K[7m Manual page tr(1) line 19/126 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 18/126 34% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              delete characters in SET1, do not translate[m
+[24;1H[K[7m Manual page tr(1) line 17/126 34% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-d[0m, [1m--delete[0m[m
+[24;1H[K[7m Manual page tr(1) line 16/126 34% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 15/126 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              use the complement of SET1[m
+[24;1H[K[7m Manual page tr(1) line 14/126 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-c[0m, [1m-C[0m, [1m--complement[0m[m
+[24;1H[K[7m Manual page tr(1) line 13/126 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 12/126 31% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       ing to standard output.[m
+[24;1H[K[7m Manual page tr(1) line 11/126 31% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       Translate, squeeze, and/or delete characters from standard input, writ‐[m
+[24;1H[K[7m Manual page tr(1) line 10/126 30% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mDESCRIPTION[0m[m
+[24;1H[K[7m Manual page tr(1) line 9/126 28% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 8/126 28% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mtr[0m [[4mOPTION[24m]... [4mSET1[24m [[4mSET2[24m][m
+[24;1H[K[7m Manual page tr(1) line 7/126 27% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[24;1H[K[7m Manual page tr(1) line 6/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 5/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       tr - translate or delete characters[m
+[24;1H[K[7m Manual page tr(1) line 4/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[24;1H[K[7m Manual page tr(1) line 3/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 2/126 23% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMTR(1)                            User Commands                           TR(1)[m
+[24;1H[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m, [1m--truncate-set1[0m[m
+[7m Manual page tr(1) line 2/126 23% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              first truncate SET1 to length of SET2[m
+[7m Manual page tr(1) line 3/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 4/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--help[0m display this help and exit[m
+[7m Manual page tr(1) line 5/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       tr - translate or delete characters[m
+[24;1H[K[7m Manual page tr(1) line 4/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[24;1H[K[7m Manual page tr(1) line 3/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 2/126 23% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMTR(1)                            User Commands                           TR(1)[m
+[24;1H[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page tr(1) line 1/126 21% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[0m, [1m--truncate-set1[0m[m
+[7m Manual page tr(1) line 2/126 23% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              first truncate SET1 to length of SET2[m
+[7m Manual page tr(1) line 3/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 4/126 24% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--help[0m display this help and exit[m
+[7m Manual page tr(1) line 5/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 6/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--version[0m[m
+[7m Manual page tr(1) line 7/126 27% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output version information and exit[m
+[7m Manual page tr(1) line 8/126 28% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 9/126 28% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       SETs are specified as strings  of  characters.   Most  represent  them‐[m
+[7m Manual page tr(1) line 10/126 30% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       selves.  Interpreted sequences are:[m
+[7m Manual page tr(1) line 11/126 31% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 12/126 31% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       ing to standard output.[m
+[24;1H[K[7m Manual page tr(1) line 11/126 31% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       Translate, squeeze, and/or delete characters from standard input, writ‐[m
+[24;1H[K[7m Manual page tr(1) line 10/126 30% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mDESCRIPTION[0m[m
+[24;1H[K[7m Manual page tr(1) line 9/126 28% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 8/126 28% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mtr[0m [[4mOPTION[24m]... [4mSET1[24m [[4mSET2[24m][m
+[24;1H[K[7m Manual page tr(1) line 7/126 27% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[24;1H[K[7m Manual page tr(1) line 6/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[24;1H[K[7m Manual page tr(1) line 5/126 26% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page tr(1) line 6/126 26% (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0thlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls / [K
+backup	    import		    microchip		 sbin
+bin	    initrd.img		    mnt			 srv
+boot	    initrd.img.old	    nslcd.conf.linux	 sys
+dev	    lib			    opt			 tmp
+etc	    lib32		    opt.local		 usr
+events.bin  lib64		    opt.old		 var
+home	    libnss-ldap.conf.linux  pam_ldap.conf.linux  vmlinuz
+home1	    libx32		    proc		 vmlinuz.old
+home.local  lost+found		    root
+home.save   media		    run
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls
+4  bin-c.log  cat.log  c-stdin-stdout  dir  ls.log  t1.c  T1.s	v1.s  v.c  x.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls | tr ""[C"[C"[K[C[K[K[K":upper[K[K[K[K[K[K[][K::[Kuopp[K[K[Kpper:]"
+tr: missing operand after ‘[:upper:]’
+Two strings must be given when translating.
+Try 'tr --help' for more information.
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ ls | tr "[][Ka-z]" "[A-Z]"
+4
+BIN-C.LOG
+CAT.LOG
+C-STDIN-STDOUT
+DIR
+LS.LOG
+T1.C
+T1.S
+V1.S
+V.C
+X.C
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ CD C[K[K[K[Kcd 
+4/              c-stdin-stdout/ ls.log          v1.s
+bin-c.log       dir/            t1.c            v.c
+cat.log         .gitignore      T1.s            x.c
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises$ cd c-c[K[K[K[K[K[Kcd c-stdin-stdout/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ emacs sum-ints.c 
+make    m 
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ 
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints
+usage: ./sum-ints IN_FILE|- [OUT_FILE]
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ cat test1.in
+3 5
+3 -3
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints.[K test1.in
+8
+0
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints test1.in
+8
+0
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints test1.in test1.in [K[K[Kout
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ cat test1.out
+8
+0
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - [K
+5 7 4
+11
+8 2
+10
+-3 5
+2
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - test2.out
+3 6
+9 7
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ cat test.out
+cat: test.out: No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ x[Kcats[K test2.out 
+9
+16
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - cat >log[K[K[Ktest.in
+5
+55  5
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - >test.in
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - >test.in[C[C[C[K[K[K[Kt1.in
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - >test1.in[C[C>test1.in
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - >>test1.in|>>test1.in[C[1Ptest1.in >test1.in
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - | >test1.in[1P>test1.in[C^?test1.in^?test1.in[2Ptest1.in[2Ptest1.in[1Ptest1.in test1.in
+bash: test1.in: command not found
+^[[A^[[A^[[B^[[B^[[B                    hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - | test1.in[1P[C[1P[C[1P[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K./sum-ints - | >test1.in[1Ptest1.in<test1.in[C[1P <test1.in[1P<test1.in
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - <test1.in
+8
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ emacs sum-ints
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ emacs sum-ints.c 
+^[[A^[[B^[[B^[[A                hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ emacs sum-ints.c [K./sum-ints - <test1.in[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K./sum-ints - | >test1.in[1P>>test1.in| >test1.in[K[K[K[K[K[K[K[K[K[K[K-
+5 10
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make clean
+make: *** No rule to make target 'clean'.  Stop.
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./make clean./sum-ints - -emacs sum-ints.c [3P./sum-ints - -
+5 10
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - -
+10 5
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - -[C[C[K[K[K[K - -make[K clean./sum-ints - -emacs sum-ints.c [K./sum-ints - <test1.in[1Ptest1.in[1Ptest1.in[1Ptest1.in[C[C[C[C[C[C[C[C -
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make [K
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:41:13:[m[K [01;31m[Kerror: [m[Kvoid value not ignored as it ought to be
+   int ret = [01;31m[KsumInts[m[K(in, out);
+             [01;31m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:43:14:[m[K [01;35m[Kwarning: [m[Kcomparison with string literal results in unspecified behavior [[01;35m[K-Waddress[m[K]
+   if(argv[2] [01;35m[K==[m[K "-") {
+              [01;35m[K^~[m[K
+[01m[Ksum-ints.c:44:20:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of ‘[01m[Kfprintf[m[K’ makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+    fprintf(stdout, [01;35m[Kret[m[K);
+                    [01;35m[K^~~[m[K
+In file included from [01m[Ksum-ints.c:2[m[K:
+[01m[K/usr/include/stdio.h:327:30:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[Kconst char * restrict[m[K’ but argument is of type ‘[01m[Kint[m[K’
+       [01;36m[Kconst char *__restrict __format[m[K, ...);
+       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Ksum-ints.c:42:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KoutName[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   const char *[01;35m[KoutName[m[K = argv[2];
+               [01;35m[K^~~~~~~[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:20:10:[m[K [01;31m[Kerror: [m[K‘[01m[Ki1[m[K’ undeclared (first use in this function); did you mean ‘[01m[Kin[m[K’?
+   return [01;31m[Ki1[m[K + i2;
+          [01;31m[K^~[m[K
+          [32m[Kin[m[K
+[01m[Ksum-ints.c:20:10:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksum-ints.c:20:15:[m[K [01;31m[Kerror: [m[K‘[01m[Ki2[m[K’ undeclared (first use in this function); did you mean ‘[01m[Kin[m[K’?
+   return i1 + [01;31m[Ki2[m[K;
+               [01;31m[K^~[m[K
+               [32m[Kin[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:42:11:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K=[m[K’, ‘[01m[K,[m[K’, ‘[01m[K;[m[K’, ‘[01m[Kasm[m[K’ or ‘[01m[K__attribute__[m[K’ before ‘[01m[KsumInts[m[K’
+   int ret [01;31m[KsumInts[m[K(in, out);
+           [01;31m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:44:17:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+   if(strcmp(argc[01;31m[K[[m[K2] == 0)) {
+                 [01;31m[K^[m[K
+[01m[Ksum-ints.c:44:6:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kstrcmp[m[K’
+   if([01;31m[Kstrcmp[m[K(argc[2] == 0)) {
+      [01;31m[K^~~~~~[m[K
+In file included from [01m[Ksum-ints.c:4[m[K:
+[01m[K/usr/include/string.h:136:12:[m[K [01;36m[Knote: [m[Kdeclared here
+ extern int [01;36m[Kstrcmp[m[K (const char *__s1, const char *__s2)
+            [01;36m[K^~~~~~[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kret[m[K’ undeclared (first use in this function)
+    fprintf(stderr, [01;31m[Kret[m[K);
+                    [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:43:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KoutName[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   const char *[01;35m[KoutName[m[K = argv[2];
+               [01;35m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:21:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:20:10:[m[K [01;31m[Kerror: [m[K‘[01m[Ki1[m[K’ undeclared (first use in this function); did you mean ‘[01m[Kin[m[K’?
+   return [01;31m[Ki1[m[K + i2;
+          [01;31m[K^~[m[K
+          [32m[Kin[m[K
+[01m[Ksum-ints.c:20:10:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksum-ints.c:20:15:[m[K [01;31m[Kerror: [m[K‘[01m[Ki2[m[K’ undeclared (first use in this function); did you mean ‘[01m[Kin[m[K’?
+   return i1 + [01;31m[Ki2[m[K;
+               [01;31m[K^~[m[K
+               [32m[Kin[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:42:11:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K=[m[K’, ‘[01m[K,[m[K’, ‘[01m[K;[m[K’, ‘[01m[Kasm[m[K’ or ‘[01m[K__attribute__[m[K’ before ‘[01m[KsumInts[m[K’
+   int ret [01;31m[KsumInts[m[K(in, out);
+           [01;31m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:44:17:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+   if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                 [01;31m[K^[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kret[m[K’ undeclared (first use in this function)
+    fprintf(stderr, [01;31m[Kret[m[K);
+                    [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:43:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KoutName[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   const char *[01;35m[KoutName[m[K = argv[2];
+               [01;35m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:21:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:20:13:[m[K [01;31m[Kerror: [m[Kinvalid operands to binary + (have ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} and ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’})
+   return in [01;31m[K+[m[K out;
+             [01;31m[K^[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:42:11:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K=[m[K’, ‘[01m[K,[m[K’, ‘[01m[K;[m[K’, ‘[01m[Kasm[m[K’ or ‘[01m[K__attribute__[m[K’ before ‘[01m[KsumInts[m[K’
+   int ret [01;31m[KsumInts[m[K(in, out);
+           [01;31m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:44:17:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+   if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                 [01;31m[K^[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kret[m[K’ undeclared (first use in this function)
+    fprintf(stderr, [01;31m[Kret[m[K);
+                    [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksum-ints.c:43:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KoutName[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   const char *[01;35m[KoutName[m[K = argv[2];
+               [01;35m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:21:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:20:13:[m[K [01;31m[Kerror: [m[Kinvalid operands to binary + (have ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} and ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’})
+   return in [01;31m[K+[m[K out;
+             [01;31m[K^[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:42:11:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K=[m[K’, ‘[01m[K,[m[K’, ‘[01m[K;[m[K’, ‘[01m[Kasm[m[K’ or ‘[01m[K__attribute__[m[K’ before ‘[01m[KsumInts[m[K’
+   int ret [01;31m[KsumInts[m[K(in, out);
+           [01;31m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:44:17:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+   if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                 [01;31m[K^[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kret[m[K’ undeclared (first use in this function)
+    fprintf(stderr, [01;31m[Kret[m[K);
+                    [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksum-ints.c:43:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KoutName[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   const char *[01;35m[KoutName[m[K = argv[2];
+               [01;35m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:21:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:20:10:[m[K [01;31m[Kerror: [m[K‘[01m[Ki1[m[K’ undeclared (first use in this function); did you mean ‘[01m[Kin[m[K’?
+   return [01;31m[Ki1[m[K + i2;
+          [01;31m[K^~[m[K
+          [32m[Kin[m[K
+[01m[Ksum-ints.c:20:10:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksum-ints.c:20:15:[m[K [01;31m[Kerror: [m[K‘[01m[Ki2[m[K’ undeclared (first use in this function); did you mean ‘[01m[Kin[m[K’?
+   return i1 + [01;31m[Ki2[m[K;
+               [01;31m[K^~[m[K
+               [32m[Kin[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:42:11:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K=[m[K’, ‘[01m[K,[m[K’, ‘[01m[K;[m[K’, ‘[01m[Kasm[m[K’ or ‘[01m[K__attribute__[m[K’ before ‘[01m[KsumInts[m[K’
+   int ret [01;31m[KsumInts[m[K(in, out);
+           [01;31m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:44:17:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+   if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                 [01;31m[K^[m[K
+[01m[Ksum-ints.c:45:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kret[m[K’ undeclared (first use in this function)
+    fprintf(stderr, [01;31m[Kret[m[K);
+                    [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:43:15:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KoutName[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   const char *[01;35m[KoutName[m[K = argv[2];
+               [01;35m[K^~~~~~~[m[K
+[01m[Ksum-ints.c:[m[K In function ‘[01m[KsumInts[m[K’:
+[01m[Ksum-ints.c:21:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ls [K
+-  Makefile  sum-ints  sum-ints.c  test1.in  test1.out	test2.out
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ rm -
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ls
+Makefile  sum-ints  sum-ints.c	test1.in  test1.out  test2.out
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:35:3:[m[K [01;31m[Kerror: [m[Kunknown type name ‘[01m[KFile[m[K’
+   [01;31m[KFile[m[K *out = stdout;
+   [01;31m[K^~~~[m[K
+[01m[Ksum-ints.c:35:15:[m[K [01;35m[Kwarning: [m[Kinitialization of ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   File *out = [01;35m[Kstdout[m[K;
+               [01;35m[K^~~~~~[m[K
+[01m[Ksum-ints.c:37:8:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+    out [01;35m[K=[m[K stdout;
+        [01;35m[K^[m[K
+[01m[Ksum-ints.c:39:18:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+    if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                  [01;31m[K^[m[K
+[01m[Ksum-ints.c:40:10:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[Kint (*)(const char *, const char *)[m[K’ [[01;35m[K-Wincompatible-pointer-types[m[K]
+      out [01;35m[K=[m[K strcmp;
+          [01;35m[K^[m[K
+[01m[Ksum-ints.c:42:7:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   out [01;35m[K=[m[K fopen(inName, "r");
+       [01;35m[K^[m[K
+[01m[Ksum-ints.c:46:9:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kout[m[K’
+   FILE *[01;31m[Kout[m[K = argc < 3 ? stdout : fopen(argv[2], "w");
+         [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:35:9:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kout[m[K’ was here
+   File *[01;36m[Kout[m[K = stdout;
+         [01;36m[K^~~[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:35:3:[m[K [01;31m[Kerror: [m[Kunknown type name ‘[01m[KFile[m[K’
+   [01;31m[KFile[m[K *out = stdout;
+   [01;31m[K^~~~[m[K
+[01m[Ksum-ints.c:35:15:[m[K [01;35m[Kwarning: [m[Kinitialization of ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   File *out = [01;35m[Kstdout[m[K;
+               [01;35m[K^~~~~~[m[K
+[01m[Ksum-ints.c:37:8:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+    out [01;35m[K=[m[K stdout;
+        [01;35m[K^[m[K
+[01m[Ksum-ints.c:39:18:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+    if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                  [01;31m[K^[m[K
+[01m[Ksum-ints.c:40:10:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[Kint (*)(const char *, const char *)[m[K’ [[01;35m[K-Wincompatible-pointer-types[m[K]
+      out [01;35m[K=[m[K strcmp;
+          [01;35m[K^[m[K
+[01m[Ksum-ints.c:42:7:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   out [01;35m[K=[m[K fopen(inName, "r");
+       [01;35m[K^[m[K
+[01m[Ksum-ints.c:46:9:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kout[m[K’
+   FILE *[01;31m[Kout[m[K = argc < 3 ? stdout : fopen(argv[2], "w");
+         [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:35:9:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kout[m[K’ was here
+   File *[01;36m[Kout[m[K = stdout;
+         [01;36m[K^~~[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:35:3:[m[K [01;31m[Kerror: [m[Kunknown type name ‘[01m[KFile[m[K’
+   [01;31m[KFile[m[K *out = stdout;
+   [01;31m[K^~~~[m[K
+[01m[Ksum-ints.c:35:15:[m[K [01;35m[Kwarning: [m[Kinitialization of ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   File *out = [01;35m[Kstdout[m[K;
+               [01;35m[K^~~~~~[m[K
+[01m[Ksum-ints.c:37:8:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+    out [01;35m[K=[m[K stdout;
+        [01;35m[K^[m[K
+[01m[Ksum-ints.c:39:18:[m[K [01;31m[Kerror: [m[Ksubscripted value is neither array nor pointer nor vector
+    if(strcmp(argc[01;31m[K[[m[K2], "-") == 0) {
+                  [01;31m[K^[m[K
+[01m[Ksum-ints.c:40:10:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[Kint (*)(const char *, const char *)[m[K’ [[01;35m[K-Wincompatible-pointer-types[m[K]
+      out [01;35m[K=[m[K strcmp;
+          [01;35m[K^[m[K
+[01m[Ksum-ints.c:42:7:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   out [01;35m[K=[m[K fopen(inName, "w");
+       [01;35m[K^[m[K
+[01m[Ksum-ints.c:46:9:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kout[m[K’
+   FILE *[01;31m[Kout[m[K = argc < 3 ? stdout : fopen(argv[2], "w");
+         [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:35:9:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kout[m[K’ was here
+   File *[01;36m[Kout[m[K = stdout;
+         [01;36m[K^~~[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:35:3:[m[K [01;31m[Kerror: [m[Kunknown type name ‘[01m[KFile[m[K’
+   [01;31m[KFile[m[K *out = stdout;
+   [01;31m[K^~~~[m[K
+[01m[Ksum-ints.c:35:15:[m[K [01;35m[Kwarning: [m[Kinitialization of ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   File *out = [01;35m[Kstdout[m[K;
+               [01;35m[K^~~~~~[m[K
+[01m[Ksum-ints.c:37:8:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+    out [01;35m[K=[m[K stdout;
+        [01;35m[K^[m[K
+[01m[Ksum-ints.c:40:10:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[Kint (*)(const char *, const char *)[m[K’ [[01;35m[K-Wincompatible-pointer-types[m[K]
+      out [01;35m[K=[m[K strcmp;
+          [01;35m[K^[m[K
+[01m[Ksum-ints.c:42:7:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[Kint *[m[K’ from incompatible pointer type ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} [[01;35m[K-Wincompatible-pointer-types[m[K]
+   out [01;35m[K=[m[K fopen(inName, "w");
+       [01;35m[K^[m[K
+[01m[Ksum-ints.c:46:9:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kout[m[K’
+   FILE *[01;31m[Kout[m[K = argc < 3 ? stdout : fopen(argv[2], "w");
+         [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:35:9:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kout[m[K’ was here
+   File *[01;36m[Kout[m[K = stdout;
+         [01;36m[K^~~[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ MAKE[K[K[K[Kmake
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:40:10:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} from incompatible pointer type ‘[01m[Kint (*)(const char *, const char *)[m[K’ [[01;35m[K-Wincompatible-pointer-types[m[K]
+      out [01;35m[K=[m[K strcmp;
+          [01;35m[K^[m[K
+[01m[Ksum-ints.c:46:9:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kout[m[K’
+   FILE *[01;31m[Kout[m[K = argc < 3 ? stdout : fopen(argv[2], "w");
+         [01;31m[K^~~[m[K
+[01m[Ksum-ints.c:35:9:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kout[m[K’ was here
+   FILE *[01;36m[Kout[m[K = stdout;
+         [01;36m[K^~~[m[K
+make: *** [<builtin>: sum-ints] Error 1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+[01m[Ksum-ints.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksum-ints.c:40:10:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[KFILE *[m[K’ {aka ‘[01m[Kstruct _IO_FILE *[m[K’} from incompatible pointer type ‘[01m[Kint (*)(const char *, const char *)[m[K’ [[01;35m[K-Wincompatible-pointer-types[m[K]
+      out [01;35m[K=[m[K strcmp;
+          [01;35m[K^[m[K
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make[2Plsrm -[2Plsrm -[2Plsmake./sum-ints test1.in -[Ktest1.in -make[K./sum-ints test1.in -[Ktest1.in -
+Segmentation fault
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make
+cc -g -Wall -std=c18    sum-ints.c   -o sum-ints
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ make./sum-ints test1.in -
+8
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints test1.in -[K[K[K[K[K[K[K[K[K[K- -
+10 5
+15
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - -[C[C[K[K <test1.in -< [K[K < test1.out
+8
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ ./sum-ints - <test1.in - < test1.out[1P test1.out> test1.out
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab3/exercises/c-stdin-stdout$ exit
+
+Script done on 2021-09-23 19:36:46-04:00 [COMMAND_EXIT_CODE="0"]
