@@ -1,0 +1,75 @@
+Script started on 2021-09-30 14:11:23-04:00 [TERM="xterm" TTY="/dev/pts/6" COLUMNS="80" LINES="24"]
+hlauder1@remote00:~/projects/i220b/submit/lab4$ [Khlauder1@remote00:~/projects/i220b/submit/lab4$ CD [K[K[Kcd exercises/
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises$ ls
+1  3  5  7	    bug-program  in-pointers  Makefile	void-pointers
+2  4  6  bad-types  cast-types	 in-voids     pointers
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises$ cd pointers/
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/pointers$ make -f ../Makefile
+gcc  -g -Wall -Wno-unused-parameter -std=c18 -lm  pointers.c   -o pointers
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/pointers$ .make -f ../Makefile[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K./pointers 
+char pointer cp = 0x7ffec1c14c2f, pointing at char a
+char pointer cp = 0x7ffec1c14c30, pointing at char b
+char pointer cp = 0x7ffec1c14c31, pointing at char c
+char pointer cp = 0x7ffec1c14c32, pointing at char d
+char pointer cp = 0x7ffec1c14c33, pointing at char e
+int pointer ip = 0x7ffec1c14c10, pointing at int 1
+int pointer ip = 0x7ffec1c14c14, pointing at int 2
+int pointer ip = 0x7ffec1c14c18, pointing at int 3
+int pointer ip = 0x7ffec1c14c1c, pointing at int 4
+int pointer ip = 0x7ffec1c14c20, pointing at int 5
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/pointers$ make[K[K[K[K./pointers 
+char pointer cp = 0x7ffd19d52e2f, pointing at char a
+char pointer cp = 0x7ffd19d52e30, pointing at char b
+char pointer cp = 0x7ffd19d52e31, pointing at char c
+char pointer cp = 0x7ffd19d52e32, pointing at char d
+char pointer cp = 0x7ffd19d52e33, pointing at char e
+int pointer ip = 0x7ffd19d52e10, pointing at int 1
+int pointer ip = 0x7ffd19d52e14, pointing at int 2
+int pointer ip = 0x7ffd19d52e18, pointing at int 3
+int pointer ip = 0x7ffd19d52e1c, pointing at int 4
+int pointer ip = 0x7ffd19d52e20, pointing at int 5
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/pointers$ cd ..
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises$ cd in-pointers/
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/in-pointers$ ////[K[K[K[Kcd in-pointers/[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C..[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./pointers [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake -f ../Makefile
+gcc  -g -Wall -Wno-unused-parameter -std=c18 -lm  in-pointers.c   -o in-pointers
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/in-pointers$ .make -f ../Makefile[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K./in-pointers 
+Given the base address of an int[] array you need to
+provide the address of a specified element.
+An int occupies 4 bytes.
+
+Please provide addresses in hex without any leading 0x
+You will need 3 correct responses in succession in order
+to complete this exercise.
+base of ints[] is at 0x7fffff3accc0
+enter pointer to ints[3]: 0x7fffff3accc0
+not ok
+base of ints[] is at 0x7fffff3accc0
+enter pointer to ints[1]: 7FFFFF3ACCC1
+not ok
+base of ints[] is at 0x7fffff3accc0
+enter pointer to ints[2]: 
+^C
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/in-pointers$ //[K[K.//[Kp[Kin-pointers 
+Given the base address of an int[] array you need to
+provide the address of a specified element.
+An int occupies 4 bytes.
+
+Please provide addresses in hex without any leading 0x
+You will need 3 correct responses in succession in order
+to complete this exercise.
+base of ints[] is at 0x7ffdc9702b10
+enter pointer to ints[3]: 7FFDC9702B1C
+ok
+base of ints[] is at 0x7ffdc9702b10
+enter pointer to ints[1]: 7FFDC9702B14
+ok
+base of ints[] is at 0x7ffdc9702b10
+enter pointer to ints[2]: 7FFDC9702B18
+ok
+# ok = 3; # errors = 0
+hlauder1@remote00:~/projects/i220b/submit/lab4/exercises/in-pointers$ exit
+
+Script done on 2021-09-30 14:49:45-04:00 [COMMAND_EXIT_CODE="0"]

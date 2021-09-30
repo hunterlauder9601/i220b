@@ -3,8 +3,8 @@
 int main() {
   char cs[] = { 'a', 'b', 'c', 'd', 'e' };
   int ints[] = { 1, 2, 3, 4, 5 };
-  char *cp = ints;  //expect warning
-  int *ip = cs;     //expect warning
+  int *ip = ints;  //expect warning (fixed)
+  char *cp = cs;     //expect warning (fixed)
   for (unsigned i = 0; i < sizeof(cs)/sizeof(cs[0]); i++) {
     printf("char pointer cp = %p, pointing at char '%c' (0x%x)\n",
            cp, *cp, *cp);
