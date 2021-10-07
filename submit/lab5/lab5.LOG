@@ -1,0 +1,298 @@
+Script started on 2021-10-07 13:58:27-04:00 [TERM="xterm" TTY="/dev/pts/4" COLUMNS="80" LINES="23"]
+hlauder1@remote02:~/projects/i220b/submit/lab5$ cd exercises/
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ ls
+2  hello.c  identify  Makefile
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ make
+cc -g -Wall  -std=c18    hello.c   -o hello
+cc -g -Wall  -std=c18 -S hello.c
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ .makehell[K[K[K[K[K[K[K[K./hello 
+usage: ./hello NAME...
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ //[K[K./hello test
+hello test
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ /[K./hello test t
+hello test
+hello t
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ size hello
+   text	   data	    bss	    dec	    hex	filename
+   1874	    592	     48	   2514	    9d2	hello
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ size -A hello
+hello  :
+section              size    addr
+.interp                28     680
+.note.ABI-tag          32     708
+.note.gnu.build-id     36     740
+.gnu.hash              48     776
+.dynsym               240     824
+.dynstr               152    1064
+.gnu.version           20    1216
+.gnu.version_r         32    1240
+.rela.dyn             240    1272
+.rela.plt              48    1512
+.init                  23    4096
+.plt                   48    4128
+.plt.got                8    4176
+.text                 513    4192
+.fini                   9    4708
+.rodata                33    8192
+.eh_frame_hdr          68    8228
+.eh_frame             296    8296
+.init_array             8   15848
+.fini_array             8   15856
+.dynamic              480   15864
+.got                   40   16344
+.got.plt               40   16384
+.data                  16   16424
+.bss                   48   16448
+.comment               28       0
+.debug_aranges         48       0
+.debug_info           860       0
+.debug_abbrev         287       0
+.debug_line           308       0
+.debug_str            607       0
+Total                4652
+
+
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ objdump -d hello > hello.objdump
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ objdump -d -s -x hello > hello.objdump
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ objdump -d hello | grep  -A40 main.:
+0000000000001174 <main>:
+    1174:	55                   	push   %rbp
+    1175:	48 89 e5             	mov    %rsp,%rbp
+    1178:	48 83 ec 20          	sub    $0x20,%rsp
+    117c:	89 7d ec             	mov    %edi,-0x14(%rbp)
+    117f:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    1183:	83 7d ec 01          	cmpl   $0x1,-0x14(%rbp)
+    1187:	75 2c                	jne    11b5 <main+0x41>
+    1189:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    118d:	48 8b 10             	mov    (%rax),%rdx
+    1190:	48 8b 05 c9 2e 00 00 	mov    0x2ec9(%rip),%rax        # 4060 <stderr@@GLIBC_2.2.5>
+    1197:	48 8d 35 70 0e 00 00 	lea    0xe70(%rip),%rsi        # 200e <_IO_stdin_used+0xe>
+    119e:	48 89 c7             	mov    %rax,%rdi
+    11a1:	b8 00 00 00 00       	mov    $0x0,%eax
+    11a6:	e8 85 fe ff ff       	callq  1030 <fprintf@plt>
+    11ab:	bf ef be ad de       	mov    $0xdeadbeef,%edi
+    11b0:	e8 8b fe ff ff       	callq  1040 <exit@plt>
+    11b5:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp)
+    11bc:	eb 2d                	jmp    11eb <main+0x77>
+    11be:	8b 45 fc             	mov    -0x4(%rbp),%eax
+    11c1:	48 98                	cltq   
+    11c3:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+    11ca:	00 
+    11cb:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    11cf:	48 01 d0             	add    %rdx,%rax
+    11d2:	48 8b 10             	mov    (%rax),%rdx
+    11d5:	48 8b 05 64 2e 00 00 	mov    0x2e64(%rip),%rax        # 4040 <stdout@@GLIBC_2.2.5>
+    11dc:	48 89 d6             	mov    %rdx,%rsi
+    11df:	48 89 c7             	mov    %rax,%rdi
+    11e2:	e8 5e ff ff ff       	callq  1145 <hello>
+    11e7:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+    11eb:	8b 45 fc             	mov    -0x4(%rbp),%eax
+    11ee:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+    11f1:	7c cb                	jl     11be <main+0x4a>
+    11f3:	b8 00 00 00 00       	mov    $0x0,%eax
+    11f8:	c9                   	leaveq 
+    11f9:	c3                   	retq   
+    11fa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001200 <__libc_csu_init>:
+    1200:	41 57                	push   %r15
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ ls -l hello
+-rwxr-x--- 1 hlauder1 hlauder1 19392 Oct  7 14:09 hello
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ strip hello
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ ls -l hello
+-rwxr-x--- 1 hlauder1 hlauder1 14416 Oct  7 14:21 hello
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ mak e[K[K[Kke clean
+rm -f hello hello.s *.objdump *~
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ ls
+2  hello.c  identify  Makefile
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ cd identify/
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ make
+cc -g -Wall -std=c11   -c -o identify.o identify.c
+cc   identify.o mystery.o   -o identify
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ ide[K[K[K.make[K[K[K[K./identify 
+C
+mystery = 12 (0xc)
+18
+mystery = 24 (0x18)
+FA0
+mystery = 4000 (0xfa0)
+^C
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ ./identify 
+989680\ 
+mystery = 1611392 (0x189680)
+^C
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ ./identify [7Pmakecd identify/ls[Kmake cleanls -l hellostrip[C[C[C[C[C[Cls -l[C[C[C[C[C[Cobjdump -d hello | grep  -A40 main.:[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-s -x hello > hello.objdump[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chel[6P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Po.objdump[1Po.objdump[1Po.objdump[C[C[C[C[C[C[C[C[1P.objdump[1P.objdump[C[C[C[C[C[Cm.objdumpy.objdumps.objdumpr.objdump[1P.objdumpt.objdumpe.objdumpr.objdumpy.objdump[1P[C[1P[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C >[1P mystery.objdump[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C > [1Pmystery.objdump[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cm > mystery.objdump[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cy > mystery.objdump[1@s[1@t[1@e[1@r[1@y[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+objdump: 'mystery': No such file
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ objdump -d mystery > mystery.objdump.[K[1@.[1@o
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ objdump -d mystery.o > mystery.objdump[C[C[C[C[C[2P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2P./identify 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+1FFFFFF
+mystery = 8388607 (0x7fffff)
+^C
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises/identify$ cd ..
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ make
+cc -g -Wall  -std=c18    hello.c   -o hello
+cc -g -Wall  -std=c18 -S hello.c
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ gdb hello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) b main
+Breakpoint 1 at 0x1183: file hello.c, line 16.
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab5/exercises/hello 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe728) at hello.c:16
+16	  if (argc == 1) {
+(gdb) disas r[K[Kdias /m[K[K[K[K[Ksas /m
+Dump of assembler code for function main:
+15	{
+   0x0000555555555174 <+0>:	push   %rbp
+   0x0000555555555175 <+1>:	mov    %rsp,%rbp
+   0x0000555555555178 <+4>:	sub    $0x20,%rsp
+   0x000055555555517c <+8>:	mov    %edi,-0x14(%rbp)
+   0x000055555555517f <+11>:	mov    %rsi,-0x20(%rbp)
+
+16	  if (argc == 1) {
+=> 0x0000555555555183 <+15>:	cmpl   $0x1,-0x14(%rbp)
+   0x0000555555555187 <+19>:	jne    0x5555555551b5 <main+65>
+
+17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+   0x0000555555555189 <+21>:	mov    -0x20(%rbp),%rax
+   0x000055555555518d <+25>:	mov    (%rax),%rdx
+   0x0000555555555190 <+28>:	mov    0x2ec9(%rip),%rax        # 0x555555558060 <stderr@@GLIBC_2.2.5>
+   0x0000555555555197 <+35>:	lea    0xe70(%rip),%rsi        # 0x55555555600e
+   0x000055555555519e <+42>:	mov    %rax,%rdi
+   0x00005555555551a1 <+45>:	mov    $0x0,%eax
+   0x00005555555551a6 <+50>:	callq  0x555555555030 <fprintf@plt>
+
+--Type <RET> for more, q to quit, c to continue without paging--i[Ki reg
+18	    exit(0xdeadbeef);
+   0x00005555555551ab <+55>:	mov    $0xdeadbeef,%edi
+   0x00005555555551b0 <+60>:	callq  0x555555555040 <exit@plt>
+
+19	  }
+20	  for (int i = 1; i < argc; i++) {
+   0x00005555555551b5 <+65>:	movl   $0x1,-0x4(%rbp)
+   0x00005555555551bc <+72>:	jmp    0x5555555551eb <main+119>
+   0x00005555555551e7 <+115>:	addl   $0x1,-0x4(%rbp)
+   0x00005555555551eb <+119>:	mov    -0x4(%rbp),%eax
+   0x00005555555551ee <+122>:	cmp    -0x14(%rbp),%eax
+   0x00005555555551f1 <+125>:	jl     0x5555555551be <main+74>
+
+21	    hello(stdout, argv[i]);
+   0x00005555555551be <+74>:	mov    -0x4(%rbp),%eax
+   0x00005555555551c1 <+77>:	cltq   
+   0x00005555555551c3 <+79>:	lea    0x0(,%rax,8),%rdx
+   0x00005555555551cb <+87>:	mov    -0x20(%rbp),%rax
+   0x00005555555551cf <+91>:	add    %rdx,%rax
+   0x00005555555551d2 <+94>:	mov    (%rax),%rdx
+   0x00005555555551d5 <+97>:	mov    0x2e64(%rip),%rax        # 0x555555558040 <stdout@@GLIBC_2.2.5>
+--Type <RET> for more, q to quit, c to continue without paging--p argc
+   0x00005555555551dc <+104>:	mov    %rdx,%rsi
+   0x00005555555551df <+107>:	mov    %rax,%rdi
+   0x00005555555551e2 <+110>:	callq  0x555555555145 <hello>
+
+22	  }
+23	  return 0;
+   0x00005555555551f3 <+127>:	mov    $0x0,%eax
+
+24	}
+   0x00005555555551f8 <+132>:	leaveq 
+   0x00005555555551f9 <+133>:	retq   
+
+End of assembler dump.
+(gdb) p *()$)r)b)p) )-) )2)0)[C
+Attempt to dereference a generic pointer.
+(gdb) p *()i)n)t) )*)[C()$)r)b)p)o)[1P) )-) )2)0)
+$1 = 1
+(gdb) p argv
+$2 = (const char **) 0x7fffffffe728
+(gdb) p *()c)o)n)s)t) )c)h)a)r) )*)*)*)*)[1P)[C()$)r)b)p) )-) )3)2)
+$3 = (const char **) 0x7fffffffe728
+(gdb) p argv[]0]
+$4 = 0x7fffffffe9ab "/import/linux/home1/hlauder1/projects/i220b/submit/lab5/exercises/hello"
+(gdb) p (*(const char ***)($rbp - 0x20))[0]
+$5 = 0x7fffffffe9ab "/import/linux/home1/hlauder1/projects/i220b/submit/lab5/exercises/hello"
+(gdb) display /i *$pc
+1: x/i *$pc
+=> 0x555555555183 <main+15>:	cmpl   $0x1,-0x14(%rbp)
+(gdb) p $eflags
+$6 = [ IF ]
+(gdb) nexti [K
+0x0000555555555187	16	  if (argc == 1) {
+1: x/i *$pc
+=> 0x555555555187 <main+19>:	jne    0x5555555551b5 <main+65>
+(gdb) p $eflags
+$7 = [ PF ZF IF ]
+(gdb) ni
+17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+1: x/i *$pc
+=> 0x555555555189 <main+21>:	mov    -0x20(%rbp),%rax
+(gdb) ni
+0x000055555555518d	17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+1: x/i *$pc
+=> 0x55555555518d <main+25>:	mov    (%rax),%rdx
+(gdb) 
+0x0000555555555190	17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+1: x/i *$pc
+=> 0x555555555190 <main+28>:	
+    mov    0x2ec9(%rip),%rax        # 0x555555558060 <stderr@@GLIBC_2.2.5>
+(gdb) 
+0x0000555555555197	17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+1: x/i *$pc
+=> 0x555555555197 <main+35>:	lea    0xe70(%rip),%rsi        # 0x55555555600e
+(gdb) ni
+0x000055555555519e	17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+1: x/i *$pc
+=> 0x55555555519e <main+42>:	mov    %rax,%rdi
+(gdb) ni
+0x00005555555551a1	17	    fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+1: x/i *$pc
+=> 0x5555555551a1 <main+45>:	mov    $0x0,%eax
+(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) p rdi
+No symbol "rdi" in current context.
+(gdb) p rsi
+No symbol "rsi" in current context.
+(gdb) p *(int *)($rbp - 20)[C[C[C[C[C[1P0)[1P0)[1P0)[1P0)[C[1P)[1Pp)[C[1P)s)i)
+$8 = 1734439797
+(gdb) p $rsi
+$9 = 93824992239630
+(gdb) p *()$)r)s)i)
+$10 = 1734439797
+(gdb) p $rdx
+$11 = 140737488349611
+(gdb) p [K *()$)r)d)x)
+$12 = 1886218543
+(gdb) p (*(const char ***)($rbp - 0x20))[0][1P0))[0][C[1P))[0][1P))[0][1P))[0][1P))[0][1P))[0][1P))[0][1P))[0][1P))[0]s))[0]i))[0]
+Cannot access memory at address 0x25203a6567617375
+(gdb) p (*(const char ***)($rsi))[0][K[K[K[K[1P
+$13 = (const char **) 0x25203a6567617375
+(gdb) p *(const char ***)($rsi)[1P)($rsi)[C[C[C[C[C[C[C[C
+$14 = 0x25203a6567617375 <error: Cannot access memory at address 0x25203a6567617375>
+(gdb) p *(const char **)($rsi)[1P)($rsi)
+$15 = 117 'u'
+(gdb) p *(const char *)($rsi)[1Pi)[C[1P)d)x)
+$16 = 47 '/'
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 103738] will be killed.
+
+Quit anyway? (y or n) y
+hlauder1@remote02:~/projects/i220b/submit/lab5/exercises$ exit
+
+Script done on 2021-10-07 16:16:44-04:00 [COMMAND_EXIT_CODE="0"]
