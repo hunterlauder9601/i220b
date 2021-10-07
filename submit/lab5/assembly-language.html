@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: assembly-language.umt</title>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="assembly-language.umt:1:2">L a b   5 :  A s s e m b l y   L a n g u a g e
+</p><p data-coord="assembly-language.umt:3:0"><strong data-coord="assembly-language.umt:3:0">Date</strong>: Oct 7, 2021
+</p><p data-coord="assembly-language.umt:5:0">This document first describes the aims of this lab.  It then describes the
+exercises which need to be performed.
+</p><section data-coord="assembly-language.umt:9:0"><h2 data-coord="assembly-language.umt:9:0">Aims</h2><p data-coord="assembly-language.umt:12:0">The aim of this lab is to familiarize you with examining assembly language
+translations of C programs.  After completing this lab, you should be
+familiar with the following topics:
+</p><ul data-coord="assembly-language.umt:16:0"><li data-coord="assembly-language.umt:16:0"><p data-coord="assembly-language.umt:16:4">Using the <samp data-coord="assembly-language.umt:16:14">objdump</samp> utility to disassemble programs.
+</p></li><li data-coord="assembly-language.umt:18:0"><p data-coord="assembly-language.umt:18:4">Using gdb to disassemble programs and examine memory and registers.
+</p></li></ul></section><section data-coord="assembly-language.umt:21:0"><h2 data-coord="assembly-language.umt:21:0">Exercises</h2><section data-coord="assembly-language.umt:24:0"><h3 data-coord="assembly-language.umt:24:0">Starting up</h3><p data-coord="assembly-language.umt:27:0">Follow the <em data-coord="assembly-language.umt:27:38"><a href="../working/working.html" data-coord="assembly-language.umt:27:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="assembly-language.umt:27:98">lab7</samp> branch and a new
+<samp data-coord="assembly-language.umt:27:122">submit/lab7</samp> directory.  You should have copied over
+the contents of <samp data-coord="assembly-language.umt:27:192">~/cs220/labs/lab7/exercises</samp> over to your
+directory.
+</p></section><section data-coord="assembly-language.umt:35:0"><h3 data-coord="assembly-language.umt:35:0">Exercise 1: Examining Object Files</h3><p data-coord="assembly-language.umt:38:0">The files directory contains a <a href="./exercises/hello.c" data-coord="assembly-language.umt:38:54">hello.c</a> program.
+Read the source code to understand what the program does.  Build it by
+typing <samp data-coord="assembly-language.umt:38:149">make</samp>.  This will build the <samp data-coord="assembly-language.umt:38:178">hello</samp> executable with debugging
+information included.  Run the <samp data-coord="assembly-language.umt:38:243">hello</samp> executable to ensure that the
+program works correctly as per your expectations.
+</p><p data-coord="assembly-language.umt:45:0">Examine the sizes of the individual segments in the executable using
+</p><pre data-coord="assembly-language.umt:48:0">$ size hello
+</pre><p data-coord="assembly-language.umt:51:0">which will print sizes for the basic <samp data-coord="assembly-language.umt:51:37">text</samp> segment (where code lives), <samp data-coord="assembly-language.umt:51:72">data</samp>
+segment (where initialized static data lives) and <samp data-coord="assembly-language.umt:51:129">bss</samp> segments (where
+uninitialized static data lives (initialized to 0 at load-time)) along with
+the total size (in both decimal and hexadecimal).
+</p><p data-coord="assembly-language.umt:56:0">Then try
+</p><pre data-coord="assembly-language.umt:59:0">$ size -A hello
+</pre><p data-coord="assembly-language.umt:62:0">which will print information not only for the above basic segments, but also
+for segments which contain debugging information.
+</p><p data-coord="assembly-language.umt:65:0">Then do a <samp data-coord="assembly-language.umt:65:10">objdump</samp> of the executable code:
+</p><pre data-coord="assembly-language.umt:68:0">$ objdump -d hello &gt; hello.objdump
+</pre><p data-coord="assembly-language.umt:71:0">and look at <samp data-coord="assembly-language.umt:71:12">hello.objdump</samp> using a text editor.  You should note the
+following:
+</p><ul data-coord="assembly-language.umt:74:0"><li data-coord="assembly-language.umt:74:0"><p data-coord="assembly-language.umt:74:4">In addition to the assembly language symbolic representation of the
+instructions, the dump also contains something close to the machine code
+(in hex) which will be loaded into memory at runtime.  Note also that
+the leftmost column contains the relative address of each instruction in
+hex.
+</p></li><li data-coord="assembly-language.umt:80:0"><p data-coord="assembly-language.umt:80:4">The variable length of the instructions which range from 1 byte
+instructions like <samp data-coord="assembly-language.umt:80:90">push</samp>, <samp data-coord="assembly-language.umt:80:98">leaveq</samp> and <samp data-coord="assembly-language.umt:80:111">retq</samp> as well as longer 5
+byte instructions like the <samp data-coord="assembly-language.umt:80:169">callq</samp> instruction.
+</p></li><li data-coord="assembly-language.umt:84:0"><p data-coord="assembly-language.umt:84:4">Note that immediate operands are represented in little-endian
+order.  For example, in the code for the <samp data-coord="assembly-language.umt:84:111">main</samp> function, look for
+the <samp data-coord="assembly-language.umt:84:145">0xdeadbeef</samp> argument to the <samp data-coord="assembly-language.umt:84:174">exit()</samp> function.  Note that
+within the instruction that constant is specified in a normal
+left-to-right manner but when stored in memory, its bytes appear
+scattered because of the little-endian order.
+</p></li></ul><p data-coord="assembly-language.umt:92:0">You can get even more information using
+</p><pre data-coord="assembly-language.umt:95:0">$ objdump -d -s -x hello &gt; hello.objdump
+</pre><p data-coord="assembly-language.umt:98:0">The <samp data-coord="assembly-language.umt:98:4">-d</samp> option disassembles the code, <samp data-coord="assembly-language.umt:98:39">-s</samp> shows full-contents and
+<samp data-coord="assembly-language.umt:98:68">-x</samp> displays all headers in the object file.  
+</p><p data-coord="assembly-language.umt:101:0">Look at the result again using a text editor.  You are not expected to
+understand most of this information, but seeing it allows you to
+appreciate the amount of extra information generated for debugging.
+</p><p data-coord="assembly-language.umt:105:0">You can use the following <samp data-coord="assembly-language.umt:105:26">grep</samp> command to filter the output of
+<samp data-coord="assembly-language.umt:105:65">objdump</samp> to get the 40 lines following the <samp data-coord="assembly-language.umt:105:109">&lt;main&gt;:</samp> label:
+</p><pre data-coord="assembly-language.umt:109:0">$ objdump -d hello | grep  -A40 main.:
+</pre><p data-coord="assembly-language.umt:112:0">for <samp data-coord="assembly-language.umt:112:4">main()</samp> and the generated assembly language.
+</p><p data-coord="assembly-language.umt:114:0">Look at the size of the executable using <samp data-coord="assembly-language.umt:114:41">ls</samp>:
+</p><pre data-coord="assembly-language.umt:117:0">$ ls -l hello
+</pre><p data-coord="assembly-language.umt:120:0">Now strip out the debugging information in the <samp data-coord="assembly-language.umt:120:47">hello</samp> executable:
+</p><pre data-coord="assembly-language.umt:123:0">$ strip hello	
+</pre><p data-coord="assembly-language.umt:126:0">and repeat the <samp data-coord="assembly-language.umt:126:15">ls</samp>.  You should notice an appreciable reduction in
+the size.
+</p><p data-coord="assembly-language.umt:129:0">Finally, clean things up for subsequent exercises using <samp data-coord="assembly-language.umt:129:56">make clean</samp>.
+</p></section><section data-coord="assembly-language.umt:131:0"><h3 data-coord="assembly-language.umt:131:0">Exercise 2: Using objdump to Peek into Object Files</h3><p data-coord="assembly-language.umt:134:0">This exercise requires you to identify a mask.  Change over to the
+<a href="./exercises/identify" data-coord="assembly-language.umt:134:91">identify</a> directory and look at the source
+files contained there.  You will notice that the directory contains an
+object file <samp data-coord="assembly-language.umt:134:216">mystery.o</samp> without any corresponding source file.  The
+code in <samp data-coord="assembly-language.umt:134:280">mystery.o</samp> contains a function <samp data-coord="assembly-language.umt:134:312">mystery()</samp> which returns only
+the lowest <samp data-coord="assembly-language.umt:134:354">n</samp>-bits of its argument.  Your task is to figure out <samp data-coord="assembly-language.umt:134:408">n</samp>
+by using the <samp data-coord="assembly-language.umt:134:425">identify</samp> program.
+</p><p data-coord="assembly-language.umt:142:0">Build the program by typing <samp data-coord="assembly-language.umt:142:28">make</samp> and then run it by using <samp data-coord="assembly-language.umt:142:60">./identify</samp>.  
+You can type in integers in hexadecimal (without any leading <samp data-coord="assembly-language.umt:142:137">0x</samp>).  The
+program outputs the result of the <samp data-coord="assembly-language.umt:142:183">mystery()</samp> function on each input
+integer.
+</p><p data-coord="assembly-language.umt:147:0">Come up with suitable input which allows you to figure out how many lowest
+bits of its argument are returned by the <samp data-coord="assembly-language.umt:147:116">mystery()</samp> function. 
+</p><p data-coord="assembly-language.umt:150:0">Another way to identify that mask is by simply disassembling the
+object file <samp data-coord="assembly-language.umt:150:77">mystery.o</samp>.  Use a command from the previous exercise to
+examine the file and discover what the mask was.  Is your result
+consistent with what you got above.
+</p><p data-coord="assembly-language.umt:155:0">One lesson you should take away from this exercise is that depending on the
+intricacies of binary formats to protect a secret provides no real
+protection.  Any such secret hidden away in a object file can easily be
+compromised.
+</p></section><section data-coord="assembly-language.umt:161:0"><h3 data-coord="assembly-language.umt:161:0">Exercise 3: Using gdb to Examine Generated Instructions</h3><p data-coord="assembly-language.umt:164:0">Once again run <samp data-coord="assembly-language.umt:164:15">make</samp> to build a fresh <samp data-coord="assembly-language.umt:164:39">hello</samp> executable containing
+debugging information.
+</p><p data-coord="assembly-language.umt:167:0">Now run the executable within <samp data-coord="assembly-language.umt:167:30">gdb</samp> by typing <samp data-coord="assembly-language.umt:167:46">gdb hello</samp>.  At the
+<samp data-coord="assembly-language.umt:167:67">gdb</samp> prompt, put a breakpoint on <samp data-coord="assembly-language.umt:167:101">main</samp> using <samp data-coord="assembly-language.umt:167:114">b main</samp>.  Type <samp data-coord="assembly-language.umt:167:130">r</samp> to
+run the program, your program should stop at <samp data-coord="assembly-language.umt:167:182">main()</samp>.  Type <samp data-coord="assembly-language.umt:167:198">disas
+/m</samp> to disassemble the current function and dump out the memory.  You
+should see a assembly listing with an arrow just before the next
+instruction to be executed which should be right at the start of
+<samp data-coord="assembly-language.umt:167:405">main()</samp> after the function prolog.
+</p><p data-coord="assembly-language.umt:175:0">Now examine the registers.  Type <samp data-coord="assembly-language.umt:175:33">i reg</samp> to get a dump of all the
+registers.  You can refer to the value of an individual register by
+preceeding the name with a <samp data-coord="assembly-language.umt:175:161">$</samp>.  Obviously, these names are dependent on the
+specific machine you are debugging.  However, gdb has some generic register
+names: 
+</p><dl data-coord="assembly-language.umt:181:0"><dt data-coord="assembly-language.umt:181:2"> <samp data-coord="assembly-language.umt:181:1">$pc</samp></dt><dd data-coord="assembly-language.umt:182:0"><p data-coord="assembly-language.umt:182:5">always refers to the program counter (<samp data-coord="assembly-language.umt:182:47">$rip</samp> for x86-64).
+</p></dd><dt data-coord="assembly-language.umt:184:2"> <samp data-coord="assembly-language.umt:184:1">$sp</samp></dt><dd data-coord="assembly-language.umt:185:0"><p data-coord="assembly-language.umt:185:5">always refers to the stack pointer (<samp data-coord="assembly-language.umt:185:45">$rsp</samp> for x86-64).
+</p></dd><dt data-coord="assembly-language.umt:187:2"> <samp data-coord="assembly-language.umt:187:1">$fp</samp></dt><dd data-coord="assembly-language.umt:188:0"><p data-coord="assembly-language.umt:188:5">always refers to the frame pointer (<samp data-coord="assembly-language.umt:188:45">$rbp</samp> for x86-64).
+</p></dd><dt data-coord="assembly-language.umt:190:2"> <samp data-coord="assembly-language.umt:190:1">$ps</samp></dt><dd data-coord="assembly-language.umt:191:0"><p data-coord="assembly-language.umt:191:5">always refers to the program-status word (<samp data-coord="assembly-language.umt:191:51">$eflags</samp> for x86-64).
+</p></dd></dl><p data-coord="assembly-language.umt:194:0">If you examine the code in for <samp data-coord="assembly-language.umt:194:31">main()</samp>, you should realize that the first
+argument <samp data-coord="assembly-language.umt:194:84">argc</samp> has been put into register <samp data-coord="assembly-language.umt:194:118">-0x14(%ebp)</samp> and the second
+argument <samp data-coord="assembly-language.umt:194:156">argv</samp> is in <samp data-coord="assembly-language.umt:194:169">-0x20(%ebp)</samp>.
+</p><p data-coord="assembly-language.umt:198:0">Print out the first argument by doing <samp data-coord="assembly-language.umt:198:38">p argc</samp>.  It should print out a 1.
+Now let's try to print it out directly from where its value is stored in
+memory.  <samp data-coord="assembly-language.umt:198:156">-0x14($rbp)</samp> refers to the memory addressed by <samp data-coord="assembly-language.umt:198:204">rbp - 20</samp>, hence the
+value of <samp data-coord="assembly-language.umt:198:235">argc</samp> is in the memory location addressed by <samp data-coord="assembly-language.umt:198:281">rbp - 20</samp>.  So let's
+try <samp data-coord="assembly-language.umt:198:307">p *($rbp - 20)</samp>.  Unfortunately, that results in <em data-coord="assembly-language.umt:198:357">generic pointer
+dereference</em> error.
+</p><p data-coord="assembly-language.umt:205:0">The problem is that <samp data-coord="assembly-language.umt:205:20">gdb</samp> has no idea what <samp data-coord="assembly-language.umt:205:43">$rbp - 20</samp> is pointing to as
+registers are totally untyped.  Hence we need to help it out by providing a
+suitable type via a cast: <samp data-coord="assembly-language.umt:205:175">p *(int *)($rbp - 20)</samp> should correctly print out
+a 1.
+</p><p data-coord="assembly-language.umt:210:0">Now let's attempt to print out the second argument.  <samp data-coord="assembly-language.umt:210:53">p argv</samp> will print out
+the value of <samp data-coord="assembly-language.umt:210:90">argv</samp> in hex cast to a <samp data-coord="assembly-language.umt:210:114">(const char **)</samp> (the type is there
+because an array parameter of type <em data-coord="assembly-language.umt:210:186">T</em> for a function is replaced by a
+pointer parameter to type <em data-coord="assembly-language.umt:210:248">T</em>; hence <samp data-coord="assembly-language.umt:210:259">const char *argv[]</samp> becomes <samp data-coord="assembly-language.umt:210:288">const
+char **argv</samp>, explaining the cast).
+</p><p data-coord="assembly-language.umt:216:0">Let's try to do the same thing using the value stored in memory for <samp data-coord="assembly-language.umt:216:68">argc</samp>
+rather than having <samp data-coord="assembly-language.umt:216:94">gdb</samp> do it for us.  The address of <samp data-coord="assembly-language.umt:216:130">argc</samp> is <samp data-coord="assembly-language.umt:216:140">rbp -
+0x20</samp>.  Since <samp data-coord="assembly-language.umt:216:161">argv</samp> has type <samp data-coord="assembly-language.umt:216:177">const char **</samp> and <samp data-coord="assembly-language.umt:216:197">rbp - 0x20</samp> contains its
+address, <samp data-coord="assembly-language.umt:216:232">rbp - 0x20</samp> should have type <samp data-coord="assembly-language.umt:216:262">(const char ***)</samp>.  Hence let's try
+to print it using <samp data-coord="assembly-language.umt:216:317">p *(const char ***)($rbp - 32)</samp>.  This should print out
+the same result as <samp data-coord="assembly-language.umt:216:393">p argv</samp>.
+</p><p data-coord="assembly-language.umt:223:0">Now let's try printing out the first string in the <samp data-coord="assembly-language.umt:223:51">argv[]</samp> array.  So
+if we simply use <samp data-coord="assembly-language.umt:223:88">p argv[0]</samp> we get the path via which the program was
+invoked.  Let's do the same thing but accessing the <samp data-coord="assembly-language.umt:223:194">argv</samp> stored in
+memory directly rather than having <samp data-coord="assembly-language.umt:223:246">gdb</samp> do it for us.  Based on our
+success in printing out the value of <samp data-coord="assembly-language.umt:223:317">argv</samp> from memory, the command
+<samp data-coord="assembly-language.umt:223:349">p (*(const char ***)($rbp - 0x20))[0]</samp> should do the job.
+</p><p data-coord="assembly-language.umt:230:0">You should still be stopped at the test of <samp data-coord="assembly-language.umt:230:43">argc == 1</samp>.  Set up <samp data-coord="assembly-language.umt:230:64">gdb</samp> to
+always print out the current instruction using <samp data-coord="assembly-language.umt:230:120">display /i *$pc</samp>.  You
+should see that you are about to execute a compare instruction, so look at
+the flags using <samp data-coord="assembly-language.umt:230:235">p $eflags</samp>.  Now execute the compare instruction by using
+the <samp data-coord="assembly-language.umt:230:298">nexti</samp> (abbreviated <samp data-coord="assembly-language.umt:230:319">ni</samp>) command.  The <samp data-coord="assembly-language.umt:230:339">display</samp> you setup earlier
+should result in the next instruction being printed.  Now if you print out
+the flags using <samp data-coord="assembly-language.umt:230:458">p $eflags</samp> you should see the <samp data-coord="assembly-language.umt:230:489">ZF</samp> zero flag set.
+</p><p data-coord="assembly-language.umt:238:0">You should be at a conditional jump instruction <samp data-coord="assembly-language.umt:238:48">jne</samp> which will jump
+if the <samp data-coord="assembly-language.umt:238:77">Z</samp> flag is not set.  Since it is set, the jump will not be
+done and typing <samp data-coord="assembly-language.umt:238:153">ni</samp> should put you in the code to print out the usage
+message using:
+</p><pre data-coord="assembly-language.umt:244:0">      fprintf(stderr, "usage: %s NAME...\n", argv[0]);
+</pre><p data-coord="assembly-language.umt:247:0">The next few instructions set things up to call <samp data-coord="assembly-language.umt:247:48">fprintf()</samp> by adding
+the arguments to the stack <strong data-coord="assembly-language.umt:247:97">right-to-left</strong>.  If you look at the code,
+you will see a large hexadecimal constant being loaded into the 2nd
+argument via register <samp data-coord="assembly-language.umt:247:230">%rsi</samp>; this is the address of the format
+string.  If that address is <samp data-coord="assembly-language.umt:247:300">0x</samp><em data-coord="assembly-language.umt:247:304">nnnnn</em>, then <samp data-coord="assembly-language.umt:247:318">p (char *)0x</samp><em data-coord="assembly-language.umt:247:332">nnnnn</em>
+should print out the format string.
+</p><p data-coord="assembly-language.umt:254:0">Single step the code using the <samp data-coord="assembly-language.umt:254:31">ni</samp> command until the next instruction about
+to be executed is the <samp data-coord="assembly-language.umt:254:99">call</samp> instruction (you can repeat the previous
+command by simply typing an empty line).  At that point, the first
+argument <samp data-coord="assembly-language.umt:254:223">stderr</samp> should be in <samp data-coord="assembly-language.umt:254:245">rdi</samp>, the 2nd argument the format
+string in <samp data-coord="assembly-language.umt:254:290">rsi</samp> and the program name should be in <samp data-coord="assembly-language.umt:254:330">rdx</samp>.  
+</p><p data-coord="assembly-language.umt:260:0">Using techniques similar to what you did earlier, print out the
+format argument using <samp data-coord="assembly-language.umt:260:86">rsi</samp> and the program name using <samp data-coord="assembly-language.umt:260:119">rdx</samp>.  
+</p><p data-coord="assembly-language.umt:263:0">Continue single-stepping (simply type an empty line to repeat the previous
+command) until you see the usage message and the program terminates.  Quit
+<samp data-coord="assembly-language.umt:263:150">gdb</samp> using <samp data-coord="assembly-language.umt:263:162">q</samp>.
+</p></section><section data-coord="assembly-language.umt:267:0"><h3 data-coord="assembly-language.umt:267:0">Exercise 4: More Use of gdb to Examine Generated Instructions</h3><p data-coord="assembly-language.umt:270:0">Now run <samp data-coord="assembly-language.umt:270:8">gdb</samp> on the program once again using <samp data-coord="assembly-language.umt:270:46">gdb hello</samp>.  This time setup a
+breakpoint on <samp data-coord="assembly-language.umt:270:92">hello()</samp>.  Now run the program, but unlike last time provide a
+argument, say <samp data-coord="assembly-language.umt:270:170">r joe</samp>.  Once <samp data-coord="assembly-language.umt:270:185">hello()</samp> is entered, you should regain control
+via the breakpoint.
+</p><p data-coord="assembly-language.umt:275:0">Now use techniques similar to those used in the past exercise to print
+out the value of <samp data-coord="assembly-language.umt:275:88">hello's</samp> argument <samp data-coord="assembly-language.umt:275:107">who</samp> directly from the passed in
+argument (rather than simply <samp data-coord="assembly-language.umt:275:170">p who</samp>).
+</p></section><section data-coord="assembly-language.umt:280:0"><h3 data-coord="assembly-language.umt:280:0">Exercise 5: Modifying a Register</h3><p data-coord="assembly-language.umt:283:0">Making sure you have quit the previous gdb session, load the <samp data-coord="assembly-language.umt:283:61">hello</samp>
+program again into <samp data-coord="assembly-language.umt:283:88">gdb</samp> and <samp data-coord="assembly-language.umt:283:98">start joe</samp> which should run the program
+with the argument <samp data-coord="assembly-language.umt:283:157">joe</samp> but with a temporary breakpoint on <samp data-coord="assembly-language.umt:283:198">main</samp>.
+Disassemble <samp data-coord="assembly-language.umt:283:218">main()</samp> (use <samp data-coord="assembly-language.umt:283:232">disass /m</samp>) and find the code containing
+the <samp data-coord="assembly-language.umt:283:278">for</samp>-loop within <samp data-coord="assembly-language.umt:283:296">main()</samp>.  Note that the disassembly attempts to
+show the assembly language in order by source lines; hence assembly
+instructions are not necessarily contiguous in memory when the code
+for a source line gets split up into non-contiguous portion.  Put a
+breakpoint on the compare instruction which compares the <samp data-coord="assembly-language.umt:283:606">for</samp>-loop
+index with its bounds; specifically, if this instruction is at address
+<samp data-coord="assembly-language.umt:283:688">nnnn</samp>, do <samp data-coord="assembly-language.umt:283:699">b *nnnn</samp>.
+</p><p data-coord="assembly-language.umt:295:0">Continue running the program using <samp data-coord="assembly-language.umt:295:35">c</samp>, you should hit the above breakpoint.
+Verify that <samp data-coord="assembly-language.umt:295:89">i</samp> is indeed 1 by typing <samp data-coord="assembly-language.umt:295:115">p i</samp>.  Then continue running the
+program using <samp data-coord="assembly-language.umt:295:163">c</samp>; it should print out a <samp data-coord="assembly-language.umt:295:190">hello joe</samp> line before stopping
+again at the same breakpoint.  If you print out <samp data-coord="assembly-language.umt:295:271">i</samp> again, you should get 2
+and the compare should be ready to fail leading to termination of the
+<samp data-coord="assembly-language.umt:295:369">for</samp>-loop.  
+</p><p data-coord="assembly-language.umt:302:0">However, you can force the <samp data-coord="assembly-language.umt:302:27">for</samp>-loop to execute one more time.  Find out
+which register stores <samp data-coord="assembly-language.umt:302:96">i</samp>.  Let's assume that it is <samp data-coord="assembly-language.umt:302:126">eax</samp>. Then decrement
+the value of <samp data-coord="assembly-language.umt:302:161">eax</samp> using <samp data-coord="assembly-language.umt:302:173">set $eax = $eax-1</samp>. 
+</p><p data-coord="assembly-language.umt:306:0">Now if you continue using <samp data-coord="assembly-language.umt:306:26">c</samp>, the loop should execute one additional time
+and <samp data-coord="assembly-language.umt:306:79">hello()</samp> should be called once again.  However since we have only
+provided a single argument and have not taken any steps to provide that
+value, the value actually printed will be <samp data-coord="assembly-language.umt:306:260">null</samp>.
+</p></section></section><section data-coord="assembly-language.umt:311:0"><h2 data-coord="assembly-language.umt:311:0">References</h2><p data-coord="assembly-language.umt:314:0"><em data-coord="assembly-language.umt:314:50"><a href="http://www.gnu.org/software/gdb/documentation/" data-coord="assembly-language.umt:314:50">GDB Manual</a></em>
+</p><p data-coord="assembly-language.umt:316:0"><em data-coord="assembly-language.umt:316:48"><a href="https://sourceware.org/binutils/docs-2.33.1/" data-coord="assembly-language.umt:316:48">GNU BinUtils Manuals</a></em>
+</p></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
