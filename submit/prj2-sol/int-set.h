@@ -1,6 +1,41 @@
+#include <assert.h>
+#include <stdlib.h>
 #ifndef INT_SET_H_
 #define INT_SET_H_
 
+typedef struct NodeStruct { //linked-list node for int
+  int value;               //stored value
+  struct NodeStruct *succ; //point to successor node; NULL if none.
+} Node;
+
+typedef struct { //header for sorted-list
+  int nElements; //# of elements currently in list
+  Node dummy;    //dummy Node; value never used
+                 //dummy facilitates adding elements to list.
+} Header;
+
+static Node *
+linkNewNodeAfter(Node *p0, int value)
+{
+    //create and insert new node after p0
+    Node *p = malloc(sizeof(Node));   //create a new Node to hold value
+    if (!p) return NULL;              //malloc failure
+    p->value = value;
+    p->succ = p0->succ; p0->succ = p; //link new node into list
+    return p;
+}
+
+/** Remove node after p0 from link-list freeing it up.  Link p0 to the
+ *  successor of the unlinked node.  Return succ of node free'd up.
+ */
+static Node *
+unlinkNodeAfter(Node *p0)
+{
+    Node *p = p0->succ;
+    p0->succ = p->succ;
+    free(p);
+    return p0->succ;
+}
 
 /** Abstract data type for set of int's.  Note that sets do not allow
  *  duplicates.

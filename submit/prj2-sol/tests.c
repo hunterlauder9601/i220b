@@ -522,6 +522,71 @@ END_TEST
 
 
 //TODO: add more intersection tests.
+START_TEST(last_A_match_only_B_intersection)
+{
+    const int elements1[] = { 3, 4, 5 };
+    const int nElements1 = sizeof(elements1)/sizeof(elements1[0]);
+    const int elements2[] = { 5 };
+    const int nElements2 = sizeof(elements2)/sizeof(elements2[0]);
+    const int intersectionArr[] = { 5 };
+    intersectionTest(elements1, nElements1, elements2, nElements2, intersectionArr, 1);
+}
+END_TEST
+
+START_TEST(begin_A_match_end_B_intersection)
+{
+    const int elements1[] = { 5, 6, 7 };
+    const int nElements1 = sizeof(elements1)/sizeof(elements1[0]);
+    const int elements2[] = { 3, 4, 5 };
+    const int nElements2 = sizeof(elements2)/sizeof(elements2[0]);
+    const int intersectionArr[] = { 5 };
+    intersectionTest(elements1, nElements1, elements2, nElements2, intersectionArr, 1);
+}
+END_TEST
+
+START_TEST(middle_A_intersection)
+{
+    const int elements1[] = { 1, 2, 3 };
+    const int nElements1 = sizeof(elements1)/sizeof(elements1[0]);
+    const int elements2[] = { 2 };
+    const int nElements2 = sizeof(elements2)/sizeof(elements2[0]);
+    const int intersectionArr[] = { 2 };
+    intersectionTest(elements1, nElements1, elements2, nElements2, intersectionArr, 1);
+}
+END_TEST
+
+START_TEST(no_match_intersection)
+{
+    const int elements1[] = { 1, 2 };
+    const int nElements1 = sizeof(elements1)/sizeof(elements1[0]);
+    const int elements2[] = { 3, 4 };
+    const int nElements2 = sizeof(elements2)/sizeof(elements2[0]);
+    intersectionTest(elements1, nElements1, elements2, nElements2, NULL, 0);
+}
+END_TEST
+
+START_TEST(all_match_intersection)
+{
+    const int elements1[] = { 1, 2, 3 };
+    const int nElements1 = sizeof(elements1)/sizeof(elements1[0]);
+    const int elements2[] = { 1, 2, 3 };
+    const int nElements2 = sizeof(elements2)/sizeof(elements2[0]);
+    const int intersectionArr[] = { 1, 2, 3 };
+    intersectionTest(elements1, nElements1, elements2, nElements2, intersectionArr, 3);
+}
+END_TEST
+
+START_TEST(A_has_1_and_only_matched_intersection)
+{
+    const int elements1[] = { 3 };
+    const int nElements1 = sizeof(elements1)/sizeof(elements1[0]);
+    const int elements2[] = { 1, 2, 3, 4, 5, 6  };
+    const int nElements2 = sizeof(elements2)/sizeof(elements2[0]);
+    const int intersectionArr[] = { 3 };
+    intersectionTest(elements1, nElements1, elements2, nElements2, intersectionArr, 1);
+}
+END_TEST
+
 
 
 static Suite *
@@ -532,8 +597,14 @@ intersectionIntSetSuite(void)
   tcase_add_test(intersectionTests, emptyEmptyIntersection);
   tcase_add_test(intersectionTests, emptyNonEmptyIntersection);
   //TODO: for each test added above tcase_add_test(intersectionTests, ...)
+  tcase_add_test(intersectionTests, last_A_match_only_B_intersection);
+  tcase_add_test(intersectionTests, begin_A_match_end_B_intersection);
+  tcase_add_test(intersectionTests, middle_A_intersection);
+  tcase_add_test(intersectionTests, no_match_intersection);
+  tcase_add_test(intersectionTests, all_match_intersection);
+  tcase_add_test(intersectionTests, A_has_1_and_only_matched_intersection);
 
-  suite_add_tcase(suite, intersectionTests);
+    suite_add_tcase(suite, intersectionTests);
   return suite;
 }
 
