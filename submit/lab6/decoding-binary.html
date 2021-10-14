@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: decoding-binary.umt</title>
+    <link href="decoding-binary/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="decoding-binary.umt:1:1">L a b   6 :  D e c o d i n g   B i n a r y   C o d e
+</p><p data-coord="decoding-binary.umt:3:0"><strong data-coord="decoding-binary.umt:3:0">Date</strong>: Oct 12, 2021
+</p><p data-coord="decoding-binary.umt:5:0">This document first describes the aims of this lab.  It then describes the
+exercises which need to be performed.
+</p><section data-coord="decoding-binary.umt:9:0"><h2 data-coord="decoding-binary.umt:9:0">Aims</h2><p data-coord="decoding-binary.umt:12:0">The aim of this lab is to familiarize you with using tools to
+decode binaries.  After completing this lab, you should have
+some familiarity with the following topics:
+</p><ul data-coord="decoding-binary.umt:16:0"><li data-coord="decoding-binary.umt:16:0"><p data-coord="decoding-binary.umt:16:4">Using gdb to disassemble programs and examine memory and registers.
+</p></li><li data-coord="decoding-binary.umt:18:0"><p data-coord="decoding-binary.umt:18:4">Using the <samp data-coord="decoding-binary.umt:18:14">objdump</samp> utility to disassemble programs.
+</p></li></ul></section><section data-coord="decoding-binary.umt:21:0"><h2 data-coord="decoding-binary.umt:21:0">Exercises</h2><section data-coord="decoding-binary.umt:24:0"><h3 data-coord="decoding-binary.umt:24:0">Starting up</h3><p data-coord="decoding-binary.umt:27:0">Follow the <em data-coord="decoding-binary.umt:27:38"><a href="../working/working.html" data-coord="decoding-binary.umt:27:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="decoding-binary.umt:27:98">lab6</samp> branch and a new
+<samp data-coord="decoding-binary.umt:27:122">submit/lab6</samp> directory.  You should have copied over
+the contents of <samp data-coord="decoding-binary.umt:27:192">~/cs220/labs/lab6/exercises</samp> over to your
+directory.
+</p><p data-coord="decoding-binary.umt:34:0">In this lab you will try to feed a cookie monster.  First,
+generate a cookie for the cookie monster:
+</p><pre>$ .<span class="hl opt">/</span>gen-cookie
+$ <span class="hl kwc">cat</span> .cookie </pre><p data-coord="decoding-binary.umt:43:0">This should show you the generated cookie; the cookie value is based
+on your user-id.
+</p><p data-coord="decoding-binary.umt:46:0">In this lab, some code will wrap the cookie and then you will need to
+provide a key to unwrap the cookie to feed the cookie monster.  For
+example:
+</p><pre>$ <span class="hl kwb">cd</span> exercises<span class="hl opt">/</span>full-example
+$ <span class="hl kwc">make</span> <span class="hl kwb">-f</span> ..<span class="hl opt">/</span>Makefile
+gcc <span class="hl kwb">-g -Og -Wall -std</span><span class="hl opt">=</span>c18   <span class="hl kwb">-c</span> \
+  <span class="hl kwb">-o</span> feed-cookie-monster.o feed-cookie-monster.c
+gcc feed-cookie-monster.o cookie-wrapper.obj \
+  <span class="hl kwb">-o</span> feed-cookie-monster
+
+<span class="hl slc"># an unsuccessful attempt</span>
+$ .<span class="hl opt">/</span>feed-cookie-monster 
+Me want cookie<span class="hl opt">!</span>
+enter cookie unwrap key <span class="hl kwa">in</span> hex<span class="hl opt">:</span> <span class="hl num">9</span>a03
+🥶 AARGH YUCK<span class="hl opt">!!</span>
+
+<span class="hl slc"># a successful attempt</span>
+$ .<span class="hl opt">/</span>feed-cookie-monster 
+Me want cookie<span class="hl opt">!</span>
+enter cookie unwrap key <span class="hl kwa">in</span> hex<span class="hl opt">:</span> <span class="hl num">7</span>a00
+😂 CHOMP<span class="hl opt">!!!</span> CHOMP<span class="hl opt">!!!</span></pre><p data-coord="decoding-binary.umt:72:0">The code for unwrapping the cookie is only available as binary in a
+<samp data-coord="decoding-binary.umt:72:68">.obj</samp> file as a function <code><span class="hl kwd">unwrapCookie</span><span class="hl opt">()</span></code> with specification
+<code><span class="hl kwb">int</span> <span class="hl kwd">unwrapCookie</span><span class="hl opt">(</span><span class="hl kwb">int</span> wrapped<span class="hl opt">,</span> <span class="hl kwb">int</span> key<span class="hl opt">)</span></code>.  You will need to use tools to
+disassemble the code.
+</p><p data-coord="decoding-binary.umt:77:0">The main program you will be running is in
+<a href="exercises/feed-cookie-monster.c" data-coord="decoding-binary.umt:77:78">feed-cookie-monster.c</a> and the
+interface to the binary file is in <a href="exercises/cookie-wrapper.h" data-coord="decoding-binary.umt:77:173">cookie-wrapper.h.</a>  Study these two files right now.  You will need to
+figure out what the <samp data-coord="decoding-binary.umt:77:263">unwrapCookie()</samp> function does so that you can
+figure out what <samp data-coord="decoding-binary.umt:77:326">key</samp> you should give it so that it returns a cookie
+to feed the cookie monster.
+</p></section><section data-coord="decoding-binary.umt:86:0"><h3 data-coord="decoding-binary.umt:86:0">Exercise 1: Guided Decoding of Binary</h3><p data-coord="decoding-binary.umt:89:0">Change to the <a href="exercises/full-example" data-coord="decoding-binary.umt:89:40">full-example</a> directory
+and build the program.
+</p><pre data-coord="decoding-binary.umt:93:0">$ make -f ../Makefile
+gcc -g -Og -Wall -std=c18   -c \
+  -o feed-cookie-monster.o feed-cookie-monster.c
+gcc feed-cookie-monster.o cookie-wrapper.obj \
+  -o feed-cookie-monster
+$
+</pre><p data-coord="decoding-binary.umt:101:0"><strong data-coord="decoding-binary.umt:101:0">Important Note</strong>: The following gdb traces were generated assuming
+that the cookie value was <samp data-coord="decoding-binary.umt:101:93">0x7a01</samp>.  The values in the gdb traces
+depend on this value; hence the traces you will see will most likely
+be different from those given below.
+</p><p data-coord="decoding-binary.umt:106:0">Start the debugger on the <samp data-coord="decoding-binary.umt:106:26">feed-cookie-monster</samp> executable:
+</p><pre>$ gdb feed-cookie-monster 
+GNU gdb <span class="hl opt">(</span>Debian <span class="hl num">8.2.1</span><span class="hl kwb">-2</span><span class="hl opt">+</span>b3<span class="hl opt">)</span> <span class="hl num">8.2.1</span>
+...
+For <span class="hl kwb">help</span><span class="hl opt">,</span> <span class="hl kwb">type</span> <span class="hl str">&quot;help&quot;</span>.
+Type <span class="hl str">&quot;apropos word&quot;</span> to search <span class="hl kwa">for</span> commands related to <span class="hl str">&quot;word&quot;</span>...
+Reading symbols from feed-cookie-monster...<span class="hl kwa">done</span>.</pre><p data-coord="decoding-binary.umt:118:0">Put a breakpoint on <samp data-coord="decoding-binary.umt:118:20">unwrapCookie()</samp>, start the program, and provide some
+value for the <samp data-coord="decoding-binary.umt:118:88">key</samp>:
+</p><pre><span class="hl opt">(</span>gdb<span class="hl opt">)</span> b unwrapCookie      <span class="hl slc">#put a breakpoint</span>
+Breakpoint <span class="hl num">1</span> <span class="hl kwc">at</span> <span class="hl num">0x14eb</span>
+<span class="hl opt">(</span>gdb<span class="hl opt">)</span> r                   <span class="hl slc">#start program</span>
+Starting program<span class="hl opt">:</span> ...<span class="hl opt">/</span>feed-cookie-monster 
+Me want cookie<span class="hl opt">!</span>
+enter cookie unwrap key <span class="hl kwa">in</span> hex<span class="hl opt">:</span> <span class="hl num">33</span>  <span class="hl slc">#provide key of 0x33</span>
+
+Breakpoint <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">0x00005555555554eb</span> <span class="hl kwa">in</span> unwrapCookie <span class="hl opt">()</span></pre><p data-coord="decoding-binary.umt:133:0">When the breakpoint is entered you are positioned at the start of
+the <samp data-coord="decoding-binary.umt:133:70">unwrapCookie()</samp> function.  Disassemble it:
+</p><pre><span class="hl opt">(</span>gdb<span class="hl opt">)</span> disass
+Dump of assembler code <span class="hl kwa">for function</span> unwrapCookie<span class="hl opt">:</span>
+<span class="hl opt">=&gt;</span> <span class="hl num">0x00005555555554eb</span> <span class="hl opt">&lt;+</span><span class="hl num">0</span><span class="hl opt">&gt;:</span>     endbr64 
+   <span class="hl num">0x00005555555554ef</span> <span class="hl opt">&lt;+</span><span class="hl num">4</span><span class="hl opt">&gt;:</span>     lea    <span class="hl opt">(%</span>rdi<span class="hl opt">,%</span>rdi<span class="hl opt">,</span><span class="hl num">2</span><span class="hl opt">),%</span>eax
+   <span class="hl num">0x00005555555554f2</span> <span class="hl opt">&lt;+</span><span class="hl num">7</span><span class="hl opt">&gt;:</span>     and    <span class="hl kwd">$0xf</span><span class="hl opt">,%</span>eax
+   <span class="hl num">0x00005555555554f5</span> <span class="hl opt">&lt;+</span><span class="hl num">10</span><span class="hl opt">&gt;:</span>    lea    <span class="hl num">0x2b64</span><span class="hl opt">(%</span>rip<span class="hl opt">),%</span>rdx \
+                                <span class="hl slc"># 0x555555558060 &lt;vals&gt;</span>
+   <span class="hl num">0x00005555555554fc</span> <span class="hl opt">&lt;+</span><span class="hl num">17</span><span class="hl opt">&gt;:</span>    add    <span class="hl opt">(%</span>rdx<span class="hl opt">,%</span>rax<span class="hl opt">,</span><span class="hl num">4</span><span class="hl opt">),%</span>esi
+   <span class="hl num">0x00005555555554ff</span> <span class="hl opt">&lt;+</span><span class="hl num">20</span><span class="hl opt">&gt;:</span>    mov    <span class="hl opt">%</span>esi<span class="hl opt">,%</span>eax
+   <span class="hl num">0x0000555555555501</span> <span class="hl opt">&lt;+</span><span class="hl num">22</span><span class="hl opt">&gt;:</span>    retq   
+End of assembler dump.</pre><p data-coord="decoding-binary.umt:151:0">Verify the above disassembly using objdump.  In another terminal:
+</p><pre data-coord="decoding-binary.umt:154:0">$ objdump -d feed-cookie-monster
+</pre><p data-coord="decoding-binary.umt:157:0">You should see the disassembled code for <samp data-coord="decoding-binary.umt:157:41">unwrapCookie()</samp> along with
+the code for other functions.  It should essentially be the same as
+what you got above.
+</p><p data-coord="decoding-binary.umt:161:0">Return to the terminal running gdb. Note that the gdb disassembler is
+helpfully telling us that the address <samp data-coord="decoding-binary.umt:161:108">0x2b64(%rip)</samp> corresponds to
+address <samp data-coord="decoding-binary.umt:161:146">0x555555558060</samp> which corresponds to some symbol <samp data-coord="decoding-binary.umt:161:196">vals</samp>.
+Let's verify this (note that <samp data-coord="decoding-binary.umt:161:233">rip</samp> will point to the address of the
+next instruction which is <samp data-coord="decoding-binary.umt:161:298">0x00005555555554fc</samp>):
+</p><pre><span class="hl opt">(</span>gdb<span class="hl opt">)</span> p <span class="hl opt">/</span>x <span class="hl num">0x00005555555554fc</span> <span class="hl opt">+</span> <span class="hl num">0x2b64</span>
+<span class="hl kwd">$2</span> <span class="hl opt">=</span> <span class="hl num">0x555555558060</span></pre><p data-coord="decoding-binary.umt:174:0">which checks out.
+</p><p data-coord="decoding-binary.umt:176:0">We know that <samp data-coord="decoding-binary.umt:176:13">unwrapCookie()</samp> takes two arguments; hence <samp data-coord="decoding-binary.umt:176:57">rdi</samp> must
+contain the <samp data-coord="decoding-binary.umt:176:80">wrapped</samp> value and <samp data-coord="decoding-binary.umt:176:100">rsi</samp> must contain the <samp data-coord="decoding-binary.umt:176:123">key</samp> provided
+above.  Let's check:
+</p><pre><span class="hl opt">(</span>gdb<span class="hl opt">)</span> i reg <span class="hl kwd">$rdi</span>
+rdi            <span class="hl num">0x7                 7</span>
+<span class="hl opt">(</span>gdb<span class="hl opt">)</span> i reg <span class="hl kwd">$rsi</span>
+rsi            <span class="hl num">0x33                51</span></pre><p data-coord="decoding-binary.umt:188:0">So it looks like <samp data-coord="decoding-binary.umt:188:17">wrapped</samp> is <samp data-coord="decoding-binary.umt:188:30">0x7</samp> and <samp data-coord="decoding-binary.umt:188:40">key</samp> is <samp data-coord="decoding-binary.umt:188:49">0x33</samp>.  The latter matches
+the provided key.  So we need to figure out a new value for <samp data-coord="decoding-binary.umt:188:137">key</samp> so that
+the function returns our cookie value <samp data-coord="decoding-binary.umt:188:189">0x7a01</samp>.
+</p><p data-coord="decoding-binary.umt:192:0">Annotating the above code:
+</p><pre data-coord="decoding-binary.umt:195:0"># rdi = wrapped; rsi = key
+unwrapCookie:   
+	lea    (%rdi,%rdi,2),%eax  # eax = 3*rdi = 3*wrapped
+	and    $0xf,%eax           # eax &amp;= 0xf
+	lea    0x2b64(%rip),%rdx \ # point rdx to vals
+        # 0x555555558060 &lt;vals&gt;    # at this address
+	add    (%rdx,%rax,4),%esi  # esi += rdx[(int)eax]
+	mov    %esi,%eax           # eax = esi
+	retq 
+</pre><p data-coord="decoding-binary.umt:206:0">So it looks like <samp data-coord="decoding-binary.umt:206:17">unwrapCookie()</samp> is returning something like
+<samp data-coord="decoding-binary.umt:206:62">key + vals[(3*wrapped)&amp;0xf]</samp>.  The incoming <samp data-coord="decoding-binary.umt:206:107">wrapped</samp> is
+<samp data-coord="decoding-binary.umt:206:120">0x7</samp>.  Hence <samp data-coord="decoding-binary.umt:206:134">(3*wrapped) &amp; 0xf</samp> is <samp data-coord="decoding-binary.umt:206:157">0x5</samp>.  We need to figure
+out what the value of <samp data-coord="decoding-binary.umt:206:205">vals[5]</samp> is.  Note that since
+the index for <samp data-coord="decoding-binary.umt:206:250">vals[]</samp> is guaranteed to be less than 16 
+(because of the <samp data-coord="decoding-binary.umt:206:309">&amp;0xf</samp>), let's look at that location as
+16 <code><span class="hl kwb">int</span></code>'s.
+</p><pre><span class="hl opt">(</span>gdb<span class="hl opt">)</span> p <span class="hl opt">((</span>int <span class="hl opt">*)</span><span class="hl num">0x555555558060</span><span class="hl opt">)[</span><span class="hl num">0</span><span class="hl opt">]</span>&#64;<span class="hl num">16</span>
+<span class="hl kwd">$1</span> <span class="hl opt">= {</span><span class="hl num">12</span><span class="hl opt">,</span> <span class="hl num">13</span><span class="hl opt">,</span> <span class="hl num">14</span><span class="hl opt">,</span> <span class="hl num">15</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">6</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">9</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">11</span><span class="hl opt">}</span></pre><p data-coord="decoding-binary.umt:220:0">So <samp data-coord="decoding-binary.umt:220:3">vals[5]</samp> is <samp data-coord="decoding-binary.umt:220:16">1</samp>.  Hence the function returns <samp data-coord="decoding-binary.umt:220:49">key + 1</samp>.  Since
+we want it to return the value of our cookie, namely <samp data-coord="decoding-binary.umt:220:120">0x7a01</samp>, we
+should provide <samp data-coord="decoding-binary.umt:220:148">key</samp> as <samp data-coord="decoding-binary.umt:220:157">0x7a00</samp>.  Let's try that:
+</p><pre><span class="hl opt">(</span>gdb<span class="hl opt">)</span> r
+The program being debugged has been started already.
+Start it from the beginning? <span class="hl opt">(</span>y or n<span class="hl opt">)</span> y
+Starting program<span class="hl opt">:</span> ...<span class="hl opt">/</span>feed-cookie-monster 
+Me want cookie<span class="hl opt">!</span>
+enter cookie unwrap key <span class="hl kwa">in</span> hex<span class="hl opt">:</span> <span class="hl num">7</span>a00
+
+Breakpoint <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">0x00005555555554eb</span> <span class="hl kwa">in</span> unwrapCookie <span class="hl opt">()</span>
+<span class="hl opt">(</span>gdb<span class="hl opt">)</span> c
+Continuing.
+😂 CHOMP<span class="hl opt">!!!</span> CHOMP<span class="hl opt">!!!</span>
+<span class="hl opt">[</span>Inferior <span class="hl num">1</span> <span class="hl opt">(</span>process <span class="hl num">1281943</span><span class="hl opt">)</span> exited with code <span class="hl num">01</span><span class="hl opt">]</span>
+<span class="hl opt">(</span>gdb<span class="hl opt">)</span> q
+$ </pre><p data-coord="decoding-binary.umt:242:0">That worked!!
+</p></section><section data-coord="decoding-binary.umt:245:0"><h3 data-coord="decoding-binary.umt:245:0">Exercise 2: A Simple Decode</h3><p data-coord="decoding-binary.umt:248:0">Feed the cookie monster using the files provided in
+<a href="exercises/simple" data-coord="decoding-binary.umt:248:72">simple.</a>  Proceed as in the previous
+exercise.
+</p></section><section data-coord="decoding-binary.umt:253:0"><h3 data-coord="decoding-binary.umt:253:0">Exercise 3: Decode with Data</h3><p data-coord="decoding-binary.umt:256:0">Feed the cookie monster using the files provided in
+<a href="exercises/another-one" data-coord="decoding-binary.umt:256:77">another-one.</a>  Proceed as in the previous
+exercises.
+</p></section></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
