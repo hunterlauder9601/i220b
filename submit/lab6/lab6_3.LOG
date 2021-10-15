@@ -1,0 +1,10 @@
+Script started on 2021-10-14 22:33:10-04:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+hlauder1@remote07:~/i220b/submit/lab6$ cd exercises/
+hlauder1@remote07:~/i220b/submit/lab6/exercises$ cd another-one/
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CB5
+😂 CHOMP!!! CHOMP!!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ exit
+
+Script done on 2021-10-14 22:35:42-04:00 [COMMAND_EXIT_CODE="1"]

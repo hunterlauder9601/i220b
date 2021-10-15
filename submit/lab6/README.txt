@@ -1,0 +1,2 @@
+Sorry about multiple log files. I had problems with log files hitting limits. Exercise 1 should be answered in first log file, exercise 2 should be in second,
+and exercise 3 in final but most work for this exercise 3 is in log2.

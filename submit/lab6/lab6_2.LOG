@@ -1,0 +1,258 @@
+Script started on 2021-10-14 21:18:50-04:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+hlauder1@remote07:~/i220b/submit/lab6$ bd[K[Kgbd [K[K[Kdb [K[K[K[Kcd exercises/
+hlauder1@remote07:~/i220b/submit/lab6/exercises$ cd simply[Ke
+hlauder1@remote07:~/i220b/submit/lab6/exercises/simple$ cd simpleexercises/gdb feed-cookie-monster[4Pmake -f ../Makefile
+make: Nothing to be done for 'all'.
+hlauder1@remote07:~/i220b/submit/lab6/exercises/simple$ gdb feed-cookie-monster
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from feed-cookie-monster...done.
+(gdb) b unwrapCookie 
+Breakpoint 1 at 0x13c3
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/simple/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 33
+
+Breakpoint 1, 0x00005555555553c3 in unwrapCookie ()
+(gdb) disass
+Dump of assembler code for function unwrapCookie:
+=> 0x00005555555553c3 <+0>:	endbr64 
+   0x00005555555553c7 <+4>:	lea    (%rdi,%rsi,1),%eax
+   0x00005555555553ca <+7>:	retq   
+End of assembler dump.
+(gdb) i reg rsi[K[K[K$rsi
+rsi            0x33                51
+(gdb) i reg $rdi
+rdi            0x8                 8
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/simple/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CF8
+
+Breakpoint 1, 0x00005555555553c3 in unwrapCookie ()
+(gdb) c
+Continuing.
+😂 CHOMP!!! CHOMP!!!
+[Inferior 1 (process 1368497) exited with code 01]
+(gdb) q
+hlauder1@remote07:~/i220b/submit/lab6/exercises/simple$ cd ..
+hlauder1@remote07:~/i220b/submit/lab6/exercises$ cd another-one/
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ cd another-one/..[Kgdb feed-cookie-monster[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake -f ../Makefile [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pcd simple
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake -f ../Makefile [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+gcc -g -Og -Wall -std=c18   -c -o feed-cookie-monster.o feed-cookie-monster.c
+gcc feed-cookie-monster.o cookie-wrapper.obj -o feed-cookie-monster
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ bdg[K[K[Kgdb feed-cookie-monster
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from feed-cookie-monster...done.
+(gdb) b unwrapCookie 
+Breakpoint 1 at 0x1408
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/another-one/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 33
+
+Breakpoint 1, 0x0000555555555408 in unwrapCookie ()
+(gdb) disass
+Dump of assembler code for function unwrapCookie:
+=> 0x0000555555555408 <+0>:	endbr64 
+   0x000055555555540c <+4>:	mov    %edi,%ecx
+   0x000055555555540e <+6>:	and    $0xf,%ecx
+   0x0000555555555411 <+9>:	and    $0x7,%edi
+   0x0000555555555414 <+12>:	lea    0x2cc5(%rip),%rax        # 0x5555555580e0 <vals2>
+   0x000055555555541b <+19>:	mov    (%rax,%rdi,4),%edx
+   0x000055555555541e <+22>:	lea    0x2cdb(%rip),%rax        # 0x555555558100 <vals1>
+   0x0000555555555425 <+29>:	add    (%rax,%rcx,4),%edx
+   0x0000555555555428 <+32>:	lea    (%rdx,%rdx,4),%eax
+   0x000055555555542b <+35>:	add    %esi,%eax
+   0x000055555555542d <+37>:	retq   
+End of assembler dump.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/another-one/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CFB
+
+Breakpoint 1, 0x0000555555555408 in unwrapCookie ()
+(gdb) c
+Continuing.
+🥶 AARGH YUCK!!
+[Inferior 1 (process 1372097) exited normally]
+(gdb) r[Kq
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CF0
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CF6
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CF1
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CEC
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ 9CE7[K[K[K[K./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CE7
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CE2
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CDD
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ i reg $ed[K[Kedi
+bash: i: command not found
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ gdb feed-cookie-monster
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from feed-cookie-monster...done.
+(gdb) b unwrapCookie 
+Breakpoint 1 at 0x1408
+(gdb) r[Kdisass
+No frame selected.
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/another-one/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 33
+
+Breakpoint 1, 0x0000555555555408 in unwrapCookie ()
+(gdb) disass
+Dump of assembler code for function unwrapCookie:
+=> 0x0000555555555408 <+0>:	endbr64 
+   0x000055555555540c <+4>:	mov    %edi,%ecx
+   0x000055555555540e <+6>:	and    $0xf,%ecx
+   0x0000555555555411 <+9>:	and    $0x7,%edi
+   0x0000555555555414 <+12>:	lea    0x2cc5(%rip),%rax        # 0x5555555580e0 <vals2>
+   0x000055555555541b <+19>:	mov    (%rax,%rdi,4),%edx
+   0x000055555555541e <+22>:	lea    0x2cdb(%rip),%rax        # 0x555555558100 <vals1>
+   0x0000555555555425 <+29>:	add    (%rax,%rcx,4),%edx
+   0x0000555555555428 <+32>:	lea    (%rdx,%rdx,4),%eax
+   0x000055555555542b <+35>:	add    %esi,%eax
+   0x000055555555542d <+37>:	retq   
+End of assembler dump.
+(gdb) i reg $esi
+esi            0x33                51
+(gdb) i reg $esi[C[C[C[C[C[C[4Pdisassr[Kdisassb unwrapCookie [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kp ()i)n)t) )i)[1P)*)[C()[C[C[1@([C[C[C[C[C[C[C[C[C)[Cf))[1P))0x5555555580e0))[C[))[1P))[C[)])0])[C@)1)6)[C[C[C[C[C[C[C[C[C[K[C[1P0x5555555580e0)[0]@16[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+$1 = {2, 5, 0, 3, 6, 1, 4, 7, 13, 2, 7, 12, 1, 6, 11, 0}
+(gdb) i reg $rcx
+rcx            0x10                16
+(gdb) $[Ki reg $rax
+rax            0x33                51
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 1374550] will be killed.
+
+Quit anyway? (y or n) y
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ gdb feed-cookie-monster[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pi reg $edi
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CFB
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CF6
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CF1
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CEC
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CE7
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CE2
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: ^[[A    ^[[A    ^[[A^[[A^[[A            9CDD
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CD8
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CD3
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9CD3    9CCE
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9D05
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9D0A
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ 9D0F
+bash: 9D0F: command not found
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ 9D0F./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9D0F
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ ./feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9ce2
+🥶 AARGH YUCK!!
+hlauder1@remote07:~/i220b/submit/lab6/exercises/another-one$ exit
+
+Script done on 2021-10-14 22:20:19-04:00 [COMMAND_EXIT_CODE="0"]
