@@ -1,0 +1,104 @@
+Script started on 2021-10-14 20:02:23-04:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+hlauder1@remote07:~/projects/i220b/submit/lab6$ cd exercises/
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises$ ./gen-cookie 
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises$ cat .cookie
+0x9d00
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises$ cd full-example/
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ make -f . ./Makefile 
+make: Nothing to be done for 'all'.
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ make -f ../Makefile
+make: Nothing to be done for 'all'.
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ cd ..
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises$ c[Kmake clean[K[K[K[K[K[K[K[K[K[Kcd[K[Kmak [Ke clean -f ../Makef ile
+make: ../Makefile: No such file or directory
+make: *** No rule to make target '../Makefile'.  Stop.
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises$ cd full-example/
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ cd full-example/[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd full-example/[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake clean -f ../Makefile
+rm -f feed-cookie-monster *.o *~
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ make clean -f ../Makefile[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd full-ex[9Pample/[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake clean -f ../Makefile[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pcd ..
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake clean -f ../Makefile[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pcd ..
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake -f ../Makefile
+gcc -g -Og -Wall -std=c18   -c -o feed-cookie-monster.o feed-cookie-monster.c
+gcc feed-cookie-monster.o cookie-wrapper.obj -o feed-cookie-monster
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ gdb feed-cookie-monster
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from feed-cookie-monster...done.
+(gdb) b unwrapCookie 
+Breakpoint 1 at 0x13e5
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/full-example/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 333 
+
+Breakpoint 1, 0x00005555555553e5 in unwrapCookie ()
+(gdb) disass
+Dump of assembler code for function unwrapCookie:
+=> 0x00005555555553e5 <+0>:	endbr64 
+   0x00005555555553e9 <+4>:	lea    (%rdi,%rdi,2),%eax
+   0x00005555555553ec <+7>:	and    $0xf,%eax
+   0x00005555555553ef <+10>:	lea    0x2cea(%rip),%rdx        # 0x5555555580e0 <vals>
+   0x00005555555553f6 <+17>:	add    (%rdx,%rax,4),%esi
+   0x00005555555553f9 <+20>:	mov    %esi,%eax
+   0x00005555555553fb <+22>:	retq   
+End of assembler dump.
+(gdb) p /x 0x00005555555554fc + 0x2b64[K[K[K[K[K[K[K[K[K[K[K[K[K3f[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K 0x00005555555553ef + 0x2b64[K[K[K[K2cea[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[18@0x00005555555553f6[C[C[C[C[C[C[C[C[C
+$1 = 0x5555555580e0
+(gdb) i reg %rdi
+Invalid register `%rdi'
+(gdb) i reg $rdi
+rdi            0x7                 7
+(gdb) i reg $rsi
+rsi            0x33                51
+(gdb) p ()()[C)i))n))t)) ))*))[C0x5555555580e0)[C[]0][C@16
+$2 = {8, 9, 10, 11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5, 6, 7}
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/full-example/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9D0B
+
+Breakpoint 1, 0x00005555555553e5 in unwrapCookie ()
+(gdb) C[Kc
+Continuing.
+🥶 AARGH YUCK!!
+[Inferior 1 (process 1361615) exited normally]
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/full-example/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9D0D
+
+Breakpoint 1, 0x00005555555553e5 in unwrapCookie ()
+(gdb) c
+Continuing.
+🥶 AARGH YUCK!!
+[Inferior 1 (process 1361667) exited normally]
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab6/exercises/full-example/feed-cookie-monster 
+Me want cookie!
+enter cookie unwrap key in hex: 9cf3
+
+Breakpoint 1, 0x00005555555553e5 in unwrapCookie ()
+(gdb) c
+Continuing.
+😂 CHOMP!!! CHOMP!!!
+[Inferior 1 (process 1363567) exited with code 01]
+(gdb) q
+hlauder1@remote07:~/projects/i220b/submit/lab6/exercises/full-example$ exit
+
+Script done on 2021-10-14 21:08:58-04:00 [COMMAND_EXIT_CODE="0"]
