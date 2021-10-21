@@ -1,0 +1,150 @@
+Script started on 2021-10-21 18:00:12-04:00 [TERM="xterm" TTY="/dev/pts/5" COLUMNS="80" LINES="24"]
+hlauder1@remote05:~/projects/i220b/submit/lab7$ cd exercises/
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises$ cd lib[K[K[K[K[K[Kls
+1  3  5  libgeom  log10		 multiple-symbols
+2  4  7  libvec   multiple-defs  static-dynamic
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises$ cd libvec/
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ make
+cc -g -Wall -fPIC -std=c18   -c -o addvec.o addvec.c
+cc -g -Wall -fPIC -std=c18   -c -o multvec.o multvec.c
+cc -shared addvec.o multvec.o -o libvec.so
+ar rcs libvec.a addvec.o multvec.o
+cc -g -Wall -fPIC -std=c18   -c -o testvec.o testvec.c
+cc  -static testvec.o -L. -lvec -o testvec-static
+cc testvec.o -L. -lvec -o testvec-dynamic
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ ls -l
+total 828
+-rw-r----- 1 hlauder1 hlauder1    111 Oct 21 15:43 addvec.c
+-rw-r----- 1 hlauder1 hlauder1   2912 Oct 21 18:03 addvec.o
+-rw-r----- 1 hlauder1 hlauder1   6040 Oct 21 18:03 libvec.a
+-rwxr-x--- 1 hlauder1 hlauder1  17368 Oct 21 18:03 libvec.so
+-rw-r----- 1 hlauder1 hlauder1    401 Oct 21 15:43 Makefile
+-rw-r----- 1 hlauder1 hlauder1    112 Oct 21 15:43 multvec.c
+-rw-r----- 1 hlauder1 hlauder1   2912 Oct 21 18:03 multvec.o
+-rw-r----- 1 hlauder1 hlauder1    644 Oct 21 15:43 testvec.c
+-rwxr-x--- 1 hlauder1 hlauder1  19984 Oct 21 18:03 testvec-dynamic
+-rw-r----- 1 hlauder1 hlauder1   8032 Oct 21 18:03 testvec.o
+-rwxr-x--- 1 hlauder1 hlauder1 759944 Oct 21 18:03 testvec-static
+-rw-r----- 1 hlauder1 hlauder1    163 Oct 21 15:43 vectors.h
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ ./testvec-dynamic 1 2 3
+sum = 2 4 6 
+product = 1 4 9 
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ cd ..
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises$ cd libgeom/
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ cd ..
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises$ cd libvec/
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ nm testvec-static >testvec-static.nm
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ bdg[K[K[Kgdb testvec-static
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from testvec-static...done.
+(gdb) p &main
+$1 = (int (*)(int, const char **)) 0x401bf6 <main>
+(gdb) p &addvec
+$2 = (void (*)(int *, int *, int *, int)) 0x401f1f <addvec>
+(gdb) p &multvec
+$3 = (void (*)(int *, int *, int *, int)) 0x401f8e <multvec>
+(gdb) q
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ nm testvec-dynamic >testvec-dynamic.nm
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ gdb testvec-dynamic
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from testvec-dynamic...done.
+(gdb) p &main
+$1 = (int (*)(int, const char **)) 0x11ee <main>
+(gdb) p %addvec
+A syntax error in expression, near `%addvec'.
+(gdb) p &multvec
+$2 = (<text variable, no debug info> *) 0x1050 <multvec@plt>
+(gdb) p &addvec
+$3 = (<text variable, no debug info> *) 0x1060 <addvec@plt>
+(gdb) set env LD_LIBRARY_PATH
+Setting environment variable "LD_LIBRARY_PATH" to null value.
+(gdb) b main
+Breakpoint 1 at 0x1207: file testvec.c, line 15.
+(gdb) r 1 2 3
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/libvec/testvec-dynamic 1 2 3
+/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/libvec/testvec-dynamic: error while loading shared libraries: libvec.so: cannot open shared object file: No such file or directory
+[Inferior 1 (process 534137) exited with code 0177]
+(gdb) r
+Starting program: /import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/libvec/testvec-dynamic 1 2 3
+/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/libvec/testvec-dynamic: error while loading shared libraries: libvec.so: cannot open shared object file: No such file or directory
+[Inferior 1 (process 534382) exited with code 0177]
+(gdb) LD_LIBRARY_PATH using set env LD_LIBRARY_PATH .
+Undefined command: "LD_LIBRARY_PATH".  Try "help".
+(gdb) p &main
+$4 = (int (*)(int, const char **)) 0x5555555551ee <main>
+(gdb) p &addvec
+$5 = (<text variable, no debug info> *) 0x555555555060 <addvec@plt>
+(gdb) p &multvec
+$6 = (<text variable, no debug info> *) 0x555555555050 <multvec@plt>
+(gdb) q
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libvec$ cd ..
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises$ cd libgeom/
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ cd libgeom/[K[K[K[K[K[K[K[K[K[K[Kmake ce[Klean
+rm -f *.o *.so *.a testgeom-*
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ make
+cc -g -Wall -fPIC -std=c18   -c -o rect.o rect.c
+cc -g -Wall -fPIC -std=c18   -c -o circ.o circ.c
+cc -shared rect.o circ.o -o libgeom.so
+ar rcs libgeom.a rect.o circ.o
+make: *** No rule to make target 'testvec.o', needed by 'testgeom-static'.  Stop.
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ make
+cc -g -Wall -fPIC -std=c18   -c -o testgeom.o testgeom.c
+cc  -static testgeom.o -L. -lgeom -o testgeom-static
+cc testgeom.o -L. -lgeom -o testgeom-dynamic
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ gb[Kdb t[Kdy[K[K[K testgeom-d ynamic 
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from testgeom-dynamic...done.
+(gdb) [K(gdb) p &main
+$1 = (int (*)()) 0x1195 <main>
+(gdb) p[Kq
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ ./testgeom-static 
+^C
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ ./testgeom-static r 0.0 5.0 1[K[K[K[K[K0.0 5.0 5.0
+^C
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ ./testgeom-static r 0.0 0.0 5.0 5.0[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K10.0 5.0 1.0 10.1
+^C
+hlauder1@remote05:~/projects/i220b/submit/lab7/exercises/libgeom$ exit
+
+Script done on 2021-10-21 18:44:13-04:00 [COMMAND_EXIT_CODE="130"]

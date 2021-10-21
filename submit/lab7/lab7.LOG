@@ -1,0 +1,304 @@
+Script started on 2021-10-21 15:54:02-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7$ CD L[K[K[K[Kcd exercises/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises$ cd [K[K[Kls
+1  3  5  libgeom  log10		 multiple-symbols
+2  4  7  libvec   multiple-defs  static-dynamic
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises$ cd log10/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ mkae[K[K[Kake
+cc -g -Wall -std=c18   -c -o log10.o log10.c
+cc   log10.o   -o log10
+/usr/bin/ld: log10.o: in function `main':
+/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10/log10.c:9: undefined reference to `log10'
+collect2: error: ld returned 1 exit status
+make: *** [<builtin>: log10] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ man log10
+[?1049h[22;0;0t[?1h=LOG10(3)                   Linux Programmer's Manual                  LOG10(3)[m
+[m
+[1mNAME[0m[m
+       log10, log10f, log10l -  base-10 logarithmic function[m
+[m
+[1mSYNOPSIS[0m[m
+       [1m#include[0m [1m<math.h>[0m[m
+[m
+       [1mdouble[0m [1mlog10(double[0m [4mx[24m[1m);[0m[m
+       [1mfloat[0m [1mlog10f(float[0m [4mx[24m[1m);[0m[m
+       [1mlong[0m [1mdouble[0m [1mlog10l(long[0m [1mdouble[0m [4mx[24m[1m);[0m[m
+[m
+       Link with [4m-lm[24m.[m
+[m
+   Feature Test Macro Requirements for glibc (see [1mfeature_test_macros[0m(7)):[m
+[m
+       [1mlog10f[0m(), [1mlog10l[0m():[m
+           _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L[m
+               || /* Since glibc 2.19: */ _DEFAULT_SOURCE[m
+               || /* Glibc versions <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE[m
+[m
+[1mDESCRIPTION[0m[m
+       These functions return the base 10 logarithm of [4mx[24m.[m
+[7m Manual page log10(3) line 1 (press h for help or q to quit)[27m[K...skipping...
+LOG10(3)                   Linux Programmer's Manual                  LOG10(3)[m
+[m
+[1mNAME[0m[m
+       log10, log10f, log10l -  base-10 logarithmic function[m
+[m
+[1mSYNOPSIS[0m[m
+       [1m#include[0m [1m<math.h>[0m[m
+[m
+       [1mdouble[0m [1mlog10(double[0m [4mx[24m[1m);[0m[m
+       [1mfloat[0m [1mlog10f(float[0m [4mx[24m[1m);[0m[m
+       [1mlong[0m [1mdouble[0m [1mlog10l(long[0m [1mdouble[0m [4mx[24m[1m);[0m[m
+[m
+       Link with [4m-lm[24m.[m
+[m
+   Feature Test Macro Requirements for glibc (see [1mfeature_test_macros[0m(7)):[m
+[m
+       [1mlog10f[0m(), [1mlog10l[0m():[m
+           _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L[m
+               || /* Since glibc 2.19: */ _DEFAULT_SOURCE[m
+               || /* Glibc versions <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE[m
+[m
+[1mDESCRIPTION[0m[m
+       These functions return the base 10 logarithm of [4mx[24m.[m
+[m
+[1mRETURN[0m [1mVALUE[0m[m
+       On success, these functions return the base 10 logarithm of [4mx[24m.[m
+[m
+       For  special  cases,  including where [4mx[24m is 0, 1, negative, infinity, or[m
+       NaN, see [1mlog[0m(3).[m
+[m
+[1mERRORS[0m[m
+       See [1mmath_error[0m(7) for information on how to determine whether an  error[m
+       has occurred when calling these functions.[m
+[m
+       For  a discussion of the errors that can occur for these functions, see[m
+       [1mlog[0m(3).[m
+[m
+[1mATTRIBUTES[0m[m
+       For an  explanation  of  the  terms  used  in  this  section,  see  [1mat‐[0m[m
+       [1mtributes[0m(7).[m
+[m
+       ┌─────────────────────────────┬───────────────┬─────────┐[m
+       │[1mInterface[0m                    │ [1mAttribute[0m     │ [1mValue[0m   │[m
+       ├─────────────────────────────┼───────────────┼─────────┤[m
+       │[1mlog10[0m(), [1mlog10f[0m(), [1mlog10l[0m()  │ Thread safety │ MT-Safe │[m
+       └─────────────────────────────┴───────────────┴─────────┘[m
+[1mCONFORMING[0m [1mTO[0m[m
+       C99, POSIX.1-2001, POSIX.1-2008.[m
+[7m Manual page log10(3) line 1 (press h for help or q to quit)[27m[K[H[2J[H[H[2J[HLOG10(3)                   Linux Programmer's Manual                  LOG10(3)[m
+[m
+[1mNAME[0m[m
+       log10, log10f, log10l -  base-10 logarithmic function[m
+[m
+[1mSYNOPSIS[0m[m
+       [1m#include[0m [1m<math.h>[0m[m
+[m
+       [1mdouble[0m [1mlog10(double[0m [4mx[24m[1m);[0m[m
+       [1mfloat[0m [1mlog10f(float[0m [4mx[24m[1m);[0m[m
+       [1mlong[0m [1mdouble[0m [1mlog10l(long[0m [1mdouble[0m [4mx[24m[1m);[0m[m
+[m
+       Link with [4m-lm[24m.[m
+[m
+   Feature Test Macro Requirements for glibc (see [1mfeature_test_macros[0m(7)):[m
+[m
+       [1mlog10f[0m(), [1mlog10l[0m():[m
+           _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L[m
+               || /* Since glibc 2.19: */ _DEFAULT_SOURCE[m
+               || /* Glibc versions <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE[m
+[m
+[1mDESCRIPTION[0m[m
+       These functions return the base 10 logarithm of [4mx[24m.[m
+[7m Manual page log10(3) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0thlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ man log10[K[K[K[K[K[K[K[K[Kmake
+cc   log10.o  -lm -o log10
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ echo 10 1000 2 | ./log10
+log10(10) = 1
+log10(1000) = 3
+log10(2) = 0.30103
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ ls -l /usr/lib/x86_64-linux-gnu/libm.*
+-rw-r--r-- 1 root root 132 May  1  2019 /usr/lib/x86_64-linux-gnu/libm.a
+-rw-r--r-- 1 root root 186 May  1  2019 /usr/lib/x86_64-linux-gnu/libm.so
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ ls -l /usr/lib/x86_64-linux-gnu/libm.*[C[C[C[C[C[C[C[C[Kcat 2019 /usr/lib/x86_64-linux-gnu/libm.a
+cat: 2019: No such file or directory
+/* GNU ld script
+*/
+OUTPUT_FORMAT(elf64-x86-64)
+GROUP ( /usr/lib/x86_64-linux-gnu/libm-2.28.a /usr/lib/x86_64-linux-gnu/libmvec.a )
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ cat /usr/lib/x86_64-linux-gnu/libm.a
+/* GNU ld script
+*/
+OUTPUT_FORMAT(elf64-x86-64)
+GROUP ( /usr/lib/x86_64-linux-gnu/libm-2.28.a /usr/lib/x86_64-linux-gnu/libmvec.a )
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ emacs /usr/lib/x86_64-linux-gnu/libm.a
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ nm /usr/lib/x86_64-linux-gnu/LIBM_VERSION >libm.nm 2>/dev/null[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@l[1@i[1@b[1@-[1@s[1@.[1P[1P[1@2[1@.[1@2[1@9[1P[1@9[1P[1@9[1P[1@8[1@.[1@a[1@m
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ man nm
+[?1049h[22;0;0t[?1h=NM(1)                        GNU Development Tools                       NM(1)[m
+[m
+[1mNAME[0m[m
+       nm - list symbols from object files[m
+[m
+[1mSYNOPSIS[0m[m
+       nm [[1m-A[0m|[1m-o[0m|[1m--print-file-name[0m] [[1m-a[0m|[1m--debug-syms[0m][m
+          [[1m-B[0m|[1m--format=bsd[0m] [[1m-C[0m|[1m--demangle[0m[=[4mstyle[24m]][m
+          [[1m-D[0m|[1m--dynamic[0m] [[1m-f[0m[4mformat[24m|[1m--format=[0m[4mformat[24m][m
+          [[1m-g[0m|[1m--extern-only[0m] [[1m-h[0m|[1m--help[0m][m
+          [[1m-l[0m|[1m--line-numbers[0m] [[1m--inlines[0m][m
+          [[1m-n[0m|[1m-v[0m|[1m--numeric-sort[0m][m
+          [[1m-P[0m|[1m--portability[0m] [[1m-p[0m|[1m--no-sort[0m][m
+          [[1m-r[0m|[1m--reverse-sort[0m] [[1m-S[0m|[1m--print-size[0m][m
+          [[1m-s[0m|[1m--print-armap[0m] [[1m-t[0m [4mradix[24m|[1m--radix=[0m[4mradix[24m][m
+          [[1m-u[0m|[1m--undefined-only[0m] [[1m-V[0m|[1m--version[0m][m
+          [[1m-X[0m [1m32_64[0m] [[1m--defined-only[0m] [[1m--no-demangle[0m][m
+          [[1m--plugin[0m [4mname[24m] [[1m--size-sort[0m] [[1m--special-syms[0m][m
+          [[1m--synthetic[0m] [[1m--with-symbol-versions[0m] [[1m--target=[0m[4mbfdname[24m][m
+          [[4mobjfile[24m...][m
+[m
+[1mDESCRIPTION[0m[m
+       GNU [1mnm[0m lists the symbols from object files [4mobjfile[24m....  If no object[m
+[7m Manual page nm(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0thlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/log10$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises$ cd multiple-symbols/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols$ make
+cc -g -Wall -std=c18   -c -o def1.o def1.c
+cc -g -Wall -std=c18   -c -o def2.o def2.c
+cc -g -Wall -std=c18   -c -o main.o main.c
+cc def1.o def2.o main.o  -o multiple-symbols
+/usr/bin/ld: def2.o:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols/def2.c:1: multiple definition of `sym'; def1.o:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols/def1.c:1: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:4: multiple-symbols] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols$ make
+cc -g -Wall -std=c18   -c -o def2.o def2.c
+[01m[Kdef2.c:1:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Ksym[m[K = 45;
+ [01;35m[K^~~[m[K
+[01m[Kdef2.c:1:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Ksym[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+cc def1.o def2.o main.o  -o multiple-symbols
+/usr/bin/ld: def2.o:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols/def2.c:1: multiple definition of `sym'; def1.o:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols/def1.c:1: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:4: multiple-symbols] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols$ LS[K[Kls
+def1.c	def1.o	def2.c	def2.o	main.c	main.o	Makefile
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols$ def[K[K[Kls[K[Kmake
+cc -g -Wall -std=c18   -c -o def2.o def2.c
+cc def1.o def2.o main.o  -o multiple-symbols
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-symbols$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises$ cd multiple-defs/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+cc -g -Wall -std=c18   -c -o f.o f.c
+cc main.o f.o  -o multiple-defs
+/usr/bin/ld: warning: alignment 4 of symbol `x' in main.o is smaller than 8 in f.o
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Kx[m[K = 0x2234
+ [01;35m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Kx[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+[01m[Kmain.c:5:1:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kx[m[K’
+In file included from [01m[Kmain.c:2[m[K:
+[01m[Kheaderfile.h:4:8:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kx[m[K’ was here
+ double [01;36m[Kx[m[K;
+        [01;36m[K^[m[K
+[01m[Kmain.c:6:1:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[Kint[m[K’
+ [01;31m[Kint[m[K y = 0x3924;
+ [01;31m[K^~~[m[K
+[01m[Kmain.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kmain.c:12:37:[m[K [01;31m[Kerror: [m[K‘[01m[Ky[m[K’ undeclared (first use in this function)
+   printf("x = 0x%x, y = 0x%x\n", x, [01;31m[Ky[m[K);
+                                     [01;31m[K^[m[K
+[01m[Kmain.c:12:37:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+make: *** [<builtin>: main.o] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Kx[m[K = 0x2234;
+ [01;35m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Kx[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+[01m[Kmain.c:5:1:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kx[m[K’
+In file included from [01m[Kmain.c:2[m[K:
+[01m[Kheaderfile.h:4:8:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kx[m[K’ was here
+ double [01;36m[Kx[m[K;
+        [01;36m[K^[m[K
+make: *** [<builtin>: main.o] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Kx[m[K = 0x2234;
+ [01;35m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Kx[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+[01m[Kmain.c:5:1:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kx[m[K’
+In file included from [01m[Kmain.c:2[m[K:
+[01m[Kheaderfile.h:4:8:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kx[m[K’ was here
+ double [01;36m[Kx[m[K;
+        [01;36m[K^[m[K
+[01m[Kmain.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kmain.c:12:18:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%f[m[K’ expects argument of type ‘[01m[Kdouble[m[K’, but argument 2 has type ‘[01m[Kint[m[K’ [[01;35m[K-Wformat=[m[K]
+   printf("x = 0x[01;35m[K%f[m[K, y = 0x%x\n", [32m[Kx[m[K, y);
+                 [01;35m[K~^[m[K               [32m[K~[m[K
+                 [32m[K%d[m[K
+make: *** [<builtin>: main.o] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+In file included from [01m[Kmain.c:2[m[K:
+[01m[Kheaderfile.h:5:8:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kx[m[K’
+ double [01;31m[Kx[m[K;
+        [01;31m[K^[m[K
+[01m[Kheaderfile.h:4:5:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kx[m[K’ was here
+ int [01;36m[Kx[m[K;
+     [01;36m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Kx[m[K = 0x2234;
+ [01;35m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Kx[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+[01m[Kmain.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kmain.c:12:18:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%x[m[K’ expects argument of type ‘[01m[Kunsigned int[m[K’, but argument 2 has type ‘[01m[Kdouble[m[K’ [[01;35m[K-Wformat=[m[K]
+   printf("x = 0x[01;35m[K%x[m[K, y = 0x%x\n", [32m[Kx[m[K, y);
+                 [01;35m[K~^[m[K               [32m[K~[m[K
+                 [32m[K%f[m[K
+make: *** [<builtin>: main.o] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Kx[m[K = 0x2234;
+ [01;35m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Kx[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+cc -g -Wall -std=c18   -c -o f.o f.c
+[01m[Kf.c:[m[K In function ‘[01m[Kf[m[K’:
+[01m[Kf.c:4:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kx[m[K’ undeclared (first use in this function)
+   [01;31m[Kx[m[K = -0;
+   [01;31m[K^[m[K
+[01m[Kf.c:4:3:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+make: *** [<builtin>: f.o] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ [K[Ahlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ [Khlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+[01m[Kmain.c:2:10:[m[K [01;31m[Kfatal error: [m[Kheaderfile.h: No such file or directory
+ #include [01;31m[K"headerfile.h"[m[K
+          [01;31m[K^~~~~~~~~~~~~~[m[K
+compilation terminated.
+make: *** [<builtin>: main.o] Error 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Kdata definition has no type or storage class
+ [01;35m[Kx[m[K = 0x2234;
+ [01;35m[K^[m[K
+[01m[Kmain.c:5:1:[m[K [01;35m[Kwarning: [m[Ktype defaults to ‘[01m[Kint[m[K’ in declaration of ‘[01m[Kx[m[K’ [[01;35m[K-Wimplicit-int[m[K]
+cc -g -Wall -std=c18   -c -o f.o f.c
+cc main.o f.o  -o multiple-defs
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ make
+cc -g -Wall -std=c18   -c -o main.o main.c
+cc main.o f.o  -o multiple-defs
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/multiple-defs$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises$ cd static-dynamic/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/static-dynamic$ make
+cc -g -Wall  -std=c18   -c -o log10.o log10.c
+cc -static log10.o -lm -o log10-static
+cc log10.o -lm -o log10-dynamic
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/static-dynamic$ ls -l
+total 940
+-rw-r----- 1 hlauder1 hlauder1    185 Oct 21 15:43 log10.c
+-rwxr-x--- 1 hlauder1 hlauder1  19280 Oct 21 17:44 log10-dynamic
+-rw-r----- 1 hlauder1 hlauder1   6080 Oct 21 17:44 log10.o
+-rwxr-x--- 1 hlauder1 hlauder1 924912 Oct 21 17:44 log10-static
+-rw-r----- 1 hlauder1 hlauder1    250 Oct 21 15:43 Makefile
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/static-dynamic$ nm[K[Knm log10-static >log10-static.nm
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/static-dynamic$ nm log10-dynamic >log10-dynamic.nm
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab7/exercises/static-dynamic$ exit
+
+Script done on 2021-10-21 17:56:37-04:00 [COMMAND_EXIT_CODE="0"]
