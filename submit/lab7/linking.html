@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: linking.umt</title>
+    <link href="linking/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="linking.umt:1:5">L a b   7 :   Linking
+</p><p data-coord="linking.umt:3:0"><strong data-coord="linking.umt:3:0">Date</strong>: Oct 21, 2021
+</p><p data-coord="linking.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="linking.umt:10:0"><h2 data-coord="linking.umt:10:0">Aims</h2><p data-coord="linking.umt:13:0">The aim of this lab is to familiarize you with the use of linkers in C.
+After completing this lab, you should be familiar with the following topics:
+</p><ul data-coord="linking.umt:16:0"><li data-coord="linking.umt:16:0"><p data-coord="linking.umt:16:4">Recognizing linker error messages during the course of compilation.
+</p></li><li data-coord="linking.umt:18:0"><p data-coord="linking.umt:18:4">The process used by a linker to resolve symbols.
+</p></li><li data-coord="linking.umt:20:0"><p data-coord="linking.umt:20:4">The use of libraries and the differences between static and dynamic
+libraries.  
+</p></li></ul></section><section data-coord="linking.umt:24:0"><h2 data-coord="linking.umt:24:0">Background</h2><p data-coord="linking.umt:27:0">There are 3 possible types of object files:
+</p><dl data-coord="linking.umt:29:0"><dt data-coord="linking.umt:29:2"> <strong data-coord="linking.umt:29:1">Relocatable object file</strong></dt><dd data-coord="linking.umt:30:0"><p data-coord="linking.umt:30:4">This type of file contains code and data but will need to be combined
+with other object files and libraries to create an executable object
+file.  Usually, this kind of object file has extension <samp data-coord="linking.umt:30:206">.o</samp> and is
+produced using <samp data-coord="linking.umt:30:237">gcc</samp>'s <samp data-coord="linking.umt:30:245">-c</samp> option.
+</p></dd><dt data-coord="linking.umt:35:2"> <strong data-coord="linking.umt:35:1">Executable object file</strong></dt><dd data-coord="linking.umt:36:0"><p data-coord="linking.umt:36:4">Contains code and data for a complete program (except shared libraries) 
+which is ready to be loaded into memory and executed.
+</p></dd><dt data-coord="linking.umt:39:2"> <strong data-coord="linking.umt:39:1">Shared object file</strong></dt><dd data-coord="linking.umt:40:0"><p data-coord="linking.umt:40:4">A type of relocatable object file which is loaded into memory and
+linked dynamically either at load time or at run time.
+</p></dd></dl><p data-coord="linking.umt:43:0">Recall that building an executable program involves the following steps:
+</p><ol data-coord="linking.umt:45:0"><li data-coord="linking.umt:45:0"><p data-coord="linking.umt:45:4">Compiling all the <samp data-coord="linking.umt:45:22">.c</samp> files into <samp data-coord="linking.umt:45:38">.o</samp> files.
+</p></li><li data-coord="linking.umt:47:0"><p data-coord="linking.umt:47:4">Linking the <samp data-coord="linking.umt:47:16">.o</samp> files along with any needed libraries to produce
+an executable file.
+</p></li></ol><p data-coord="linking.umt:50:0">A library is a collection of object files.  When a library is linked into a
+program, only those object files which define symbols required by the
+program are actually linked into the program.
+</p><p data-coord="linking.umt:54:0">There are two kinds of libraries:
+</p><dl data-coord="linking.umt:56:0"><dt data-coord="linking.umt:56:2"> <strong data-coord="linking.umt:56:1">Static Libraries</strong></dt><dd data-coord="linking.umt:57:0"><p data-coord="linking.umt:57:5">All object modules needed from the library are linked into the
+executable at link time.
+</p></dd><dt data-coord="linking.umt:60:2"> <strong data-coord="linking.umt:60:1">Dynamic Libraries</strong></dt><dd data-coord="linking.umt:61:0"><p data-coord="linking.umt:61:5">The object modules needed from the library are not linked into
+the program until it is loaded into memory or even later.  Also known 
+as <em data-coord="linking.umt:61:152">shared libraries</em> as the library code can be shared simultaneously
+by multiple processes by being loaded (at possibly different virtual
+addresses) into the virtual address spaces of the processes.
+</p></dd></dl></section><section data-coord="linking.umt:67:0"><h2 data-coord="linking.umt:67:0">Exercises</h2><section data-coord="linking.umt:70:0"><h3 data-coord="linking.umt:70:0">Starting up</h3><p data-coord="linking.umt:73:0">Follow the <em data-coord="linking.umt:73:38"><a href="../working/working.html" data-coord="linking.umt:73:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="linking.umt:73:98">lab7</samp> branch and a new
+<samp data-coord="linking.umt:73:122">submit/lab7</samp> directory.  You should have copied over
+the contents of <samp data-coord="linking.umt:73:192">~/cs220/labs/lab7/exercises</samp> over to your
+directory.
+</p></section><section data-coord="linking.umt:81:0"><h3 data-coord="linking.umt:81:0">Exercise 1: Recognizing and Fixing a Linker Error</h3><p data-coord="linking.umt:84:0">Change over to the <a href="./exercises/log10" data-coord="linking.umt:84:40">log10</a> directory and look at the
+<a href="./exercises/log10/log10.c" data-coord="linking.umt:84:101">log10.c</a> program.  It contain code to read
+doubles from stdin and print out their base-10 logarithms.  Once you
+have looked at the source code, build the <samp data-coord="linking.umt:84:254">log10</samp> executable by typing
+<samp data-coord="linking.umt:84:283">make</samp>.
+</p><p data-coord="linking.umt:90:0">You should receive a linker error saying there is an <samp data-coord="linking.umt:90:53">undefined reference to
+log10</samp>.  The problem is that the <samp data-coord="linking.umt:90:110">log10()</samp> function is defined in the math
+library, but the provided <samp data-coord="linking.umt:90:178">Makefile</samp> does not link in the math library.
+</p><p data-coord="linking.umt:94:0">Do a <samp data-coord="linking.umt:94:5">man</samp> on the <samp data-coord="linking.umt:94:18">log10</samp> function.  You will see a requirement that you
+link with the math library using <samp data-coord="linking.umt:94:106">-lm</samp>.  When you get such a link error you
+should look at the man page for the problematic function to figure out which
+library you may be missing.
+</p><p data-coord="linking.umt:99:0">Now add the <samp data-coord="linking.umt:99:12">-lm</samp> flag to the <samp data-coord="linking.umt:99:30">LDLIBS</samp> <samp data-coord="linking.umt:99:39">make</samp> variable and re-<samp data-coord="linking.umt:99:66">make</samp>.  This time it should build correctly.  You can test it by
+simply typing <samp data-coord="linking.umt:99:146">echo 10 1000 2 | ./log10</samp>.
+</p><p data-coord="linking.umt:103:0">Notice that in addition to the <samp data-coord="linking.umt:103:31">log10()</samp> function, the program also uses the
+<samp data-coord="linking.umt:103:77">printf()</samp> and <samp data-coord="linking.umt:103:92">scanf()</samp> functions.  The reason you did not get an error for
+these functions is that they are defined in the standard C library <samp data-coord="linking.umt:103:221">libc</samp>
+which is linked in by default.
+</p><p data-coord="linking.umt:108:0">Where are these libraries located?  Traditionally, they were in
+<samp data-coord="linking.umt:108:64">/usr/lib</samp>.  However, since modern systems may need to support
+multiple architectures (like 64-bit and 32-versions of x86), the
+version of Linux you are running has them in
+<samp data-coord="linking.umt:108:237">/usr/lib/x86_64-linux-gnu</samp> All the library file names start with the
+prefix <samp data-coord="linking.umt:108:314">lib</samp> and have extension either <samp data-coord="linking.umt:108:346">.a</samp> for a static library and
+<samp data-coord="linking.umt:108:376">.so</samp> (standing for <strong data-coord="linking.umt:108:396">shared object</strong>) for a dynamic library.
+Specifying the linker option <samp data-coord="linking.umt:108:465">-lXXX</samp> means to link with the library
+with name <samp data-coord="linking.umt:108:514">libXXX</samp>.
+</p><p data-coord="linking.umt:118:0">Do a <samp data-coord="linking.umt:118:5">ls -l /usr/lib/x86_64-linux-gnu/libm.*</samp> which will list all
+files in <samp data-coord="linking.umt:118:75">/usr/lib/x86_64-linux-gnu/</samp> which begin with the prefix
+<samp data-coord="linking.umt:118:132">libm.</samp>.  You should see two: <samp data-coord="linking.umt:118:162">libm.a</samp> and <samp data-coord="linking.umt:118:175">libm.so</samp>; the former is a
+GNU linker script referring to the static math library and the latter
+is a script referring to the dynamic math library.
+</p><p data-coord="linking.umt:124:0">Look inside the <samp data-coord="linking.umt:124:16">libm.a</samp> script; you should see a reference to a
+specific version <samp data-coord="linking.umt:124:82">LIBM_VERSION</samp> of the actual <samp data-coord="linking.umt:124:111">libm</samp> library.  
+</p><p data-coord="linking.umt:127:0">List out all the symbols from that specific version of the <samp data-coord="linking.umt:127:59">libm</samp>
+static library using <samp data-coord="linking.umt:127:87">nm /usr/lib/x86_64-linux-gnu/LIBM_VERSION
+&gt;libm.nm 2&gt;/dev/null</samp> where <samp data-coord="linking.umt:127:158">LIBM_VERSION</samp> is the <samp data-coord="linking.umt:127:180">libm-N.NN.a</samp> from
+the <samp data-coord="linking.umt:127:203">libm.a</samp> script (the <samp data-coord="linking.umt:127:224">2&gt;</samp> redirects <samp data-coord="linking.umt:127:239">stderr</samp> to a bit-sink).  Look
+at the generated output in <samp data-coord="linking.umt:127:297">libm.nm</samp> using a text editor.  You should
+see a definition for <samp data-coord="linking.umt:127:361">log10</samp> listed under the object file <samp data-coord="linking.umt:127:398">w_log10.o</samp>
+(search for <samp data-coord="linking.umt:127:422">w_log10.o</samp> using your editor), with <samp data-coord="linking.umt:127:459">__log10</samp> defined in
+as a code symbol (aka <strong data-coord="linking.umt:127:502">text</strong> symbol) using <samp data-coord="linking.umt:127:523">T</samp>, and <samp data-coord="linking.umt:127:532">log10</samp> defined as
+a <em data-coord="linking.umt:127:553">weak symbol</em> using <samp data-coord="linking.umt:127:573">W</samp> (a <em data-coord="linking.umt:127:580">weak symbol</em> can be overridden by a
+non-weak definition).  You should see the other symbols referenced by
+that object file but not defined within that object file as undefined
+<samp data-coord="linking.umt:127:757">U</samp>.
+</p><p data-coord="linking.umt:140:0">Do a <samp data-coord="linking.umt:140:5">man</samp> on <samp data-coord="linking.umt:140:14">nm</samp> (if it does not work on your local system pull a
+man page off the web).  Using the information documenting the symbol
+types, look at the <samp data-coord="linking.umt:140:156">nm</samp> output in <samp data-coord="linking.umt:140:171">libm.nm</samp> to discover which object
+file defines the <samp data-coord="linking.umt:140:223">__ieee754_log10</samp> symbol referenced by the
+<samp data-coord="linking.umt:140:266">w_log10.o</samp> object file.
+</p></section><section data-coord="linking.umt:146:0"><h3 data-coord="linking.umt:146:0">Exercise 2: Multiply-Defined Symbols</h3><p data-coord="linking.umt:149:0">Change over to the directory <a href="./exercises/multiple-symbols" data-coord="linking.umt:149:61">multiple-symbols.</a>  Look at the files contained there; note that <samp data-coord="linking.umt:149:125">sym</samp>
+is defined differently in <a href="./exercises/multiple-symbols/def1.c" data-coord="linking.umt:149:196">def1.c</a>
+and <a href="./exercises/multiple-symbols/def2.c" data-coord="linking.umt:149:246">def2.c.</a>  If you type <samp data-coord="linking.umt:149:267">make</samp>,
+you will get a multiply-defined symbol error for <samp data-coord="linking.umt:149:324">sym</samp>.
+</p><p data-coord="linking.umt:155:0">The linker classifies all external identifiers which have initializers as
+<em data-coord="linking.umt:155:74">strong symbols</em> and allows only a single strong definition in a program.  A
+declaration without an initializer declares <em data-coord="linking.umt:155:195">weak symbols</em>.  Multiple
+declarations for the same <em data-coord="linking.umt:155:247">weak symbol</em> are merged together; when weak
+symbols are linked with a strong symbol with the same spelling, the strong
+symbol definition wins.
+</p><p data-coord="linking.umt:162:0">You can fix the error by changing one of the definitions to be a <em data-coord="linking.umt:162:65">weak</em>
+symbol by removing the initializer.
+</p></section><section data-coord="linking.umt:165:0"><h3 data-coord="linking.umt:165:0">Exercise 3: Multiple-Definition Bug</h3><p data-coord="linking.umt:168:0">Change over to the directory <a href="./exercises/multiple-defs" data-coord="linking.umt:168:58">multiple-defs.</a>
+Observe that <samp data-coord="linking.umt:168:86">x</samp> is declared with inconsistent types in
+<a href="./exercises/multiple-defs/main.c" data-coord="linking.umt:168:165">main.c</a> and
+<a href="./exercises/multiple-defs/f.c" data-coord="linking.umt:168:209">f.c.</a>  The definition in <samp data-coord="linking.umt:168:233">main.c</samp> is a
+strong definition and dominates over that in <samp data-coord="linking.umt:168:292">f.c</samp>.
+</p><p data-coord="linking.umt:174:0">Build the program by typing <samp data-coord="linking.umt:174:28">make</samp>.  You may receive a link warning.
+If you ignore the warning and run the program you will see that the
+inconsistent types for <samp data-coord="linking.umt:174:160">x</samp> has caused a pernicious bug: <samp data-coord="linking.umt:174:193">f()</samp> changing
+<samp data-coord="linking.umt:174:208">x</samp> to <samp data-coord="linking.umt:174:215">0.0</samp> also happens to change the value of <samp data-coord="linking.umt:174:257">y</samp>!!  Can you
+understand why?  (Hint: a <code><span class="hl kwb">double</span></code> occupies 8 bytes).
+</p><p data-coord="linking.umt:180:0">These kind of bugs can be avoided by putting the declaration of a
+symbol referenced by multiple program files into a <strong data-coord="linking.umt:180:117">single</strong> header
+file and <samp data-coord="linking.umt:180:142">#include</samp>'ing the header file into all files which
+reference or <strong data-coord="linking.umt:180:207">define</strong> the symbol.
+</p></section><section data-coord="linking.umt:185:0"><h3 data-coord="linking.umt:185:0">Exercise 4: Dynamic versus Static Linking</h3><p data-coord="linking.umt:188:0">Change over to the <a href="./exercises/static-dynamic" data-coord="linking.umt:188:49">static-dynamic</a> directory,
+the contained <a href="./exercises/static-dynamic/log10.c" data-coord="linking.umt:188:127">log10.c</a> program is
+identical to that from the first exercise. However, the
+.&lt;./exercises/static-dynamic/Makefile&gt; Makefile is setup to build both a
+statically-linked and dynamically-linked executable.  Build them by
+typing simply <samp data-coord="linking.umt:188:358">make</samp>.  You should see <samp data-coord="linking.umt:188:382">make</samp> building a
+statically-linked <samp data-coord="linking.umt:188:418">log10-static</samp> executable and a dynamically-linked
+<samp data-coord="linking.umt:188:469">log10-dynamic</samp> executable.
+</p><p data-coord="linking.umt:197:0">Do a <samp data-coord="linking.umt:197:5">ls -l</samp>.  You should see a dramatic difference in size between
+<samp data-coord="linking.umt:197:68">log10-static</samp> and <samp data-coord="linking.umt:197:87">log10-dynamic</samp>.  That is because <samp data-coord="linking.umt:197:121">log10-static</samp> contains
+within it all the library code needed, whereas for <samp data-coord="linking.umt:197:196">log10-dynamic</samp>, the
+library code is linked in dynamically (at load-time or later).
+</p><p data-coord="linking.umt:202:0">Do a <samp data-coord="linking.umt:202:5">nm</samp> on both executables: <samp data-coord="linking.umt:202:31">nm log10-static &gt;log10-static.nm</samp> and <samp data-coord="linking.umt:202:70">nm
+log10-dynamic &gt;log10-dynamic.nm</samp>.  Look at both output files using a text
+editor.  In <samp data-coord="linking.umt:202:160">log10-dynamic.nm</samp> you should see that <samp data-coord="linking.umt:202:199">log10</samp> is undefined <samp data-coord="linking.umt:202:220">U</samp>,
+but in <samp data-coord="linking.umt:202:232">log10-static.nm</samp> you should see it is defined as a weak (`W`)
+symbol.
+</p></section><section data-coord="linking.umt:208:0"><h3 data-coord="linking.umt:208:0">Exercise 5: Building a Non-Standard Library</h3><p data-coord="linking.umt:211:0">This exercise involves building static and dynamic versions of a
+custom library to add/multiply vectors (based on the example from the
+recommended text, ch. 7).  Change over to the <a href="./exercises/libvec" data-coord="linking.umt:211:203">libvec</a> directory and look at the two files
+<a href="./exercises/libvec/addvec.c" data-coord="linking.umt:211:277">addvec.c</a> and
+<a href="./exercises/libvec/multvec.c" data-coord="linking.umt:211:322">multvec.c</a> (which will be put into the
+library) and a test file <a href="./exercises/libvec/testvec.c" data-coord="linking.umt:211:417">testvec.c</a>
+which will be linked with the library.
+</p><p data-coord="linking.umt:220:0">Then specifically look at the <a href="./exercises/libvec/Makefile" data-coord="linking.umt:220:61">Makefile</a>
+which is reproduced here with the lines numbered to facilitate
+discussion:
+</p><pre data-coord="linking.umt:225:0">01 CFLAGS = -g -Wall -fPIC -std=c18
+02 
+03 OBJS = \
+04   addvec.o \
+05   multvec.o
+06
+07 all:		libvec.so  libvec.a testvec-static testvec-dynamic
+08
+09 libvec.so:	$(OBJS)
+10		$(CC) -shared $(OBJS) -o $@
+11
+12 libvec.a:	$(OBJS)
+13		ar rcs $@ $(OBJS)
+14
+15 testvec-static: testvec.o
+16		$(CC)  -static testvec.o -L. -lvec -o $@
+17
+18 testvec-dynamic: testvec.o
+19		$(CC) testvec.o -L. -lvec -o $@
+20
+21 .PHONY:	clean
+22 clean:
+23		rm *.o *.so *.a testvec-*
+24
+</pre><p data-coord="linking.umt:251:0">Line 1 defines the options used for compilation. The one option which
+may not have been seen earlier is <samp data-coord="linking.umt:251:104">-fPIC</samp> which specifies generating
+Position-Independence Code.  This is usually necessary when generating
+shared libraries which can be simultaneously loaded at different
+addresses in the virtual address spaces of multiple processes.   <samp data-coord="linking.umt:251:340">-g</samp> turns on debugging, <samp data-coord="linking.umt:251:365">-Wall</samp> turns on
+reasonable warnings and <samp data-coord="linking.umt:251:406">-std=c18</samp> specifies the C dialect as C18.
+</p><p data-coord="linking.umt:258:0">Lines 3 - 5 specify the objects included in the libraries.
+</p><p data-coord="linking.umt:260:0">Line 7 lists all the targets to be built.
+</p><p data-coord="linking.umt:262:0">Lines 9 and 10 specify how to build the dynamic library <samp data-coord="linking.umt:262:56">libvec.so</samp>.  The
+<samp data-coord="linking.umt:262:74">-shared</samp> option builds a shared library.
+</p><p data-coord="linking.umt:265:0">Line 12 and 13 specify how to build the static library <samp data-coord="linking.umt:265:55">libvec.a</samp>.  The
+program <samp data-coord="linking.umt:265:80">ar</samp> is used to archive the object files together: <samp data-coord="linking.umt:265:131">r</samp> specifies
+inserting the object files into the archive with replacement, <samp data-coord="linking.umt:265:207">c</samp> creates
+the archive and <samp data-coord="linking.umt:265:235">s</samp> creates a symbol-table in the archive to facilitate
+searching (this can also be done using a special <samp data-coord="linking.umt:265:340">ranlib</samp> command).
+</p><p data-coord="linking.umt:271:0">Lines 15 and 16 specify how to build the test program using the static
+library.  The <samp data-coord="linking.umt:271:85">-static</samp> option specifies that no dynamic libraries
+should be used, <samp data-coord="linking.umt:271:154">-L .</samp> says to add the current directory to the set of
+directories in which libraries are searched for, the <samp data-coord="linking.umt:271:262">-lvec</samp> option
+specifies the <samp data-coord="linking.umt:271:291">libvec.a</samp> library.
+</p><p data-coord="linking.umt:277:0">Lines 18 and 19 specify how to build the test program using the dynamic
+library.  Since no <samp data-coord="linking.umt:277:91">-static</samp> option is used, it will use dynamic libraries
+and link with <samp data-coord="linking.umt:277:161">libvec.so</samp> in the current directory.
+</p><p data-coord="linking.umt:281:0">Build all the targets by typing <samp data-coord="linking.umt:281:32">make</samp>.  Once again, do a <samp data-coord="linking.umt:281:58">ls -l</samp> listing to
+observe the significant difference in size between the statically-linked
+executable and the dynamically-linked executable.  
+</p><p data-coord="linking.umt:285:0">Now run the statically-linked executable by typing a command like
+<samp data-coord="linking.umt:285:66">./testvec-static 1 2 3</samp> which should print out the sum and product of the
+vector <samp data-coord="linking.umt:285:148">[1, 2, 3]</samp> with itself.
+</p><p data-coord="linking.umt:289:0">Try the same thing with the dynamically-linked executable by typing a
+command like <samp data-coord="linking.umt:289:83">./testvec-dynamic 1 2 3</samp>.  You will get an error saying that it
+cannot find the dynamic library <samp data-coord="linking.umt:289:180">libvec.so</samp>.  This proves that this library
+is necessary to run the program.
+</p><p data-coord="linking.umt:294:0">You will need to tell the system to add the current directory to the set of
+directories which are searched for libraries when running the program.  One
+way to do so is to add the current directory to the <samp data-coord="linking.umt:294:204">LD_LIBRARY_PATH</samp>
+environmental variable.  If using a <samp data-coord="linking.umt:294:258">sh</samp>-based shell (your shell prompt will
+usually contain a <samp data-coord="linking.umt:294:317">$</samp> character), simply type
+<samp data-coord="linking.umt:294:345">LD_LIBRARY_PATH=. ./testvec-dynamic 1 2 3</samp> which should work.  If using a
+<samp data-coord="linking.umt:294:420">csh</samp>-based shell (your shell prompt contains a <samp data-coord="linking.umt:294:468">%</samp> character) you will need
+2 commands:
+</p><pre data-coord="linking.umt:304:0">% setenv LD_LIBRARY_PATH .
+% ./testvec-dynamic 1 2 3
+</pre><p data-coord="linking.umt:308:0">You can list out the dynamic dependencies of a dynamically-linked executable
+by using the <samp data-coord="linking.umt:308:90">ldd</samp> command.  Type <samp data-coord="linking.umt:308:111">ldd testvec-dynamic</samp> to see what
+libraries the <samp data-coord="linking.umt:308:159">testvec-dynamic</samp> executable depends on.  Set up the
+<samp data-coord="linking.umt:308:212">ldd</samp> command so that it does not print <samp data-coord="linking.umt:308:252">libvec.so</samp> as <samp data-coord="linking.umt:308:267">not found</samp>.
+</p></section><section data-coord="linking.umt:313:0"><h3 data-coord="linking.umt:313:0">Exercise 6: Symbol Definitions using nm</h3><p data-coord="linking.umt:316:0">Stay in the same <a href="./exercises/libvec" data-coord="linking.umt:316:39">libvec</a> directory as the
+previous exercise.
+</p><p data-coord="linking.umt:319:0">Produce a <samp data-coord="linking.umt:319:10">nm</samp> dump of the symbols in the statically-linked executable by
+running <samp data-coord="linking.umt:319:82">nm testvec-static &gt;testvec-static.nm</samp>.  Look at <samp data-coord="linking.umt:319:131">testvec-static.nm</samp>
+using a text editor and find the definitions for the symbols <samp data-coord="linking.umt:319:212">main</samp>, <samp data-coord="linking.umt:319:220">addvec</samp>
+and <samp data-coord="linking.umt:319:233">multvec</samp>.  Then run <samp data-coord="linking.umt:319:254">gdb</samp> on that executable and print out the address
+of <samp data-coord="linking.umt:319:308">main</samp>, <samp data-coord="linking.umt:319:316">addvec</samp> and <samp data-coord="linking.umt:319:329">multvec</samp> using <samp data-coord="linking.umt:319:345">p &amp;main</samp>, <samp data-coord="linking.umt:319:356">p &amp;addvec</samp> and <samp data-coord="linking.umt:319:372">p
+&amp;multvec</samp>.  You should see that the addresses match the values in the <samp data-coord="linking.umt:319:445">nm</samp>
+dump.
+</p><p data-coord="linking.umt:327:0">Do the same thing with the dynamically-linked executable: specifically,
+produce a <samp data-coord="linking.umt:327:82">nm</samp> dump of <samp data-coord="linking.umt:327:95">testvec-dynamic</samp> using <samp data-coord="linking.umt:327:119">nm testvec-dynamic
+&gt;testvec-dynamic.nm</samp> and use a text editor to find the definitions for the
+symbols <samp data-coord="linking.umt:327:222">main</samp>, <samp data-coord="linking.umt:327:230">addvec</samp> and <samp data-coord="linking.umt:327:243">multvec</samp>.  You should see that <samp data-coord="linking.umt:327:275">main</samp> is
+defined but <samp data-coord="linking.umt:327:297">addvec</samp> and <samp data-coord="linking.umt:327:310">multvec</samp> are not yet defined; they can only be
+defined once the dynamic library <samp data-coord="linking.umt:327:391">libvec.so</samp> has been loaded.  Run <samp data-coord="linking.umt:327:425">gdb</samp>
+on the dynamic executable using <samp data-coord="linking.umt:327:463">gdb testvec-dynamic</samp>.  Before you start the
+program print out the address of <samp data-coord="linking.umt:327:541">main</samp>, <samp data-coord="linking.umt:327:549">addvec</samp> and <samp data-coord="linking.umt:327:562">multvec</samp>.  The
+address of <samp data-coord="linking.umt:327:589">main</samp> should print out fine, but the other two should print out
+only partial information.  
+</p><p data-coord="linking.umt:338:0">Before you can run the program inside <samp data-coord="linking.umt:338:38">gdb</samp> for the dynamically-linked
+executable, you will need to set the <samp data-coord="linking.umt:338:108">LD_LIBRARY_PATH</samp> using <samp data-coord="linking.umt:338:132">set env
+LD_LIBRARY_PATH .</samp> at the <samp data-coord="linking.umt:338:167">gdb</samp> prompt.  Then put a breakpoint at
+<samp data-coord="linking.umt:338:207">main()</samp> using <samp data-coord="linking.umt:338:222">b main</samp> and run the program using <samp data-coord="linking.umt:338:257">r 1 2 3</samp>.  When the
+program stops at <samp data-coord="linking.umt:338:295">main()</samp>, you should once again print out the
+addresses of <samp data-coord="linking.umt:338:354">main</samp>, <samp data-coord="linking.umt:338:362">addvec</samp> and <samp data-coord="linking.umt:338:375">multvec</samp>.  You will now see that
+the latter two are defined and are in much higher memory than <samp data-coord="linking.umt:338:471">main</samp>,
+proving that they are in a different memory area (or segment) from the
+text segment containing <samp data-coord="linking.umt:338:574">main</samp>.
+</p></section><section data-coord="linking.umt:349:0"><h3 data-coord="linking.umt:349:0">Exercise 7: Building Your Own Libraries</h3><p data-coord="linking.umt:352:0">Change over to the <a href="./exercises/libgeom" data-coord="linking.umt:352:42">libgeom</a> directory.  It contains
+a specification file <a href="./exercises/libgeom/geom.h" data-coord="linking.umt:352:125">geom.h</a> for routines
+which calculate the perimeter and area of circles and rectangles and
+implementation files <a href="./exercises/libgeom/circ.c" data-coord="linking.umt:352:265">circ.c</a> and
+<a href="./exercises/libgeom/rect.c" data-coord="linking.umt:352:306">rect.c.</a>  It also contains a crude
+interactive test program <a href="./exercises/libgeom/testgeom.c" data-coord="linking.umt:352:399">testgeom.c.</a>
+</p><p data-coord="linking.umt:359:0">Create a <samp data-coord="linking.umt:359:9">Makefile</samp> which 
+</p><ol data-coord="linking.umt:361:0"><li data-coord="linking.umt:361:0"><p data-coord="linking.umt:361:4">Will build a static library <samp data-coord="linking.umt:361:32">libgeom.a</samp> containing the <samp data-coord="linking.umt:361:59">circ.o</samp> and
+<samp data-coord="linking.umt:361:76">rect.o</samp> object files.  
+</p></li><li data-coord="linking.umt:364:0"><p data-coord="linking.umt:364:4">Will build a dynamic library <samp data-coord="linking.umt:364:33">libgeom.so</samp> containing the <samp data-coord="linking.umt:364:61">circ.o</samp> and
+<samp data-coord="linking.umt:364:78">rect.o</samp> object files. 
+</p></li><li data-coord="linking.umt:367:0"><p data-coord="linking.umt:367:4">Will build a statically-linked executable <samp data-coord="linking.umt:367:46">testgeom-static</samp> which
+contains the test program linked with the static library.
+</p></li><li data-coord="linking.umt:370:0"><p data-coord="linking.umt:370:4">Will build a dynamically-linked executable <samp data-coord="linking.umt:370:47">testgeom-dynamic</samp> which
+contains the test program linked with the dynamic library.
+</p></li></ol><p data-coord="linking.umt:373:0">You can use the <samp data-coord="linking.umt:373:16">libvec</samp> <a href="./exercises/libvec/Makefile" data-coord="linking.umt:373:56">Makefile</a> as a
+starting point.
+</p><p data-coord="linking.umt:376:0">Build all of the above targets by running <samp data-coord="linking.umt:376:42">make</samp> on your <samp data-coord="linking.umt:376:57">Makefile</samp>.  Test
+your static and dynamic executables.
+</p></section></section><section data-coord="linking.umt:379:0"><h2 data-coord="linking.umt:379:0">References</h2><p data-coord="linking.umt:383:0">Bryant and O'Halloran, recommended text, chapter 7.
+</p></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
