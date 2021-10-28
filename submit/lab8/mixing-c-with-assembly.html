@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: mixing-c-with-assembly.umt</title>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="mixing-c-with-assembly.umt:1:1">L a b   8 :   M i x i n g   C   w i t h   A s s e m b l y
+</p><p data-coord="mixing-c-with-assembly.umt:3:0"><strong data-coord="mixing-c-with-assembly.umt:3:0">Date</strong>: Oct 28, 2021
+</p><p data-coord="mixing-c-with-assembly.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="mixing-c-with-assembly.umt:10:0"><h2 data-coord="mixing-c-with-assembly.umt:10:0">Aims</h2><p data-coord="mixing-c-with-assembly.umt:13:0">The aim of this lab is to familiarize you with mixing assembly language
+code with C.  After completing this lab, you should be familiar with the
+following topics:
+</p><ul data-coord="mixing-c-with-assembly.umt:17:0"><li data-coord="mixing-c-with-assembly.umt:17:0"><p data-coord="mixing-c-with-assembly.umt:17:4">Compiling and linking assembly language files with C files to
+build a program.
+</p></li><li data-coord="mixing-c-with-assembly.umt:20:0"><p data-coord="mixing-c-with-assembly.umt:20:4">A glimpse at the syntax used for writing in-line assembly in <samp data-coord="mixing-c-with-assembly.umt:20:65">gcc</samp>.
+</p></li></ul></section><section data-coord="mixing-c-with-assembly.umt:23:0"><h2 data-coord="mixing-c-with-assembly.umt:23:0">Background</h2><p data-coord="mixing-c-with-assembly.umt:26:0">C is a very flexible language and allows access to many of the low-level
+details of a machine.  However, because of the limited semantics of C, some
+aspects of the machine simply cannot be accessed in C.  In those cases, it
+may be necessary to mix assembly language with C.
+</p><p data-coord="mixing-c-with-assembly.umt:31:0">Mixing assembly language with C can be done in two ways:
+</p><p data-coord="mixing-c-with-assembly.umt:33:2">1.  Having separate assembly language <samp data-coord="mixing-c-with-assembly.umt:33:40">.s</samp> files containing external
+    definitions (functions and variables) implemented entirely in assembly
+    language.  Those files can be assembled using an assembler to create
+    <samp data-coord="mixing-c-with-assembly.umt:33:229">.o</samp> object files.  The object files can be linked together with other
+    object files (possibly compiled from <samp data-coord="mixing-c-with-assembly.umt:33:343">.c</samp> files) and libraries to
+    build an executable program.
+</p><p data-coord="mixing-c-with-assembly.umt:40:2">2.  Most C compilers provide facilities to include <em data-coord="mixing-c-with-assembly.umt:40:53">inline assembly</em> when
+    it is necessary to use assembly language for a unit smaller than 
+    a function.
+</p><p data-coord="mixing-c-with-assembly.umt:44:0">A main advantage of writing code in C is portability.  If the code uses only
+standard C libraries, moving the code to a different architecture is a
+simple matter of recompiling.  Adding assembly language to the mix makes
+the code non-portable.  Hence assembly language should only be used in limited
+situations, like the following:
+</p><ul data-coord="mixing-c-with-assembly.umt:50:0"><li data-coord="mixing-c-with-assembly.umt:50:0"><p data-coord="mixing-c-with-assembly.umt:50:4">Accessing hardware facilities which are impossible to access using
+pure C.  Examples could include kernel-level instructions used for
+I/O, locking, memory management, CPU table management.  
+</p></li><li data-coord="mixing-c-with-assembly.umt:54:0"><p data-coord="mixing-c-with-assembly.umt:54:4">When programming embedded systems, it is often necessary to revert to
+assembly (even though the C programming environments for embedded
+systems usually provide many extensions, they may still be insufficient
+to access all the hardware facilities).
+</p></li><li data-coord="mixing-c-with-assembly.umt:59:0"><p data-coord="mixing-c-with-assembly.umt:59:4">It is possible to write some code much more efficiently in assembly
+language rather than in C and that code is used in performance-critical
+portions of the program.  With modern optimizing compilers, this
+situation is extremely unlikely to arise.
+</p></li></ul></section><section data-coord="mixing-c-with-assembly.umt:66:0"><h2 data-coord="mixing-c-with-assembly.umt:66:0">Exercises</h2><section data-coord="mixing-c-with-assembly.umt:69:0"><h3 data-coord="mixing-c-with-assembly.umt:69:0">Starting up</h3><p data-coord="mixing-c-with-assembly.umt:72:0">Follow the <em data-coord="mixing-c-with-assembly.umt:72:38"><a href="../working/working.html" data-coord="mixing-c-with-assembly.umt:72:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="mixing-c-with-assembly.umt:72:98">lab8</samp> branch and a new
+<samp data-coord="mixing-c-with-assembly.umt:72:122">submit/lab8</samp> directory.  You should have copied over
+the contents of <samp data-coord="mixing-c-with-assembly.umt:72:192">~/cs220/labs/lab8/exercises</samp> over to your
+directory.
+</p></section><section data-coord="mixing-c-with-assembly.umt:79:0"><h3 data-coord="mixing-c-with-assembly.umt:79:0">Exercise 1: Rotate Instructions</h3><p data-coord="mixing-c-with-assembly.umt:82:0">Most modern architectures provide some kind of rotate instruction which
+rotate a register circularly.  C does not provide any rotate semantics and
+it seems necessary to use assembly language if rotations are needed in
+performance-critical code (like encryption applications).
+</p><p data-coord="mixing-c-with-assembly.umt:87:0">However, existing C compilers are extremely capable and are setup to
+recognize certain idioms for rotation.  Change over to the
+<a href="./exercises/rotate" data-coord="mixing-c-with-assembly.umt:87:150">rotate</a> directory and look at the
+<a href="exercises/rotate/rotate.c" data-coord="mixing-c-with-assembly.umt:87:212">rotate.c</a> file.  It provides an implementation of
+rotates in terms of shifts: a rotate is computed as a shift in the
+rotate direction or'd with bits rotated around; the bits rotated
+around are computed by shifting bit-length - shift-length bits in the
+opposite direction.
+</p><p data-coord="mixing-c-with-assembly.umt:96:0">Build an assembly language file by typing <samp data-coord="mixing-c-with-assembly.umt:96:42">make</samp> and look at the
+generated <samp data-coord="mixing-c-with-assembly.umt:96:75">rotate.s</samp>.  You will see that the generated code does make
+use of rotate instructions.  Since the <samp data-coord="mixing-c-with-assembly.umt:96:174">rotl()</samp> and <samp data-coord="mixing-c-with-assembly.umt:96:187">rotr()</samp> functions
+have been declared inline, the compiler has replaced the calls with
+single <samp data-coord="mixing-c-with-assembly.umt:96:281">rotl</samp> and <samp data-coord="mixing-c-with-assembly.umt:96:292">rotr</samp> instructions respectively.
+</p><p data-coord="mixing-c-with-assembly.umt:102:0">The takeaway from this exercise is that when a situation seems to
+require the use of assembly language, it is worth checking whether the
+situation can be handled satisfactorily while staying entirely within
+C.
+</p></section><section data-coord="mixing-c-with-assembly.umt:107:0"><h3 data-coord="mixing-c-with-assembly.umt:107:0">Exercise 2: cpuid for Vendor Information</h3><p data-coord="mixing-c-with-assembly.umt:110:0">Since around the time Pentium processors were introducted, the <samp data-coord="mixing-c-with-assembly.umt:110:63">x86</samp>
+architecture has provided a <samp data-coord="mixing-c-with-assembly.umt:110:97">cpuid</samp> instruction which provides
+information about the CPU.  The operation of the <samp data-coord="mixing-c-with-assembly.umt:110:181">cpuid</samp> instruction
+is controlled by the incoming value in the <samp data-coord="mixing-c-with-assembly.umt:110:244">eax</samp> register.  Information is
+returned in the <samp data-coord="mixing-c-with-assembly.umt:110:292">eax</samp>, <samp data-coord="mixing-c-with-assembly.umt:110:299">ebx</samp>, <samp data-coord="mixing-c-with-assembly.umt:110:306">ecx</samp> and <samp data-coord="mixing-c-with-assembly.umt:110:316">edx</samp> registers with the details
+of the returned information depending on what was requested by the incoming
+<samp data-coord="mixing-c-with-assembly.umt:110:425">eax</samp> register.
+</p><p data-coord="mixing-c-with-assembly.umt:118:0">When the incoming <samp data-coord="mixing-c-with-assembly.umt:118:18">eax</samp> register is specified as 0, the returned <samp data-coord="mixing-c-with-assembly.umt:118:65">eax</samp>
+value is the largest value which can be used for an incoming <samp data-coord="mixing-c-with-assembly.umt:118:132">eax</samp>
+value.  <samp data-coord="mixing-c-with-assembly.umt:118:146">ebx</samp>, <samp data-coord="mixing-c-with-assembly.umt:118:153">edx</samp> and <samp data-coord="mixing-c-with-assembly.umt:118:163">ecx</samp> (in that order) spell out a <em data-coord="mixing-c-with-assembly.umt:118:197">vendor
+string</em> corresponding to the CPU manufacturer.  Non-zero incoming
+values for <samp data-coord="mixing-c-with-assembly.umt:118:282">eax</samp>, returns many low-level details of the CPU.
+</p><p data-coord="mixing-c-with-assembly.umt:124:0">Change over to the <a href="./exercises/cpuid1" data-coord="mixing-c-with-assembly.umt:124:41">cpuid1</a> directory and look at the
+files contained there.  The <samp data-coord="mixing-c-with-assembly.umt:124:102">cpuid.s</samp> file provides a <samp data-coord="mixing-c-with-assembly.umt:124:128">get_cpuid()</samp>
+function which executes the <samp data-coord="mixing-c-with-assembly.umt:124:170">cpuid</samp> instruction with the incoming
+<samp data-coord="mixing-c-with-assembly.umt:124:208">eax</samp> set to 0 and returns the returned information via 4-incoming
+pointer arguments in <samp data-coord="mixing-c-with-assembly.umt:124:296">rdi</samp>, <samp data-coord="mixing-c-with-assembly.umt:124:303">rsi</samp>, <samp data-coord="mixing-c-with-assembly.umt:124:310">rdx</samp> and <samp data-coord="mixing-c-with-assembly.umt:124:320">rcx</samp>.  This function is
+exercised by a program in <samp data-coord="mixing-c-with-assembly.umt:124:371">main.c</samp> which decodes and prints out the
+vendor string.
+</p><p data-coord="mixing-c-with-assembly.umt:132:0">Build the program by typing <samp data-coord="mixing-c-with-assembly.umt:132:28">make</samp> and run it by typing <samp data-coord="mixing-c-with-assembly.umt:132:56">./cpuid</samp>.
+</p></section><section data-coord="mixing-c-with-assembly.umt:135:0"><h3 data-coord="mixing-c-with-assembly.umt:135:0">Exercise 3: Arbitrary cpuid Information</h3><p data-coord="mixing-c-with-assembly.umt:138:0">The previous exercise only used the <samp data-coord="mixing-c-with-assembly.umt:138:36">cpuid</samp> instruction with the
+incoming <samp data-coord="mixing-c-with-assembly.umt:138:74">eax</samp> register set to 0.  Change over to the
+<a href="./exercises/cpuid2" data-coord="mixing-c-with-assembly.umt:138:141">cpuid2</a> directory: it contains a
+<a href="exercises/cpuid2/main.c" data-coord="mixing-c-with-assembly.umt:138:200">main.c</a> which is setup to treat its first
+command-line argument as the value of <samp data-coord="mixing-c-with-assembly.umt:138:279">eax</samp> used to select the <samp data-coord="mixing-c-with-assembly.umt:138:304">cpuid</samp>
+operation.  However, the provided <samp data-coord="mixing-c-with-assembly.umt:138:346">cpuid.s</samp> file does not provide this
+functionality and has the same code as that from the previous
+exercise.  Modify this file to take an additional initial parameter
+which is the desired <samp data-coord="mixing-c-with-assembly.umt:138:534">cpuid</samp> op.
+</p><p data-coord="mixing-c-with-assembly.umt:148:0"><strong data-coord="mixing-c-with-assembly.umt:148:0">Hint</strong>: the arguments go the modified <samp data-coord="mixing-c-with-assembly.umt:148:38">get_cpuid()</samp> function will
+be in <samp data-coord="mixing-c-with-assembly.umt:148:72">edi</samp>, <samp data-coord="mixing-c-with-assembly.umt:148:79">rsi</samp>, <samp data-coord="mixing-c-with-assembly.umt:148:86">rdx</samp>, <samp data-coord="mixing-c-with-assembly.umt:148:93">rcx</samp> and <samp data-coord="mixing-c-with-assembly.umt:148:103">r8</samp>.
+</p><p data-coord="mixing-c-with-assembly.umt:151:0">After making your changes, build and test.  Check out its operation
+for <samp data-coord="mixing-c-with-assembly.umt:151:72">eax == 0</samp> which should return the same vendor string as the
+previous exercise.  Check out its operation for values of <samp data-coord="mixing-c-with-assembly.umt:151:191">eax</samp> other
+than 0, verifying your result with the information given in
+<a href="https://en.wikipedia.org/wiki/CPUID" data-coord="mixing-c-with-assembly.umt:151:302">wikipedia.</a>
+</p></section><section data-coord="mixing-c-with-assembly.umt:157:0"><h3 data-coord="mixing-c-with-assembly.umt:157:0">Exercise 4: Parity</h3><p data-coord="mixing-c-with-assembly.umt:160:0">A bit-word is defined to have <em data-coord="mixing-c-with-assembly.umt:160:30">even parity</em> if the number of bits in the
+word is even; otherwise it has <em data-coord="mixing-c-with-assembly.umt:160:104">odd parity</em>.  Parity is one of the most
+simple error-detecting mechanisms; for example, memory words often have
+an extra parity bit to allow detecting single-bit errors (for example,
+a 32-bit memory word will have 33-bits with the extra parity bit used
+to detect errors in the 32 data bits).
+</p><p data-coord="mixing-c-with-assembly.umt:167:0">Computing the parity of a word in C would require a sequence of bit
+operations.  However, in x86 assembly language, the parity of a word
+is available by testing the <samp data-coord="mixing-c-with-assembly.umt:167:165">parity</samp> flag <samp data-coord="mixing-c-with-assembly.umt:167:179">P</samp> after simply <samp data-coord="mixing-c-with-assembly.umt:167:196">test</samp>'ing 
+the word.  
+</p><p data-coord="mixing-c-with-assembly.umt:172:0">Change over to the <a href="./exercises/parity" data-coord="mixing-c-with-assembly.umt:172:41">parity</a> directory and look at the
+provided files.  Complete the code in the <a href="exercises/parity/parity.s" data-coord="mixing-c-with-assembly.umt:172:145">parity.s</a> file to return <samp data-coord="mixing-c-with-assembly.umt:172:169">eax</samp> as 1 iff the incoming argument has even
+parity.  You should use the <samp data-coord="mixing-c-with-assembly.umt:172:243">testl</samp> instruction to set the parity
+flag.  You can then test the flag using the <samp data-coord="mixing-c-with-assembly.umt:172:325">jpe</samp> ("jump if even
+parity") instruction to ensure that the correct return value is set up
+in register <samp data-coord="mixing-c-with-assembly.umt:172:429">eax</samp>.
+</p><p data-coord="mixing-c-with-assembly.umt:180:0">Build using <samp data-coord="mixing-c-with-assembly.umt:180:12">make</samp> and test by checking the parity of the command-line
+arguments to the program.
+</p><pre data-coord="mixing-c-with-assembly.umt:184:0">$ ./parity
+usage: ./parity INT1...
+$ ./parity 1 2 3 4 5 6 7 15 21
+parity(1) = 0
+parity(2) = 0
+parity(3) = 1
+parity(4) = 0
+parity(5) = 1
+parity(6) = 1
+parity(7) = 0
+parity(15) = 1
+parity(21) = 0
+
+$ ./parity -1 0 -2
+parity(-1) = 1
+parity(0) = 1
+parity(-2) = 0
+$
+</pre></section><section data-coord="mixing-c-with-assembly.umt:204:0"><h3 data-coord="mixing-c-with-assembly.umt:204:0">Exercise 5: Accessing the Instruction Pointer</h3><p data-coord="mixing-c-with-assembly.umt:208:0"><samp data-coord="mixing-c-with-assembly.umt:208:0">gcc</samp> allows inline assembly language as a compiler extension.  
+The inline assembly must be written within a string which is
+the first argument of the <samp data-coord="mixing-c-with-assembly.umt:208:152">__asm__()</samp>.  This argument can
+contain assembly instructions which must be separated by a <samp data-coord="mixing-c-with-assembly.umt:208:243">;</samp> or 
+<samp data-coord="mixing-c-with-assembly.umt:208:251">\n\t</samp> sequence.  
+</p><p data-coord="mixing-c-with-assembly.umt:214:0">This string can also be used as a template.  In that case, the
+remaining arguments to <samp data-coord="mixing-c-with-assembly.umt:214:86">__asm__()</samp> (separated by <samp data-coord="mixing-c-with-assembly.umt:214:112">:</samp>) provide
+constraints on the template arguments.  The details of the format are
+given in the references.
+</p><p data-coord="mixing-c-with-assembly.umt:219:0">Change over to the <a href="./exercises/rip" data-coord="mixing-c-with-assembly.umt:219:38">rip</a> directory and look at the
+<a href="exercises/rip/rip.c" data-coord="mixing-c-with-assembly.umt:219:91">rip.c</a> file.  This file provides a function
+<samp data-coord="mixing-c-with-assembly.umt:219:134">get_rip()</samp> which returns the instruction pointer for the the <samp data-coord="mixing-c-with-assembly.umt:219:196">return</samp>
+in the function.  It uses inline assembly to access the current
+instruction pointer.  The exact syntax:
+</p><p data-coord="mixing-c-with-assembly.umt:226:0">  __asm__("leaq (%%rip), %0": <em data-coord="mixing-c-with-assembly.umt:226:30">=r</em>(rip));
+</p><p data-coord="mixing-c-with-assembly.umt:229:0">specifies the template string as <samp data-coord="mixing-c-with-assembly.umt:229:33">"leaq (%%rip), %0"</samp> (the holes in
+the template are indicated using <samp data-coord="mixing-c-with-assembly.umt:229:101">%</samp><em data-coord="mixing-c-with-assembly.umt:229:104">d</em> for small integer <em data-coord="mixing-c-with-assembly.umt:229:126">d</em>; note
+the clumsiness of having to quote the <samp data-coord="mixing-c-with-assembly.umt:229:174">%</samp> used in the register
+specifier by doubling as in <samp data-coord="mixing-c-with-assembly.umt:229:227">%%rip</samp>).  The second argument (after the
+<samp data-coord="mixing-c-with-assembly.umt:229:269">:</samp>) specifies the output values affected by the template: in this
+case we want it to correspond to the template variable <samp data-coord="mixing-c-with-assembly.umt:229:391">%0</samp> and make
+it correspond to the register allocated to the <samp data-coord="mixing-c-with-assembly.umt:229:452">rip</samp> C variable.
+</p><p data-coord="mixing-c-with-assembly.umt:237:0">Note that it would have been more direct to have had a template
+which resulted in something like <samp data-coord="mixing-c-with-assembly.umt:237:97">movq %rip, %rax</samp>.  However, that
+is not a legal instruction as none of the x86 instructions allow
+reading <samp data-coord="mixing-c-with-assembly.umt:237:204">rip</samp> directly.  Instead, the <samp data-coord="mixing-c-with-assembly.umt:237:234">leaq (%rip), %rax</samp> gets
+the value of <samp data-coord="mixing-c-with-assembly.umt:237:272">rip</samp> indirectly by using it as a base register in
+an address computation.
+</p><p data-coord="mixing-c-with-assembly.umt:244:0">Build the program by typing <samp data-coord="mixing-c-with-assembly.umt:244:28">make</samp> and run it using <samp data-coord="mixing-c-with-assembly.umt:244:52">./rip</samp>.  Observe
+that the printed <samp data-coord="mixing-c-with-assembly.umt:244:87">rip</samp> pointer is consistent with the address printed
+for the <samp data-coord="mixing-c-with-assembly.umt:244:148">get_rip()</samp> function (look at the <samp data-coord="mixing-c-with-assembly.umt:244:182">rip.dump</samp> file produced by
+the <samp data-coord="mixing-c-with-assembly.umt:244:214">make</samp> and verify the values).
+</p></section><section data-coord="mixing-c-with-assembly.umt:249:0"><h3 data-coord="mixing-c-with-assembly.umt:249:0">Exercise 6: Accessing the Stack Pointer</h3><p data-coord="mixing-c-with-assembly.umt:252:0">Change over to the <a href="./exercises/rsp" data-coord="mixing-c-with-assembly.umt:252:38">rsp</a> directory and look at the files
+contained there.  Then go into the <a href="exercises/rsp/rsp.c" data-coord="mixing-c-with-assembly.umt:252:132">rsp.c</a> file and
+add inline assembly to the <samp data-coord="mixing-c-with-assembly.umt:252:174">get_rsp()</samp> function to return the value of
+the <samp data-coord="mixing-c-with-assembly.umt:252:222">rsp</samp> register just before the <samp data-coord="mixing-c-with-assembly.umt:252:253">return</samp>.  Note that since x86
+allows direct reading of the <samp data-coord="mixing-c-with-assembly.umt:252:313">rsp</samp> register, getting hold of its value
+is much easier than reading the value of the <samp data-coord="mixing-c-with-assembly.umt:252:400">rip</samp> register in the
+previous exercise.
+</p><p data-coord="mixing-c-with-assembly.umt:260:0">The code will output the address of the <samp data-coord="mixing-c-with-assembly.umt:260:40">stkVar</samp> and the value
+returned by your <samp data-coord="mixing-c-with-assembly.umt:260:80">get_rsp()</samp> function.  Look at the <samp data-coord="mixing-c-with-assembly.umt:260:115">rsp.dump</samp> file
+to  explain the results.
+</p><p data-coord="mixing-c-with-assembly.umt:264:0"><strong data-coord="mixing-c-with-assembly.umt:264:0">Hint</strong>: consider the difference between the two addresses.
+</p></section></section><section data-coord="mixing-c-with-assembly.umt:266:0"><h2 data-coord="mixing-c-with-assembly.umt:266:0">References</h2><ul data-coord="mixing-c-with-assembly.umt:270:0"><li data-coord="mixing-c-with-assembly.umt:270:0"><p data-coord="mixing-c-with-assembly.umt:270:4"><a href="http://en.wikipedia.org/wiki/CPUID" data-coord="mixing-c-with-assembly.umt:270:42">Wikipedia</a> article on the
+cpuid instruction.
+</p></li><li data-coord="mixing-c-with-assembly.umt:273:0"><p data-coord="mixing-c-with-assembly.umt:273:4"><a href="http://en.wikipedia.org/wiki/Circular_shift" data-coord="mixing-c-with-assembly.umt:273:51">Wikipedia</a> article
+on rotates 
+</p></li><li data-coord="mixing-c-with-assembly.umt:276:0"><p data-coord="mixing-c-with-assembly.umt:276:4">Clark Coleman
+<em data-coord="mixing-c-with-assembly.umt:276:91"><a href="http://www.oldlinux.org/Linux.old/Ref-docs/gcc-inline-asm.pdf" data-coord="mixing-c-with-assembly.umt:276:91">Using Inline Assembly With gcc</a></em>.  Three relatively old documents.
+</p></li><li data-coord="mixing-c-with-assembly.umt:281:0"><p data-coord="mixing-c-with-assembly.umt:281:4"><em data-coord="mixing-c-with-assembly.umt:281:59"><a href="http://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html" data-coord="mixing-c-with-assembly.umt:281:59">Inline
+    Assembly in gcc</a></em>.  The official gcc inline assembly docs.
+</p></li><li data-coord="mixing-c-with-assembly.umt:285:0"><p data-coord="mixing-c-with-assembly.umt:285:4"><em data-coord="mixing-c-with-assembly.umt:285:75"><a href="http://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html" data-coord="mixing-c-with-assembly.umt:285:75">GCC-Inline-Assemble-HOWTO</a></em>.
+</p></li><li data-coord="mixing-c-with-assembly.umt:288:0"><p data-coord="mixing-c-with-assembly.umt:288:4"><em data-coord="mixing-c-with-assembly.umt:288:48"><a href="http://locklessinc.com/articles/gcc_asm/" data-coord="mixing-c-with-assembly.umt:288:48">GCC Inline ASM</a></em>.
+</p></li><li data-coord="mixing-c-with-assembly.umt:290:0"><p data-coord="mixing-c-with-assembly.umt:290:4"><em data-coord="mixing-c-with-assembly.umt:290:85"><a href="https://0xax.gitbooks.io/linux-insides/content/Theory/linux-theory-3.html" data-coord="mixing-c-with-assembly.umt:290:85">Inline assembly</a></em>.  Overall, looks like an interesting book on the
+Linux kernel.</p></li></ul></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
