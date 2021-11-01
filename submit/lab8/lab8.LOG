@@ -1,0 +1,105 @@
+Script started on 2021-10-31 13:33:11-04:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+hlauder1@remote00:~/projects/i220b/submit/lab8$ cd rotate[K[K[K[K[K[K[K[K[Kexercises/
+bash: exercises/: Is a directory
+hlauder1@remote00:~/projects/i220b/submit/lab8$ cd[K[Kcd exercises/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ cd rotate/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rotate$ make
+make: Nothing to be done for 'all'.
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rotate$ make clean
+rm -f *~ *.o rotate.s
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rotate$ make [K
+cc -S -Wall -Og -std=c18 rotate.c
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rotate$ cd ..
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ cd cpo[Kuid1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid1$ ./cpuid 
+cpuid: eax = 0x14; ebx = 0x756e6547; edx = 0x49656e69; ecx = 0x6c65746e
+vendor: GenuineIntel
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid1$ cd ..
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ cd cpuid2/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid2$ mka[K[Kake
+cc -c -g -Wall -std=c18 cpuid.s -o cpuid.o
+cc main.o cpuid.o -o cpuid
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid2$ ./cv[Kpuid 
+usage: ./cpuid CPUID_OP
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid2$ /[K./cpuid 0
+cpuid(0): eax = 0x14; ebx = 0x49656e69; edx = 0x49656e69; ecx = 0x6c65746e
+vendor: ineIineIntel
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid2$ make
+cc -c -g -Wall -std=c18 cpuid.s -o cpuid.o
+cc main.o cpuid.o -o cpuid
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid2$ make./cpuid 0
+cpuid(0): eax = 0x14; ebx = 0x756e6547; edx = 0x49656e69; ecx = 0x6c65746e
+vendor: GenuineIntel
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/cpuid2$ .[Kcdc[K ..
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ cd opa[K[K[Kpart[Kity/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+cc -g -Wall -std=c18 -Og   -c -o main.o main.c
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+parity.s: Assembler messages:
+parity.s:8: Error: no instruction mnemonic suffix given and no register operands; can't size instruction
+parity.s:10: Error: unsupported instruction `mov'
+parity.s:13: Error: unsupported instruction `mov'
+make: *** [Makefile:9: parity.o] Error 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+parity.s: Assembler messages:
+parity.s:8: Error: operand type mismatch for `test'
+make: *** [Makefile:9: parity.o] Error 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+cc main.o parity.o -o parity
+'hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ '[K.make/[K[K[K[K[K./paritty[K[K[K[Kity
+usage: ./parity INT1...
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 10
+parity(10) = 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 9
+parity(9) = 0
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ /[Kmake
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+cc main.o parity.o -o parity
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./[K[Kmake./parity 9[K2
+parity(2) = 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 2[K1
+parity(1) = 0
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 1[K2
+parity(2) = 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 2[K3pa[K[K
+parity(3) = 0
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 3[K[K[K[K[K[K[K[K[K[K./parity 1 2 3 4 5 6 7 15 21
+parity(1) = 0
+parity(2) = 1
+parity(3) = 0
+parity(4) = 1
+parity(5) = 0
+parity(6) = 1
+parity(7) = 0
+parity(15) = 0
+parity(21) = 0
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+parity.s: Assembler messages:
+parity.s:7: Error: no such instruction: `test1 $1,%edi'
+make: *** [Makefile:9: parity.o] Error 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+parity.s: Assembler messages:
+parity.s:7: Error: no such instruction: `test1 %edi'
+make: *** [Makefile:9: parity.o] Error 1
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ cd ..
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ make[K[K[K[Kcd rip/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rip$ make
+cc -Wall -Og -std=c18 -S rip.c
+cc -Wall -Og -std=c18    rip.c   -o rip
+objdump -d rip > rip.dump
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rip$ ./rip 
+&get_rip() = 0x55a98f610135; rip = 0x55a98f61013c
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rip$ cd ..
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ cd rsp
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rsp$ cd rsp[K[K[K[K[K[Kmake
+cc -Wall -Og -std=c18    rsp.c   -o rsp
+objdump -d rsp > rsp.dump
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rsp$ makecd rsp[1P.../rip [2Pmakecd rip/[K[K[K[K[K[K[K./rsp 
+&stkVar = 0x7ffcd1c2b5ec; rsp = 0x7ffcd1c2b5d8
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/rsp$ exit
+
+Script done on 2021-10-31 16:38:41-04:00 [COMMAND_EXIT_CODE="0"]

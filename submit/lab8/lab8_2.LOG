@@ -1,0 +1,30 @@
+Script started on 2021-10-31 21:12:24-04:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+hlauder1@remote00:~/projects/i220b/submit/lab8$ cd exercises/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises$ cd parity/
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+make: 'parity' is up to date.
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make celan[K[K[K[Klean
+rm -f *.o parity
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ make
+cc -g -Wall -std=c18 -Og   -c -o main.o main.c
+cc -c -g -Wall -std=c18 -Og parity.s -o parity.o
+cc main.o parity.o -o parity
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity 1 2 3 4 5 6 7 15 21
+parity(1) = 0
+parity(2) = 0
+parity(3) = 1
+parity(4) = 0
+parity(5) = 1
+parity(6) = 1
+parity(7) = 0
+parity(15) = 1
+parity(21) = 0
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ ./parity -1 0 - 2
+parity(-1) = 1
+parity(0) = 1
+parity(-2) = 0
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ /[K./parity 
+usage: ./parity INT1...
+hlauder1@remote00:~/projects/i220b/submit/lab8/exercises/parity$ exit
+
+Script done on 2021-10-31 21:16:10-04:00 [COMMAND_EXIT_CODE="1"]
