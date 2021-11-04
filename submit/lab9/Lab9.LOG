@@ -1,0 +1,256 @@
+Script started on 2021-11-04 16:47:44-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9$ cd exercises/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises$ cd quop[Kte-files/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls
+'**'  '1$2'  "'12"  '1"2'  'a$b'  '\\ab'  'a"b'  "a'b"	 -l
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \\
+\
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \
+> ^C
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \'
+'
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \*
+*
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \$HOME\"\\
+$HOME"\
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ECH[K[K[Kecho '\'
+\
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ wch[K[K[Kecho [K[K[K[K[Kecho '\\'
+\\
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo '*$~'
+*$~
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo '\''
+> '
+\
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo "\"\\"
+"\
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ehc[K[Kcho \
+> abc \
+> 123
+abc 123
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls [K[Ks *[K*[]?][C*.*[K[K
+ls: cannot access '*[?]*': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ l s[K[Ks *[]?]
+ls: cannot access '*[?]': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls [K *>[K?
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '**'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '1$2'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 "'12"
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '1"2'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 'a$b'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '\\ab'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 'a"b'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 "a'b"
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls *?[K''?'[C
+ls: cannot access '*?': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls *\?\*
+ls: cannot access '*?*': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls *\?\*[K[K[K[K'[C*[K?\[K' [K*
+ls: cannot access '*?*': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls \[K'*?'
+ls: cannot access '*?': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls ??
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '**'
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls **
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '**'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '1$2'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 "'12"
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '1"2'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 'a$b'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '\\ab'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 'a"b'
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 "a'b"
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls *[K?
+ls: cannot access '?': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls [K'[K [K \[K*?[K''$'[C*
+'1$2'  'a$b'
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls *\'\*
+ls: cannot access '*'\''*': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ *[Kls *''[C'[C*
+> '
+ls: cannot access '**'$'\n': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls echo '''[C\''
+> '
+ls: cannot access 'echo': No such file or directory
+ls: cannot access '\'$'\n': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \[K\'\
+> \
+> a
+'a
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo ''''
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo \'
+'
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls *\'*
+"'12"  "a'b"
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls [][K[K\*[K*
+ls: cannot access '*': No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo ''e'[1P'\'[C
+\
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls ''\'[C*
+'\\ab'
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls ??
+-rw-r----- 1 hlauder1 hlauder1 0 Nov  4 16:41 '**'
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls -- ??
+'**'   -l
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ cd ..
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises$ cd quote-files/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ env
+SHELL=/bin/bash
+SESSION_MANAGER=local/g7-34:@/tmp/.ICE-unix/338229,unix/g7-34:/tmp/.ICE-unix/338229
+WINDOWID=46137347
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session48
+XDG_MENU_PREFIX=xfce-
+GTK_IM_MODULE=ibus
+QT4_IM_MODULE=ibus
+SSH_AUTH_SOCK=/tmp/ssh-SQeLLQz6k1t3/agent.338142
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=lightdm-xsession
+SSH_AGENT_PID=338196
+GTK_MODULES=gail:atk-bridge
+XDG_SEAT=seat0
+PWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files
+KRB5CCNAME=FILE:/tmp/krb5cc_15078_PfXdYf
+LOGNAME=hlauder1
+XDG_SESSION_DESKTOP=lightdm-xsession
+XDG_SESSION_TYPE=x11
+XAUTHORITY=/home/hlauder1/.Xauthority
+XDG_GREETER_DATA_DIR=/var/lib/lightdm/data/hlauder1
+HOME=/home/hlauder1
+LANG=en_US.UTF-8
+XDG_CURRENT_DESKTOP=XFCE
+VTE_VERSION=5402
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+CHAINENV_CONFIG_ROOT=/home/hlauder1/.config/chainenv
+CLUTTER_IM_MODULE=ibus
+GLADE_CATALOG_PATH=:
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+USER=hlauder1
+DISPLAY=:2.0
+SHLVL=2
+QT_IM_MODULE=ibus
+XDG_VTNR=9
+XDG_SESSION_ID=157
+GLADE_MODULE_PATH=:
+XDG_RUNTIME_DIR=/run/user/15078
+CHAINENV_SHELL=bash
+GLADE_PIXMAP_PATH=:
+XDG_DATA_DIRS=/usr/share/xfce4:/usr/local/share/:/usr/share/:/usr/share
+PATH=/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+GDMSESSION=lightdm-xsession
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/15078/bus
+CHAINENV_ROOT=/opt/chainenv
+OLDPWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises
+_=/usr/bin/env
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $HOME
+/home/hlauder1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ EC[K[Kecho $PATH
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ EC[K[Kecho $xxx
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ xxx=123
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo xxx[K[K[K[K $ech[K[K[Kxxx
+123
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export [K[K[K[K[K[K[Kenc [K[Kv | grep xxx
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $xxx
+123
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export xxx
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ env | grep xx
+xxx=123
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export xx=456
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ env | grep xx
+xxx=123
+xx=456
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ p [K=$pa[K[KPATH
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echp [K[Ko $p
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [Khlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [Khlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ g[Kech[K[K[Kecho $p
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ env | grep p
+SESSION_MANAGER=local/g7-34:@/tmp/.ICE-unix/338229,unix/g7-34:/tmp/.ICE-unix/338229
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session48
+SSH_AUTH_SOCK=/tmp/ssh-SQeLLQz6k1t3/agent.338142
+PWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files
+KRB5CCNAME=FILE:/tmp/krb5cc_15078_PfXdYf
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+PATH=/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/15078/bus
+CHAINENV_ROOT=/opt/chainenv
+OLDPWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [Khlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export p=''
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $pat[K[K[KPATH
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $p
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $p
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $path
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ p = [K[K[K=$path
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $p
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo [K[K[K[K[Kech[K[K[Kp=$PATH
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echp=$PATHecho $p
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ECHO [K[K[K[K[Kecho $p[KPAA[KTH
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export p
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ env | grep p
+SESSION_MANAGER=local/g7-34:@/tmp/.ICE-unix/338229,unix/g7-34:/tmp/.ICE-unix/338229
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session48
+SSH_AUTH_SOCK=/tmp/ssh-SQeLLQz6k1t3/agent.338142
+PWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files
+KRB5CCNAME=FILE:/tmp/krb5cc_15078_PfXdYf
+p=/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+PATH=/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/15078/bus
+CHAINENV_ROOT=/opt/chainenv
+OLDPWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export p'[K=''
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export p=''nv | grep p
+SESSION_MANAGER=local/g7-34:@/tmp/.ICE-unix/338229,unix/g7-34:/tmp/.ICE-unix/338229
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session48
+SSH_AUTH_SOCK=/tmp/ssh-SQeLLQz6k1t3/agent.338142
+PWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files
+KRB5CCNAME=FILE:/tmp/krb5cc_15078_PfXdYf
+p=
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+PATH=/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/15078/bus
+CHAINENV_ROOT=/opt/chainenv
+OLDPWD=/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ehc[K[Kcho $p
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $PATH
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls
+'**'  '1$2'  "'12"  '1"2'  'a$b'  '\\ab'  'a"b'  "a'b"	 -l
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $p
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises
+/quote-files$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises
+/quote-files$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [Khlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ [Khlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ p=$PATH
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $p
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ export $[KPATH=
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ECH[K[K[Kecho $p[KPATH
+
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ ls
+bash: ls: No such file or directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ PATH [K=[K[K[K[K[KPATH [K=[K[K[K[K[KPATH=p
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ echo $PATH
+p
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ PATH=$p
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ PATH=$pecho $PATH
+/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/home/hlauder1/.config/chainenv/shims:/opt/chainenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ LS[K[KLS[K[Kls
+'**'  '1$2'  "'12"  '1"2'  'a$b'  '\\ab'  'a"b'  "a'b"	 -l
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab9/exercises/quote-files$ exit
+
+Script done on 2021-11-04 17:51:28-04:00 [COMMAND_EXIT_CODE="0"]
