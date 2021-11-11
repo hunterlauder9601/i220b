@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: arith-limitations.umt</title>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="arith-limitations.umt:1:4">L a b   1 0 :  L i m i t a t i o n s  o f  C om p u t e r  A r i t h m e t i c   
+</p><p data-coord="arith-limitations.umt:3:0"><strong data-coord="arith-limitations.umt:3:0">Date</strong>: Nov 11, 2021
+</p><p data-coord="arith-limitations.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="arith-limitations.umt:10:0"><h2 data-coord="arith-limitations.umt:10:0">Aims</h2><p data-coord="arith-limitations.umt:13:0">The aim of this lab is to introduce you to the limitations of computer
+arithmetic.  After completing this lab, you should be familiar with the
+following topics:
+</p><ul data-coord="arith-limitations.umt:17:0"><li data-coord="arith-limitations.umt:17:0"><p data-coord="arith-limitations.umt:17:4">The approximation of integer aritmetic by modular arithmetic.
+</p></li><li data-coord="arith-limitations.umt:19:0"><p data-coord="arith-limitations.umt:19:4">Determining units in the last place for C <samp data-coord="arith-limitations.umt:19:46">float</samp>'s.
+</p></li><li data-coord="arith-limitations.umt:21:0"><p data-coord="arith-limitations.umt:21:4">Non-associativity of floating point arithmetic.
+</p></li><li data-coord="arith-limitations.umt:23:0"><p data-coord="arith-limitations.umt:23:4"><em data-coord="arith-limitations.umt:23:50"><a href="https://en.wikipedia.org/wiki/Type_punning" data-coord="arith-limitations.umt:23:50">Type-punning</a></em> using
+C <samp data-coord="arith-limitations.umt:23:77">union</samp>'s.
+</p></li></ul></section><section data-coord="arith-limitations.umt:26:0"><h2 data-coord="arith-limitations.umt:26:0">Background</h2><p data-coord="arith-limitations.umt:29:0">There are an infinite number of numbers.  But computers (even with today's
+large memories) are finite.  Hence it is impossible for any computer to
+represent all numbers and the numbers representable within computers are
+only a subset of the infinite set of all numbers.
+</p><p data-coord="arith-limitations.umt:34:0">Many programming languages provide two types of number representations:
+</p><dl data-coord="arith-limitations.umt:36:0"><dt data-coord="arith-limitations.umt:36:2"> <strong data-coord="arith-limitations.umt:36:1">Fixed-point representations</strong></dt><dd data-coord="arith-limitations.umt:37:0"><p data-coord="arith-limitations.umt:37:5">This representation has a fixed maximum number of digits before and
+after the radix point.  It has good precision but a limited range.
+</p><p data-coord="arith-limitations.umt:40:5">An example of a fixed-point representation are integers of various
+lengths where number of digits after the radix point is 0.
+</p></dd><dt data-coord="arith-limitations.umt:43:2"> <strong data-coord="arith-limitations.umt:43:1">Floating-point representations</strong></dt><dd data-coord="arith-limitations.umt:44:0"><p data-coord="arith-limitations.umt:44:5">The position of the radix point is not fixed but is specified
+by some kind of exponent (similar to <em data-coord="arith-limitations.umt:44:109">scientific notation</em> for
+decimal numbers).  This representation allows a wider range but
+at the cost of a loss in precision.
+</p></dd></dl></section><section data-coord="arith-limitations.umt:49:0"><h2 data-coord="arith-limitations.umt:49:0">Exercises</h2><section data-coord="arith-limitations.umt:52:0"><h3 data-coord="arith-limitations.umt:52:0">Starting up</h3><p data-coord="arith-limitations.umt:55:0">Follow the <em data-coord="arith-limitations.umt:55:38"><a href="../working/working.html" data-coord="arith-limitations.umt:55:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="arith-limitations.umt:55:98">lab10</samp> branch and a new
+<samp data-coord="arith-limitations.umt:55:123">submit/lab10</samp> directory.  You should have copied over
+the contents of <samp data-coord="arith-limitations.umt:55:194">~/cs220/labs/lab10/exercises</samp> over to your
+directory.
+</p><p data-coord="arith-limitations.umt:61:0">You may need to evaluate the powers-of-2, so it may be a good idea to
+setup some kind of calculator to do so.  A possible calculator is an
+interactive python shell started using <samp data-coord="arith-limitations.umt:61:178">python</samp> in a different
+terminal tab.  Type <samp data-coord="arith-limitations.umt:61:222">2**31</samp> into it to evaluate 2-to-the-power-of-31.
+</p></section><section data-coord="arith-limitations.umt:66:0"><h3 data-coord="arith-limitations.umt:66:0">Exercise 1: Unsigned Integer Overflow</h3><p data-coord="arith-limitations.umt:69:0">Change over to the <a href="./exercises/uints" data-coord="arith-limitations.umt:69:40">uints</a> directory and look at the
+<a href="./exercises/uints/uints.c" data-coord="arith-limitations.umt:69:101">uints.c</a> program.  Once you have looked at the
+source code, build the <samp data-coord="arith-limitations.umt:69:170">uints</samp> executable by typing <samp data-coord="arith-limitations.umt:69:199">make</samp>.  Run the
+program by typing <samp data-coord="arith-limitations.umt:69:234">./uints</samp>.
+</p><p data-coord="arith-limitations.umt:74:0">Type in interesting numbers which are on the 16-bit and 32-bit boundaries
+like <samp data-coord="arith-limitations.umt:74:79">65535</samp>, <samp data-coord="arith-limitations.umt:74:88">65536</samp>, <samp data-coord="arith-limitations.umt:74:97">65537</samp> and <samp data-coord="arith-limitations.umt:74:109">4294967295</samp>, <samp data-coord="arith-limitations.umt:74:123">4294967296</samp> and
+<samp data-coord="arith-limitations.umt:74:140">4294967297</samp>, and observe the results.  Notice the silent overflow.
+</p><p data-coord="arith-limitations.umt:78:0">Terminate the program by typing <samp data-coord="arith-limitations.umt:78:32">^D</samp>.
+</p></section><section data-coord="arith-limitations.umt:80:0"><h3 data-coord="arith-limitations.umt:80:0">Exercise 2: Signed Integer Overflow</h3><p data-coord="arith-limitations.umt:83:0">Change over to the <a href="./exercises/ints" data-coord="arith-limitations.umt:83:39">ints</a> directory and look at the
+<a href="./exercises/ints/ints.c" data-coord="arith-limitations.umt:83:97">ints.c</a> program.  Once you have looked at the
+source code, build the <samp data-coord="arith-limitations.umt:83:165">ints</samp> executable by typing <samp data-coord="arith-limitations.umt:83:193">make</samp>.  Run the
+program by typing <samp data-coord="arith-limitations.umt:83:228">./ints</samp>.
+</p><p data-coord="arith-limitations.umt:88:0">Type in interesting numbers which are on the 16-bit and 32-bit boundaries
+like <samp data-coord="arith-limitations.umt:88:79">32767</samp>, <samp data-coord="arith-limitations.umt:88:88">32768</samp>, <samp data-coord="arith-limitations.umt:88:97">32769</samp> and <samp data-coord="arith-limitations.umt:88:109">65535</samp>, <samp data-coord="arith-limitations.umt:88:118">2147483647</samp>, <samp data-coord="arith-limitations.umt:88:132">2147483648</samp>,
+<samp data-coord="arith-limitations.umt:88:146">2147483649</samp>, <samp data-coord="arith-limitations.umt:88:160">4294967295</samp> and observe the results.  Notice the silent
+overflow with changing sign.
+</p><p data-coord="arith-limitations.umt:93:0">Terminate the program by typing <samp data-coord="arith-limitations.umt:93:32">^D</samp>. 
+</p></section><section data-coord="arith-limitations.umt:97:0"><h3 data-coord="arith-limitations.umt:97:0">Exercise 3: An Integer equal to Its Negation</h3><p data-coord="arith-limitations.umt:100:0">Change into the <a href="./exercises/negeq" data-coord="arith-limitations.umt:100:37">negeq</a> directory and type <samp data-coord="arith-limitations.umt:100:62">make</samp>.  Then run
+the program <samp data-coord="arith-limitations.umt:100:92">./negeq</samp>.  This program requires you to input an <samp data-coord="arith-limitations.umt:100:142">int</samp>
+which is equal to its own negation.  Like the previous exercise, the
+program takes its input in hex (without any leading <samp data-coord="arith-limitations.umt:100:269">0x</samp>).  You should
+provide some integer <samp data-coord="arith-limitations.umt:100:309">n</samp> in hex such that the program outputs <samp data-coord="arith-limitations.umt:100:350">N ==
+-N</samp> where <samp data-coord="arith-limitations.umt:100:366">N</samp> is the decimal representation of hex integer <samp data-coord="arith-limitations.umt:100:415">n</samp>.
+</p><p data-coord="arith-limitations.umt:107:0">Consider the previous exercises to identify this value (Hint: recall the
+asymmetry of 2's complement).
+</p></section><section data-coord="arith-limitations.umt:110:0"><h3 data-coord="arith-limitations.umt:110:0">Exercise 4: Infinite Precision Integers</h3><p data-coord="arith-limitations.umt:113:0">As the previous exercises illustrate, in C integers are represented with a
+small precision like 16 or 64 bits.  Newer languages like Python, Ruby,
+Perl6 allow integers with precision limited only by available memory.
+</p><p data-coord="arith-limitations.umt:117:0">For example, fire up an interactive python using <samp data-coord="arith-limitations.umt:117:49">python</samp> and type
+<samp data-coord="arith-limitations.umt:117:67">10**1000 - 1</samp>.  You should see output containing quite a few lines of
+<samp data-coord="arith-limitations.umt:117:138">9</samp>'s.  It's kind of neat that such examples work (some languages like
+Scheme even allow rational numbers where numbers are represented as
+fractions with fraction arithmetic).
+</p><p data-coord="arith-limitations.umt:123:0">However, now within <samp data-coord="arith-limitations.umt:123:20">python</samp>, type <samp data-coord="arith-limitations.umt:123:35">10**1000 - 1.0</samp>.  You should get back
+a message which should reveal to you that the representation of
+numbers within computers is only an approximation of numbers.
+</p></section><section data-coord="arith-limitations.umt:127:0"><h3 data-coord="arith-limitations.umt:127:0">Exercise 5: 0.1 cannot be represented</h3><p data-coord="arith-limitations.umt:130:0">Recall from class that the floating point representation commonly used with
+present day computers is a binary representation.  That means that numbers
+which can be represented by fractions with denominators which are a
+power-of-2 can be represented exactly but other numbers cannot.  For
+example, 0.1 which is 1/10 cannot be represented exactly and this exercise
+illustrates this problem.
+</p><p data-coord="arith-limitations.umt:137:0">Change over to the <a href="./exercises/inexact" data-coord="arith-limitations.umt:137:42">inexact</a> directory and look at the code
+in <a href="./exercises/inexact/0.1.c" data-coord="arith-limitations.umt:137:113">0.1.c</a> You should see that all it is doing is
+summing up 0.1 10 times, printing out the resulting sum as well as
+checking whether the sum is equal to 1.
+</p><p data-coord="arith-limitations.umt:142:0">Build and run the program and observe the result.
+</p></section><section data-coord="arith-limitations.umt:145:0"><h3 data-coord="arith-limitations.umt:145:0">Exercise 6: A Number Not Equal To Itself</h3><p data-coord="arith-limitations.umt:148:0">Change over to the <a href="exercises/nan" data-coord="arith-limitations.umt:148:36">nan</a> directory.  The program in
+<a href="./exercises/nan/nan.c" data-coord="arith-limitations.umt:148:92">nan.c</a> requires you to enter a number, divides
+that number by itself to get <samp data-coord="arith-limitations.umt:148:167">x</samp> and then loops as long as <samp data-coord="arith-limitations.umt:148:197">x != x</samp>.
+Compile and run the program and then provide an input to force the
+program into an infinite loop.  Hint: The number <samp data-coord="arith-limitations.umt:148:323">NaN</samp> is not equal to
+itself, hence if your input sets <samp data-coord="arith-limitations.umt:148:378">x</samp> to <samp data-coord="arith-limitations.umt:148:385">NaN</samp> the program will loop.
+</p><p data-coord="arith-limitations.umt:155:0">Once you are successful, terminate the infinite loop by typing a <samp data-coord="arith-limitations.umt:155:65">control-C</samp>.
+</p></section><section data-coord="arith-limitations.umt:157:0"><h3 data-coord="arith-limitations.umt:157:0">Exercise 7: Unit in Last Position</h3><p data-coord="arith-limitations.umt:160:0">This exercise illustrates that the value of the <em data-coord="arith-limitations.umt:160:48">unit in last place</em> of a
+floating point number increases dramatically with the value being
+represented.  
+</p><p data-coord="arith-limitations.umt:164:0">Change into the <a href="./exercises/ulp" data-coord="arith-limitations.umt:164:35">ulp</a> directory and build the <samp data-coord="arith-limitations.umt:164:63">ulp</samp>
+program by typing <samp data-coord="arith-limitations.umt:164:87">make</samp>.  Then run <samp data-coord="arith-limitations.umt:164:105">./ulp</samp>, it should output a usage
+message.  Run it as <samp data-coord="arith-limitations.umt:164:159">./ulp verbose</samp> and it should produce a dump on
+standard output of the value of a single-precision <samp data-coord="arith-limitations.umt:164:258">float</samp> number
+being represented along with the value of the unit in the last place
+of the number.  Note that as the magnitude of the values increase, the
+ULP rapidly goes above 1.  That means those values cannot be
+distinguished even if they differ by 1.
+</p><p data-coord="arith-limitations.umt:173:0">It may be a good idea to look at the ULP distribution on a graph.  Run
+<samp data-coord="arith-limitations.umt:173:71">./ulp data &gt;ulp.data</samp> which dumps out the ULP distribution in a format
+acceptable to the <samp data-coord="arith-limitations.umt:173:161">gnuplot</samp> plotting program.  Display the graph using
+<samp data-coord="arith-limitations.umt:173:214">gnuplot -p ulp.gp</samp>.  Unfortunately, because of the linear scale, most of
+the values are concentrated near the origin.
+</p><p data-coord="arith-limitations.umt:179:0">If you are not using a GUI interface on <samp data-coord="arith-limitations.umt:179:40">remote.cs</samp> <samp data-coord="arith-limitations.umt:179:52">gnuplot</samp> will
+refuse to run as it is looking for a graphics terminal.  You can get
+an extremely crude plot within your terminal by adding the line:
+</p><pre data-coord="arith-limitations.umt:184:0">set terminal dumb;
+</pre><p data-coord="arith-limitations.umt:187:0">at the start of the <samp data-coord="arith-limitations.umt:187:20">ulp.gp</samp> file.
+</p><p data-coord="arith-limitations.umt:189:0">This cries out for the use of logarithmic scales.  Run <samp data-coord="arith-limitations.umt:189:55">./ulp lg-data
+&gt;ulp-lg.data</samp> which dumps out the log (base-2) of the data into
+<samp data-coord="arith-limitations.umt:189:134">ulp-lg.data</samp>.  Now display the graph using <samp data-coord="arith-limitations.umt:189:178">gnuplot -p ulp-lg.gp</samp>.
+This should produce a much cleaner plot.  The workaround which was
+described above can be used to get the output on a dumb terminal.
+</p><p data-coord="arith-limitations.umt:195:0">It is worth understanding how the <a href="./exercises/ulp/ulp.c" data-coord="arith-limitations.umt:195:59">ulp</a> program works.
+The key to its working is the <samp data-coord="arith-limitations.umt:195:108">FloatInt</samp> <samp data-coord="arith-limitations.umt:195:119">union</samp>.  A <samp data-coord="arith-limitations.umt:195:131">union</samp> is similar to
+a <samp data-coord="arith-limitations.umt:195:155">struct</samp> except that its members occupy the same memory location.  Hence
+it is possible to use <samp data-coord="arith-limitations.umt:195:250">union</samp>'s to get at the representation of types as is
+done here.
+</p><p data-coord="arith-limitations.umt:201:0">The floating point member of the union is assigned a power-of-2.  That means
+that the normalized floating point mantissa will be all zeros.  Thus by
+adding 1 to the integer member of the union (recollect that the integer and
+float members occupy the same memory), we are incrementing the ULP of the
+floating point member.  Hence the value of the ULP is the value of the
+incremented member minus the original value.
+</p></section></section><section data-coord="arith-limitations.umt:208:0"><h2 data-coord="arith-limitations.umt:208:0">Exercise 8: Different Numbers are not Distinguishable</h2><p data-coord="arith-limitations.umt:211:0">Two floating point numbers which differ by less than the ULP for their
+values cannot be distinguished.
+</p><p data-coord="arith-limitations.umt:214:0">Change into the <a href="exercises/loop" data-coord="arith-limitations.umt:214:34">loop</a> directory and build and compile
+<a href="./exercises/loop/loop.c" data-coord="arith-limitations.umt:214:98">loop.c.</a>  Look at the code in
+<a href="./exercises/loop/loop.c" data-coord="arith-limitations.umt:214:154">loop.c,</a> and based on the results of the previous
+exercise, provide a minimal power-of-2 input which causes it to go
+into an infinite loop.
+</p></section><section data-coord="arith-limitations.umt:221:0"><h2 data-coord="arith-limitations.umt:221:0">References</h2><p data-coord="arith-limitations.umt:225:0">Text, Ch. 2.
+</p><p data-coord="arith-limitations.umt:227:0">Joshua Bloch and Neal Gafter, <em data-coord="arith-limitations.umt:227:30">Java Puzzlers: Traps, Pitfalls and Corner
+Cases</em>, Addison-Wesley, 2005.  Source of some of the exercises.
+</p></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
