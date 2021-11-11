@@ -1,0 +1,67 @@
+Script started on 2021-11-11 15:03:05-05:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+hlauder1@remote07:~/projects/i220b/submit/lab10$ 2**[K[K[Kcd unints[K[K[K[K[K[K[K[K[Kcd exercises/
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises$ cd [K[K[Kcd unq[Kitx[K[K[K[Kints/
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/uints$ make
+cc -g -Wall -std=c18    uints.c   -o uints
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/uints$ ./uints 
+65545  35 6   5
+uint = 65535 (0xffff); ushort = 65535 (0xffff)
+65536
+uint = 65536 (0x10000); ushort = 0 (0x0)
+65537  
+uint = 65537 (0x10001); ushort = 1 (0x1)
+4294967295
+uint = 4294967295 (0xffffffff); ushort = 65535 (0xffff)
+4294967296  
+uint = 0 (0x0); ushort = 0 (0x0)
+4294967297
+uint = 1 (0x1); ushort = 1 (0x1)
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/uints$ cd ..\
+> 
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises$ cd ints/
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/ints$ ma[K[Kmake [K
+cc -g -Wall -std=c18    ints.c   -o ints
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/ints$ ./ints 
+32767
+int = 32767 (0x7fff); short = 32767 (0x7fff)
+32768
+int = 32768 (0x8000); short = -32768 (0xffff8000)
+32769  
+int = 32769 (0x8001); short = -32767 (0xffff8001)
+65535
+int = 65535 (0xffff); short = -1 (0xffffffff)
+2147483647
+int = 2147483647 (0x7fffffff); short = -1 (0xffffffff)
+2147483648
+int = -2147483648 (0x80000000); short = 0 (0x0)
+2147483649
+int = -2147483647 (0x80000001); short = 1 (0x1)
+4294967295  
+int = -1 (0xffffffff); short = -1 (0xffffffff)
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/ints$ cd ..
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises$ cd meg[K[K[Knegeq/
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/negeq$ make
+cc -g -Wall -std=c18    negeq.c   -o negeq
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/negeq$ ./negeq 
+9000    8000
+32768 != -32768
+80000000
+-2147483648 == --2147483648
+done
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises/negeq$ cd ..
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises$ python
+Python 2.7.16 (default, Oct 10 2019, 22:02:15) 
+[GCC 8.3.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 10**1000 -1
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999L
+>>> 10**1000 - 1.0
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+OverflowError: long int too large to convert to float
+>>> quit
+Use quit() or Ctrl-D (i.e. EOF) to exit
+>>> 
+hlauder1@remote07:~/projects/i220b/submit/lab10/exercises$ cd  [K[K [K[K[Kexit
+
+Script done on 2021-11-11 16:21:05-05:00 [COMMAND_EXIT_CODE="0"]

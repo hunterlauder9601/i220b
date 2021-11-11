@@ -1,0 +1,111 @@
+Script started on 2021-11-11 16:38:34-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10$ cd exer cises/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises$ cd om^[[2~[K[K[K[K[K[Kinexact/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/inexact$ ls
+0.1.c  Makefile
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/inexact$ cd 0.1.c 
+bash: cd: 0.1.c: Not a directory
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/inexact$ make
+cc -g -Wall -std=c18    0.1.c   -o 0.1
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/inexact$ ./0.1 
+0.99999999999999988898 0
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/inexact$ cd ..
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises$ cd nan/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/nan$ make
+cc -g -Wall -std=c18    nan.c   -o nan
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/nan$ ./nan 
+2
+x = 1
+loop exit
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/nan$ ./nan 
+0
+x = -nan
+f
+^C
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/nan$ cd ..
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises$ cdu[K ulp/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ make
+cc -g -Wall -std=c18    ulp.c  -lm -o ulp
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ ./upo[K[Klp 
+usage ./ulp data|lg-data|verbose
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ ./ulp verbose
+v = 0x1 (1), ulp = 1.1920928955078e-07
+v = 0x2 (2), ulp = 2.3841857910156e-07
+v = 0x4 (4), ulp = 4.7683715820312e-07
+v = 0x8 (8), ulp = 9.5367431640625e-07
+v = 0x10 (16), ulp = 1.9073486328125e-06
+v = 0x20 (32), ulp = 3.814697265625e-06
+v = 0x40 (64), ulp = 7.62939453125e-06
+v = 0x80 (128), ulp = 1.52587890625e-05
+v = 0x100 (256), ulp = 3.0517578125e-05
+v = 0x200 (512), ulp = 6.103515625e-05
+v = 0x400 (1024), ulp = 0.0001220703125
+v = 0x800 (2048), ulp = 0.000244140625
+v = 0x1000 (4096), ulp = 0.00048828125
+v = 0x2000 (8192), ulp = 0.0009765625
+v = 0x4000 (16384), ulp = 0.001953125
+v = 0x8000 (32768), ulp = 0.00390625
+v = 0x10000 (65536), ulp = 0.0078125
+v = 0x20000 (131072), ulp = 0.015625
+v = 0x40000 (262144), ulp = 0.03125
+v = 0x80000 (524288), ulp = 0.0625
+v = 0x100000 (1.04858e+06), ulp = 0.125
+v = 0x200000 (2.09715e+06), ulp = 0.25
+v = 0x400000 (4.1943e+06), ulp = 0.5
+v = 0x800000 (8.38861e+06), ulp = 1
+v = 0x1000000 (1.67772e+07), ulp = 2
+v = 0x2000000 (3.35544e+07), ulp = 4
+v = 0x4000000 (6.71089e+07), ulp = 8
+v = 0x8000000 (1.34218e+08), ulp = 16
+v = 0x10000000 (2.68435e+08), ulp = 32
+v = 0x20000000 (5.36871e+08), ulp = 64
+v = 0x40000000 (1.07374e+09), ulp = 128
+v = 0x80000000 (2.14748e+09), ulp = 256
+v = 0x100000000 (4.29497e+09), ulp = 512
+v = 0x200000000 (8.58993e+09), ulp = 1024
+v = 0x400000000 (1.71799e+10), ulp = 2048
+v = 0x800000000 (3.43597e+10), ulp = 4096
+v = 0x1000000000 (6.87195e+10), ulp = 8192
+v = 0x2000000000 (1.37439e+11), ulp = 16384
+v = 0x4000000000 (2.74878e+11), ulp = 32768
+v = 0x8000000000 (5.49756e+11), ulp = 65536
+v = 0x10000000000 (1.09951e+12), ulp = 131072
+v = 0x20000000000 (2.19902e+12), ulp = 262144
+v = 0x40000000000 (4.39805e+12), ulp = 524288
+v = 0x80000000000 (8.79609e+12), ulp = 1048576
+v = 0x100000000000 (1.75922e+13), ulp = 2097152
+v = 0x200000000000 (3.51844e+13), ulp = 4194304
+v = 0x400000000000 (7.03687e+13), ulp = 8388608
+v = 0x800000000000 (1.40737e+14), ulp = 16777216
+v = 0x1000000000000 (2.81475e+14), ulp = 33554432
+v = 0x2000000000000 (5.6295e+14), ulp = 67108864
+v = 0x4000000000000 (1.1259e+15), ulp = 134217728
+v = 0x8000000000000 (2.2518e+15), ulp = 268435456
+v = 0x10000000000000 (4.5036e+15), ulp = 536870912
+v = 0x20000000000000 (9.0072e+15), ulp = 1073741824
+v = 0x40000000000000 (1.80144e+16), ulp = 2147483648
+v = 0x80000000000000 (3.60288e+16), ulp = 4294967296
+v = 0x100000000000000 (7.20576e+16), ulp = 8589934592
+v = 0x200000000000000 (1.44115e+17), ulp = 17179869184
+v = 0x400000000000000 (2.8823e+17), ulp = 34359738368
+v = 0x800000000000000 (5.76461e+17), ulp = 68719476736
+v = 0x1000000000000000 (1.15292e+18), ulp = 137438953472
+v = 0x2000000000000000 (2.30584e+18), ulp = 274877906944
+v = 0x4000000000000000 (4.61169e+18), ulp = 549755813888
+v = 0x8000000000000000 (9.22337e+18), ulp = 1099511627776
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ ./ulp data >ulp.data
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ gnuplot -p ulp.gp
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ ./ulp lg-data >ulp-lg.data
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ gnuplot -p ulp-lg.gp
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/ulp$ cd ..
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises$ cd loop/
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/loop$ make
+cc -g -Wall -std=c18    loop.c   -o loop
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/loop$ [K[Ahlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/loop$ ./loop
+8000000000
+loop exited with x = 8000001024
+^[[A    5.49756e+11
+^C
+hlauder1@g7-34:/import/linux/home1/hlauder1/projects/i220b/submit/lab10/exercises/loop$ exit
+
+Script done on 2021-11-11 17:21:20-05:00 [COMMAND_EXIT_CODE="130"]
