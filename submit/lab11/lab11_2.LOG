@@ -1,0 +1,73 @@
+Script started on 2021-11-18 17:25:55-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11$ CD ES[K[K[K[K[Kcd exer cises/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises$ cd int-search/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ make
+cc -g -Wall -std=c18 -O1   -c -o linear-search.o linear-search.c
+[01m[Klinear-search.c:[m[K In function ‘[01m[Ksearch_for_element[m[K’:
+[01m[Klinear-search.c:11:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+cc -g -Wall -std=c18 -O1   -c -o main.o main.c
+cc -g -Wall -std=c18 -O1   -c -o int_compare.o int_compare.c
+cc   linear-search.o main.o int_compare.o   -o linear-search
+cc -g -Wall -std=c18 -O1   -c -o binary-search.o binary-search.c
+cc   binary-search.o main.o int_compare.o   -o binary-search
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ ./linear-search 100 1
+linear-search: main.c:21: do_search: Assertion `foundIndex1 < 0 || foundIndex1 == i + 1' failed.
+Aborted
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ make
+cc -g -Wall -std=c18 -O1   -c -o linear-search.o linear-search.c
+[01m[Klinear-search.c:[m[K In function ‘[01m[Ksearch_for_element[m[K’:
+[01m[Klinear-search.c:12:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+cc   linear-search.o main.o int_compare.o   -o linear-search
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ make./linear-search 100 1
+linear-search: main.c:19: do_search: Assertion `foundIndex == i' failed.
+Aborted
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ make
+cc -g -Wall -std=c18 -O1   -c -o linear-search.o linear-search.c
+cc   linear-search.o main.o int_compare.o   -o linear-search
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ make./linear-search 100 1
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ time ./linear-search 2000 2000
+
+real	0m6.869s
+user	0m6.867s
+sys	0m0.000s
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ time ./binary-search 2000 2000
+
+real	0m0.346s
+user	0m0.340s
+sys	0m0.004s
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/int-search$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises$ cd coverage/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/coverage$ make
+cc -g -Wall -std=c18 -fprofile-arcs -ftest-coverage    coverage.c   -o coverage
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/coverage$ ./coverage 200 200 2999
+200
+200
+2999
+compute(200, 200, 2999) = 652
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/coverage$ gcov coverage.gcda
+File 'coverage.c'
+Lines executed:45.83% of 24
+Creating 'coverage.c.gcov'
+
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/coverage$ gcov coverage.gcda[C[C[C[C[C[C[C[C[C[C[C[C./coverage 200 200 2999[K[K[K[K[K[K[K[K[K[K[K[K< test.dat
+compute(200, 500, 300) = 652
+compute(200, 500, 400) = 730
+compute(220, 300, 500) = 1049
+compute(200, 300, 400) = 1320
+compute(222, 318, 410) = 1549
+compute(222, 320, 400) = 971
+compute(222, 320, 300) = 1563
+compute(200, 400, 800) = 1320
+compute(200, 400, 1000) = 652
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/coverage$ gvoc[K[K[Kcov ./coverage < test.dat[C[C[C[C[C[C[C[C[C[C[C[C[3Pgcov coverage.gcda[C[C[C[C[C[C[C[C[C[C[C[C./coverage 200 200 2999[C[C[C[C[C[C[C[C[C[C[C[C[5Pgcov coverage.gcda
+File 'coverage.c'
+Lines executed:100.00% of 24
+Creating 'coverage.c.gcov'
+
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab11/exercises/coverage$ exit
+
+Script done on 2021-11-18 18:08:40-05:00 [COMMAND_EXIT_CODE="0"]
