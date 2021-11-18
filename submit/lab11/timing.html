@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: timing.umt</title>
+    <link href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+       rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>    
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="timing.umt:1:24">L a b   1 1 :  T i m i n g
+</p><p data-coord="timing.umt:3:0"><strong data-coord="timing.umt:3:0">Date</strong>: Nov 18, 2021
+</p><p data-coord="timing.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="timing.umt:10:0"><h2 data-coord="timing.umt:10:0">Aims</h2><p data-coord="timing.umt:13:0">The aim of this lab is to familiarize you with various methods for measuring
+the timing performance of programs under Unix.  After completing this lab,
+you should be familiar with the following topics:
+</p><ul data-coord="timing.umt:17:0"><li data-coord="timing.umt:17:0"><p data-coord="timing.umt:17:4">The use the <samp data-coord="timing.umt:17:16">time</samp> command built-in to most Unix shells.
+</p></li><li data-coord="timing.umt:19:0"><p data-coord="timing.umt:19:4">The use of basic block counting to find out how often a line of 
+code was executed.
+</p></li><li data-coord="timing.umt:22:0"><p data-coord="timing.umt:22:4">Appreciation for the different factors which can affect the
+time performance of a program.
+</p></li></ul></section><section data-coord="timing.umt:26:0"><h2 data-coord="timing.umt:26:0">Background</h2><p data-coord="timing.umt:29:0">The factors which affect the time performance of a program can include the
+following:
+</p><dl data-coord="timing.umt:32:0"><dt data-coord="timing.umt:32:2"> <strong data-coord="timing.umt:32:1">Algorithmic Choices</strong></dt><dd data-coord="timing.umt:33:0"><p data-coord="timing.umt:33:4">The choice of algorithms used by a program can make a dramatic 
+change in the time performance of a program.  For example, a 
+program may see a drastic improvement in performance if its main
+algorithm which takes time which increases quadratically with the 
+size of its input is replaced by one whose time simply increases
+linearly with the size of its input.
+</p></dd><dt data-coord="timing.umt:40:2"> <strong data-coord="timing.umt:40:1">System Interactions</strong></dt><dd data-coord="timing.umt:41:0"><p data-coord="timing.umt:41:4">Many programs can run without being affected by the parameters of the
+computer system on which they are running, but other programs may not be
+as lucky.  Computer system parameters like the organization of memory
+or the use of pipelining can change the time performance of such programs.
+</p></dd><dt data-coord="timing.umt:46:2"> <strong data-coord="timing.umt:46:1">Micro Changes</strong></dt><dd data-coord="timing.umt:47:0"><p data-coord="timing.umt:47:4">If a construct is used frequently enough by a program then replacing it
+with a slightly more efficient construct can improve the time
+performance of a program.
+</p></dd></dl><p data-coord="timing.umt:51:0">Donald Knuth: <em data-coord="timing.umt:51:14">Premature optimization is the root of all evil (or at least
+most of it) in programming</em>.  Hence before attempting any optimization of
+code, it is necessary to measure the time performance of a program and only
+optimize if necessary and only optimize code which is a bottleneck.
+</p><p data-coord="timing.umt:56:0">Under Unix, the tools available to analyze the time performance include
+the following:
+</p><dl data-coord="timing.umt:59:0"><dt data-coord="timing.umt:59:2"> <samp data-coord="timing.umt:59:1">time</samp></dt><dd data-coord="timing.umt:60:0"><p data-coord="timing.umt:60:4">A command built-in to most Unix shells.  Prints out the amount
+of time needed to execute a command.  The printed time components
+include the the real (AKA <em data-coord="timing.umt:60:167">wall-clock</em>) time, system time (the amount of
+time spent executing code in the kernel) and user time (the amount of
+time spent executing code in user-space).  
+</p><p data-coord="timing.umt:66:4">The <samp data-coord="timing.umt:66:8">time</samp> report for jobs which run on computer systems where a single
+CPU is being shared among many different users will often show that the
+wall-clock time is much greater than the sum of the user and system
+times.   This is expected on such a system.
+</p><p data-coord="timing.umt:71:4">OTOH, if a computer system has multiple CPUs, then it is possible that
+the sum of the system and user time is greater than the wall-clock
+elapsed time.
+</p></dd><dt data-coord="timing.umt:76:2"> <samp data-coord="timing.umt:76:1">times()</samp></dt><dd data-coord="timing.umt:77:0"><p data-coord="timing.umt:77:5">This is a C library call which returns data-structures representing
+somewhat more detail than that returned by the shell <samp data-coord="timing.umt:77:131">time</samp>
+command.  This lab will not explore this further.
+</p></dd><dt data-coord="timing.umt:81:2"> <samp data-coord="timing.umt:81:1">gcov</samp></dt><dd data-coord="timing.umt:82:0"><p data-coord="timing.umt:82:5">When a program is compiled with special options, then each run
+creates a special binary file which records how many times
+each <em data-coord="timing.umt:82:142">line</em> in the program was executed.  This tool analyzes
+the generated binary file to produce an annotated listing of
+the original source code documenting how many times each line was
+executed.  
+</p><p data-coord="timing.umt:89:5">Besides allowing insight into where a program is spending most of its
+time (as represented by line count), this tool is also invaluable as a
+test coverage tool to ensure that a set of tests minimally exercises
+each line of code.
+</p></dd><dt data-coord="timing.umt:94:2"> <samp data-coord="timing.umt:94:1">gprof</samp></dt><dd data-coord="timing.umt:95:0"><p data-coord="timing.umt:95:5">This tool also measures the time spent by different portions of
+a program execution.  The approach often used is PC sampling:
+while the program is running the PC is sampled every few milli
+(or maybe nano) seconds.  The sampled value of the PC is translated
+back into a line number in the program.  This lab will not be using
+this tool but it is well worth a look.
+</p></dd></dl></section><section data-coord="timing.umt:102:0"><h2 data-coord="timing.umt:102:0">Exercises</h2><section data-coord="timing.umt:105:0"><h3 data-coord="timing.umt:105:0">Starting up</h3><p data-coord="timing.umt:108:0">Follow the <em data-coord="timing.umt:108:38"><a href="../working/working.html" data-coord="timing.umt:108:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="timing.umt:108:98">lab11</samp> branch and a new
+<samp data-coord="timing.umt:108:123">submit/lab11</samp> directory.  You should have copied over
+the contents of <samp data-coord="timing.umt:108:194">~/cs220/labs/lab11/exercises</samp> over to your
+directory.
+</p></section><section data-coord="timing.umt:115:0"><h3 data-coord="timing.umt:115:0">Exercise 1: Use of the time Command</h3><p data-coord="timing.umt:118:0">The <samp data-coord="timing.umt:118:4">time</samp> command which is built-in to many Unix shells is simple to
+use: simply prefix a normal shell command by the word <samp data-coord="timing.umt:118:124">time</samp>.  For
+example:
+</p><pre data-coord="timing.umt:123:0">$ time ls ~/cs220/labs/lab11/exercises
+2  3  4  5  coverage  int-search  matmul-cache	parity
+
+real	0m0.004s
+user	0m0.004s
+sys	0m0.001s
+</pre><p data-coord="timing.umt:131:0">You should get output with a very similar format.  If not, verify that you are
+running the <samp data-coord="timing.umt:131:91">bash</samp> shell.  Make sure you are not running the <samp data-coord="timing.umt:131:140">time</samp> program
+(available as <samp data-coord="timing.umt:131:169">/usr/bin/time</samp>) which produces output in a different format.
+</p><p data-coord="timing.umt:135:0">As mentioned in the background section, the command reports the amount of
+real or elapsed time (AKA <em data-coord="timing.umt:135:100">wall-clock</em> time), amount of time spent in 
+kernel space and amount of time spent in user space.
+</p><p data-coord="timing.umt:139:0">Try timing a command which produces more interesting output:
+</p><pre data-coord="timing.umt:142:0">$ time sleep 5
+</pre><p data-coord="timing.umt:145:0">Note the large difference between the elapsed time and the other times.
+</p><p data-coord="timing.umt:147:0">Time a command which searches a large directory:
+</p><pre data-coord="timing.umt:150:0">$ time wc -l `find /etc -type f 2&gt;/dev/null` 2&gt;/dev/null | tail
+</pre><p data-coord="timing.umt:153:0">[The command within the backquotes <samp data-coord="timing.umt:153:35">find</samp>'s all files (<samp data-coord="timing.umt:153:59">-type f</samp>)
+within the <samp data-coord="timing.umt:153:81">/etc</samp> directory, discarding any errors (<samp data-coord="timing.umt:153:126">2&gt;/dev/null</samp>).  Those results are counted using <samp data-coord="timing.umt:153:175">wc -l</samp> (the results
+of the backquotes <samp data-coord="timing.umt:153:214">find</samp> are treated as though they were typed in to
+the <samp data-coord="timing.umt:153:269">wc -l</samp> command), with errors again being discarded.  The last
+portion of the <samp data-coord="timing.umt:153:347">wc</samp> results are displayed using the <samp data-coord="timing.umt:153:384">tail</samp> command.]
+</p><p data-coord="timing.umt:160:0">Notice here that the system time is non-trivial and measures the time used
+for starting and synchronizing the multiple sub-processes involved in the
+above command.
+</p><p data-coord="timing.umt:164:0">Run it again; you may get a much faster result if your system has cached
+the necessary files in its kernel buffers.
+</p><p data-coord="timing.umt:167:0">Try timing a couple more non-trivial shell commands.
+</p></section><section data-coord="timing.umt:169:0"><h3 data-coord="timing.umt:169:0">Exercise 2: Speeding Up Code using Assembly</h3><p data-coord="timing.umt:172:0">In an earlier lab we explored using the parity flag (available on most
+architectures) to evaluate the parity of a word.  In this exercise, we
+will use <samp data-coord="timing.umt:172:151">time</samp> to evaluate how much of a performance boost this
+technique provides.
+</p><p data-coord="timing.umt:177:0">Change over to the <a href="./exercises/parity" data-coord="timing.umt:177:41">parity</a> directory and look at the
+files: <a href="./exercises/parity/main.c" data-coord="timing.umt:177:110">main.c</a> is simply a driver program
+which uses its command-line arguments to figure out how many parities
+it should evaluate over random integers; <a href="./exercises/parity/parity-c.c" data-coord="timing.umt:177:288">parity-c.c</a> evaluates parity using the ones-counting technique covered
+earlier in the course and finally <a href="./exercises/parity/parity-s.c" data-coord="timing.umt:177:425">parity-s.c</a> uses inline assembly.
+</p><p data-coord="timing.umt:185:0">Build all programs by typing <samp data-coord="timing.umt:185:29">make</samp>.  Then run:
+</p><pre data-coord="timing.umt:188:0">$ ./parity-c -d 10
+</pre><p data-coord="timing.umt:191:0">followed by:
+</p><pre data-coord="timing.umt:194:0">./parity-s -d 10
+</pre><p data-coord="timing.umt:197:0">The <samp data-coord="timing.umt:197:4">-d</samp> flag is a debug flag and prints out the randomly generated integers
+(limited to one byte) and the computed parity.  Both of them should produce
+the same results even though the first program uses the counting-ones
+technique to evaluate parity whereas the second program evaluates parity by
+accessing the parity flag using inline assembly.
+</p><p data-coord="timing.umt:203:0">Now time the two programs (with the <samp data-coord="timing.umt:203:36">-d</samp> flags turned off).  As both
+programs are pretty fast, you may need to increase the number of tests
+to around 100 million or so, depending on the system you are running
+on.  If your results are similar to mine, you should observe that the
+version which uses inline assembly is about twice as fast as the
+version which is written in pure C.  Also observe that almost all the
+time is spent in user space as the program uses minimal kernel
+services.
+</p></section><section data-coord="timing.umt:212:0"><h3 data-coord="timing.umt:212:0">Exercise 3: Observing Cache Effects</h3><p data-coord="timing.umt:215:0">Change over to the <a href="./exercises/matmul-cache" data-coord="timing.umt:215:47">matmul-cache</a> directory.
+The <a href="./exercises/matmul-cache/main.c" data-coord="timing.umt:215:110">main.c</a> file is a simple driver
+program which accesses the command-line arguments to get the size of a
+(square) matrix and the number of tests to run.  It generates two
+random double matrices and then calls a matrix multiply routine to
+multiply them together.
+</p><p data-coord="timing.umt:222:0">Look at the <a href="./exercises/matmul-cache/simple-matmul.c" data-coord="timing.umt:222:56">simple-matmul.c</a>
+file: it contains the classic code for matrix multiplication.  Recall
+that matrices in C are laid out by row; hence in the inner-most loop
+</p><pre data-coord="timing.umt:227:0">      for (int k = 0; k &lt; n; k++) {
+        c[i][j] += a[i][k]*b[k][j];
+      }
+</pre><p data-coord="timing.umt:232:0">the entries in <samp data-coord="timing.umt:232:15">a[][]</samp> are being accessed sequentially in memory within a
+row, but the entries in <samp data-coord="timing.umt:232:98">b[][]</samp> are not being accessed sequentially in
+memory (in fact, they are being accessed by column so that successive
+accesses will have wildly different memory addresses).
+</p><p data-coord="timing.umt:237:0">Recall that modern computer systems use a hierarchy of memory systems
+with a small amount of expensive high-speed <em data-coord="timing.umt:237:114">cache</em> memory and a
+larger amount of cheaper (but slower) main memory.  Assuming that the
+program has good
+<em data-coord="timing.umt:237:277"><a href="https://en.wikipedia.org/wiki/Locality_of_reference" data-coord="timing.umt:237:277">locality of
+reference</a></em> the overall memory speed should be close to that of the
+high-speed cache at overall cost close to the cost of the main memory.
+</p><p data-coord="timing.umt:245:0">Unfortunately, the columnar access to <samp data-coord="timing.umt:245:38">b[][]</samp> in the inner-loop of the
+matrix multiply destroys locality of reference.  If the matrix is
+sufficiently large, then it is likely that successive columns of <samp data-coord="timing.umt:245:202">b[][]</samp>
+are not in the cache and hence the system will need to fetch the <samp data-coord="timing.umt:245:275">b[][]</samp>
+entries from the slow main memory resulting in poor overall performance.
+</p><p data-coord="timing.umt:251:0">However, there is a simple fix which avoids the problem.  Simply 
+transpose the matrix <samp data-coord="timing.umt:251:87">b[][]</samp> before the multiply begins and then within
+the inner loop, instead of accessing <samp data-coord="timing.umt:251:175">b[][]</samp> column-wise access the
+transposed matrix row-wise.  The row-wise access should take care
+of the cache problems.
+</p><p data-coord="timing.umt:257:0">Look at the <a href="exercises/matmul-cache/transpose-matmul.c" data-coord="timing.umt:257:57">transpose-matmul.c</a> file and notice the changes within
+<samp data-coord="timing.umt:257:111">matrix_multiply()</samp>.  However, the <samp data-coord="timing.umt:257:146">matrix_transpose()</samp> function has
+been left incomplete: please add in the code to make its meet the
+given specification.
+</p><p data-coord="timing.umt:263:0">First make sure that your fix is correct: build all the programs by
+typing <samp data-coord="timing.umt:263:75">make</samp>.  Then simply run the simple matrix multiply on a small
+matrix using something like:
+</p><pre data-coord="timing.umt:268:0">$ ./simple-matmul 4 1
+</pre><p data-coord="timing.umt:271:0">The result matrix should be printed out.
+</p><p data-coord="timing.umt:273:0">Then run the transposed matrix multiply:
+</p><pre data-coord="timing.umt:276:0">$ ./transpose-matmul 4 1
+</pre><p data-coord="timing.umt:279:0">If your <samp data-coord="timing.umt:279:8">matrix_transpose()</samp> function is correct, the results should match.
+If not, iterate until you fix that function.
+</p><p data-coord="timing.umt:282:0">Now run:
+</p><pre data-coord="timing.umt:285:0">$ time ./simple-matmul 1500 1
+</pre><p data-coord="timing.umt:288:0">followed by
+</p><pre data-coord="timing.umt:291:0">$ time ./transpose-matmul 1500 1
+</pre><p data-coord="timing.umt:294:0">Depending on your system, you may or may not see that the second solution is
+faster.  
+</p><p data-coord="timing.umt:297:0">However, as you increase the size of the matrix, you should definitely see
+the difference in performance (do not include the <samp data-coord="timing.umt:297:125">&gt;</samp> at the start of the line; those are the secondary prompts output by the shell):
+</p><pre data-coord="timing.umt:301:0">$ for s in `seq 1000 500 2500`; \
+&gt; do \
+&gt;   echo -n "*** Size $s: simple"; time ./simple-matmul $s 1 ; echo ; \
+&gt;   echo -n "*** Size $s: transpose"; time ./transpose-matmul $s 1 ; echo ; \
+&gt; done
+</pre><p data-coord="timing.umt:308:0">You should definitely see a large difference in performance as the matrix
+size increases.
+</p></section><section data-coord="timing.umt:311:0"><h3 data-coord="timing.umt:311:0">Exercise 4: Algorithmic Changes Win</h3><p data-coord="timing.umt:314:0">Change over to the <a href="./exercises/int-search" data-coord="timing.umt:314:45">int-search</a> directory.  The
+driver program in <a href="./exercises/int-search/main.c" data-coord="timing.umt:314:123">main.c</a> creates a random
+integer array of size specified by the first command-line argument and
+runs a number of searches for elements in that array specified by the
+second command-line argument.
+</p><p data-coord="timing.umt:320:0">Two implementations of the search are provided: 
+</p><ol data-coord="timing.umt:322:0"><li data-coord="timing.umt:322:0"><p data-coord="timing.umt:322:4">An incomplete <em data-coord="timing.umt:322:58"><a href="exercises/int-search/linear-search.c" data-coord="timing.umt:322:58">linear search</a></em>
+implementation is provided.  It should search sequentially through
+the array looking for the specified element: if found, it should
+return its index, if not found (the entire array has been
+searched) it should return a negative value.
+</p><p data-coord="timing.umt:328:5">If there are <samp data-coord="timing.umt:328:18">n</samp> elements in the array, on average <samp data-coord="timing.umt:328:56">n/2</samp> elements 
+will be compared for a successful search but <samp data-coord="timing.umt:328:122">n</samp> elements must
+be compared if the search proves ultimately unsuccessful.
+</p></li><li data-coord="timing.umt:332:0"><p data-coord="timing.umt:332:4">A complete <em data-coord="timing.umt:332:55"><a href="exercises/int-search/binary-search.c" data-coord="timing.umt:332:55">binary search</a></em>
+implementation is provided.  This provides identical functionality
+to the linear search but uses the <samp data-coord="timing.umt:332:180">bsearch()</samp> library function
+discussed in class.
+</p><p data-coord="timing.umt:337:5">If there are <samp data-coord="timing.umt:337:18">n</samp> elements in the array, a maximum of \(\lceil
+     \log_2 n\rceil\) comparisons are necessary for searching for an element.
+</p></li></ol><p data-coord="timing.umt:340:0">As <samp data-coord="timing.umt:340:3">n</samp> increases, the difference in performance can be dramatic.
+</p><p data-coord="timing.umt:342:0">To measure the increase, first add in the code for the linear search
+in <a href="exercises/int-search/linear-search.c" data-coord="timing.umt:342:112">linear-search.c.</a>  Build all the
+programs by typing <samp data-coord="timing.umt:342:163">make</samp>.  Test your linear search on a small example
+by typing:
+</p><pre data-coord="timing.umt:348:0">$ ./linear-search 100 1
+</pre><p data-coord="timing.umt:351:0">If it fails, you should get an assertion failure.
+</p><p data-coord="timing.umt:353:0">Now time both linear search and binary search:
+</p><pre data-coord="timing.umt:356:0">$ time ./linear-search 2000 2000
+</pre><pre data-coord="timing.umt:360:0">$ time ./binary-search 2000 2000
+</pre><p data-coord="timing.umt:363:0">You should see that the binary search is dramatically faster.
+</p></section><section data-coord="timing.umt:365:0"><h3 data-coord="timing.umt:365:0">Exercise 5: Ensuring Test Coverage</h3><p data-coord="timing.umt:368:0">Change over to the <a href="./exercises/coverage" data-coord="timing.umt:368:43">coverage</a> directory and build
+the <samp data-coord="timing.umt:368:76">coverage</samp> program by typing <samp data-coord="timing.umt:368:105">make</samp>.  The <samp data-coord="timing.umt:368:118">coverage</samp> program is a
+silly program which reads 3 <samp data-coord="timing.umt:368:170">int</samp>'s <samp data-coord="timing.umt:368:178">a</samp>, <samp data-coord="timing.umt:368:183">b</samp> and <samp data-coord="timing.umt:368:191">c</samp> at a time from
+standard input and then calls a <samp data-coord="timing.umt:368:242">compute()</samp> function which computes
+some function <samp data-coord="timing.umt:368:292">compute(a, b, c)</samp>.  The code for <samp data-coord="timing.umt:368:326">compute()</samp> contains a
+lot of conditional code.
+</p><p data-coord="timing.umt:375:0">The program has been compiled with special options (see the
+<samp data-coord="timing.umt:375:60">Makefile</samp>).  When compiled, it will produce a <samp data-coord="timing.umt:375:107">coverage.gcno</samp> binary
+file which records information about the control flow in the program.
+Each run of the program generates a binary file <samp data-coord="timing.umt:375:248">coverage.gcda</samp> which
+contains information about which lines were executed during that run.
+</p><p data-coord="timing.umt:381:0">Run the program by typing <samp data-coord="timing.umt:381:26">./coverage</samp>, provide 3 integers like <samp data-coord="timing.umt:381:64">200 2000
+2999</samp> and then type ^D to indicate EOF.  You should see the generated file
+in your directory.
+</p><p data-coord="timing.umt:385:0">Now run the program <samp data-coord="timing.umt:385:20">gcov</samp> on the generated file: i.e. <samp data-coord="timing.umt:385:55">gcov coverage.gcda</samp>.
+It should create a file <samp data-coord="timing.umt:385:101">coverage.c.gcov</samp> which is the source file with each
+line annotated with a count of the number of times that line was executed.
+Look at <samp data-coord="timing.umt:385:237">coverage.c.gcov</samp> to see your results.
+</p><p data-coord="timing.umt:390:0">Now look at <samp data-coord="timing.umt:390:12">coverage.c</samp> and generate sufficient test data to ensure that
+every line in <samp data-coord="timing.umt:390:88">compute()</samp> is covered by your test data. Put the test data
+within a file <samp data-coord="timing.umt:390:162">test.dat</samp> and run your the <samp data-coord="timing.umt:390:190">coverage</samp> program with standard
+input redirected from <samp data-coord="timing.umt:390:245">test.dat</samp>.
+</p><p data-coord="timing.umt:395:0">Because of the regular branching structure within <samp data-coord="timing.umt:395:50">compute()</samp> it
+should be clear that 8 sets of <samp data-coord="timing.umt:395:96">a</samp>, <samp data-coord="timing.umt:395:101">b</samp>, <samp data-coord="timing.umt:395:106">c</samp> values should be
+sufficient.
+</p><p data-coord="timing.umt:399:0">Run <samp data-coord="timing.umt:399:4">gcov</samp> to validate that your tests do indeed exercise each line of
+<samp data-coord="timing.umt:399:71">compute()</samp>.
+</p></section></section><section data-coord="timing.umt:402:0"><h2 data-coord="timing.umt:402:0">References</h2><ul data-coord="timing.umt:406:0"><li data-coord="timing.umt:406:0"><p data-coord="timing.umt:406:4">Ulrich Drepper, <em data-coord="timing.umt:406:72"><a href="http://www.akkadia.org/drepper/cpumemory.pdf" data-coord="timing.umt:406:72">What Every Programmer Should Know About Memory</a></em>.  This is the
+source of the cache example.
+</p></li><li data-coord="timing.umt:410:0"><p data-coord="timing.umt:410:4"><em data-coord="timing.umt:410:51"><a href="http://gcc.gnu.org/onlinedocs/gcc/Gcov.html" data-coord="timing.umt:410:51">gcov docs</a></em>.
+</p></li></ul></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
