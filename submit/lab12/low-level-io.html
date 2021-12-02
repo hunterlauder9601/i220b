@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: low-level-io.umt</title>
+    <link href="low-level-io/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="low-level-io.umt:1:2">L a b   1 2 :  L o w - L e v e l   I / O
+</p><p data-coord="low-level-io.umt:3:0"><strong data-coord="low-level-io.umt:3:0">Date</strong>: Dec 2, 2021
+</p><p data-coord="low-level-io.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="low-level-io.umt:9:0"><h2 data-coord="low-level-io.umt:9:0">Aims</h2><p data-coord="low-level-io.umt:12:0">The aim of this lab is to introduce to you to different methods used
+for doing low-level input/output (I/O) on computer systems.  After
+completing this lab, you should be familiar with the following topics:
+</p><ul data-coord="low-level-io.umt:16:0"><li data-coord="low-level-io.umt:16:0"><p data-coord="low-level-io.umt:16:4">The problems with <em data-coord="low-level-io.umt:16:22">blocking I/O</em>.
+</p></li><li data-coord="low-level-io.umt:18:0"><p data-coord="low-level-io.umt:18:4">Using <em data-coord="low-level-io.umt:18:10">polling</em> to check whether an I/O device is ready.
+</p></li><li data-coord="low-level-io.umt:20:0"><p data-coord="low-level-io.umt:20:4">The use of <em data-coord="low-level-io.umt:20:15">interrupts</em> so that programs can be interrupted
+only when an I/O device is ready.
+</p></li></ul><p data-coord="low-level-io.umt:23:0">You will also gain some experience using a primitive operating system
+where a program error may crash the entire system and require a
+reboot.
+</p></section><section data-coord="low-level-io.umt:28:0"><h2 data-coord="low-level-io.umt:28:0">Background</h2><p data-coord="low-level-io.umt:31:0">Assume that a program running on a computer needs to read input
+from the user via the keyboard.  An obvious strategy is to have
+the program wait until the user has typed a key.  However, a
+back-of-the-envelope analysis easily shows that such a
+strategy would be a waste of resources:
+</p><p data-coord="low-level-io.umt:37:0">Assume that the user is a fast typist capable of typing 4 characters
+per second and assume that a modern CPU can execute at 1000 MIPS
+("Million Instructions Per Second").  So in the time spent waiting for
+the user to type one character, the CPU could have executed 250
+million instructions.  Such a situation is obviously a tremendous
+waste of resources.
+</p><p data-coord="low-level-io.umt:44:0">There are two main solutions to this problem:
+</p><dl data-coord="low-level-io.umt:46:0"><dt data-coord="low-level-io.umt:46:2"><strong data-coord="low-level-io.umt:46:3">Polling</strong></dt><dd data-coord="low-level-io.umt:47:0"><p data-coord="low-level-io.umt:47:4">Instead of waiting for the user to type a key, the computer
+continues execution (executing the current program or another
+program).  But it periodically checks or <strong data-coord="low-level-io.umt:47:175">polls</strong> the keyboard
+to see whether the user has typed a key.  If that is the
+case, then it read the key and proceeds as per the original
+program.
+</p></dd><dt data-coord="low-level-io.umt:54:2"><strong data-coord="low-level-io.umt:54:3">Interrupts</strong></dt><dd data-coord="low-level-io.umt:55:0"><p data-coord="low-level-io.umt:55:4">The computer continues executing the current program or
+another program.  When the user has typed a key, the
+keyboard uses special hardware to <strong data-coord="low-level-io.umt:55:155">interrupt</strong> the program.
+The interrupt results in execution of an <em data-coord="low-level-io.umt:55:225">interrupt-service
+    routine</em> which will read the keyboard.  Things are setup
+so that the original program receives the value of the key
+so that it can continue execution.
+</p></dd></dl></section><section data-coord="low-level-io.umt:64:0"><h2 data-coord="low-level-io.umt:64:0">Needing Dosbox</h2><p data-coord="low-level-io.umt:67:0">A problem with experimenting with I/O on current computer systems is
+that all I/O in modern computer systems is under the control of
+the operating system and not directly accessible to a non-kernel
+programmer.  It may be possible to reboot a present day computer
+with a simple kernel which allows access to the I/O but such
+a kernel would probably also have an extremely primitive development
+environment.  A happy medium is to use a virtual machine emulator
+running within a modern development environment like Linux.
+</p><p data-coord="low-level-io.umt:76:0">There are many such emulators available for Linux: two which come
+to mind are <samp data-coord="low-level-io.umt:76:78">virtualbox</samp> and <samp data-coord="low-level-io.umt:76:95">dosbox</samp>.  For this lab, <samp data-coord="low-level-io.umt:76:120">dosbox</samp>
+was chosen because it already comes with a suitable primitive
+operating system (an emulation of MS-DOS) while making it easy
+to continue using the Linux development environment.
+</p><p data-coord="low-level-io.umt:82:0">To ensure that hardware from different PC manufacturers could be
+accessed in a uniform manner, early PC's came with a <em data-coord="low-level-io.umt:82:118">Basic
+Input/Output System</em> or BIOS.  The MSDOS operating accessed I/O
+devices using the hardware abstractions provided by this BIOS layer.
+In modern OS's, the BIOS is only used during initialization.
+</p></section><section data-coord="low-level-io.umt:89:0"><h2 data-coord="low-level-io.umt:89:0">Starting up</h2><p data-coord="low-level-io.umt:93:0">Follow the <em data-coord="low-level-io.umt:93:38"><a href="../working/working.html" data-coord="low-level-io.umt:93:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="low-level-io.umt:93:98">lab12</samp> branch and a new
+<samp data-coord="low-level-io.umt:93:123">submit/lab12</samp> directory.  You should have copied over
+the contents of <samp data-coord="low-level-io.umt:93:194">~/cs220/labs/lab12/exercises</samp> over to your
+directory.
+</p><p data-coord="low-level-io.umt:99:0">[Note that dosbox requires GUI access to <samp data-coord="low-level-io.umt:99:41">remote.cs</samp>.  If you are not
+using a lab computer, see
+<em data-coord="low-level-io.umt:99:151"><a href="../../misc/gui-remote-access/gui-remote-access.html" data-coord="low-level-io.umt:99:151">this document</a></em>
+for suggestions for setting that up.
+</p><p data-coord="low-level-io.umt:104:0">If you are are connecting to <samp data-coord="low-level-io.umt:104:29">remote.cs</samp> from a Mac and find that your
+keys are messed up when typing into dosbox, try the following: edit
+<samp data-coord="low-level-io.umt:104:139">~/.dosbox/dosbox-0.74-2.conf</samp> on <samp data-coord="low-level-io.umt:104:173">remote.cs</samp> to change the
+<samp data-coord="low-level-io.umt:104:199">usescancodes</samp> option from <samp data-coord="low-level-io.umt:104:226">true</samp> to <samp data-coord="low-level-io.umt:104:236">false</samp> and then restart dosbox]
+</p><p data-coord="low-level-io.umt:109:0">Change directory into your <samp data-coord="low-level-io.umt:109:27">exercises</samp> directory and start <samp data-coord="low-level-io.umt:109:59">dosbox</samp>
+in the background:
+</p><pre data-coord="low-level-io.umt:113:0">$ cd exercises
+$ dosbox &amp;
+</pre><p data-coord="low-level-io.umt:117:0">You should see the <samp data-coord="low-level-io.umt:117:19">dosbox</samp> program start up in a separate window.
+Within a couple of seconds, you will see a msdos prompt <samp data-coord="low-level-io.umt:117:123">Z:\&gt;</samp>.
+</p><p data-coord="low-level-io.umt:120:0">[In the rest of this lab, commands typed to a Linux shell are shown
+prefixed with a <samp data-coord="low-level-io.umt:120:84">$</samp> prompt, whereas commands typed in to <samp data-coord="low-level-io.umt:120:125">dosbox</samp>
+are prefixed with either <samp data-coord="low-level-io.umt:120:159">C:\&gt;</samp> or <samp data-coord="low-level-io.umt:120:169">Z:\&gt;</samp>.]
+</p><p data-coord="low-level-io.umt:124:0">Type <samp data-coord="low-level-io.umt:124:5">intro</samp> within dosbox to get an introduction to its use (type any
+key to continue the listing when it pauses between screens).  The
+complete documentation is available on the <em data-coord="low-level-io.umt:124:207"><a href="https://www.dosbox.com/" data-coord="low-level-io.umt:124:207">dosbox website</a></em>.
+</p><p data-coord="low-level-io.umt:129:0">One advantage of <samp data-coord="low-level-io.umt:129:17">dosbox</samp> is that it is very easy to share files with
+the Linux host.  You can simply mount and access your current Linux
+directory as <em data-coord="low-level-io.umt:129:151">drive c</em> using the following commands:
+</p><pre data-coord="low-level-io.umt:134:0">Z:\&gt;mount c .
+Z:\&gt;c:
+C:\&gt;dir 
+</pre><p data-coord="low-level-io.umt:139:0">The first command mounts the current Linux directory as the <samp data-coord="low-level-io.umt:139:60">c:</samp> drive;
+the second command sets <samp data-coord="low-level-io.umt:139:96">c:</samp> as the current drive and the last <samp data-coord="low-level-io.umt:139:135">dir</samp>
+command produces a directory listing of the current directory.
+</p><p data-coord="low-level-io.umt:143:0">Note that any edits that you make in your Linux files are reflected
+immediately on <samp data-coord="low-level-io.umt:143:83">dosbox</samp> but new files may not show up.
+If you find that dosbox is not reflecting updates you made to
+your linux directory either:
+</p><ul data-coord="low-level-io.umt:148:0"><li data-coord="low-level-io.umt:148:0"><p data-coord="low-level-io.umt:148:4">Unmount the <samp data-coord="low-level-io.umt:148:16">c:</samp> drive using <samp data-coord="low-level-io.umt:148:33">mount -u</samp> and remount:
+</p><pre data-coord="low-level-io.umt:151:0">    C:\&gt;mount -u c
+    Z:\&gt;mount c .
+    Z:\&gt;c:
+    C:&gt;dir
+</pre></li><li data-coord="low-level-io.umt:157:0"><p data-coord="low-level-io.umt:157:4">Use the <samp data-coord="low-level-io.umt:157:12">ctrl-F4</samp> key; i.e. type the <samp data-coord="low-level-io.umt:157:41">F4</samp> function key while
+the <samp data-coord="low-level-io.umt:157:73">control</samp>-key is depressed (on my keyboard, I also need to
+hold down the <samp data-coord="low-level-io.umt:157:150">shift</samp>-key, but YMMV).
+</p></li></ul><p data-coord="low-level-io.umt:161:0">You should see a listing of the files in the <samp data-coord="low-level-io.umt:161:45">exercises</samp> directory
+in which you started dosbox.
+</p><p data-coord="low-level-io.umt:164:0">During the course of this lab, it is very likely that you will crash
+<samp data-coord="low-level-io.umt:164:69">dosbox</samp> (it will either become unresponsive or the window will close
+itself).  In that case, simply restart it and remount your Linux directory.
+</p><p data-coord="low-level-io.umt:168:0">In this lab we will be playing with a simple program which does the
+equivalent of the following pseudo-code (with minor variations in the
+different exercises):
+</p><pre>COUNT <span class="hl opt">=</span> <span class="hl num">100</span><span class="hl opt">;</span>
+<span class="hl kwa">while</span> <span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">) {</span>
+  <span class="hl kwb">char</span> c <span class="hl opt">=</span> <span class="hl kwd">getchar</span><span class="hl opt">();</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span>c <span class="hl opt">==</span> <span class="hl str">&apos;q&apos;</span><span class="hl opt">)</span> <span class="hl kwa">break</span><span class="hl opt">;</span>
+  <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> COUNT<span class="hl opt">;</span> i<span class="hl opt">++) {</span>
+    <span class="hl kwd">putchar</span><span class="hl opt">(</span>c<span class="hl opt">);</span> 
+    c <span class="hl opt">=</span> get<span class="hl opt">-</span><span class="hl kwb">char</span><span class="hl opt">-</span><span class="hl kwa">if</span><span class="hl opt">-</span><span class="hl kwb">char</span><span class="hl opt">-</span><span class="hl kwd">available</span><span class="hl opt">();</span>
+  <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+<span class="hl kwd">exit</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span></pre><p data-coord="low-level-io.umt:185:0">The different exercises will explore different ways of implementing 
+<samp data-coord="low-level-io.umt:185:69">get-char-if-char-available()</samp>.    
+</p></section><section data-coord="low-level-io.umt:188:0"><h2 data-coord="low-level-io.umt:188:0">Fully Blocking I/O</h2><p data-coord="low-level-io.umt:191:0">In this exercise, we do not make any attempt to implement 
+<samp data-coord="low-level-io.umt:191:59">get-char-if-char-available()</samp>.  Consequently, we read
+a character, output it <samp data-coord="low-level-io.umt:191:137">COUNT</samp> times and then repeat
+until a <samp data-coord="low-level-io.umt:191:175">'q'</samp> input character terminates the program.
+</p><p data-coord="low-level-io.umt:196:0">The program is implemented in assembly language in
+<a href="./exercises/block.s" data-coord="low-level-io.umt:196:74">block.s.</a>  The following points are worth
+noting:
+</p><ul data-coord="low-level-io.umt:200:0"><li data-coord="low-level-io.umt:200:0"><p data-coord="low-level-io.umt:200:4">The <samp data-coord="low-level-io.umt:200:8">.code16</samp> directive sets things up to use the 16-bit subset of
+the <samp data-coord="low-level-io.umt:200:79">x86</samp> instruction set similar to the original 8086 instruction
+set.  Specifically, all registers are 16-bits.  So both the the
+64-bit <samp data-coord="low-level-io.umt:200:221">rxx</samp> registers and the 32-bit <samp data-coord="low-level-io.umt:200:252">exx</samp> registers are
+unavailable.
+</p></li><li data-coord="low-level-io.umt:206:0"><p data-coord="low-level-io.umt:206:4">With a 16-bit architecture, addresses are retricted to 16-bits
+which would result in an address space of 64-KB.  However, the
+architecture uses segmented addressing to allow addressing of upto
+1 MB of memory.  Hence a full memory address consists of a
+<em data-coord="low-level-io.umt:206:272">segment</em><samp data-coord="low-level-io.umt:206:281">:</samp><em data-coord="low-level-io.umt:206:284">offset</em> pair.  Fortunately, we use a program
+executable format which is restricted to using a single 64 KB
+segment; hence we can ignore segmentation since all segment
+registers point to the start of the single segment (note this is
+similar to why we can ignore segment registers in x86-32 and
+x86-64 except that there they are pointing to a large multi-GB
+segment!).
+</p></li><li data-coord="low-level-io.umt:218:0"><p data-coord="low-level-io.umt:218:4">The program is written in a style typical of manual assembly
+language with ad-hoc use of registers.  The program makes heavy
+use of global variables like <samp data-coord="low-level-io.umt:218:166">inChar</samp> (which holds the character
+read by <samp data-coord="low-level-io.umt:218:214">getchar()</samp> and written by <samp data-coord="low-level-io.umt:218:241">putchar()</samp> for reasons which
+will become clearer in the following exercises).
+</p></li><li data-coord="low-level-io.umt:224:0"><p data-coord="low-level-io.umt:224:4">The program accesses DOS services using <samp data-coord="low-level-io.umt:224:44">int 0x21</samp> instructions.
+</p></li><li data-coord="low-level-io.umt:226:0"><p data-coord="low-level-io.umt:226:4">The program uses a software delay loop (the program simply
+delays a certain amount by spinning in a loop executing useless
+instructions).
+</p></li></ul><p data-coord="low-level-io.umt:230:0">You should be able to understand the program reasonably well.
+</p><p data-coord="low-level-io.umt:232:0">Now build the program under Linux:
+</p><pre data-coord="low-level-io.umt:235:0">$ make block.com
+</pre><p data-coord="low-level-io.umt:238:0">This runs the GNU assembler to assemble <samp data-coord="low-level-io.umt:238:40">block.s</samp> followed by a couple
+of other programs to massage the executable into a <samp data-coord="low-level-io.umt:238:122">.com</samp> executable
+format.  Additionally, the assembler also creates an assembler listing
+in <samp data-coord="low-level-io.umt:238:214">block.lst</samp>.
+</p><p data-coord="low-level-io.umt:243:0">The <samp data-coord="low-level-io.umt:243:4">.com</samp> format is an extremely simple executable format which
+merely contains the binary instructions and data which will be loaded
+into memory without any headers, etc.
+</p><p data-coord="low-level-io.umt:247:0">You can look at the bytes in <samp data-coord="low-level-io.umt:247:29">block.com</samp>:
+</p><pre data-coord="low-level-io.umt:250:0">$ od -x block.com
+</pre><p data-coord="low-level-io.umt:253:0">Compare the output with assembled code in <samp data-coord="low-level-io.umt:253:42">block.lst</samp>.  You
+should see that it is identical, once you take care of endian
+issues.
+</p><p data-coord="low-level-io.umt:257:0">Now run the program in <samp data-coord="low-level-io.umt:257:23">dosbox</samp>:
+</p><pre data-coord="low-level-io.umt:260:0">C:\&gt;block
+</pre><p data-coord="low-level-io.umt:263:0">When you type a character, it will be repeatedly echoed a fixed number
+of times; this continues until you type a <samp data-coord="low-level-io.umt:263:113">'q'</samp> character to quit.
+</p><p data-coord="low-level-io.umt:266:0">Notice that if you type a character while the last character is being
+repeated in the inner loop, the new character you typed is ignored
+until the start of the next iteration of the outer loop.
+</p><p data-coord="low-level-io.umt:270:0">To make sure you understand the program make the following minor
+modifications:
+</p><ol data-coord="low-level-io.umt:273:0"><li data-coord="low-level-io.umt:273:0"><p data-coord="low-level-io.umt:273:4">Reduce the count of characters echoed on each iteration of
+the inner loop by half.
+</p></li><li data-coord="low-level-io.umt:276:0"><p data-coord="low-level-io.umt:276:4">Reduce the delay between consecutive repeated characters
+by approximately half.
+</p></li></ol><p data-coord="low-level-io.umt:279:0">Reassemble and test as above.
+</p></section><section data-coord="low-level-io.umt:281:0"><h2 data-coord="low-level-io.umt:281:0">Polled I/O</h2><p data-coord="low-level-io.umt:284:0">Look at program <a href="./exercises/poll.s" data-coord="low-level-io.umt:284:38">poll.s.</a>  Notice that within the
+inner loop it calls a function <samp data-coord="low-level-io.umt:284:101">checkKey()</samp> which sets global variable
+<samp data-coord="low-level-io.umt:284:141">hasKey</samp> and then if <samp data-coord="low-level-io.umt:284:162">hasKey</samp> is set, the inner loops refreshes the
+current character using <samp data-coord="low-level-io.umt:284:233">getchar()</samp>.  This corresponds to the
+following pseudo-code:
+</p><pre>COUNT <span class="hl opt">=</span> <span class="hl num">100</span><span class="hl opt">;</span>
+<span class="hl kwb">char</span> inChar<span class="hl opt">;</span>
+<span class="hl kwa">while</span> <span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">) {</span>
+  <span class="hl kwb">char</span> inChar <span class="hl opt">=</span> <span class="hl kwd">getchar</span><span class="hl opt">();</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span>inChar <span class="hl opt">==</span> <span class="hl str">&apos;q&apos;</span><span class="hl opt">)</span> <span class="hl kwa">break</span><span class="hl opt">;</span>
+  <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> COUNT<span class="hl opt">;</span> i<span class="hl opt">++) {</span>
+    <span class="hl kwb">bool</span> hasKey <span class="hl opt">=</span> <span class="hl kwd">checkKey</span><span class="hl opt">();</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(</span>hasKey<span class="hl opt">) {</span>
+      hasKey <span class="hl opt">=</span> <span class="hl kwa">false</span><span class="hl opt">;</span>
+      inChar <span class="hl opt">=</span> <span class="hl kwd">getchar</span><span class="hl opt">();</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwd">putchar</span><span class="hl opt">(</span>inChar<span class="hl opt">);</span> 
+  <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+<span class="hl kwd">exit</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span></pre><p data-coord="low-level-io.umt:308:0">So on each iteration of the inner loop, the program is polling the
+keyboard using <samp data-coord="low-level-io.umt:308:82">checkKey()</samp> and reading the keyboard only if <samp data-coord="low-level-io.umt:308:128">hasKey</samp>
+is true.
+</p><p data-coord="low-level-io.umt:312:0">Assemble and run this program as before:     
+</p><pre data-coord="low-level-io.umt:315:0">$ make poll.com
+C:\&gt;poll
+</pre><p data-coord="low-level-io.umt:319:0">Notice that it is much more responsive to the keyboard.  Specifically,
+if you type a key while it is in the inner loop the output of the
+inner loop reflects the newly entered key immediately.
+</p><p data-coord="low-level-io.umt:323:0">There is one deficiency in the program: the <samp data-coord="low-level-io.umt:323:44">'q'</samp> key works as a quit
+key only outside the inner loop; in fact, if you type a <samp data-coord="low-level-io.umt:323:126">q</samp> into the
+inner loop it merely echoes it and does not quit the program.
+</p><p data-coord="low-level-io.umt:327:0">Modify the program to fix this deficiency.  The simple fix will simply
+be a copy-and-paste job violating
+<a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" data-coord="low-level-io.umt:327:161">DRY.</a>  A better
+fix would refactor to avoid violating DRY.
+</p></section><section data-coord="low-level-io.umt:332:0"><h2 data-coord="low-level-io.umt:332:0">Interrupt Driven I/O</h2><p data-coord="low-level-io.umt:335:0">The program for this exercise in <a href="./exercises/key-int.s" data-coord="low-level-io.umt:335:58">key-int.s</a> has
+pseudo-code very similar to that of the last exercise:
+</p><pre>COUNT <span class="hl opt">=</span> <span class="hl num">100</span><span class="hl opt">;</span>
+<span class="hl kwb">char</span> inChar<span class="hl opt">;</span>
+<span class="hl kwc">volatile</span> <span class="hl kwb">bool</span> hasKey <span class="hl opt">=</span> <span class="hl kwa">false</span><span class="hl opt">;</span>
+<span class="hl kwa">while</span> <span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">) {</span>
+  <span class="hl kwb">char</span> inChar <span class="hl opt">=</span> <span class="hl kwd">getchar</span><span class="hl opt">();</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span>inChar <span class="hl opt">==</span> <span class="hl str">&apos;q&apos;</span><span class="hl opt">)</span> <span class="hl kwa">break</span><span class="hl opt">;</span>
+  <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> COUNT<span class="hl opt">;</span> i<span class="hl opt">++) {</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(</span>hasKey<span class="hl opt">) {</span>
+      inChar <span class="hl opt">=</span> <span class="hl kwd">getchar</span><span class="hl opt">();</span> <span class="hl slc">//also resets hasKey</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwd">putchar</span><span class="hl opt">(</span>inChar<span class="hl opt">);</span> 
+  <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+<span class="hl kwd">exit</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span></pre><p data-coord="low-level-io.umt:355:0">Note that the previous exercise assigned the results of <samp data-coord="low-level-io.umt:355:56">checkKey()</samp>
+to <samp data-coord="low-level-io.umt:355:72">hasKey</samp> but in the above code there is no assignment of <samp data-coord="low-level-io.umt:355:129">true</samp> to <samp data-coord="low-level-io.umt:355:139">hasKey</samp>
+(except for the initializer).  So how does <samp data-coord="low-level-io.umt:355:191">hasKey</samp> ever get assigned
+<samp data-coord="low-level-io.umt:355:218">true</samp>.
+</p><p data-coord="low-level-io.umt:360:0">The answer is that it is done <strong data-coord="low-level-io.umt:360:30">asynchronously</strong> in an <em data-coord="low-level-io.umt:360:53">interrupt
+service routine</em> which is run asynchronously whenever a key is
+<strong data-coord="low-level-io.umt:360:127">pressed or released</strong>.
+</p><p data-coord="low-level-io.umt:364:0">Note also that <samp data-coord="low-level-io.umt:364:15">hasKey</samp> has been declared <code><span class="hl kwc">volatile</span></code>.  Do a web
+search to understand why.
+</p><p data-coord="low-level-io.umt:367:0">Look at the code in <a href="./exercises/key-int.s" data-coord="low-level-io.umt:367:45">key-int.s:</a>
+</p><ul data-coord="low-level-io.umt:369:0"><li data-coord="low-level-io.umt:369:0"><p data-coord="low-level-io.umt:369:4">At the start of the <samp data-coord="low-level-io.umt:369:24">main</samp> program, there is a call to <samp data-coord="low-level-io.umt:369:59">setupHandler()</samp>.
+What that does is use DOS services to wrap the keyboard interrupt
+handler.  Specifically, it saves the current addresses of the handler
+for <samp data-coord="low-level-io.umt:369:229">KEY_INT</samp> (the keyboard interrupt) and <samp data-coord="low-level-io.umt:369:268">CHK_INT</samp> (a BIOS interrupt)
+in global variables <samp data-coord="low-level-io.umt:369:321">intAddr</samp> and <samp data-coord="low-level-io.umt:369:335">chkAddr</samp> respectively.  Then it
+replaces the address of the keyboard interrupt handler with the
+address of the wrapping routine <samp data-coord="low-level-io.umt:369:472">intHandler</samp>.
+</p></li><li data-coord="low-level-io.umt:377:0"><p data-coord="low-level-io.umt:377:4">After the above replacement, whenever a keyboard interrupt occurs
+our routine <samp data-coord="low-level-io.umt:377:86">intHandler()</samp> will be called.  It's code is somewhat
+unusual as it is called as an interrupt handler which will always
+be called with the flags and return address on the stack and
+must return using a special <samp data-coord="low-level-io.umt:377:307">iret</samp> instruction which takes care
+of popping of the additional flags word from the stack (in addition
+to taking care of the normal return).
+</p></li><li data-coord="low-level-io.umt:385:0"><p data-coord="low-level-io.umt:385:4">The code for <samp data-coord="low-level-io.umt:385:17">intHandler()</samp> wraps the original interrupt handler
+by calling it via the saved address.  Note that the call simulates
+an interrupt by pushing the flags on the stack before the call;
+since the wrapped routine is an interrupt handler it will pop
+those flags off the stack using the <samp data-coord="low-level-io.umt:385:314">iret</samp> instruction.
+</p><p data-coord="low-level-io.umt:391:4">It then uses the BIOS routine to check if a key has really been
+pressed and if one has, then it sets the <samp data-coord="low-level-io.umt:391:113">hasKey</samp> variable.  It
+does this with interrupts disabled (instruction <samp data-coord="low-level-io.umt:391:188">cli</samp>) and
+reenables when done (instruction <samp data-coord="low-level-io.umt:391:236">sti</samp>).
+</p></li><li data-coord="low-level-io.umt:396:0"><p data-coord="low-level-io.umt:396:4">Before the program exits, it restores the original interrupt
+handler using <samp data-coord="low-level-io.umt:396:83">resetHandler()</samp>.
+</p></li></ul><p data-coord="low-level-io.umt:399:0">[Note: this program is rather brittle and it took a lot of effort to
+make it work.  Even now, the program runs successfully the first 
+time you run it, but if you try to run it a second time it hangs
+<samp data-coord="low-level-io.umt:399:200">dosbox</samp>.  It can be run again only after restarting <samp data-coord="low-level-io.umt:399:253">dosbox</samp>. So
+obviously it is not doing a good job of cleaning up after itself.]
+</p><p data-coord="low-level-io.umt:405:0">Assemble and run the program in the usual way:
+</p><pre data-coord="low-level-io.umt:409:0">$ make key-int.com
+C:\&gt;key-int
+</pre><p data-coord="low-level-io.umt:413:0">Unlike the assembly code for <a href="exercises/poll.s" data-coord="low-level-io.umt:413:49">poll.s,</a> the code to
+reset the <samp data-coord="low-level-io.umt:413:79">hasKey</samp> flag has been moved to the end of the <samp data-coord="low-level-io.umt:413:126">getchar()</samp>
+routine.  Why would it not work if the reset was within
+the inner loop of the main program as in <a href="./exercises/poll.s" data-coord="low-level-io.umt:413:257">poll.s?</a>
+</p></section><section data-coord="low-level-io.umt:419:0"><h2 data-coord="low-level-io.umt:419:0">References</h2><ul data-coord="low-level-io.umt:423:0"><li data-coord="low-level-io.umt:423:0"><p data-coord="low-level-io.umt:423:4">Lukan, Dejan, <em data-coord="low-level-io.umt:423:18">Logging Keystrokes with MSDOS</em>, <em data-coord="low-level-io.umt:423:131"><a href="https://resources.infosecinstitute.com/logging-keystrokes-with-msdos-part-1/" data-coord="low-level-io.umt:423:131">Part 1</a></em> and <em data-coord="low-level-io.umt:423:223"><a href="https://resources.infosecinstitute.com/logging-keystrokes-with-msdos-part-2" data-coord="low-level-io.umt:423:223">Part 2</a></em>.
+</p></li><li data-coord="low-level-io.umt:425:0"><p data-coord="low-level-io.umt:425:4"><em data-coord="low-level-io.umt:425:54"><a href="http://spike.scu.edu.au/~barry/interrupts.html" data-coord="low-level-io.umt:425:54">DOS INT 21h -
+    DOS Function Codes</a></em>.
+</p></li><li data-coord="low-level-io.umt:429:0"><p data-coord="low-level-io.umt:429:4"><a href="http://www.dosbox.com/" data-coord="low-level-io.umt:429:30">Dosbox</a> 
+</p></li></ul></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
