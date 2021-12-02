@@ -1,0 +1,55 @@
+Script started on 2021-12-02 16:30:00-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12$ CD [K[K[Kcd ed[Kxercises/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ doxy[Kbox &
+[1] 2462617
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ bash: doxbox: command not found
+dox[Ksbox &
+[2] 2462663
+[1]   Exit 127                doxbox
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ DOSBox version 0.74-2
+Copyright 2002-2018 DOSBox Team, published under GNU GPL.
+---
+CONFIG:Loading primary settings from config file /home/hlauder1/.dosbox/dosbox-0.74-2.conf
+MIXER:Got different values from SDL: freq 44100, blocksize 512
+ALSA:Can't subscribe to MIDI port (65:0) nor (17:0)
+MIDI:Opened device:none
+
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make poll.com
+as --32 -a=poll.lst poll.s -o poll.o
+objcopy -O binary poll.o poll.bin
+rm poll.o
+dd if=poll.bin of=poll.com bs=256 skip=1
+0+1 records in
+0+1 records out
+114 bytes copied, 0.00186147 s, 61.2 kB/s
+rm poll.bin
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make poll.com
+as --32 -a=poll.lst poll.s -o poll.o
+objcopy -O binary poll.o poll.bin
+rm poll.o
+dd if=poll.bin of=poll.com bs=256 skip=1
+0+1 records in
+0+1 records out
+114 bytes copied, 0.00175132 s, 65.1 kB/s
+rm poll.bin
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make poll.com[C[C[C[5Pdosbox &x[C[C[C[C[Cs[C[C[C[C[C[K[K[K[K[K[K[K[Kdoxbox &[C[C[Ccd exercises/[C[C[Cscript -a lab12.LOG[C[C[C[6Pcd exercises/[C[C[C[5Pdoxbox &[C[C[C[Kmake poll.com[C[C[C[Kmake poll.com
+as --32 -a=poll.lst poll.s -o poll.o
+objcopy -O binary poll.o poll.bin
+rm poll.o
+dd if=poll.bin of=poll.com bs=256 skip=1
+0+1 records in
+0+1 records out
+117 bytes copied, 0.00160245 s, 73.0 kB/s
+rm poll.bin
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make key-int.s [K[K[K.com
+as --32 -a=key-int.lst key-int.s -o key-int.o
+objcopy -O binary key-int.o key-int.bin
+rm key-int.o
+dd if=key-int.bin of=key-int.com bs=256 skip=1
+0+1 records in
+0+1 records out
+209 bytes copied, 0.00417251 s, 50.1 kB/s
+rm key-int.bin
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ exit
+
+Script done on 2021-12-02 17:21:58-05:00 [COMMAND_EXIT_CODE="0"]

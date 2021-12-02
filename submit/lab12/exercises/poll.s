@@ -33,6 +33,11 @@ main2:
 	        xor	%al, %al
 		mov	%al, hasKey     #reset hasKey flag
 		call	getchar         #read new input key
+		mov	inChar, %al	#al set to char read
+		cmp	$QUIT, %al	#is it a QUIT character?
+		jz	main3		#quit if got QUIT character
+
+
 main4:	
 	        call    putchar         #output inChar to console
 		call    delay           #delay for time proportional to DELAY

@@ -1,0 +1,50 @@
+Script started on 2021-12-02 15:48:33-05:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12$ CD[K[Kcd e xercises [K[Ks/
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ dosx[Kbox &
+[1] 2304591
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ DOSBox version 0.74-2
+Copyright 2002-2018 DOSBox Team, published under GNU GPL.
+---
+CONFIG:Loading primary settings from config file /home/hlauder1/.dosbox/dosbox-0.74-2.conf
+MIXER:Got different values from SDL: freq 44100, blocksize 512
+ALSA:Can't subscribe to MIDI port (65:0) nor (17:0)
+MIDI:Opened device:none
+
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make block.com
+as --32 -a=block.lst block.s -o block.o
+objcopy -O binary block.o block.bin
+rm block.o
+dd if=block.bin of=block.com bs=256 skip=1
+0+1 records in
+0+1 records out
+81 bytes copied, 0.00114088 s, 71.0 kB/s
+rm block.bin
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ od -x block.com 
+0000000 01eb e800 0018 02a0 3c01 7471 b90e 0032
+0000020 15e8 e800 0023 7549 ebf7 e8e8 0015 b450
+0000040 cd08 a221 0102 c358 b450 8a02 0216 cd01
+0000060 5821 b4c3 b04c cd00 5021 5153 02bb b900
+0000100 0000 a0b8 f6f0 49e9 f875 754b 59f2 585b
+0000120 00c3
+0000121
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make bk[Klock.com
+as --32 -a=block.lst block.s -o block.o
+objcopy -O binary block.o block.bin
+rm block.o
+dd if=block.bin of=block.com bs=256 skip=1
+0+1 records in
+0+1 records out
+81 bytes copied, 0.0013932 s, 58.1 kB/s
+rm block.bin
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ make poll.com
+as --32 -a=poll.lst poll.s -o poll.o
+objcopy -O binary poll.o poll.bin
+rm poll.o
+dd if=poll.bin of=poll.com bs=256 skip=1
+0+1 records in
+0+1 records out
+110 bytes copied, 0.00150877 s, 72.9 kB/s
+rm poll.bin
+hlauder1@remote02:/import/linux/home1/hlauder1/projects/i220b/submit/lab12/exercises$ exit
+
+Script done on 2021-12-02 16:17:35-05:00 [COMMAND_EXIT_CODE="0"]
