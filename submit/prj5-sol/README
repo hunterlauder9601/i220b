@@ -3,5 +3,5 @@ B-Number:	B00812146
 Email:		hlauder1@binghamton.edu
 github:		hunterlauder9601
 
-Add text here as needed.
-
+The reason why the output has a 1 second latency is because I had to use a sleep(1) everytime I calculated the cache line age (time(NULL) gives current time by seconds,
+but this causes inaccuracy because the compiler executes much faster than that so a sleep(1) function fixes this).
