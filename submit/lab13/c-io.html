@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 220: c-io.umt</title>
+    
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hw/index.html">Homework</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+	<li><a id="loginAction"></a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p data-coord="c-io.umt:1:5">L a b   1 3 :  C  I / O
+</p><p data-coord="c-io.umt:3:0"><strong data-coord="c-io.umt:3:0">Date</strong>: Dec 9, 2021
+</p><p data-coord="c-io.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><section data-coord="c-io.umt:10:0"><h2 data-coord="c-io.umt:10:0">Aims</h2><p data-coord="c-io.umt:13:0">The aim of this lab is to introduce to you to the C library functions
+used for doing input/output (I/O).  After completing
+this lab, you should be familiar with the following topics:
+</p><ul data-coord="c-io.umt:17:0"><li data-coord="c-io.umt:17:0"><p data-coord="c-io.umt:17:4">The use of plain <samp data-coord="c-io.umt:17:21">char</samp>'s as return values.
+</p></li><li data-coord="c-io.umt:19:0"><p data-coord="c-io.umt:19:4">Opening and closing files.
+</p></li><li data-coord="c-io.umt:21:0"><p data-coord="c-io.umt:21:4">Reading/writing blocks of bytes.
+</p></li></ul></section><section data-coord="c-io.umt:24:0"><h2 data-coord="c-io.umt:24:0">Background</h2><p data-coord="c-io.umt:27:0">Unlike other languages which were prevalent at the time C was first
+implemented, the C language itself does not specify any I/O facilities.
+Instead, all I/O in C is relegated to library functions.  C comes
+with I/O functions in its standard library; usually, these functions
+are declared in the standard header file <samp data-coord="c-io.umt:27:316">&lt;stdio.h&gt;</samp>.
+</p><p data-coord="c-io.umt:33:0">The C I/O functions will work irrespective of which operating system
+the program is running on.  However, they will be implemented using
+the native I/O facilities; under Unix they will wrap Unix primitives
+like <em data-coord="c-io.umt:33:260"><a href="https://en.wikipedia.org/wiki/File_descriptor" data-coord="c-io.umt:33:260">file
+descriptors</a></em>, <samp data-coord="c-io.umt:33:280">read()</samp> and <samp data-coord="c-io.umt:33:293">write()</samp>.
+</p></section><section data-coord="c-io.umt:40:0"><h2 data-coord="c-io.umt:40:0">Starting Up</h2><p data-coord="c-io.umt:43:0">Follow the <em data-coord="c-io.umt:43:38"><a href="../working/working.html" data-coord="c-io.umt:43:38">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="c-io.umt:43:98">lab13</samp> branch and a new
+<samp data-coord="c-io.umt:43:123">submit/lab13</samp> directory.  You should have copied over
+the contents of <samp data-coord="c-io.umt:43:194">~/cs220/labs/lab13/exercises</samp> over to your
+directory.
+</p></section><section data-coord="c-io.umt:50:0"><h2 data-coord="c-io.umt:50:0">Standard Input Character Count</h2><p data-coord="c-io.umt:53:0">Change over to the <a href="exercises/stdin-char-count" data-coord="c-io.umt:53:49">stdin-char-count</a>
+directory.  Look at the <a href="exercises/stdin-char-count/stdin-char-count.c" data-coord="c-io.umt:53:139">stdin-char-count.c</a> program as well as the
+<a href="exercises/stdin-char-count/Makefile" data-coord="c-io.umt:53:220">Makefile.</a>  The program simply
+outputs the encoding for <samp data-coord="c-io.umt:53:275">EOF</samp> followed by the number of characters
+read from standard input.  However, note that the Makefile uses a
+special <samp data-coord="c-io.umt:53:392">-f</samp> flag to ensure that a plain <samp data-coord="c-io.umt:53:425">char</samp> type is unsigned;
+hence the declaration for <samp data-coord="c-io.umt:53:476">char c</samp> in the program is equivalent to
+<samp data-coord="c-io.umt:53:517">unsigned char c</samp>.
+</p><p data-coord="c-io.umt:63:0">Compile and run the program on itself:
+</p><pre data-coord="c-io.umt:66:0">$ ./stdin-char-count &lt; stdin-char-count.c
+</pre><p data-coord="c-io.umt:69:0">The program should output the value of EOF as <samp data-coord="c-io.umt:69:46">-1</samp> but will then get
+stuck in an infinite loop. <samp data-coord="c-io.umt:69:96">^C</samp> out of it.
+</p><p data-coord="c-io.umt:72:0">The problem is that we are assigning the output of <samp data-coord="c-io.umt:72:51">getchar()</samp> to an
+<samp data-coord="c-io.umt:72:69">unsigned char</samp> and then comparing it with a negative value; that comparison
+will always be false, resulting in the infinite loop.
+</p><p data-coord="c-io.umt:76:0">Without changing the Makefile, change the declaration for <samp data-coord="c-io.umt:76:58">c</samp> so as to
+avoid the infinite loop.  If you now run the program:
+</p><pre data-coord="c-io.umt:80:0">$ ./stdin-char-count &lt;stdin-char-count.c
+</pre><p data-coord="c-io.umt:83:0">it should output the number of characters in <samp data-coord="c-io.umt:83:45">stdin-char-count.c</samp>.
+Compare your result with that from <samp data-coord="c-io.umt:83:102">wc -c stdin-char-count.c</samp>.
+</p></section><section data-coord="c-io.umt:86:0"><h2 data-coord="c-io.umt:86:0">File Character Count</h2><p data-coord="c-io.umt:89:0">Change over to the <a href="exercises/file-char-count" data-coord="c-io.umt:89:48">file-char-count</a> directory.
+Look at the program in the <a href="exercises/file-char-count/file-char-count.c" data-coord="c-io.umt:89:149">file-char-count.c</a> file.  It outputs a count of the number of
+characters in the file specified by its single command-line argument.
+</p><p data-coord="c-io.umt:94:0">The key function is
+<a href="http://man7.org/linux/man-pages/man3/fopen.3.html" data-coord="c-io.umt:94:73">fopen().</a>  It is
+used to open the file with name specified by its first argument for
+reading as specified by its second <samp data-coord="c-io.umt:94:192">"r"</samp> <strong data-coord="c-io.umt:94:198">mode</strong> argument.  If the open
+succeeds, <samp data-coord="c-io.umt:94:238">fopen()</samp> returns a non-<samp data-coord="c-io.umt:94:266">NULL</samp> pointer to a <samp data-coord="c-io.umt:94:286">FILE</samp> ADT.
+This <samp data-coord="c-io.umt:94:303">FILE</samp> pointer can be used by other functions for performing
+operations on the file.  Finally, it is necessary to call
+<a href="https://man7.org/linux/man-pages/man3/fclose.3.html" data-coord="c-io.umt:94:477">fclose()</a>
+on the <samp data-coord="c-io.umt:94:493">FILE</samp> stream.
+</p><p data-coord="c-io.umt:104:0">Compile the program using <samp data-coord="c-io.umt:104:26">make</samp>.  Run it on itself:
+</p><pre data-coord="c-io.umt:107:0">$ ./file-char-count file-char-count.c
+</pre><p data-coord="c-io.umt:110:0">Compare the result with that produced by <samp data-coord="c-io.umt:110:41">wc</samp>.
+</p><p data-coord="c-io.umt:112:0">Check to see if the program handles non-existent files:
+</p><pre data-coord="c-io.umt:115:0">$ ./file-char-count xxx
+</pre><p data-coord="c-io.umt:119:0">It seems to run ok, but has a major bug.  Can you spot the bug?
+</p><p data-coord="c-io.umt:121:0">If you cannot spot the bug, try running the program using
+<a href="http://valgrind.org/" data-coord="c-io.umt:121:82">valgrind.</a>
+</p><pre data-coord="c-io.umt:125:0">$ valgrind ./file-char-count file-char-count.c
+</pre><p data-coord="c-io.umt:128:0">and you will see that the program is leaking memory.  So it is
+allocating memory at some point which is never being released.  Try to
+figure out where that is and fix the bug; test using valgrind.
+</p></section><section data-coord="c-io.umt:132:0"><h2 data-coord="c-io.umt:132:0">File Copy</h2><p data-coord="c-io.umt:135:0">Change over to the <a href="exercises/file-copy" data-coord="c-io.umt:135:42">file-copy</a> directory.  Look
+at the program in the <a href="exercises/file-copy/file-copy.c" data-coord="c-io.umt:135:126">file-copy.c</a>
+file.  It copies the file specified by its first command-line argument
+into the file specified by its second command-line argument.
+</p><p data-coord="c-io.umt:140:0">Again, the key function is
+<a href="http://man7.org/linux/man-pages/man3/fopen.3.html" data-coord="c-io.umt:140:80">fopen().</a>  Not
+only is it being used to open the file with name specified by the
+first command-line argument for reading, but it is also being used to
+open the file with name specified by the second command-line argument
+for writing.  In the first <samp data-coord="c-io.umt:140:327">fopen()</samp>, the mode argument is specified
+as <samp data-coord="c-io.umt:140:372">"r"</samp>, but the second <samp data-coord="c-io.umt:140:394">fopen()</samp> has its mode argument specified as
+<samp data-coord="c-io.umt:140:439">"w"</samp>.
+</p><p data-coord="c-io.umt:149:0">Compile the program using <samp data-coord="c-io.umt:149:26">make</samp>.  Run it on itself and verify that
+it makes a correct copy:
+</p><pre data-coord="c-io.umt:153:0">$ ./file-copy                 #should output usage
+$ ls -l file-copy.c t         #t should not be there
+$ ./file-copy file-copy.c t
+$ ls -l file-copy.c t         #t be there with same char count
+$ cmp file-copy.c t           #should compare ok
+</pre><p data-coord="c-io.umt:160:0">Notice that <samp data-coord="c-io.umt:160:12">t</samp> got created.
+</p><p data-coord="c-io.umt:162:0">Now use your <samp data-coord="c-io.umt:162:13">file-copy</samp> program to copy some other file
+to <samp data-coord="c-io.umt:162:60">t</samp>.  
+</p><pre data-coord="c-io.umt:166:0">$ ./file-copy Makefile t
+$ cmp Makefile t               #should compare ok
+</pre><p data-coord="c-io.umt:171:0">Set up the destination file so that it cannot be written into:
+</p><pre data-coord="c-io.umt:174:0">$ chmod a-w t               #turn-off write perms for t
+$ ./file-copy file-copy.c t #should fail in the fopen("w")
+$ cmp Makefile t            #should compare ok as t unchanged
+</pre><p data-coord="c-io.umt:179:0">The program would not have noticed the fact that the <samp data-coord="c-io.umt:179:53">fopen()</samp>
+for writing failed if we had not checked the return value
+from the <samp data-coord="c-io.umt:179:130">fopen()</samp>.  If you look at the code for the function,
+notice that almost all library calls are checked for errors;
+that is absolutely necessary for writing good quality code which
+fails fast when encountering an error situation.
+</p><p data-coord="c-io.umt:186:0">Unfortunately, the <samp data-coord="c-io.umt:186:19">file-copy</samp> program does not do a complete job of
+error checking.  If you look at the
+<em data-coord="c-io.umt:186:158"><a href="http://man7.org/linux/man-pages/man3/fgetc.3.html" data-coord="c-io.umt:186:158">man page</a></em> for
+<samp data-coord="c-io.umt:186:173">fgetc()</samp>, the return value is documented as "EOF on end of file or
+error".  This means that the <samp data-coord="c-io.umt:186:271">while</samp>-loop in the <samp data-coord="c-io.umt:186:291">doCopy()</samp> function
+will terminate on either a real end-of-file or on error.  Add code to
+<samp data-coord="c-io.umt:186:381">doCopy()</samp> to have the program terminate when an error occurs on
+<samp data-coord="c-io.umt:186:446">fgetc()</samp>.  <strong data-coord="c-io.umt:186:458">Hint</strong>: look at the
+<em data-coord="c-io.umt:186:532"><a href="http://man7.org/linux/man-pages/man3/fileno.3.html" data-coord="c-io.umt:186:532">man page</a></em> for
+<samp data-coord="c-io.umt:186:547">ferror()</samp>.
+</p></section><section data-coord="c-io.umt:197:0"><h2 data-coord="c-io.umt:197:0">Appending To A File</h2><p data-coord="c-io.umt:200:0">Stay in the <a href="exercises/file-copy" data-coord="c-io.umt:200:35">file-copy</a> directory.
+</p><p data-coord="c-io.umt:202:0">Using the <samp data-coord="c-io.umt:202:10">"w"</samp>-mode argument to the second <samp data-coord="c-io.umt:202:44">fopen()</samp> will clobber the
+contents of the file if it already exist.  To avoid this, open the
+file for <em data-coord="c-io.umt:202:147">append</em> by changing the mode argument from <samp data-coord="c-io.umt:202:191">"w"</samp> to <samp data-coord="c-io.umt:202:200">"a"</samp>.
+Compile and test.
+</p><pre data-coord="c-io.umt:208:0">$ rm -f t                      #ensure t not present
+$ ./file-copy file-copy.c t    #create empty t and append file-copy.c
+$ ./file-copy Makefile t       #append Makefile to t
+</pre><p data-coord="c-io.umt:213:0">So the destination file <samp data-coord="c-io.umt:213:24">t</samp> should contain the contents of <samp data-coord="c-io.umt:213:59">Makefile</samp>
+appended to the contents of <samp data-coord="c-io.umt:213:98">file-copy.c</samp>.  Verify using a text editor.
+You can also verify that the sum of the line counts of the two source
+files match the total number of lines in <samp data-coord="c-io.umt:213:253">t</samp>:
+</p><pre data-coord="c-io.umt:219:0">$ wc -l file-copy.c Makefile
+$ wc -l t
+</pre></section><section data-coord="c-io.umt:223:0"><h2 data-coord="c-io.umt:223:0">Buffering</h2><p data-coord="c-io.umt:226:0">When a function such as <samp data-coord="c-io.umt:226:24">fputc()</samp> writes a character, the path taken
+by the data is as follows:
+</p><ol data-coord="c-io.umt:229:0"><li data-coord="c-io.umt:229:0"><p data-coord="c-io.umt:229:4">Normally, <samp data-coord="c-io.umt:229:14">fputc()</samp> does not do any I/O.  Instead it is set up to
+write the character into a buffer in memory.  This buffer is
+controlled by the <samp data-coord="c-io.umt:229:157">stdio</samp> library and is in
+<em data-coord="c-io.umt:229:231"><a href="https://en.wikipedia.org/wiki/User_space" data-coord="c-io.umt:229:231">user space</a></em>.
+</p></li><li data-coord="c-io.umt:234:0"><p data-coord="c-io.umt:234:4">When the buffer becomes full, the contents of the buffer is
+written from the user space buffer to a kernel space buffer using
+a OS call like
+<a href="http://man7.org/linux/man-pages/man2/write.2.html" data-coord="c-io.umt:234:210">write().</a>
+Since this involves calling the OS, it can be quite slow compared
+to a normal memory write by one or two orders of magnitude. 
+</p></li><li data-coord="c-io.umt:241:0"><p data-coord="c-io.umt:241:4">When the kernel buffer becomes full, it is actually written
+out to the file.  This I/O is <strong data-coord="c-io.umt:241:98">extremely slow</strong> compared
+to normal memory writes by several orders of magnitude.
+</p></li></ol><p data-coord="c-io.umt:245:0">When reading a character using <samp data-coord="c-io.umt:245:31">fgetc()</samp> the data flows in the other
+direction: from the file to the kernel buffer and then into a stdio
+buffer using <a href="http://man7.org/linux/man-pages/man2/read.2.html" data-coord="c-io.umt:245:202">read()</a> and finally into the program using a function like <samp data-coord="c-io.umt:245:260">fgetc()</samp>.
+</p><p data-coord="c-io.umt:250:0">Without root access, we cannot control (3).  However, the stdio
+library does allow us to control the stdio buffer using
+<a href="http://man7.org/linux/man-pages/man3/setbuf.3.html" data-coord="c-io.umt:250:174">setvbuf()</a> and
+friends.
+</p><p data-coord="c-io.umt:255:0">Change over to the <a href="exercises/no-buffer-copy" data-coord="c-io.umt:255:47">no-buffer-copy</a> directory
+and look at the <a href="exercises/no-buffer-copy/no-buffer-copy.c" data-coord="c-io.umt:255:133">no-buffer-copy.c</a> file.  The program uses an optional extra
+command-line argument: stdio buffering is turned on iff that extra
+argument is specified and equal to <samp data-coord="c-io.umt:255:294">1</samp>.  Compile and measure the
+difference when copying the <samp data-coord="c-io.umt:255:352">gcc</samp> executable into the
+<a href="http://man7.org/linux/man-pages/man4/null.4.html" data-coord="c-io.umt:255:430">/dev/null</a> data
+sink:
+</p><pre data-coord="c-io.umt:265:0">$ time ./no-buffer-copy `which gcc` /dev/null 1
+$ time ./no-buffer-copy `which gcc` /dev/null 0
+</pre><p data-coord="c-io.umt:269:0">You should see an appreciable difference in performance.
+</p></section><section data-coord="c-io.umt:271:0"><h2 data-coord="c-io.umt:271:0">Record I/O</h2><p data-coord="c-io.umt:274:0">Change over to the <a href="exercises/rec-io" data-coord="c-io.umt:274:39">rec-io</a> directory and look at the
+<a href="exercises/rec-io/gen-rand-points.c" data-coord="c-io.umt:274:110">gen-rand-points.c.</a>  This program
+generates a number (given by its first argument) of random
+2-dimensional points with coordinates in [0, 1000], while writing them
+to a file (given by its second argument) <strong data-coord="c-io.umt:274:314">in binary</strong>.
+</p><p data-coord="c-io.umt:280:0">Build the program by typing <samp data-coord="c-io.umt:280:28">make gen-rand-points</samp> and run it.
+</p><pre data-coord="c-io.umt:283:0">$ ./gen-rand-points 100 points.dat
+</pre><p data-coord="c-io.umt:286:0">It will print out the average magnitude of all the generated points.
+</p><p data-coord="c-io.umt:288:0">Look at the generated <samp data-coord="c-io.umt:288:22">points.dat</samp> file using a text editor.  You
+should see that it looks like garbage as it contains the binary
+representation of the points.
+</p><p data-coord="c-io.umt:292:0">Each point is written out to the file using
+<a href="http://man7.org/linux/man-pages/man3/fwrite.3p.html" data-coord="c-io.umt:292:99">fwrite().</a>
+Look at its documentation to understand what it does.
+</p><p data-coord="c-io.umt:296:0">Given this binary dump of the points, it is possible to read back the
+points using <a href="http://man7.org/linux/man-pages/man3/fread.3p.html" data-coord="c-io.umt:296:137">fread().</a>  Build the <samp data-coord="c-io.umt:296:157">stat-points</samp> program and run it on the generated
+points in <samp data-coord="c-io.umt:296:217">points.dat</samp>:
+</p><pre data-coord="c-io.umt:303:0">$ ./stat-points points.dat
+</pre><p data-coord="c-io.umt:306:0">It will print out statistics about the magnitude of the points.  Note that
+the average should match the average printed out by the <samp data-coord="c-io.umt:306:131">gen-rand-points</samp>
+program.
+</p><p data-coord="c-io.umt:310:0">The <samp data-coord="c-io.umt:310:4">stat-points</samp> program reads each point in to a dynamically grown
+array and sorts the array in order to determine the <samp data-coord="c-io.umt:310:121">min</samp>, <samp data-coord="c-io.umt:310:128">max</samp> and
+<samp data-coord="c-io.umt:310:138">median</samp>.  The code in <a href="./exercises/rec-io/dyn-array.h" data-coord="c-io.umt:310:195">dyn-array.h</a>
+provides a specification for a dynamic array ADT and
+<a href="./exercises/rec-io/dyn-array.c" data-coord="c-io.umt:310:294">dyn-array.c</a> provides its implementation.
+</p><p data-coord="c-io.umt:316:0">These programs shows that using <samp data-coord="c-io.umt:316:32">fread()</samp> and <samp data-coord="c-io.umt:316:46">fwrite()</samp> it is possible
+to dump out binary data.  However, the binary data has severe portability
+problems:
+</p><ul data-coord="c-io.umt:320:0"><li data-coord="c-io.umt:320:0"><p data-coord="c-io.umt:320:4">If <samp data-coord="c-io.umt:320:7">points.dat</samp> was written out on a little-endian system and read
+back on a big-endian system, the results would be garbage.
+</p></li><li data-coord="c-io.umt:323:0"><p data-coord="c-io.umt:323:4">If <samp data-coord="c-io.umt:323:7">points.dat</samp> was read back in on a system using a different
+<samp data-coord="c-io.umt:323:71">int</samp> size than the one on which it was written, then the results
+would be garbage.
+</p></li><li data-coord="c-io.umt:327:0"><p data-coord="c-io.umt:327:4">Even if <samp data-coord="c-io.umt:327:12">points.dat</samp> was read and written on the same system,
+but the reading and writing programs were compiled using separate
+compilers, or the same compiler with different options, the result
+could be garbage (this is likely to be prevented because of ABI
+compatibility reasons).
+</p></li></ul><p data-coord="c-io.umt:333:0">Nevertheless, with <samp data-coord="c-io.umt:333:19">gen-rand-points</samp> and <samp data-coord="c-io.umt:333:41">stat-points</samp> running on the
+same system, they seem to work.  Unfortunately, they contain a major
+bug.
+</p><p data-coord="c-io.umt:337:0">By default, when a file is opened by the C library, it is assumed that
+it is a <strong data-coord="c-io.umt:337:79">text</strong> file containing a sequence of lines.  However, that depends
+on the definition of lines which is system-dependent:
+</p><ul data-coord="c-io.umt:341:0"><li data-coord="c-io.umt:341:0"><p data-coord="c-io.umt:341:4">The C libraries assume that a line is a maximum sequence of
+characters not containing a newline <samp data-coord="c-io.umt:341:104">'\n'</samp> character and
+terminated by a newline.
+</p></li><li data-coord="c-io.umt:345:0"><p data-coord="c-io.umt:345:4">Under Unix systems, a line is a maximum sequence of characters
+not containing a linefeed <samp data-coord="c-io.umt:345:97">'\n'</samp> character and terminated by a
+linefeed.
+</p></li><li data-coord="c-io.umt:349:0"><p data-coord="c-io.umt:349:4">Under Windows, a line is a maximum sequence of characters not
+containing the sequence carriage-return <samp data-coord="c-io.umt:349:110">'\r'</samp> line-feed <samp data-coord="c-io.umt:349:127">'\n'</samp> and
+terminated by the two character sequence carriage-return,
+line-feed.
+</p></li><li data-coord="c-io.umt:354:0"><p data-coord="c-io.umt:354:4">Under classic Mac-OS systems (not OS/X which is basically Unix), a
+line is a maximum sequence of characters not containing a
+carriage-return <samp data-coord="c-io.umt:354:153">'\r'</samp> character and terminated by a
+carriage-return.
+</p></li></ul><p data-coord="c-io.umt:359:0">When doing I/O on text files, the C library I/O routines translates
+between system line-endings and the C line-endings.  On Unix, this
+translation is the identity function but is non-trivial on other
+systems.  For example, the character sequence <samp data-coord="c-io.umt:359:246">'\r'</samp> <samp data-coord="c-io.umt:359:253">'\n'</samp> in
+a Windows file is read into a C program as a single character
+<samp data-coord="c-io.umt:359:325">'\n'</samp>.
+</p><p data-coord="c-io.umt:366:0">Hence doing I/O of binary data using text files is wrong.  It will
+work fine under Unix, but will be incorrect under Windows.  For
+example, the integer 10 (which is the Ascii code for <samp data-coord="c-io.umt:366:184">\n</samp> will be
+output as <samp data-coord="c-io.umt:366:207">'\r'</samp> followed by a <samp data-coord="c-io.umt:366:228">'\n'</samp>.
+</p><p data-coord="c-io.umt:371:0">The fix for this is to open the files for binary I/O; this can be done
+by adding a <samp data-coord="c-io.umt:371:83">b</samp> to the second mode string argument of <samp data-coord="c-io.umt:371:125">fopen()</samp>.
+</p><ol data-coord="c-io.umt:374:0"><li data-coord="c-io.umt:374:0"><p data-coord="c-io.umt:374:4">Fix the modes in the <samp data-coord="c-io.umt:374:25">gen-rand-points</samp> and <samp data-coord="c-io.umt:374:47">stat-points</samp>
+program.
+</p></li><li data-coord="c-io.umt:377:0"><p data-coord="c-io.umt:377:4">Add an optional second file-name argument to <samp data-coord="c-io.umt:377:49">stat-point</samp>.  If
+that argument is provided, the statistics should be appended to
+that file instead of being written on standard output.  Test and
+ensure that your modified program is <samp data-coord="c-io.umt:377:245">valgrind</samp>-clean.
+</p></li></ol></section>
+    </div> <!-- #content -->
+    <script src="../../assets/scripts/loginAction.js"></script>
+  </body>
+</html>
