@@ -10,7 +10,6 @@ doCopy(const char *inName, FILE *in, const char *outName, FILE *out)
   while ((c = fgetc(in)) != EOF) {
     if(ferror(in)) {
       printf("Error");
-      return;
     }
     if (fputc(c, out) == EOF) {
       fprintf(stderr, "error writing to %s: %s\n", outName, strerror(errno));
@@ -52,3 +51,13 @@ main(int argc, const char *argv[])
   }
   return 0;
 }
+CC = gcc
+CFLAGS = -g -Wall -std=c18
+
+TARGETS = file-copy
+
+$(TARGETS):
+
+
+clean:
+		rm -f $(TARGETS) *.o *~

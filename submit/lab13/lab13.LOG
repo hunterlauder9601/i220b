@@ -1,0 +1,1057 @@
+Script started on 2021-12-09 17:16:13-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13$ cd exercises/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd stdin-char-count/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ make
+gcc -g -Wall -std=c18 -funsigned-char    stdin-char-count.c   -o stdin-char-count
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ ./stdin-char-count < stdin-char-count.c
+EOF = -1
+^C
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ ./stdin-char-count < stdin-char-count.c
+EOF = -1
+5
+c
+^C
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ make
+gcc -g -Wall -std=c18 -funsigned-char    stdin-char-count.c   -o stdin-char-count
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ make./stdin-char-count < stdin-char-count.c
+EOF = -1
+205
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd file-char-count/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd  [K[K stq[Kdin-char-count/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ wc -c stdin-char-count.c
+205 stdin-char-count.c
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/stdin-char-count$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd file-c-c[K[K[K[K-char-count/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ make
+gcc -g -Wall -std=c18    file-char-count.c   -o file-char-count
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ ./file-char-count file-char-count.c
+566
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ wc -c file-char-count.c 
+566 file-char-count.c
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ ./file-char-count xxx
+cannot read xxx: No such file or directory
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ valgrind ./file-char-count file-char-count.c
+==3531078== Memcheck, a memory error detector
+==3531078== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3531078== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==3531078== Command: ./file-char-count file-char-count.c
+==3531078== 
+566
+==3531078== 
+==3531078== HEAP SUMMARY:
+==3531078==     in use at exit: 552 bytes in 1 blocks
+==3531078==   total heap usage: 3 allocs, 2 frees, 9,768 bytes allocated
+==3531078== 
+==3531078== LEAK SUMMARY:
+==3531078==    definitely lost: 0 bytes in 0 blocks
+==3531078==    indirectly lost: 0 bytes in 0 blocks
+==3531078==      possibly lost: 0 bytes in 0 blocks
+==3531078==    still reachable: 552 bytes in 1 blocks
+==3531078==         suppressed: 0 bytes in 0 blocks
+==3531078== Rerun with --leak-check=full to see details of leaked memory
+==3531078== 
+==3531078== For counts of detected and suppressed errors, rerun with: -v
+==3531078== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ make
+gcc -g -Wall -std=c18    file-char-count.c   -o file-char-count
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ makevalgrind ./file-char-count file-char-count.c
+==3531560== Memcheck, a memory error detector
+==3531560== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3531560== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==3531560== Command: ./file-char-count file-char-count.c
+==3531560== 
+578
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB1EA: _IO_flush_all_lockp (genops.c:701)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41100 is 192 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB1F8: _IO_flush_all_lockp (genops.c:701)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41060 is 32 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB1FC: _IO_flush_all_lockp (genops.c:701)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41068 is 40 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB17B: _IO_flush_all_lockp (genops.c:695)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410a8 is 104 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB3F8: _IO_unbuffer_all (genops.c:792)
+==3531560==    by 0x48FB3F8: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB400: _IO_unbuffer_all (genops.c:794)
+==3531560==    by 0x48FB400: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41100 is 192 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB40B: _IO_unbuffer_all (genops.c:800)
+==3531560==    by 0x48FB40B: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410c8 is 136 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB417: _IO_unbuffer_all (genops.c:800)
+==3531560==    by 0x48FB417: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41128 is 232 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB437: _IO_unbuffer_all (genops.c:800)
+==3531560==    by 0x48FB437: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41120 is 224 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB628: _IO_unbuffer_all (genops.c:800)
+==3531560==    by 0x48FB628: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410c8 is 136 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FB62F: _IO_unbuffer_all (genops.c:800)
+==3531560==    by 0x48FB62F: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41128 is 232 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 4
+==3531560==    at 0x48FB633: _IO_unbuffer_all (genops.c:800)
+==3531560==    by 0x48FB633: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41124 is 228 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB45E: _IO_unbuffer_all (genops.c:808)
+==3531560==    by 0x48FB45E: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 4
+==3531560==    at 0x48FB5B3: _IO_unbuffer_all (genops.c:810)
+==3531560==    by 0x48FB5B3: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FB5C4: _IO_unbuffer_all (genops.c:812)
+==3531560==    by 0x48FB5C4: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410e8 is 168 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB5CB: _IO_unbuffer_all (genops.c:814)
+==3531560==    by 0x48FB5CB: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41078 is 56 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FB5CF: _IO_unbuffer_all (genops.c:814)
+==3531560==    by 0x48FB5CF: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410f0 is 176 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB469: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB469: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41118 is 216 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FAA34: _IO_default_setbuf (genops.c:453)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41118 is 216 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48F7579: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:805)
+==3531560==    by 0x48FAA51: _IO_default_setbuf (genops.c:453)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41068 is 40 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48F757D: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:805)
+==3531560==    by 0x48FAA51: _IO_default_setbuf (genops.c:453)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41060 is 32 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48F75BC: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:807)
+==3531560==    by 0x48FAA51: _IO_default_setbuf (genops.c:453)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41048 is 8 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48F75C0: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:808)
+==3531560==    by 0x48FAA51: _IO_default_setbuf (genops.c:453)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41050 is 16 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F7605: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:819)
+==3531560==    by 0x48FAA51: _IO_default_setbuf (genops.c:453)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410d0 is 144 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FAA5B: _IO_default_setbuf (genops.c:455)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FAA5D: _IO_default_setbuf (genops.c:455)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41078 is 56 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 4
+==3531560==    at 0x48FAAE1: _IO_default_setbuf (genops.c:457)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAAEF: _IO_setb (genops.c:332)
+==3531560==    by 0x48FAAEF: _IO_default_setbuf (genops.c:458)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41078 is 56 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAAF3: _IO_setb (genops.c:333)
+==3531560==    by 0x48FAAF3: _IO_default_setbuf (genops.c:458)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41080 is 64 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 4
+==3531560==    at 0x48FAAF7: _IO_setb (genops.c:337)
+==3531560==    by 0x48FAAF7: _IO_default_setbuf (genops.c:458)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAA8F: _IO_default_setbuf (genops.c:465)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41070 is 48 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAA9A: _IO_default_setbuf (genops.c:465)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41068 is 40 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAAA2: _IO_default_setbuf (genops.c:465)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41060 is 32 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAAAA: _IO_default_setbuf (genops.c:466)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41050 is 16 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAAB2: _IO_default_setbuf (genops.c:466)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41048 is 8 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FAABA: _IO_default_setbuf (genops.c:466)
+==3531560==    by 0x48F7678: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:390)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41058 is 24 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48F767E: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:394)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41078 is 56 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F7682: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:394)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41070 is 48 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F7686: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:393)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41068 is 40 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F768A: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:393)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41060 is 32 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F768E: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:395)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41058 is 24 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F7692: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:395)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41048 is 8 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48F7696: _IO_file_setbuf@@GLIBC_2.2.5 (fileops.c:395)
+==3531560==    by 0x48FB488: _IO_unbuffer_all (genops.c:817)
+==3531560==    by 0x48FB488: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41050 is 16 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB489: _IO_unbuffer_all (genops.c:819)
+==3531560==    by 0x48FB489: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41100 is 192 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB4AB: _IO_unbuffer_all (genops.c:823)
+==3531560==    by 0x48FB4AB: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410c8 is 136 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB4BB: _IO_unbuffer_all (genops.c:824)
+==3531560==    by 0x48FB4BB: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41124 is 228 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 8
+==3531560==    at 0x48FB4C5: _IO_unbuffer_all (genops.c:824)
+==3531560==    by 0x48FB4C5: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41128 is 232 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB4DD: _IO_unbuffer_all (genops.c:824)
+==3531560==    by 0x48FB4DD: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41120 is 224 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 4
+==3531560==    at 0x48FB3E0: _IO_unbuffer_all (genops.c:830)
+==3531560==    by 0x48FB3E0: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41100 is 192 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB3EB: _IO_unbuffer_all (genops.c:790)
+==3531560==    by 0x48FB3EB: _IO_cleanup (genops.c:867)
+==3531560==    by 0x48B6E79: __run_exit_handlers (exit.c:130)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410a8 is 104 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB1EA: _IO_flush_all_lockp (genops.c:701)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41100 is 192 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB1F8: _IO_flush_all_lockp (genops.c:701)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41060 is 32 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB1FC: _IO_flush_all_lockp (genops.c:701)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41068 is 40 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB17B: _IO_flush_all_lockp (genops.c:695)
+==3531560==    by 0x48FB314: _IO_cleanup (genops.c:858)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410a8 is 104 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 4
+==3531560==    at 0x48FB3F8: _IO_unbuffer_all (genops.c:792)
+==3531560==    by 0x48FB3F8: _IO_cleanup (genops.c:867)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41040 is 0 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid write of size 4
+==3531560==    at 0x48FB3E0: _IO_unbuffer_all (genops.c:830)
+==3531560==    by 0x48FB3E0: _IO_cleanup (genops.c:867)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a41100 is 192 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x48FB3EB: _IO_unbuffer_all (genops.c:790)
+==3531560==    by 0x48FB3EB: _IO_cleanup (genops.c:867)
+==3531560==    by 0x49E5B37: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410a8 is 104 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x49E5AC8: buffer_free (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x49E5B59: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410f0 is 176 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== Invalid read of size 8
+==3531560==    at 0x49E5AD4: buffer_free (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x49E5B59: __libc_freeres (in /lib/x86_64-linux-gnu/libc-2.28.so)
+==3531560==    by 0x482B19E: _vgnU_freeres (vg_preloaded.c:77)
+==3531560==    by 0x48B6E89: __run_exit_handlers (exit.c:132)
+==3531560==    by 0x48B6EB9: exit (exit.c:139)
+==3531560==    by 0x48A10A1: (below main) (libc-start.c:342)
+==3531560==  Address 0x4a410e8 is 168 bytes inside a block of size 552 free'd
+==3531560==    at 0x48369AB: free (vg_replace_malloc.c:530)
+==3531560==    by 0x10928D: main (file-char-count.c:26)
+==3531560==  Block was alloc'd at
+==3531560==    at 0x483577F: malloc (vg_replace_malloc.c:299)
+==3531560==    by 0x48ED0FA: __fopen_internal (iofopen.c:65)
+==3531560==    by 0x109204: main (file-char-count.c:17)
+==3531560== 
+==3531560== 
+==3531560== HEAP SUMMARY:
+==3531560==     in use at exit: 0 bytes in 0 blocks
+==3531560==   total heap usage: 3 allocs, 3 frees, 9,768 bytes allocated
+==3531560== 
+==3531560== All heap blocks were freed -- no leaks are possible
+==3531560== 
+==3531560== For counts of detected and suppressed errors, rerun with: -v
+==3531560== ERROR SUMMARY: 62 errors from 59 contexts (suppressed: 0 from 0)
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ cd [K[Ahlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ cd [Khlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ cd make[K[K[K[K[K[K[Kmake
+gcc -g -Wall -std=c18    file-char-count.c   -o file-char-count
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ makevalgrind ./file-char-count file-char-count.c
+==3532830== Memcheck, a memory error detector
+==3532830== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3532830== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==3532830== Command: ./file-char-count file-char-count.c
+==3532830== 
+580
+==3532830== 
+==3532830== HEAP SUMMARY:
+==3532830==     in use at exit: 0 bytes in 0 blocks
+==3532830==   total heap usage: 3 allocs, 3 frees, 9,768 bytes allocated
+==3532830== 
+==3532830== All heap blocks were freed -- no leaks are possible
+==3532830== 
+==3532830== For counts of detected and suppressed errors, rerun with: -v
+==3532830== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-char-count$ cd file-char-count[K[K[K[K[K[K[K[K[Kop[K[K[K[K[K[K[K[K[K[K[Kcd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd file-copy/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ make
+gcc -g -Wall -std=c18    file-copy.c   -o file-copy
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ./fu[Kile-copy 
+usage: ./file-copy SRC_NAME DEST_NAME
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ls - [Kl file-copy.c t
+ls: cannot access 't': No such file or directory
+-rw-r----- 1 hlauder1 hlauder1 1245 Dec  9 17:11 file-copy.c
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ./file-copy file-copy.c t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ls -l file-copy.c t
+-rw-r----- 1 hlauder1 hlauder1 1245 Dec  9 17:11 file-copy.c
+-rw-r----- 1 hlauder1 hlauder1 1245 Dec  9 17:48 t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ cmp file-copy.c t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ./file-copy Makefile t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ cmp Makefile t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ chmod a-w t [K
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ./file-copy file-copy.c t
+cannot write t: Permission denied
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ cmp Makefile t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ cmp Makefile t[11@./file-copy file-copy.c[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pcmp Makefile[C[C[Kmake
+gcc -g -Wall -std=c18    file-copy.c   -o file-copy
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd file-co`[Kpy/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ make
+gcc -g -Wall -std=c18    file-copy.c   -o file-copy
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ rm -f t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ./file-copy file-copy.c t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ ./file-copy Makefile t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ wc -l file-copy.c Makefile
+  53 file-copy.c
+  10 Makefile
+  63 total
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ wc -l t
+63 t
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/file-copy$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd no-buffer-copy/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/no-buffer-copy$ make
+gcc -g -Wall -std=c18    no-buffer-copy.c   -o no-buffer-copy
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/no-buffer-copy$ time [K[K[K[K[Ktime ./no-buffer-copy `which gcc` /dev/null 1
+
+real	0m0.008s
+user	0m0.001s
+sys	0m0.001s
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/no-buffer-copy$ time ./no-buffer-copy `which gcc` /dev/null 0
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.000s
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/no-buffer-copy$ cd ..
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd rec-io/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ make
+gcc -g -Wall -std=c18   -c -o gen-rand-points.o gen-rand-points.c
+gcc   gen-rand-points.o  -lm -o gen-rand-points
+gcc -g -Wall -std=c18   -c -o stat-points.o stat-points.c
+gcc -g -Wall -std=c18   -c -o dyn-array.o dyn-array.c
+gcc   stat-points.o dyn-array.o  -lm -o stat-points
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ .[K./gen-rand-points 100 points.dat
+average magnitude = 752.156
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ ./stat-points points.dat 
+min = 43.4166
+average = 752.156
+median = 773.59
+max = 1306.49
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ make
+gcc -g -Wall -std=c18   -c -o stat-points.o stat-points.c
+gcc   stat-points.o dyn-array.o  -lm -o stat-points
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ ./stat-points points.dat 
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ ./stat-points points.dat t.dat
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ exit
+
+Script done on 2021-12-09 19:06:46-05:00 [COMMAND_EXIT_CODE="0"]

@@ -23,5 +23,6 @@ main(int argc, const char *argv[])
   int count = 0;
   while ((c = fgetc(in)) != EOF) count++;
   printf("%d\n", count);
+  fclose(in);
   return 0;
 }
