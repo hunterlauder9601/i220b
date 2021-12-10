@@ -11,7 +11,7 @@
 static void
 readPoints(const char *inName, DynArray *points)
 {
-  FILE *in = fopen(inName, "wb");
+  FILE *in = fopen(inName, "rb");
   if (!in) {
     fprintf(stderr, "cannot read %s: %s\n", inName, strerror(errno));
     exit(1);

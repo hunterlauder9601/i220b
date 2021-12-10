@@ -1,0 +1,30 @@
+Script started on 2021-12-09 19:21:16-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13$ CD[K[Kcd exer cises/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises$ cd r3e[K[Kec-io/
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ make
+make: Nothing to be done for 'all'.
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ make clean
+rm -f gen-rand-points stat-points *.o *~
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ make [K
+gcc -g -Wall -std=c18   -c -o gen-rand-points.o gen-rand-points.c
+gcc   gen-rand-points.o  -lm -o gen-rand-points
+gcc -g -Wall -std=c18   -c -o stat-points.o stat-points.c
+gcc -g -Wall -std=c18   -c -o dyn-array.o dyn-array.c
+gcc   stat-points.o dyn-array.o  -lm -o stat-points
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ make clean[Kcd rec-io/exercises/[C[C[C[C[C[C[C[C[C[C./stat-points points.dat t.dat[Kt.dat[C[C[C[C[C[C[C[C[C[C[17Pcd exercises/[C[C[C[C[C[C[C[C[C[C./stat-points points.dat t.dat[Kt.dat[K[C[C[C[C[C[C[C[C[C[Cmake[K./stat-points points.dat [C[C[C[C[C[C[C[C[C[C[C[Cgen-rand-points 100 points.dat[C[C[C[C[C[C[C[C[C[Cmake[Kcd rec-io/[6Pmake./gen-rand-points 100 points.dat
+average magnitude = 752.156
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ ./gen-rand-points 100 points.dat[C[C[C[C[C[C[C[C[C[Cmake[K clean[Kcd rec-io/exercises/[C[C[C[C[C[C[C[C[C[C./stat-points points.dat t.dat[C[C[C[C[C[C[C[C[C[C[17Pcd exercises/[C[C[C[C[C[C[C[C[C[C./stat-points points.dat t.dat[C[C[C[C[C[C[C[C[C[C[17Pcd exercises/[3Prec-io/exercises/[C[C[C[C[C[C[C[C[C[C./stat-points points.dat t.dat[K[C[C[C[C[C[C[C[C[C[Cmake[K./stat-points points.dat 
+min = 43.4166
+average = 752.156
+median = 773.59
+max = 1306.49
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ ./stat-points points.dat [C[C[C[C[C[C[C[C[C[C[C[Cgen-rand-points 100 points.dat[C[C[C[C[C[C[C[C[C[Cmake[K./gen-rand-points 100 points.dat[C[C[C[C[C[C[C[C[C[C[C[C[7Pstat-points points.dat [C[C[C[C[C[C[C[C[C[C[K./stat-points points.dat [C[C[C[C[C[C[C[C[C[C[C[Cgen-rand-points 100 points.dat[C[C[C[C[C[C[C[C[C[Cmake[K clean[Kcd rec-io/exercises/[C[C[C[C[C[C[C[C[C[C./stat-points points.dat t.dat[Kt.dat
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ ./stat-points points.dat t.dat[K[K[K[K[Ktet[Kst2.dat
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ caty[K test2.dat
+min = 43.4166
+average = 752.156
+median = 773.59
+max = 1306.49
+hlauder1@g7-26:/import/linux/home1/hlauder1/projects/i220b/submit/lab13/exercises/rec-io$ exit
+
+Script done on 2021-12-09 19:23:38-05:00 [COMMAND_EXIT_CODE="0"]
